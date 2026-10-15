@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prompt Batch Privacy</title>
+<meta name="description" content="Privacy policy of the Prompt Batch Chrome extension.">
+<style>
+  :root {
+    --bg: #f7f7f8; --card: #ffffff; --line: #dcdce1; --text: #1b1b1f; --muted: #6b6b75; --accent: #1a5fd0;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg: #0f0f10; --card: #1a1a1c; --line: #2c2c30; --text: #ececee; --muted: #9a9aa2; --accent: #8ab4ff; color-scheme: dark; }
+  }
+  :root[data-theme="dark"] { --bg: #0f0f10; --card: #1a1a1c; --line: #2c2c30; --text: #ececee; --muted: #9a9aa2; --accent: #8ab4ff; color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 56px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 18px; }
+  .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  nav a { color: var(--accent); text-decoration: none; padding: 6px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); font-size: 14px; }
+  article { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 24px 22px; margin-top: 20px; }
+  h1 { font-size: 26px; line-height: 1.3; margin: 0 0 4px; }
+  h2 { font-size: 17px; margin: 26px 0 6px; }
+  .date { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+  ul { padding-inline-start: 22px; margin: 6px 0; }
+  li { margin: 4px 0; }
+  code { font-size: 14px; background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; }
+  a { color: var(--accent); }
+  [lang="ar"] { font-family: system-ui, "Geeza Pro", Tahoma, sans-serif; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="brand"><img src="icon.png" alt="">Prompt Batch</div>
+    <nav><a href="#en">English</a> <a href="#ar" lang="ar">العربية</a></nav>
+  </header>
+
+  <article id="en" lang="en" dir="ltr">
+    <h1>Privacy Policy</h1>
+    <p class="date">Effective date: 16 October 2026</p>
+    <p>Prompt Batch is a Chrome extension that runs a list of prompts, which you load yourself, in the Google Flow project you have open, and downloads the results. This policy explains what the extension does with information. In short: <strong>it collects nothing, has no server, and sends nothing to us or to anyone else.</strong></p>
+
+    <h2>Information we collect</h2>
+    <p>None. Prompt Batch does not collect, record or transmit any personal information, browsing history, usage statistics or analytics. We have no server and no account system, so there is nowhere for your data to go.</p>
+
+    <h2>Information stored on your computer</h2>
+    <p>To keep your work between sessions, the extension saves the following in Chrome's local extension storage, on your own computer only:</p>
+    <ul>
+      <li>the prompts and settings of the file you loaded, the file's name, and the status of each row;</li>
+      <li>your choices: language, theme, download folder and quality, waiting times, and whether to show the welcome screen;</li>
+      <li>the list of Flow models and their credit prices, read from the Flow page.</li>
+    </ul>
+    <p>This information never leaves your browser. You can delete it at any time with the "Clear" or "Remove file" buttons, or by removing the extension.</p>
+
+    <h2>How the extension works with Google Flow</h2>
+    <ul>
+      <li>The extension only works on <code>flow.google.com</code> and <code>labs.google</code> pages, in the account you are already signed in to. It types your prompts, presses the buttons and renames the results there, as you would by hand.</li>
+      <li>Your prompts, uploaded pictures and generated results are handled by Google under <a href="https://policies.google.com/privacy">Google's Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a>, exactly as when you use Flow without the extension. Prompt Batch has no access to your Google password or account settings.</li>
+      <li>Downloads are saved by Chrome to the folder you choose in your Downloads folder.</li>
+    </ul>
+
+    <h2>Permissions</h2>
+    <ul>
+      <li><strong>Side panel</strong>: shows the extension's interface next to the Flow tab.</li>
+      <li><strong>Storage</strong>: keeps the information listed above on your computer.</li>
+      <li><strong>Downloads</strong>: saves each result with the name of its row.</li>
+      <li><strong>Tabs</strong> and <strong>scripting</strong>: find the Flow tab you have open and add the extension's script to it.</li>
+      <li><strong>Debugger</strong>: Flow's Generate button does not react to script events, so during a run you started, the extension sends real mouse clicks and Enter presses to the Flow tab. It is used only on Flow tabs, only to send input, and reads nothing through it. Chrome shows a notice while it is in use.</li>
+    </ul>
+
+    <h2>Sharing and selling</h2>
+    <p>We do not sell, share, rent or transfer any information, because we do not have any. The extension uses no advertising, no tracking and no remote code.</p>
+
+    <h2>Children</h2>
+    <p>Prompt Batch is not meant for children. Google Flow itself requires users to be 18 or older.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If this policy changes, the new version will be published on this page with a new effective date.</p>
+
+    <h2>Contact</h2>
+    <p>Questions about this policy: <a href="mailto:khaledabdelwahab23@gmail.com">khaledabdelwahab23@gmail.com</a></p>
+    <p>Prompt Batch is an independent tool. It is not made, endorsed or supported by Google.</p>
+  </article>
+
+  <article id="ar" lang="ar" dir="rtl">
+    <h1>سياسة الخصوصية</h1>
+    <p class="date">تاريخ السريان: ١٦ أكتوبر ٢٠٢٦</p>
+    <p>إضافة Prompt Batch لمتصفح كروم بتشغّل قايمة برومبتات إنت بترفعها بنفسك، في مشروع Google Flow المفتوح عندك، وبتحمّل النتايج. السياسة دي بتوضّح الإضافة بتعمل إيه بالمعلومات. باختصار: <strong>الإضافة مش بتجمع أي حاجة، ومالهاش سيرفر، ومش بتبعت أي بيانات لينا ولا لأي حد.</strong></p>
+
+    <h2>المعلومات اللي بنجمعها</h2>
+    <p>ولا حاجة. الإضافة مش بتجمع ولا بتسجّل ولا بتبعت أي بيانات شخصية، ولا سجل تصفّح، ولا إحصائيات استخدام. مالناش سيرفر ولا نظام حسابات، فمفيش مكان أصلاً بياناتك تروحله.</p>
+
+    <h2>المعلومات اللي بتتحفظ على جهازك</h2>
+    <p>عشان شغلك يفضل موجود لما تقفل وتفتح، الإضافة بتحفظ الحاجات دي في تخزين كروم المحلي، على جهازك إنت بس:</p>
+    <ul>
+      <li>البرومبتات وإعدادات الملف اللي رفعته، واسم الملف، وحالة كل سطر؛</li>
+      <li>اختياراتك: اللغة، والمظهر، وفولدر التحميل وجودته، وأوقات الانتظار، وإن كانت شاشة الترحيب تظهر ولا لأ؛</li>
+      <li>قايمة موديلات Flow وأسعارها بالكريديت، اللي بتتقري من صفحة Flow.</li>
+    </ul>
+    <p>المعلومات دي ما بتخرجش من المتصفح بتاعك. تقدر تمسحها في أي وقت بزرار «امسح» أو «امسح الملف»، أو بإنك تشيل الإضافة.</p>
+
+    <h2>الإضافة بتتعامل مع Google Flow إزاي</h2>
+    <ul>
+      <li>الإضافة بتشتغل بس على صفحات <code>flow.google.com</code> و<code>labs.google</code>، في الحساب اللي إنت عامل دخول بيه أصلاً. بتكتب البرومبتات، وتدوس الزراير، وتغيّر أسامي النتايج هناك، زي ما كنت هتعمل بإيدك.</li>
+      <li>البرومبتات والصور اللي بترفعها والنتايج اللي بتتولّد، Google بتتعامل معاها حسب <a href="https://policies.google.com/privacy">سياسة خصوصية Google</a> و<a href="https://policies.google.com/terms">شروط الخدمة</a>، بالظبط زي ما بتستخدم Flow من غير الإضافة. الإضافة مالهاش أي وصول لباسورد حسابك أو إعداداته.</li>
+      <li>التحميلات بيحفظها كروم في الفولدر اللي إنت بتختاره جوّه فولدر التحميلات.</li>
+    </ul>
+
+    <h2>الصلاحيات</h2>
+    <ul>
+      <li><strong>اللوحة الجانبية</strong>: بتعرض واجهة الإضافة جنب تاب Flow.</li>
+      <li><strong>التخزين</strong>: بيحفظ المعلومات اللي فوق على جهازك.</li>
+      <li><strong>التحميلات</strong>: بتحفظ كل نتيجة باسم السطر بتاعها.</li>
+      <li><strong>التابات</strong> و<strong>السكريبتات</strong>: بيلاقوا تاب Flow المفتوح ويضيفوا سكريبت الإضافة ليه.</li>
+      <li><strong>أداة المطوّرين (Debugger)</strong>: زرار التوليد في Flow مش بيستجيب لأوامر السكريبت، فوقت التشغيل اللي إنت بدأته، الإضافة بتبعت دوسات ماوس وزرار Enter حقيقيين لتاب Flow. بتُستخدم على تابات Flow بس، ولإرسال الدوسات بس، ومش بتقرا أي حاجة من خلالها. كروم بيعرض تنبيه طول ما هي شغالة.</li>
+    </ul>
+
+    <h2>المشاركة والبيع</h2>
+    <p>إحنا ما بنبيعش ولا بنشارك ولا بنأجّر ولا بننقل أي معلومات، لأن معندناش أي معلومات أصلاً. الإضافة مفيهاش إعلانات ولا تتبّع ولا كود بيتحمّل من برّه.</p>
+
+    <h2>الأطفال</h2>
+    <p>الإضافة مش معمولة للأطفال، وGoogle Flow نفسه بيشترط إن المستخدم يكون عنده ١٨ سنة أو أكتر.</p>
+
+    <h2>التعديلات على السياسة</h2>
+    <p>لو السياسة دي اتغيّرت، النسخة الجديدة هتتنشر في الصفحة دي بتاريخ سريان جديد.</p>
+
+    <h2>التواصل</h2>
+    <p>لأي سؤال عن السياسة دي: <a href="mailto:khaledabdelwahab23@gmail.com">khaledabdelwahab23@gmail.com</a></p>
+    <p>الإضافة دي أداة مستقلة، مش تابعة لـ Google ولا معتمدة منها.</p>
+  </article>
+</main>
+</body>
+</html>

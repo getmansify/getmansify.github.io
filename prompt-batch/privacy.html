@@ -61,14 +61,14 @@
 
   <article id="en" lang="en" dir="ltr">
     <h1>Privacy Policy</h1>
-    <p class="date">Effective date: 16 October 2026 (updated for the Pro licence)</p>
-    <p>Prompt Batch is a Chrome extension that runs a list of prompts, which you load yourself, in the Google Flow project you have open, and downloads the results. This policy explains what the extension does with information. In short: <strong>it collects nothing, has no server, and sends nothing to us.</strong> The only thing it ever sends outside Flow is a Pro licence key, if you buy one, to the licence service that checks it.</p>
+    <p class="date">Effective date: 16 October 2026 (updated for Pro: seller Freemius, monthly and lifetime licences, price list)</p>
+    <p>Prompt Batch is a Chrome extension that runs a list of prompts, which you load yourself, in the Google Flow project you have open, and downloads the results. This policy explains what the extension does with information. In short: <strong>it collects nothing, has no server, and sends nothing to us.</strong> The only thing it ever sends outside Flow is a Pro licence key, if you buy one, to the licence service that checks it. It also downloads our public price list, without sending anything about you.</p>
 
     <h2>Information we collect</h2>
     <p>None. Prompt Batch does not collect, record or transmit any personal information, browsing history, usage statistics or analytics. We have no server and no account system, so there is nowhere for your data to go.</p>
 
     <h2>Pro licence check</h2>
-    <p>Prompt Batch is free for the first 5 results. After that, a one-time Pro licence can be bought from our seller, <a href="https://www.lemonsqueezy.com/privacy">Lemon Squeezy</a>, which handles the payment and your email address under its own privacy policy. When you paste your licence key in the extension, it sends only the key and a label for this computer (the system name, a random 4-character code made by the extension, and the date, for example "Mac · 7F3A · 16 Oct 2026") to Lemon Squeezy's licence service (<code>api.lemonsqueezy.com</code>) to check it, and checks it again from time to time: when the panel opens (at most every 6 hours), when you start a run, and when you open the Pro screen. Nothing about your prompts, files, Flow projects or browsing is sent. If you never enter a key, the extension makes no such request.</p>
+    <p>Prompt Batch is free for the first 5 results. After that, a Pro licence (monthly or one-time lifetime) can be bought from our seller, <a href="https://freemius.com/privacy/">Freemius</a>, our merchant of record, which handles the payment and your email address under its own privacy policy. When you paste your licence key in the extension, it sends only the key, a random 32-character id for this computer made by the extension, the extension version, and a label for this computer (the system name, a random 4-character code made by the extension, and the date, for example "Mac · 7F3A · 16 Oct 2026") to Freemius' licence service (<code>api.freemius.com</code>) to check it, and checks it again from time to time: when the panel opens (at most every 6 hours), when you start a run, and when you open the Pro screen. Nothing about your prompts, files, Flow projects or browsing is sent. If you never enter a key, the extension makes no such request. Separately, when the panel or the Pro screen opens, the extension downloads our public price list (<code>getmansify.github.io/prompt-batch/prices.json</code>) to show current prices; nothing about you is sent with it.</p>
 
     <h2>Information stored on your computer</h2>
     <p>To keep your work between sessions, the extension saves the following in Chrome's local extension storage, on your own computer only:</p>
@@ -76,7 +76,8 @@
       <li>the prompts and settings of the file you loaded, the file's name, and the status of each row;</li>
       <li>your choices: language, theme, download folder and quality, waiting times, and whether to show the welcome screen;</li>
       <li>the list of Flow models and their credit prices, read from the Flow page;</li>
-      <li>how many free results have been made on this computer, and your Pro licence key with the email returned by the licence check and the random device code, if you activate one. These items are also kept in Chrome's own sync storage, so they follow your Chrome account to your other computers and survive a reinstall. Chrome syncs them through your Google account like your other Chrome settings; they are never sent to us.</li>
+      <li>the last price list downloaded from our site, so prices still show without a connection;</li>
+      <li>how many free results have been made on this computer, and your Pro licence key with the activation details returned by the licence check and the random device codes, if you activate one. These items are also kept in Chrome's own sync storage, so they follow your Chrome account to your other computers and survive a reinstall. Chrome syncs them through your Google account like your other Chrome settings; they are never sent to us.</li>
     </ul>
     <p>Apart from the licence check described above, this information never leaves your browser. You can delete it at any time with the "Clear" or "Remove file" buttons, or by removing the extension.</p>
 
@@ -93,7 +94,7 @@
       <li><strong>Storage</strong>: keeps the information listed above on your computer.</li>
       <li><strong>Downloads</strong>: saves each result with the name of its row.</li>
       <li><strong>Tabs</strong> and <strong>scripting</strong>: find the Flow tab you have open and add the extension's script to it.</li>
-      <li><strong>Access to api.lemonsqueezy.com</strong>: checks a Pro licence key you entered, as described above.</li>
+      <li><strong>Access to api.freemius.com</strong>: checks a Pro licence key you entered, as described above.</li>
       <li><strong>Debugger</strong>: Flow's Generate button does not react to script events, so during a run you started, the extension sends real mouse clicks and Enter presses to the Flow tab. It is used only on Flow tabs, only to send input, and reads nothing through it. Chrome shows a notice while it is in use.</li>
     </ul>
 
@@ -113,14 +114,14 @@
 
   <article id="ar" lang="ar" dir="rtl">
     <h1>سياسة الخصوصية</h1>
-    <p class="date">تاريخ السريان: ١٦ أكتوبر ٢٠٢٦ (محدّثة لترخيص Pro)</p>
-    <p>Prompt Batch إضافة لمتصفح Chrome تشغّل قائمة أوامر ترفعها بنفسك في مشروع Google Flow المفتوح لديك، ثم تنزّل النتائج. توضّح هذه السياسة ما تفعله الإضافة بالمعلومات. باختصار: <strong>لا تجمع الإضافة أي شيء، وليس لها خادم، ولا ترسل إلينا أي بيانات.</strong> الشيء الوحيد الذي قد يخرج خارج Flow هو مفتاح ترخيص Pro، إن اشتريته، إلى خدمة التراخيص التي تتحقق منه.</p>
+    <p class="date">تاريخ السريان: ١٦ أكتوبر ٢٠٢٦ (محدّثة لـ Pro: البائع Freemius، والترخيص الشهري ومدى الحياة، وقائمة الأسعار)</p>
+    <p>Prompt Batch إضافة لمتصفح Chrome تشغّل قائمة أوامر ترفعها بنفسك في مشروع Google Flow المفتوح لديك، ثم تنزّل النتائج. توضّح هذه السياسة ما تفعله الإضافة بالمعلومات. باختصار: <strong>لا تجمع الإضافة أي شيء، وليس لها خادم، ولا ترسل إلينا أي بيانات.</strong> الشيء الوحيد الذي قد يخرج خارج Flow هو مفتاح ترخيص Pro، إن اشتريته، إلى خدمة التراخيص التي تتحقق منه. وتُنزّل الإضافة أيضًا قائمة الأسعار العامة الخاصة بنا دون أن ترسل أي شيء عنك.</p>
 
     <h2>المعلومات التي نجمعها</h2>
     <p>لا شيء. لا تجمع Prompt Batch أي معلومات شخصية أو سجل تصفح أو إحصاءات استخدام، ولا تسجّلها ولا ترسلها. ليس لدينا خادم ولا نظام حسابات، فلا يوجد مكان تذهب إليه بياناتك.</p>
 
     <h2>التحقق من ترخيص Pro</h2>
-    <p>Prompt Batch مجانية لأول ٥ نتائج. بعد ذلك يمكن شراء ترخيص Pro بدفعة واحدة من البائع الذي نتعامل معه، <a href="https://www.lemonsqueezy.com/privacy">Lemon Squeezy</a>، وهو الذي يتولى الدفع وبريدك الإلكتروني وفق سياسة الخصوصية الخاصة به. عندما تُدخل مفتاح الترخيص في الإضافة، ترسل المفتاح فقط مع اسم لهذا الجهاز (اسم النظام، ورمز عشوائي من ٤ أحرف تُنشئه الإضافة، والتاريخ، مثل «Mac · 7F3A · 16 Oct 2026») إلى خدمة التراخيص لدى Lemon Squeezy (<code>api.lemonsqueezy.com</code>) للتحقق منه، ثم تعيد التحقق من حين لآخر: عند فتح اللوحة (مرة كل ٦ ساعات على الأكثر)، وعند بدء تشغيل، وعند فتح شاشة Pro. لا يُرسل أي شيء عن أوامرك أو ملفاتك أو مشاريع Flow أو تصفحك. وإذا لم تُدخل مفتاحًا أبدًا، فلا ترسل الإضافة هذا الطلب إطلاقًا.</p>
+    <p>Prompt Batch مجانية لأول ٥ نتائج. بعد ذلك يمكن شراء ترخيص Pro (شهري أو مدى الحياة بدفعة واحدة) من البائع الذي نتعامل معه، <a href="https://freemius.com/privacy/">Freemius</a>، بصفته البائع الرسمي (Merchant of Record)، وهو الذي يتولى الدفع وبريدك الإلكتروني وفق سياسة الخصوصية الخاصة به. عندما تُدخل مفتاح الترخيص في الإضافة، ترسل المفتاح فقط مع معرّف عشوائي من ٣٢ حرفًا لهذا الجهاز تُنشئه الإضافة، ورقم إصدار الإضافة، واسم لهذا الجهاز (اسم النظام، ورمز عشوائي من ٤ أحرف تُنشئه الإضافة، والتاريخ، مثل «Mac · 7F3A · 16 Oct 2026») إلى خدمة التراخيص لدى Freemius (<code>api.freemius.com</code>) للتحقق منه، ثم تعيد التحقق من حين لآخر: عند فتح اللوحة (مرة كل ٦ ساعات على الأكثر)، وعند بدء تشغيل، وعند فتح شاشة Pro. لا يُرسل أي شيء عن أوامرك أو ملفاتك أو مشاريع Flow أو تصفحك. وإذا لم تُدخل مفتاحًا أبدًا، فلا ترسل الإضافة هذا الطلب إطلاقًا. وبشكل منفصل، عند فتح اللوحة أو شاشة Pro تُنزّل الإضافة قائمة الأسعار العامة الخاصة بنا (<code>getmansify.github.io/prompt-batch/prices.json</code>) لعرض الأسعار الحالية، ولا يُرسل معها أي شيء عنك.</p>
 
     <h2>المعلومات المحفوظة على جهازك</h2>
     <p>للحفاظ على عملك بين الجلسات، تحفظ الإضافة ما يلي في التخزين المحلي للإضافات في Chrome، على جهازك فقط:</p>
@@ -128,7 +129,8 @@
       <li>أوامر الملف الذي رفعته وإعداداته، واسم الملف، وحالة كل سطر؛</li>
       <li>اختياراتك: اللغة، والمظهر، ومجلد التنزيل وجودته، وأوقات الانتظار، وظهور شاشة الترحيب من عدمه؛</li>
       <li>قائمة نماذج Flow وتكلفتها بالوحدات، كما تُقرأ من صفحة Flow؛</li>
-      <li>عدد النتائج المجانية التي أُنشئت على هذا الجهاز، ومفتاح ترخيص Pro مع البريد الإلكتروني الذي يعود من التحقق والرمز العشوائي للجهاز، إن فعّلت ترخيصًا. تُحفظ هذه العناصر أيضًا في تخزين المزامنة الخاص بـ Chrome، فتنتقل مع حساب Chrome إلى أجهزتك الأخرى وتبقى بعد إعادة التثبيت. يزامنها Chrome عبر حسابك في Google مثل بقية إعدادات Chrome، ولا تُرسل إلينا أبدًا.</li>
+      <li>آخر قائمة أسعار نُزّلت من موقعنا، لتظهر الأسعار حتى دون اتصال؛</li>
+      <li>عدد النتائج المجانية التي أُنشئت على هذا الجهاز، ومفتاح ترخيص Pro مع بيانات التفعيل التي تعود من التحقق والرموز العشوائية للجهاز، إن فعّلت ترخيصًا. تُحفظ هذه العناصر أيضًا في تخزين المزامنة الخاص بـ Chrome، فتنتقل مع حساب Chrome إلى أجهزتك الأخرى وتبقى بعد إعادة التثبيت. يزامنها Chrome عبر حسابك في Google مثل بقية إعدادات Chrome، ولا تُرسل إلينا أبدًا.</li>
     </ul>
     <p>باستثناء التحقق من الترخيص الموضّح أعلاه، لا تغادر هذه المعلومات متصفحك. يمكنك حذفها في أي وقت بزر «مسح» أو «حذف الملف»، أو بإزالة الإضافة.</p>
 
@@ -145,7 +147,7 @@
       <li><strong>التخزين</strong>: يحفظ المعلومات المذكورة أعلاه على جهازك.</li>
       <li><strong>التنزيلات</strong>: تحفظ كل نتيجة باسم سطرها.</li>
       <li><strong>علامات التبويب</strong> و<strong>البرامج النصية</strong>: للعثور على علامة تبويب Flow المفتوحة وإضافة برنامج الإضافة إليها.</li>
-      <li><strong>الوصول إلى api.lemonsqueezy.com</strong>: للتحقق من مفتاح ترخيص Pro الذي أدخلته، كما هو موضّح أعلاه.</li>
+      <li><strong>الوصول إلى api.freemius.com</strong>: للتحقق من مفتاح ترخيص Pro الذي أدخلته، كما هو موضّح أعلاه.</li>
       <li><strong>أداة تصحيح الأخطاء (Debugger)</strong>: لا يستجيب زر الإنشاء في Flow لأحداث البرامج النصية، لذا ترسل الإضافة أثناء تشغيل بدأته أنت نقرات حقيقية وضغطات على Enter إلى علامة تبويب Flow. تُستخدم على علامات تبويب Flow فقط، ولإرسال الإدخال فقط، ولا تقرأ أي شيء من خلالها. يعرض Chrome تنبيهًا طوال مدة استخدامها.</li>
     </ul>
 

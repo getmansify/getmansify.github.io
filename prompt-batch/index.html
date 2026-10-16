@@ -17,6 +17,7 @@
   }
   :root[data-theme="dark"] { --bg: #0f0f10; --card: #1a1a1c; --line: #2c2c30; --text: #ececee; --muted: #9a9aa2; --accent: #8ab4ff; --accent-ink: #0f1420; --ok: #5fd08f; --hero: #0b1120; color-scheme: dark; }
   * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
   body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif; }
   a { color: var(--accent); }
   .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
@@ -63,6 +64,9 @@
   .plan h3 { margin: 0; font-size: 18px; }
   .price { font-size: 34px; font-weight: 700; margin: 6px 0 2px; }
   .price small { font-size: 15px; font-weight: 500; color: var(--muted); }
+  .price s { font-size: 22px; font-weight: 500; color: var(--muted); margin-inline-end: 4px; }
+  .price.alt { font-size: 20px; margin-top: 0; }
+  .offer { display: inline-block; margin-top: 8px; background: #ffd34d; color: #3a2a00; font-size: 13px; font-weight: 750; border-radius: 999px; padding: 3px 12px; }
   .plan ul { list-style: none; padding: 0; margin: 14px 0 0; }
   .plan li { padding-inline-start: 26px; position: relative; margin: 7px 0; font-size: 15px; }
   .plan li::before { content: "✓"; position: absolute; inset-inline-start: 0; color: var(--ok); font-weight: 700; }
@@ -99,7 +103,7 @@
           <a class="btn primary" href="#pricing">Try it free</a>
           <a class="btn ghost" href="#how">How it works</a>
         </div>
-        <p class="small">Free for your first 5 results · Pro is a one-time $19.99</p>
+        <p class="small">Free for your first 5 results · Pro from <span data-p="monthly">$6.50</span>/month or <span data-p="now">$15</span> once<span data-p="launchTag"> (launch offer)</span></p>
       </div>
       <img class="shot" src="img/shot-1.jpg" width="1280" height="800" alt="The Prompt Batch side panel running a queue of prompts">
     </div>
@@ -134,7 +138,7 @@
 
   <section id="pricing" class="wrap">
     <h2>Pricing</h2>
-    <p class="sub">Try it first. Pay once only if it saves you time.</p>
+    <p class="sub">Try it first. Pay only if it saves you time.</p>
     <div class="plans">
       <div class="plan">
         <h3>Free</h3>
@@ -147,24 +151,26 @@
       </div>
       <div class="plan pro">
         <h3>Pro</h3>
-        <div class="price">$19.99 <small>one-time</small></div>
+        <div class="offer" data-p="offer">Launch offer · <span data-p="off">50</span>% off lifetime</div>
+        <div class="price"><s data-p="was">$30</s> <span data-p="now">$15</span> <small>one-time, lifetime</small></div>
+        <div class="price alt">or <span data-p="monthly">$6.50</span> <small>/ month, cancel any time</small></div>
         <ul>
           <li>No 5-result limit</li>
           <li>One licence key for up to 2 computers</li>
-          <li>Free updates, no subscription</li>
+          <li>All updates included</li>
           <li>Refund within 7 days if it doesn't work for you</li>
         </ul>
       </div>
     </div>
-    <p class="note">Install Prompt Batch from the Chrome Web Store (search “Prompt Batch”). You can buy Pro from inside the extension: open the side panel → ⚙ → Pro &amp; licence. Payments are handled by Lemon Squeezy, our merchant of record, which also sends your licence key by email.</p>
+    <p class="note">Install Prompt Batch from the Chrome Web Store (search “Prompt Batch”). You can buy Pro from inside the extension: open the side panel → ⚙ → Pro &amp; licence. Payments are handled by Freemius, our merchant of record, which also sends your licence key by email.</p>
   </section>
 
   <section id="faq" class="wrap">
     <h2>Questions</h2>
     <details><summary>Does it use my Flow credits?</summary><p>Yes. It works in your own Flow account and uses your own credits, exactly as if you typed each prompt yourself. The panel shows how many images, videos and credits a run will use before it starts.</p></details>
-    <details><summary>Does it collect my data?</summary><p>No. Everything stays in your browser. Prompt Batch has no server. If you buy Pro, it sends only your licence key to Lemon Squeezy to check it. Read the <a href="privacy.html">privacy policy</a>.</p></details>
+    <details><summary>Does it collect my data?</summary><p>No. Everything stays in your browser. Prompt Batch has no server. If you buy Pro, it sends only your licence key (with a random id for your computer) to Freemius to check it. Read the <a href="privacy.html">privacy policy</a>.</p></details>
     <details><summary>Can I use one key on more than one computer?</summary><p>Yes, on up to 2 computers that belong to you. Please don't share your key; see the <a href="terms.html">licence terms</a>.</p></details>
-    <details><summary>I lost my licence key.</summary><p>Your key is in your purchase email and always at <a href="https://app.lemonsqueezy.com/my-orders">app.lemonsqueezy.com/my-orders</a>.</p></details>
+    <details><summary>I lost my licence key.</summary><p>Your key is in your purchase email and always at <a href="https://users.freemius.com/">users.freemius.com</a> (sign in with the email you bought with).</p></details>
     <details><summary>Is this made by Google?</summary><p>No. Prompt Batch is an independent tool by Mansify. It is not made, endorsed or supported by Google. You are responsible for following Google's Terms of Service and Generative AI Prohibited Use Policy.</p></details>
   </section>
 </main>
@@ -176,5 +182,18 @@
   </div>
 </footer>
 
+<script>
+// Prices come from prices.json (the same file the extension reads), so a price change is one file edit.
+// The numbers written above are only the fallback.
+fetch('prices.json', { cache: 'no-cache' }).then((r) => r.json()).then((p) => {
+  const m = (n) => '$' + (Number.isInteger(n) ? n : n.toFixed(2));
+  const launch = p.coupon && p.off ? Math.round(p.lifetime * (100 - p.off)) / 100 : null;
+  const set = (k, v) => document.querySelectorAll('[data-p="' + k + '"]').forEach((e) => { if (v === null) e.hidden = true; else e.textContent = v; });
+  set('monthly', m(p.monthly)); set('off', String(p.off));
+  set('now', m(launch == null ? p.lifetime : launch));
+  set('was', launch == null ? null : m(p.lifetime));
+  if (launch == null) document.querySelectorAll('[data-p="offer"], [data-p="launchTag"]').forEach((e) => { e.hidden = true; });
+}).catch(() => {});
+</script>
 </body>
 </html>

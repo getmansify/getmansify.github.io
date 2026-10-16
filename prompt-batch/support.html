@@ -39,6 +39,8 @@
   .btn { display: inline-block; text-decoration: none; font-weight: 600; border-radius: 8px; padding: 12px 20px; }
   .btn.primary, button.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
   .hint { color: var(--muted); font-size: 14px; }
+  .bye { background: var(--card); border: 1px solid var(--accent); border-radius: 12px; padding: 18px 22px; margin-top: 20px; }
+  .bye[hidden] { display: none; }
   .mail { font-family: ui-monospace, Menlo, monospace; font-size: 14px; }
 </style>
 </head>
@@ -48,6 +50,11 @@
     <div class="brand"><img src="icon.png" alt="">Prompt Batch</div>
     <nav><a href="#en">English</a> <a href="#ar" lang="ar">العربية</a> <a href="terms.html">Terms</a> <a href="privacy.html">Privacy</a></nav>
   </header>
+  <section id="bye" class="bye" hidden>
+    <p lang="en"><strong>Sorry to see you go.</strong> Could you tell us in one line why you removed Prompt Batch? It helps us fix what got in your way.</p>
+    <p lang="ar" dir="rtl"><strong>زعلانين إنك شلتها.</strong> ممكن تقولنا في سطر ليه شلت الإضافة؟ ده بيساعدنا نصلّح اللي ضايقك.</p>
+    <p><a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLScNJ42kjUZWxfryVLoLmSuQmg7cGTOyLn5bJ0rkrlwkukIZEw/viewform" target="_blank" rel="noopener">Tell us why · قولنا ليه</a></p>
+  </section>
 
   <article id="en" lang="en" dir="ltr">
     <h1>Support</h1>
@@ -71,6 +78,7 @@
 </main>
 <script>
 const TO = 'khaledabdelwahab23@gmail.com';
+if (new URLSearchParams(location.search).get('bye')) document.getElementById('bye').hidden = false;
 if (new URLSearchParams(location.search).get('lang') === 'ar' && !location.hash) document.getElementById('ar').scrollIntoView();
 for (const b of document.querySelectorAll('.copy')) {
   b.addEventListener('click', async () => {

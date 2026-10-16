@@ -36,25 +36,29 @@
 <main>
   <header>
     <div class="brand"><img src="icon.png" alt="">Prompt Batch</div>
-    <nav><a href="#en">English</a> <a href="#ar" lang="ar">العربية</a></nav>
+    <nav><a href="#en">English</a> <a href="#ar" lang="ar">العربية</a> <a href="terms.html">Terms</a></nav>
   </header>
 
   <article id="en" lang="en" dir="ltr">
     <h1>Privacy Policy</h1>
-    <p class="date">Effective date: 16 October 2026</p>
-    <p>Prompt Batch is a Chrome extension that runs a list of prompts, which you load yourself, in the Google Flow project you have open, and downloads the results. This policy explains what the extension does with information. In short: <strong>it collects nothing, has no server, and sends nothing to us or to anyone else.</strong></p>
+    <p class="date">Effective date: 16 October 2026 (updated for the Pro licence)</p>
+    <p>Prompt Batch is a Chrome extension that runs a list of prompts, which you load yourself, in the Google Flow project you have open, and downloads the results. This policy explains what the extension does with information. In short: <strong>it collects nothing, has no server, and sends nothing to us.</strong> The only thing it ever sends outside Flow is a Pro licence key, if you buy one, to the licence service that checks it.</p>
 
     <h2>Information we collect</h2>
     <p>None. Prompt Batch does not collect, record or transmit any personal information, browsing history, usage statistics or analytics. We have no server and no account system, so there is nowhere for your data to go.</p>
+
+    <h2>Pro licence check</h2>
+    <p>Prompt Batch is free for the first 5 results. After that, a one-time Pro licence can be bought from our seller, <a href="https://www.lemonsqueezy.com/privacy">Lemon Squeezy</a>, which handles the payment and your email address under its own privacy policy. When you paste your licence key in the extension, it sends only the key and a random id for this computer to Lemon Squeezy's licence service (<code>api.lemonsqueezy.com</code>) to check it, and checks it again about every 3 days. Nothing about your prompts, files, Flow projects or browsing is sent. If you never enter a key, the extension makes no such request.</p>
 
     <h2>Information stored on your computer</h2>
     <p>To keep your work between sessions, the extension saves the following in Chrome's local extension storage, on your own computer only:</p>
     <ul>
       <li>the prompts and settings of the file you loaded, the file's name, and the status of each row;</li>
       <li>your choices: language, theme, download folder and quality, waiting times, and whether to show the welcome screen;</li>
-      <li>the list of Flow models and their credit prices, read from the Flow page.</li>
+      <li>the list of Flow models and their credit prices, read from the Flow page;</li>
+      <li>how many free results have been made on this computer, and your Pro licence key with the email returned by the licence check, if you activate one. These two items are also kept in Chrome's own sync storage, so they follow your Chrome account to your other computers and survive a reinstall. Chrome syncs them through your Google account like your other Chrome settings; they are never sent to us.</li>
     </ul>
-    <p>This information never leaves your browser. You can delete it at any time with the "Clear" or "Remove file" buttons, or by removing the extension.</p>
+    <p>Apart from the licence check described above, this information never leaves your browser. You can delete it at any time with the "Clear" or "Remove file" buttons, or by removing the extension.</p>
 
     <h2>How the extension works with Google Flow</h2>
     <ul>
@@ -69,11 +73,12 @@
       <li><strong>Storage</strong>: keeps the information listed above on your computer.</li>
       <li><strong>Downloads</strong>: saves each result with the name of its row.</li>
       <li><strong>Tabs</strong> and <strong>scripting</strong>: find the Flow tab you have open and add the extension's script to it.</li>
+      <li><strong>Access to api.lemonsqueezy.com</strong>: checks a Pro licence key you entered, as described above.</li>
       <li><strong>Debugger</strong>: Flow's Generate button does not react to script events, so during a run you started, the extension sends real mouse clicks and Enter presses to the Flow tab. It is used only on Flow tabs, only to send input, and reads nothing through it. Chrome shows a notice while it is in use.</li>
     </ul>
 
     <h2>Sharing and selling</h2>
-    <p>We do not sell, share, rent or transfer any information, because we do not have any. The extension uses no advertising, no tracking and no remote code.</p>
+    <p>We do not sell, share, rent or transfer any information, because we do not have any. Our seller receives only what you give it when you buy, and the licence key when it is checked. The extension uses no advertising, no tracking and no remote code.</p>
 
     <h2>Children</h2>
     <p>Prompt Batch is not meant for children. Google Flow itself requires users to be 18 or older.</p>
@@ -88,20 +93,24 @@
 
   <article id="ar" lang="ar" dir="rtl">
     <h1>سياسة الخصوصية</h1>
-    <p class="date">تاريخ السريان: ١٦ أكتوبر ٢٠٢٦</p>
-    <p>إضافة Prompt Batch لمتصفح كروم بتشغّل قايمة برومبتات إنت بترفعها بنفسك، في مشروع Google Flow المفتوح عندك، وبتحمّل النتايج. السياسة دي بتوضّح الإضافة بتعمل إيه بالمعلومات. باختصار: <strong>الإضافة مش بتجمع أي حاجة، ومالهاش سيرفر، ومش بتبعت أي بيانات لينا ولا لأي حد.</strong></p>
+    <p class="date">تاريخ السريان: ١٦ أكتوبر ٢٠٢٦ (اتحدّثت عشان ترخيص Pro)</p>
+    <p>إضافة Prompt Batch لمتصفح كروم بتشغّل قايمة برومبتات إنت بترفعها بنفسك، في مشروع Google Flow المفتوح عندك، وبتحمّل النتايج. السياسة دي بتوضّح الإضافة بتعمل إيه بالمعلومات. باختصار: <strong>الإضافة مش بتجمع أي حاجة، ومالهاش سيرفر، ومش بتبعت أي بيانات لينا.</strong> الحاجة الوحيدة اللي ممكن تخرج برّه Flow هي كود ترخيص Pro، لو اشتريته، بيروح لخدمة التراخيص عشان تتأكد منه.</p>
 
     <h2>المعلومات اللي بنجمعها</h2>
     <p>ولا حاجة. الإضافة مش بتجمع ولا بتسجّل ولا بتبعت أي بيانات شخصية، ولا سجل تصفّح، ولا إحصائيات استخدام. مالناش سيرفر ولا نظام حسابات، فمفيش مكان أصلاً بياناتك تروحله.</p>
+
+    <h2>التأكد من ترخيص Pro</h2>
+    <p>الإضافة مجانية لأول ٥ نتايج. بعد كده تقدر تشتري ترخيص Pro مرة واحدة من البائع بتاعنا <a href="https://www.lemonsqueezy.com/privacy">Lemon Squeezy</a>، وهو اللي بيتعامل مع الدفع وإيميلك حسب سياسة الخصوصية بتاعته. لما تلصق كود الترخيص في الإضافة، بتبعت الكود بس ورقم عشوائي للجهاز ده لخدمة التراخيص بتاعة Lemon Squeezy (<code>api.lemonsqueezy.com</code>) عشان تتأكد منه، وبتتأكد تاني كل ٣ أيام تقريباً. مفيش أي حاجة عن برومبتاتك أو ملفاتك أو مشاريع Flow أو تصفّحك بتتبعت. لو ما دخّلتش كود خالص، الإضافة مش بتبعت الطلب ده أصلاً.</p>
 
     <h2>المعلومات اللي بتتحفظ على جهازك</h2>
     <p>عشان شغلك يفضل موجود لما تقفل وتفتح، الإضافة بتحفظ الحاجات دي في تخزين كروم المحلي، على جهازك إنت بس:</p>
     <ul>
       <li>البرومبتات وإعدادات الملف اللي رفعته، واسم الملف، وحالة كل سطر؛</li>
       <li>اختياراتك: اللغة، والمظهر، وفولدر التحميل وجودته، وأوقات الانتظار، وإن كانت شاشة الترحيب تظهر ولا لأ؛</li>
-      <li>قايمة موديلات Flow وأسعارها بالكريديت، اللي بتتقري من صفحة Flow.</li>
+      <li>قايمة موديلات Flow وأسعارها بالكريديت، اللي بتتقري من صفحة Flow؛</li>
+      <li>عدد النتايج المجانية اللي اتعملت على الجهاز ده، وكود ترخيص Pro والإيميل اللي بيرجع من التأكيد، لو فعّلته. الاتنين دول بيتحفظوا كمان في تخزين المزامنة بتاع كروم، فبيمشوا مع حساب كروم بتاعك على أجهزتك التانية وبيفضلوا بعد ما تنزّل الإضافة تاني. كروم بيزامنهم عن طريق حساب جوجل بتاعك زي باقي إعدادات كروم، وعمرهم ما بيتبعتولنا.</li>
     </ul>
-    <p>المعلومات دي ما بتخرجش من المتصفح بتاعك. تقدر تمسحها في أي وقت بزرار «امسح» أو «امسح الملف»، أو بإنك تشيل الإضافة.</p>
+    <p>غير التأكد من الترخيص اللي فوق، المعلومات دي ما بتخرجش من المتصفح بتاعك. تقدر تمسحها في أي وقت بزرار «امسح» أو «امسح الملف»، أو بإنك تشيل الإضافة.</p>
 
     <h2>الإضافة بتتعامل مع Google Flow إزاي</h2>
     <ul>
@@ -116,11 +125,12 @@
       <li><strong>التخزين</strong>: بيحفظ المعلومات اللي فوق على جهازك.</li>
       <li><strong>التحميلات</strong>: بتحفظ كل نتيجة باسم السطر بتاعها.</li>
       <li><strong>التابات</strong> و<strong>السكريبتات</strong>: بيلاقوا تاب Flow المفتوح ويضيفوا سكريبت الإضافة ليه.</li>
+      <li><strong>الوصول لـ api.lemonsqueezy.com</strong>: للتأكد من كود ترخيص Pro اللي إنت دخّلته، زي ما هو مكتوب فوق.</li>
       <li><strong>أداة المطوّرين (Debugger)</strong>: زرار التوليد في Flow مش بيستجيب لأوامر السكريبت، فوقت التشغيل اللي إنت بدأته، الإضافة بتبعت دوسات ماوس وزرار Enter حقيقيين لتاب Flow. بتُستخدم على تابات Flow بس، ولإرسال الدوسات بس، ومش بتقرا أي حاجة من خلالها. كروم بيعرض تنبيه طول ما هي شغالة.</li>
     </ul>
 
     <h2>المشاركة والبيع</h2>
-    <p>إحنا ما بنبيعش ولا بنشارك ولا بنأجّر ولا بننقل أي معلومات، لأن معندناش أي معلومات أصلاً. الإضافة مفيهاش إعلانات ولا تتبّع ولا كود بيتحمّل من برّه.</p>
+    <p>إحنا ما بنبيعش ولا بنشارك ولا بنأجّر ولا بننقل أي معلومات، لأن معندناش أي معلومات أصلاً. البائع بياخد بس اللي إنت بتديهوله وقت الشرا، وكود الترخيص وقت التأكد منه. الإضافة مفيهاش إعلانات ولا تتبّع ولا كود بيتحمّل من برّه.</p>
 
     <h2>الأطفال</h2>
     <p>الإضافة مش معمولة للأطفال، وGoogle Flow نفسه بيشترط إن المستخدم يكون عنده ١٨ سنة أو أكتر.</p>

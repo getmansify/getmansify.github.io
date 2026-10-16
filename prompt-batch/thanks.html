@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prompt Batch Pro Activation</title>
+<meta name="description" content="Thank you for buying Prompt Batch Pro. How to activate your licence key.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="icon.png">
+<style>
+  /* Thank-you page after a Freemius purchase (2026-10-16). Freemius "Checkout Success Redirection" sends buyers here
+     with ?email=…&action=purchase|license_update|…; the licence key itself is not in the URL, it is in the email. */
+  :root {
+    --bg: #f5f6fa; --card: #ffffff; --line: #e1e4ee; --text: #171923; --muted: #565c70; --soft: #eceaff;
+    --accent: #5b47f5; --accent-2: #2f7bff; --ok: #1f8a4c; color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg: #0c0d12; --card: #13151d; --line: #232736; --text: #eceef5; --muted: #a9aec0; --soft: #1e1b3a; --accent: #8f7bff; --accent-2: #3b8dff; --ok: #5ed492; color-scheme: dark; }
+  }
+  :root[data-theme="dark"] { --bg: #0c0d12; --card: #13151d; --line: #232736; --text: #eceef5; --muted: #a9aec0; --soft: #1e1b3a; --accent: #8f7bff; --accent-2: #3b8dff; --ok: #5ed492; color-scheme: dark; }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif; }
+  [lang="ar"] { font-family: system-ui, "Geeza Pro", Tahoma, sans-serif; }
+  a { color: var(--accent); }
+
+  .site-top { background: radial-gradient(1200px 500px at 80% -10%, #2a2160 0%, transparent 60%), #0e1020; color: #f1f3f8; }
+  .site-top .in { max-width: 1040px; margin: 0 auto; padding: 20px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 18px; color: #f1f3f8; text-decoration: none; }
+  .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  .switch { display: flex; gap: 6px; }
+  .switch button { font: inherit; font-size: 14px; color: #c9cde0; background: transparent; border: 1px solid #3a3f63; border-radius: 8px; padding: 5px 12px; cursor: pointer; }
+  .switch button[aria-pressed="true"] { background: #f1f3f8; color: #0e1020; border-color: #f1f3f8; }
+
+  main { max-width: 720px; margin: 0 auto; padding: 0 16px 56px; }
+  .hero { text-align: center; padding: 40px 0 8px; }
+  .tick { width: 72px; height: 72px; margin: 0 auto 18px; border-radius: 50%; display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: 0 10px 30px rgba(91, 71, 245, .35); }
+  .tick svg { width: 36px; height: 36px; stroke: #fff; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  h1 { font-size: clamp(26px, 5vw, 34px); line-height: 1.25; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .lead { color: var(--muted); font-size: 17px; margin: 0 auto; max-width: 32em; }
+  .lead b { color: var(--text); overflow-wrap: anywhere; }
+
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; margin-top: 24px; }
+  .card h2 { font-size: 18px; margin: 0 0 14px; }
+  ol.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+  ol.steps li { display: grid; grid-template-columns: 32px 1fr; gap: 12px; align-items: start; }
+  .n { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font-weight: 750; font-size: 15px;
+    background: var(--soft); color: var(--accent); }
+  ol.steps b { display: block; }
+  ol.steps span { color: var(--muted); font-size: 15px; }
+  kbd { font: inherit; font-size: 14px; background: var(--soft); color: var(--text); border-radius: 6px; padding: 1px 7px; white-space: nowrap; }
+  .shot { display: block; width: 100%; max-width: 463px; height: auto; margin: 16px auto 0; border-radius: 12px; border: 1px solid var(--line); }
+
+  .help { display: grid; gap: 10px; }
+  .help p { margin: 0; color: var(--muted); font-size: 15px; }
+  .help p b { color: var(--text); }
+  .btns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+  .btn { display: inline-block; text-decoration: none; font-weight: 650; font-size: 15px; border-radius: 10px; padding: 10px 18px; }
+  .btn.pri { background: linear-gradient(90deg, var(--accent), var(--accent-2)); color: #fff; }
+  .btn.ghost { border: 1px solid var(--line); color: var(--text); background: var(--card); }
+  .small { color: var(--muted); font-size: 14px; text-align: center; margin-top: 22px; }
+
+  .site-foot { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  .site-foot .in { max-width: 1040px; margin: 0 auto; padding: 24px 16px 40px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .site-foot nav { display: flex; gap: 16px; flex-wrap: wrap; }
+  .site-foot a { color: var(--muted); }
+</style>
+</head>
+<body>
+<header class="site-top"><div class="in">
+  <a class="brand" href="./"><img src="icon.png" alt="">Prompt Batch</a>
+  <div class="switch" role="group" aria-label="Language">
+    <button type="button" data-set="en" aria-pressed="true">English</button>
+    <button type="button" data-set="ar" lang="ar" aria-pressed="false">العربية</button>
+  </div>
+</div></header>
+
+<main id="en" lang="en" dir="ltr">
+  <section class="hero">
+    <div class="tick"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
+    <h1>Thank you! Prompt Batch Pro is yours.</h1>
+    <p class="lead" data-mail>Your licence key is on its way to <b data-email>your email</b>.</p>
+    <p class="lead" data-nomail hidden>Your licence key is on its way to the email you bought with.</p>
+  </section>
+
+  <section class="card">
+    <h2>Activate Pro in 3 steps</h2>
+    <ol class="steps">
+      <li><div class="n">1</div><div><b>Copy your licence key</b><span>It's in the email from <b style="display:inline">Prompt Batch via Freemius</b>. Not in your inbox? Look in Spam or Promotions.</span></div></li>
+      <li><div class="n">2</div><div><b>Open the Pro screen</b><span>In Chrome, open the Prompt Batch side panel, then <kbd>⚙</kbd> → <kbd>Pro &amp; licence</kbd>.</span></div></li>
+      <li><div class="n">3</div><div><b>Paste the key and press Activate</b><span>Pro turns on at once. It works on up to 2 of your computers.</span></div></li>
+    </ol>
+    <img class="shot" src="img/activate.png" width="926" height="378" alt="The licence key box in the Prompt Batch panel, with the Activate button highlighted">
+  </section>
+
+  <section class="card help">
+    <h2>No email after 10 minutes?</h2>
+    <p>Sign in to your <b>Freemius account</b> with the email you bought with: your key is under <b>Licenses</b>, and you can download your invoice there too.</p>
+    <div class="btns">
+      <a class="btn pri" href="https://users.freemius.com/">Open my account</a>
+      <a class="btn ghost" href="support.html">Contact support</a>
+    </div>
+  </section>
+
+  <p class="small">Bought the monthly plan? You can cancel any time from your account. Questions about refunds: see the <a href="terms.html">licence terms</a>.</p>
+</main>
+
+<main id="ar" lang="ar" dir="rtl" hidden>
+  <section class="hero">
+    <div class="tick"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
+    <h1>شكرًا لك! أصبحت Prompt Batch Pro لك.</h1>
+    <p class="lead" data-mail>مفتاح الترخيص في طريقه إلى <b data-email dir="ltr">بريدك</b>.</p>
+    <p class="lead" data-nomail hidden>مفتاح الترخيص في طريقه إلى البريد الذي اشتريت به.</p>
+  </section>
+
+  <section class="card">
+    <h2>فعّل Pro في ٣ خطوات</h2>
+    <ol class="steps">
+      <li><div class="n">١</div><div><b>انسخ مفتاح الترخيص</b><span>تجده في الرسالة الواردة من <b style="display:inline" dir="ltr">Prompt Batch via Freemius</b>. لم تجدها في البريد الوارد؟ ابحث في الرسائل غير المرغوب فيها (Spam) أو العروض.</span></div></li>
+      <li><div class="n">٢</div><div><b>افتح شاشة Pro</b><span>في Chrome افتح اللوحة الجانبية لـ Prompt Batch، ثم <kbd>⚙</kbd> ← <kbd>Pro والترخيص</kbd>.</span></div></li>
+      <li><div class="n">٣</div><div><b>الصق المفتاح واضغط «تفعيل»</b><span>تعمل Pro فورًا، على جهازين من أجهزتك كحد أقصى.</span></div></li>
+    </ol>
+    <img class="shot" src="img/activate.png" width="926" height="378" alt="خانة مفتاح الترخيص في لوحة Prompt Batch مع إبراز زر التفعيل">
+  </section>
+
+  <section class="card help">
+    <h2>لم تصلك الرسالة بعد ١٠ دقائق؟</h2>
+    <p>سجّل الدخول إلى <b>حسابك في Freemius</b> بالبريد الذي اشتريت به: تجد المفتاح في قسم <b dir="ltr">Licenses</b>، ويمكنك تنزيل فاتورتك من هناك أيضًا.</p>
+    <div class="btns">
+      <a class="btn pri" href="https://users.freemius.com/">افتح حسابي</a>
+      <a class="btn ghost" href="support.html">راسل الدعم</a>
+    </div>
+  </section>
+
+  <p class="small">اشتركت في الخطة الشهرية؟ يمكنك إلغاؤها في أي وقت من حسابك. للأسئلة عن الاسترداد راجع <a href="terms.html">شروط الترخيص</a>.</p>
+</main>
+
+<footer class="site-foot"><div class="in">
+  <span>© 2026 Mansify</span>
+  <nav><a href="./">Home</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms &amp; refunds</a><a href="support.html">Support</a></nav>
+</div></footer>
+
+<script>
+  // Buyer's email from Freemius' redirect (?email=…), shown as text only. Language: ?lang=ar, else the browser's.
+  const q = new URLSearchParams(location.search);
+  const email = (q.get('email') || '').trim();
+  document.querySelectorAll('[data-email]').forEach((e) => { e.textContent = email; });
+  document.querySelectorAll('[data-mail]').forEach((e) => { e.hidden = !email; });
+  document.querySelectorAll('[data-nomail]').forEach((e) => { e.hidden = !!email; });
+  const show = (l) => {
+    document.getElementById('en').hidden = l !== 'en';
+    document.getElementById('ar').hidden = l !== 'ar';
+    document.documentElement.lang = l;
+    document.querySelectorAll('.switch button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.set === l)));
+  };
+  document.querySelectorAll('.switch button').forEach((b) => b.addEventListener('click', () => show(b.dataset.set)));
+  show(q.get('lang') === 'ar' || (!q.get('lang') && /^ar\b/i.test(navigator.language || '')) ? 'ar' : 'en');
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prompt Batch Support</title>
+<meta name="description" content="Suggestions, problems and questions about Prompt Batch.">
+<style>
+  :root {
+    --bg: #f7f7f8; --card: #ffffff; --line: #dcdce1; --text: #1b1b1f; --muted: #6b6b75; --accent: #1a5fd0;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg: #0f0f10; --card: #1a1a1c; --line: #2c2c30; --text: #ececee; --muted: #9a9aa2; --accent: #8ab4ff; color-scheme: dark; }
+  }
+  :root[data-theme="dark"] { --bg: #0f0f10; --card: #1a1a1c; --line: #2c2c30; --text: #ececee; --muted: #9a9aa2; --accent: #8ab4ff; color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 56px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 18px; }
+  .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  nav a { color: var(--accent); text-decoration: none; padding: 6px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); font-size: 14px; }
+  article { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 24px 22px; margin-top: 20px; }
+  h1 { font-size: 26px; line-height: 1.3; margin: 0 0 4px; }
+  h2 { font-size: 17px; margin: 26px 0 6px; }
+  .date { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+  ul { padding-inline-start: 22px; margin: 6px 0; }
+  li { margin: 4px 0; }
+  code { font-size: 14px; background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; }
+  a { color: var(--accent); }
+  [lang="ar"] { font-family: system-ui, "Geeza Pro", Tahoma, sans-serif; }
+  form { display: flex; flex-direction: column; gap: 12px; margin-top: 14px; }
+  label { font-weight: 600; font-size: 14px; display: flex; flex-direction: column; gap: 6px; }
+  select, input, textarea { font: inherit; font-weight: 400; color: var(--text); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; width: 100%; }
+  textarea { min-height: 140px; resize: vertical; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  button { font: inherit; font-weight: 600; border-radius: 8px; padding: 10px 18px; cursor: pointer; border: 1px solid var(--line); background: var(--card); color: var(--text); }
+  .btn { display: inline-block; text-decoration: none; font-weight: 600; border-radius: 8px; padding: 12px 20px; }
+  .btn.primary, button.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .hint { color: var(--muted); font-size: 14px; }
+  .mail { font-family: ui-monospace, Menlo, monospace; font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="brand"><img src="icon.png" alt="">Prompt Batch</div>
+    <nav><a href="#en">English</a> <a href="#ar" lang="ar">العربية</a> <a href="terms.html">Terms</a> <a href="privacy.html">Privacy</a></nav>
+  </header>
+
+  <article id="en" lang="en" dir="ltr">
+    <h1>Support</h1>
+    <p>Suggestions, problems, licence questions or anything else about Prompt Batch: write to us here. Before writing about a problem, check that the extension and the Flow tab were reloaded once.</p>
+    <p class="row" style="margin-top:14px"><a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLScNJ42kjUZWxfryVLoLmSuQmg7cGTOyLn5bJ0rkrlwkukIZEw/viewform" target="_blank" rel="noopener">Open the support form</a></p>
+    <p class="hint">A short Google Form: what it is about, your email, your message. Your message reaches us directly and we reply by email.</p>
+    <h2>Or email us directly</h2>
+    <div class="row"><span class="mail" dir="ltr">khaledabdelwahab23@gmail.com</span> <button type="button" class="copy" data-done="Copied ✓">Copy</button></div>
+    <p class="hint">We usually reply within 2 working days.</p>
+  </article>
+
+  <article id="ar" lang="ar" dir="rtl">
+    <h1>الدعم</h1>
+    <p>اقتراح، أو مشكلة، أو سؤال عن الترخيص، أو أي حاجة تانية عن Prompt Batch: ابعتلنا من هنا. قبل ما تكتب عن مشكلة، اتأكد إنك عملت إعادة تحميل للإضافة ولتاب Flow مرة.</p>
+    <p class="row" style="margin-top:14px"><a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLScNJ42kjUZWxfryVLoLmSuQmg7cGTOyLn5bJ0rkrlwkukIZEw/viewform" target="_blank" rel="noopener">افتح فورم الدعم</a></p>
+    <p class="hint">فورم جوجل قصير: الرسالة عن إيه، وإيميلك، ورسالتك. الرسالة بتوصلنا على طول وبنرد عليك بالإيميل.</p>
+    <h2>أو ابعتلنا إيميل على طول</h2>
+    <div class="row"><span class="mail" dir="ltr">khaledabdelwahab23@gmail.com</span> <button type="button" class="copy" data-done="اتنسخ ✓">انسخ</button></div>
+    <p class="hint">غالباً بنرد خلال يومين شغل.</p>
+  </article>
+</main>
+<script>
+const TO = 'khaledabdelwahab23@gmail.com';
+if (new URLSearchParams(location.search).get('lang') === 'ar' && !location.hash) document.getElementById('ar').scrollIntoView();
+for (const b of document.querySelectorAll('.copy')) {
+  b.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(TO); const t = b.textContent; b.textContent = b.dataset.done; setTimeout(() => (b.textContent = t), 1500); } catch {}
+  });
+}
+</script>
+</body>
+</html>

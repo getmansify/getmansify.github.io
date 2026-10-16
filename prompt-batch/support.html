@@ -42,14 +42,30 @@
   .bye { background: var(--card); border: 1px solid var(--accent); border-radius: 12px; padding: 18px 22px; margin-top: 20px; }
   .bye[hidden] { display: none; }
   .mail { font-family: ui-monospace, Menlo, monospace; font-size: 14px; }
+
+  /* Shared site frame (same as index.html), 2026-10-16 */
+  .site-top { background: radial-gradient(1200px 500px at 80% -10%, #1d2c52 0%, transparent 60%), #0e1526; color: #f1f3f8; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .site-top { background-color: #0b1120; } }
+  .site-top .in { max-width: 1040px; margin: 0 auto; padding: 20px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .site-top .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 18px; color: #f1f3f8; text-decoration: none; }
+  .site-top .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  .site-top nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; }
+  .site-top nav a { color: #aab3c6; text-decoration: none; padding: 0; border: 0; background: none; }
+  .site-top nav a:hover, .site-top nav a[aria-current] { color: #f1f3f8; }
+  .langs { display: flex; gap: 8px; flex-wrap: wrap; margin: 4px 0 0; }
+  .langs a { color: var(--accent); text-decoration: none; padding: 6px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); font-size: 14px; }
+  .site-foot { margin-top: 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  .site-foot .in { max-width: 1040px; margin: 0 auto; padding: 24px 16px 40px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .site-foot nav { display: flex; gap: 16px; flex-wrap: wrap; }
 </style>
 </head>
 <body>
+<header class="site-top"><div class="in">
+  <a class="brand" href="./"><img src="icon.png" alt="">Prompt Batch</a>
+  <nav><a href="./#how">How it works</a><a href="./#pricing">Pricing</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html" aria-current="page">Support</a></nav>
+</div></header>
 <main>
-  <header>
-    <div class="brand"><img src="icon.png" alt="">Prompt Batch</div>
-    <nav><a href="#en">English</a> <a href="#ar" lang="ar">العربية</a> <a href="terms.html">Terms</a> <a href="privacy.html">Privacy</a></nav>
-  </header>
+  <nav class="langs"><a href="#en">English</a><a href="#ar" lang="ar">العربية</a></nav>
   <section id="bye" class="bye" hidden>
     <p lang="en"><strong>Sorry to see you go.</strong> Could you tell us in one line why you removed Prompt Batch? It helps us fix what got in your way.</p>
     <p lang="ar" dir="rtl"><strong>يؤسفنا أنك أزلتها.</strong> هل تخبرنا في سطر واحد لماذا أزلت الإضافة؟ يساعدنا ذلك على إصلاح ما أزعجك.</p>
@@ -76,6 +92,10 @@
     <p class="hint">نرد عادةً خلال يومَي عمل.</p>
   </article>
 </main>
+<footer class="site-foot"><div class="in">
+  <span>© 2026 Mansify</span>
+  <nav><a href="./">Home</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms &amp; refunds</a><a href="support.html">Support</a></nav>
+</div></footer>
 <script>
 const TO = 'khaledabdelwahab23@gmail.com';
 if (new URLSearchParams(location.search).get('bye')) document.getElementById('bye').hidden = false;

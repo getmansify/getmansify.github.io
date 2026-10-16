@@ -44,6 +44,10 @@
   .mail { font-family: ui-monospace, Menlo, monospace; font-size: 14px; }
 
   /* Shared site frame (same as index.html), 2026-10-16 */
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  article { scroll-margin-top: 24px; }
+  article + article { margin-top: 48px; }
   .site-top { background: radial-gradient(1200px 500px at 80% -10%, #1d2c52 0%, transparent 60%), #0e1526; color: #f1f3f8; }
   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .site-top { background-color: #0b1120; } }
   .site-top .in { max-width: 1040px; margin: 0 auto; padding: 20px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }

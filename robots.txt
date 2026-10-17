@@ -1,0 +1,6 @@
+# mansify.app: every page may be read by search engines, except the form address and the after-purchase page.
+User-agent: *
+Disallow: /api/
+Disallow: /prompt-batch/thanks
+
+Sitemap: https://mansify.app/sitemap.xml

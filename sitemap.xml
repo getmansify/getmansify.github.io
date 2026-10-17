@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Public pages of mansify.app (add a line for each new product page). -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://mansify.app/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://mansify.app/prompt-batch/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://mansify.app/icon-tool/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://mansify.app/privacy/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://mansify.app/terms/</loc><lastmod>2026-10-17</lastmod></url>
+</urlset>

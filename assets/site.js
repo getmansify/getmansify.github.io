@@ -181,10 +181,29 @@
         if (!open) { b.removeAttribute('href'); b.setAttribute('aria-disabled', 'true'); return; }
         const cycle = b.dataset.buy;
         b.href = CHECKOUT + '?billing_cycle=' + cycle + (cycle === 'lifetime' && coupon ? '&coupon=' + encodeURIComponent(coupon) : '');
+        b.dataset.coupon = cycle === 'lifetime' ? coupon : '';
         b.removeAttribute('aria-disabled');
       });
     };
     buy('');
+    // Checkout opens over our page (Freemius overlay, 2026-10-17). Card details go to Freemius only. If the script does
+    // not load, the button's href still opens the normal checkout page.
+    const fsJs = document.createElement('script');
+    fsJs.src = 'https://checkout.freemius.com/js/v1/'; fsJs.async = true;
+    document.head.appendChild(fsJs);
+    let fs = null;
+    priceBox.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-buy]');
+      if (!b || !b.href || !window.FS || !FS.Checkout) return;
+      e.preventDefault();
+      fs = fs || new FS.Checkout({ product_id: '41752', plan_id: '72512', public_key: 'pk_447cfcda82eb73741cd594d593603',
+                                   image: 'https://mansify.app/img/prompt-batch-icon.png' });
+      const o = { name: 'Prompt Batch', licenses: 1, billing_cycle: b.dataset.buy,
+        success: (r) => { const mail = r && r.user && r.user.email;
+          location.href = 'thanks.html?lang=' + root.lang + (mail ? '&email=' + encodeURIComponent(mail) : ''); } };
+      if (b.dataset.coupon) o.coupon = b.dataset.coupon;
+      fs.open(o);
+    });
     fetch(priceBox.dataset.prices, { cache: 'no-cache' }).then((r) => r.json()).then((j) => { p = j; render(root.lang); }).catch(() => {});
     langListeners.push(render);
   }

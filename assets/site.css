@@ -307,8 +307,8 @@ html[dir="rtl"] .p-shot { --ry: 6deg; }
 .feature:hover svg { transform: scale(1.15) rotate(-6deg); }
 .feature h3 { margin: 0 0 6px; font-size: 18px; }
 .feature p { margin: 0; color: var(--muted); font-size: 15px; }
-.plans { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 880px; }
-.plan { position: relative; padding: 32px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); overflow: hidden; transition: transform .4s var(--ease), box-shadow .4s; }
+.plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.plan { display: flex; flex-direction: column; position: relative; padding: 32px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); overflow: hidden; transition: transform .4s var(--ease), box-shadow .4s; }
 .plan:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
 .plan.pro { border-color: var(--accent); background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 7%, var(--surface)), var(--surface) 55%); }
 .plan h3 { margin: 0; font-size: 20px; }
@@ -325,6 +325,12 @@ html[dir="rtl"] .price { text-align: right; }
 .plan ul { list-style: none; padding: 0; margin: 18px 0 0; }
 .plan li { position: relative; padding-inline-start: 28px; margin: 9px 0; font-size: 15px; }
 .plan li::before { content: ""; position: absolute; inset-inline-start: 0; top: 5px; width: 16px; height: 16px; border-radius: 50%; background: color-mix(in srgb, #22c55e 18%, transparent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2 7 10.5l4.5-5' fill='none' stroke='%2316a34a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 12px no-repeat; }
+.plan .offer { align-self: flex-start; }
+.plan .buy { margin-top: auto; justify-content: center; width: 100%; }
+.plan ul { margin-bottom: 26px; }
+.buy .soon, .buy.is-soon .go { display: none; }
+.buy.is-soon .soon { display: inline; }
+.buy.is-soon { pointer-events: none; }
 .note { margin-top: 20px; color: var(--muted); font-size: 15px; max-width: 880px; }
 .faq { max-width: 880px; border-top: 1px solid var(--line); }
 .faq details { border-bottom: 1px solid var(--line); }

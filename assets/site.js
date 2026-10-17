@@ -142,6 +142,7 @@
 
   /* ---------- Prompt Batch prices: same file the extension reads ---------- */
   const priceBox = $('[data-prices]');
+  const CHECKOUT = 'https://checkout.freemius.com/app/41752/plan/72512/';
   if (priceBox) {
     let p = null;
     const render = (l) => {
@@ -164,7 +165,20 @@
         $('.bar', seats).hidden = !count;
         if (count) $('.bar i', seats).style.width = Math.round((p.launchLeft / p.launchTotal) * 100) + '%';
       }
+      buy(launch != null ? p.coupon : '');
     };
+    // Buy buttons → Freemius checkout. Closed (data-sales="soon") until the Web Store approves the extension.
+    const buy = (coupon) => {
+      const open = priceBox.dataset.sales === 'open';
+      $$('[data-buy]', priceBox).forEach((b) => {
+        b.classList.toggle('is-soon', !open);
+        if (!open) { b.removeAttribute('href'); b.setAttribute('aria-disabled', 'true'); return; }
+        const cycle = b.dataset.buy;
+        b.href = CHECKOUT + '?billing_cycle=' + cycle + (cycle === 'lifetime' && coupon ? '&coupon=' + encodeURIComponent(coupon) : '');
+        b.removeAttribute('aria-disabled');
+      });
+    };
+    buy('');
     fetch(priceBox.dataset.prices, { cache: 'no-cache' }).then((r) => r.json()).then((j) => { p = j; render(root.lang); }).catch(() => {});
     langListeners.push(render);
   }

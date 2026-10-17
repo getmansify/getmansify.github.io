@@ -2,5 +2,9 @@
   "monthly": 6.5,
   "lifetime": 30,
   "off": 50,
-  "coupon": "LAUNCH50"
+  "coupon": "LAUNCH50",
+  "launchTotal": 100,
+  "launchLeft": 100,
+  "launchEnds": "2026-11-16",
+  "launchUpdated": "2026-10-17"
 }

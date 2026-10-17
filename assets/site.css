@@ -212,6 +212,7 @@ html[lang="ar"] .tile h3 { letter-spacing: 0; }
 .chip.review { color: var(--link); border-color: color-mix(in srgb, var(--accent) 40%, transparent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
 .chip.review::before { background: var(--accent); box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 50%, transparent); }
 @keyframes ping { 70% { box-shadow: 0 0 0 7px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+.chip.live { color: var(--text); border-color: rgba(34,197,94,.45); background: rgba(34,197,94,.10); }
 .chip.soon { color: var(--soon-text); border-color: rgba(255,207,63,.6); background: rgba(255,207,63,.14); }
 .tile .go { margin-top: auto; padding-top: 4px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--link); }
 .tile .go svg { transition: transform .3s var(--ease); }

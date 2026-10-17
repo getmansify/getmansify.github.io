@@ -173,7 +173,7 @@
       }
       buy(launch != null ? p.coupon : '');
     };
-    // Buy buttons → Freemius checkout. Closed (data-sales="soon") until the Web Store approves the extension.
+    // Buy buttons → Freemius checkout. Closed while data-sales="soon"; open since the Web Store launch (2026-10-17).
     const buy = (coupon) => {
       const open = priceBox.dataset.sales === 'open';
       $$('[data-buy]', priceBox).forEach((b) => {

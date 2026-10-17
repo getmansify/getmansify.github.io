@@ -417,3 +417,29 @@ html[lang="ar"] .legal h2 { letter-spacing: 0; }
 .legal a { color: var(--link); }
 .legal .box { padding: 20px 22px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); margin-bottom: 36px; }
 @media (max-width: 900px) { .legal { grid-template-columns: 1fr; gap: 0; padding-top: 48px; } .legal .toc { display: none; } }
+
+/* ---------- product identity (RULE 2026-10-17, every product page): the nav always carries the Mansify logo;
+   the product's own icon + name sit under it, at the top of the hero, as .p-brand ---------- */
+.p-brand { display: flex; align-items: center; gap: 12px; margin-top: 22px; color: var(--hero-text); font-weight: 700; font-size: 20px; letter-spacing: -0.02em; }
+.p-brand img { width: 44px; height: 44px; border-radius: 12px; box-shadow: 0 8px 24px -8px color-mix(in srgb, var(--accent) 55%, transparent); }
+.p-brand small { display: block; font-size: 13px; font-weight: 500; letter-spacing: 0; color: var(--hero-muted); }
+
+/* ---------- thank-you page after a purchase (product/thanks.html) ---------- */
+.thanks-hero { padding: 150px 0 80px; }
+.thanks-hero .center { text-align: center; max-width: 760px; margin-inline: auto; }
+.thanks-hero .p-brand { justify-content: center; text-align: start; }
+.thanks-hero .tick { width: 64px; height: 64px; margin: 34px auto 6px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); box-shadow: 0 14px 40px -10px color-mix(in srgb, var(--accent) 70%, transparent); }
+.thanks-hero .tick svg { width: 30px; height: 30px; stroke: #fff; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.thanks-hero h1 { font-size: clamp(36px, 5.6vw, 64px); margin: 18px 0 14px; }
+.thanks-hero .lead { margin-bottom: 0; }
+.thanks-hero .lead b { color: var(--hero-text); overflow-wrap: anywhere; }
+.thanks .shot { display: block; width: 100%; max-width: 560px; height: auto; margin: 32px auto 0; border-radius: 16px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+.thanks .help { margin-top: 56px; padding: 28px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
+.thanks .help h3 { margin: 0 0 12px; font-size: 22px; letter-spacing: -0.02em; }
+.thanks .help p { margin: 0 0 10px; color: var(--muted); }
+.thanks .help p b { color: var(--text); font-weight: 600; }
+.thanks .help .cta { justify-content: flex-start; margin-top: 18px; }
+.thanks .help .btn.line { color: var(--text); background: transparent; }
+.thanks kbd { font: inherit; font-size: 14px; padding: 1px 8px; border-radius: 7px; background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--text); white-space: nowrap; }
+.thanks .note a, .thanks .help a:not(.btn) { color: var(--link); }
+.thanks-hero [hidden] { display: none !important; }

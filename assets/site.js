@@ -193,3 +193,43 @@
   }), { rootMargin: '-30% 0px -60% 0px' });
   links.forEach((a) => { const s = document.querySelector(a.getAttribute('href')); if (s) io.observe(s); });
 })();
+
+/* ---------- shared layout (tools/layout.py, 2026-10-17): products menu + product bar section highlight ---------- */
+(() => {
+  const btn = document.getElementById('pmBtn'), panel = document.getElementById('pmPanel');
+  if (btn && panel) {
+    const set = (open) => { btn.setAttribute('aria-expanded', String(open)); panel.hidden = !open; };
+    btn.addEventListener('click', (e) => { e.stopPropagation(); set(panel.hidden); });
+    document.addEventListener('click', (e) => { if (!panel.hidden && !panel.contains(e.target)) set(false); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !panel.hidden) { set(false); btn.focus(); } });
+  }
+  const tabs = [...document.querySelectorAll('.pb-tabs a')];
+  const here = location.pathname.split('/').pop() || 'index.html';
+  tabs.forEach((a) => { const [file, hash] = a.getAttribute('href').split('#'); if (!hash && file === here) a.classList.add('on'); });
+  const secs = tabs.map((a) => { const [file, hash] = a.getAttribute('href').split('#'); return hash && (file === here || (here === '' && file === 'index.html')) ? [a, document.getElementById(hash)] : null; }).filter((x) => x && x[1]);
+  if (secs.length) {
+    // the tab of the last section whose top has passed under the bars is marked
+    const mark = () => { let cur = null; secs.forEach((x) => { if (x[1].getBoundingClientRect().top < 200) cur = x[0]; });
+      tabs.forEach((t) => t.classList.toggle('on', t === cur)); };
+    addEventListener('scroll', mark, { passive: true }); mark();
+  }
+})();
+
+/* ---------- pinned product header (tools/layout.py, 2026-10-17) ----------
+   Main product page: the header shrinks once you scroll (on at 140px, off at 20px). Its space is kept fixed, so shrinking
+   never changes the page height (that is what made the scroll freeze). Tabs mark the section in view. */
+(() => {
+  const b = document.body, sec = document.querySelector('.phead');
+  if (!sec || b.classList.contains('phead-fixed')) return;
+  const tabs = [...document.querySelectorAll('.ph-tabs a')];
+  const ids = tabs.map((a) => (a.getAttribute('href').split('#')[1] || '')).filter((id) => id && id !== 'top' && document.getElementById(id));
+  const keep = () => { if (b.classList.contains('past-head')) return; sec.style.height = ''; sec.style.height = sec.offsetHeight + 'px'; };
+  keep(); addEventListener('resize', keep); if (document.fonts) document.fonts.ready.then(keep);
+  const tick = () => {
+    const y = scrollY, on = b.classList.contains('past-head');
+    if (!on && y > 140) b.classList.add('past-head'); else if (on && y < 20) b.classList.remove('past-head');
+    let cur = 'top'; ids.forEach((id) => { if (document.getElementById(id).getBoundingClientRect().top < 240) cur = id; });
+    tabs.forEach((a) => a.classList.toggle('on', a.getAttribute('href') === '#' + cur));
+  };
+  addEventListener('scroll', tick, { passive: true }); tick();
+})();

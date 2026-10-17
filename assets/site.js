@@ -202,6 +202,10 @@
         success: (r) => { const mail = r && r.user && r.user.email;
           location.href = 'thanks.html?lang=' + root.lang + (mail ? '&email=' + encodeURIComponent(mail) : ''); } };
       if (b.dataset.coupon) o.coupon = b.dataset.coupon;
+      // Test purchases: a link made by tools/fs-sandbox-link.sh adds ?fs_ctx=…&fs_token=… (made from the secret key
+      // on Khaled's Mac, never stored here), which puts this checkout in Freemius sandbox mode.
+      const q = new URLSearchParams(location.search);
+      if (q.get('fs_ctx') && q.get('fs_token')) o.sandbox = { ctx: q.get('fs_ctx'), token: q.get('fs_token') };
       fs.open(o);
     });
     fetch(priceBox.dataset.prices, { cache: 'no-cache' }).then((r) => r.json()).then((j) => { p = j; render(root.lang); }).catch(() => {});

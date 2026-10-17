@@ -692,3 +692,33 @@ html[dir="rtl"] .legal2 summary { padding: 22px 24px 22px 60px; }
 .phead-fixed .phead { background: transparent !important; box-shadow: none !important; clip-path: none !important; }
 .phead-fixed .hero { padding-top: 48px !important; }
 .phead-fixed .p-brand, .phead-fixed .hero .crumbs { display: none; }
+
+/* ---------- waitlist form (home + product pages, 2026-10-17) → POST /api/waitlist (worker.js) ---------- */
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.wl { position: relative; margin: 88px auto 0; max-width: 980px; padding: 28px 30px; border-radius: var(--radius); border: 1px solid var(--card-line); background: var(--card-bg); display: grid; grid-template-columns: 1fr 1.25fr; gap: 6px 32px; align-items: center; }
+.wl-txt strong { display: block; font-size: clamp(20px, 2.4vw, 26px); font-weight: 600; letter-spacing: -0.02em; }
+.wl-txt small { display: block; margin-top: 4px; color: var(--hero-muted); font-size: 14px; }
+.wl-row { display: flex; gap: 10px; }
+.wl input[type="email"] { flex: 1; min-width: 0; font: inherit; font-size: 16px; padding: 13px 18px; border-radius: 999px; border: 1px solid var(--card-line); background: var(--hero-glass); color: var(--hero-text); transition: border-color .2s, box-shadow .2s; }
+html[dir="rtl"] .wl input[type="email"]:placeholder-shown { text-align: right; }
+.wl input[type="email"]::placeholder { color: var(--hero-muted); }
+.wl input[type="email"]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 28%, transparent); }
+.wl .hp { position: absolute; inset-inline-start: -9999px; width: 1px; height: 1px; opacity: 0; }
+.wl .btn { flex: none; justify-content: center; }
+.wl .btn[disabled] { opacity: .7; cursor: default; }
+.wl-msg, .wl-note { grid-column: 2; margin: 0; font-size: 13px; color: var(--hero-muted); }
+.wl-msg { min-height: 1.4em; margin-top: 6px; font-weight: 600; }
+.wl-msg:empty { min-height: 0; margin-top: 0; }
+.wl-msg.ok { color: #22c55e; }
+.wl-msg.err { color: #f87171; }
+.wl-note a { color: inherit; }
+.wl.done .wl-row { display: none; }
+.wl + .contact { margin-top: 16px; }
+@media (max-width: 900px) {
+  .wl { grid-template-columns: 1fr; gap: 16px; margin-top: 56px; padding: 24px; }
+  .wl-msg, .wl-note { grid-column: 1; }
+  .wl-msg { margin-top: -6px; }
+}
+@media (max-width: 600px) {
+  .wl-row { flex-direction: column; }
+}

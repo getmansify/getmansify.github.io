@@ -233,3 +233,31 @@
   };
   addEventListener('scroll', tick, { passive: true }); tick();
 })();
+
+/* ---------- waitlist form → POST /api/waitlist (worker.js saves it in the mansify-waitlist database) ---------- */
+(() => {
+  const form = document.querySelector('[data-waitlist]');
+  if (!form) return;
+  const msg = form.querySelector('.wl-msg'), btn = form.querySelector('button');
+  const T = {
+    ok: ['Done! We will email you at launch.', 'تم! سنراسلك عند الإطلاق.'],
+    email: ['Please enter a valid email.', 'اكتب بريدًا إلكترونيًا صحيحًا.'],
+    busy: ['Too many tries. Wait a minute and try again.', 'محاولات كثيرة. انتظر دقيقة ثم حاول مرة أخرى.'],
+    fail: ['Could not save it. Email us at contact@mansify.app', 'تعذّر الحفظ. راسلنا على contact@mansify.app'],
+  };
+  const say = (k, cls) => { msg.textContent = T[k][document.documentElement.lang === 'ar' ? 1 : 0]; msg.className = 'wl-msg ' + cls; };
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = form.email.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { say('email', 'err'); form.email.focus(); return; }
+    btn.disabled = true;
+    try {
+      const r = await fetch('/api/waitlist', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, product: form.dataset.waitlist, lang: document.documentElement.lang, website: form.website.value }) });
+      const j = await r.json().catch(() => ({}));
+      if (r.ok && j.ok) { say('ok', 'ok'); form.classList.add('done'); }
+      else say(j.error === 'email' ? 'email' : r.status === 429 ? 'busy' : 'fail', 'err');
+    } catch { say('fail', 'err'); }   // e.g. the GitHub Pages copy, which has no server
+    btn.disabled = false;
+  });
+})();

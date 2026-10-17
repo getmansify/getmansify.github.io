@@ -588,7 +588,7 @@ html[dir="rtl"] .pbar { padding: 6px 12px 6px 6px; }
 .has-pbar [id] { scroll-margin-top: 150px; }
 /* footer (every page) */
 .site-foot { margin-top: 40px; border-top: 1px solid var(--hero-line); padding: 48px 0 32px; color: var(--hero-muted); font-size: 14px; }
-.site-foot .fgrid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
+.site-foot .fgrid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; }
 .site-foot .fbrand .logo { color: var(--hero-text); }
 .site-foot .fbrand p { margin: 12px 0 0; max-width: 26em; }
 .site-foot h4 { margin: 4px 0 14px; font-size: 13px; font-weight: 600; letter-spacing: .02em; color: var(--hero-text); }

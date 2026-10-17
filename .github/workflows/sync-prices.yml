@@ -1,5 +1,5 @@
-# Every hour: copy the live Prompt Batch price list from mansify.app (its launch-coupon count comes from Freemius)
-# to this site, because Prompt Batch 1.0.0 reads prompt-batch/prices.json from here. Commits only when it changed.
+# Every hour: copy the live Prompt Batch price list and Flow labels from mansify.app (its launch-coupon count comes from Freemius)
+# to this site, because Prompt Batch reads them from here when mansify.app does not answer (1.0.0 only knows this site). Commits only when it changed.
 name: Sync launch prices
 on:
   schedule:
@@ -13,14 +13,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Copy prices.json from mansify.app when it changed
+      - name: Copy prices.json and flow-config.json from mansify.app when they changed
         run: |
+          changed=""
           curl -fsS --max-time 20 https://mansify.app/prompt-batch/prices.json -o /tmp/prices.json
           # Only a real price list goes out: these fields must be there and be numbers.
-          jq -e '(.monthly|type)=="number" and (.lifetime|type)=="number" and (.off|type)=="number"' /tmp/prices.json > /dev/null
-          if cmp -s <(jq -S . /tmp/prices.json) <(jq -S . prompt-batch/prices.json); then echo "No change"; exit 0; fi
-          cp /tmp/prices.json prompt-batch/prices.json
+          if jq -e '(.monthly|type)=="number" and (.lifetime|type)=="number" and (.off|type)=="number"' /tmp/prices.json > /dev/null \
+             && ! cmp -s <(jq -S . /tmp/prices.json) <(jq -S . prompt-batch/prices.json); then
+            cp /tmp/prices.json prompt-batch/prices.json; changed="coupons left $(jq .launchLeft /tmp/prices.json)"
+          fi
+          # Flow labels (edited in the admin page): only a file with version >= 1 and the labels block goes out.
+          curl -fsS --max-time 20 https://mansify.app/prompt-batch/flow-config.json -o /tmp/flow.json
+          if jq -e '(.version|type)=="number" and .version >= 1 and (.labels|type)=="object"' /tmp/flow.json > /dev/null \
+             && { [ ! -f prompt-batch/flow-config.json ] || ! cmp -s <(jq -S . /tmp/flow.json) <(jq -S . prompt-batch/flow-config.json); }; then
+            cp /tmp/flow.json prompt-batch/flow-config.json; changed="${changed:+$changed, }Flow labels"
+          fi
+          if [ -z "$changed" ]; then echo "No change"; exit 0; fi
           git config user.name "khaledme10"
           git config user.email "33207535+khaledme10@users.noreply.github.com"
-          git commit -am "Launch coupons left: $(jq .launchLeft /tmp/prices.json)"
+          git add prompt-batch/prices.json prompt-batch/flow-config.json
+          git commit -m "Sync from mansify.app: $changed"
           git push

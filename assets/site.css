@@ -722,3 +722,27 @@ html[dir="rtl"] .wl input[type="email"]:placeholder-shown { text-align: right; }
 @media (max-width: 600px) {
   .wl-row { flex-direction: column; }
 }
+
+/* ---------- support form (product pages + support page, 2026-10-17) → POST /api/support (worker.js) ---------- */
+.sup-wrap { display: grid; grid-template-columns: 1.7fr 1fr; gap: 16px; align-items: start; }
+.sup-side { display: grid; gap: 16px; }
+.sf { padding: 28px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); display: grid; gap: 16px; }
+.sf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.sf-field { display: grid; gap: 8px; }
+.sf-l { font-size: 14px; font-weight: 600; }
+.sf input[type="email"], .sf select, .sf textarea { width: 100%; font: inherit; font-size: 16px; color: var(--text); background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; transition: border-color .2s, box-shadow .2s; }
+.sf textarea { resize: vertical; min-height: 140px; line-height: 1.55; }
+.sf select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='m3 4.5 3 3 3-3' fill='none' stroke='%238a90a0' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-inline-end: 38px; }
+html[dir="rtl"] .sf select { background-position: left 14px center; }
+html[dir="rtl"] .sf input[type="email"]:placeholder-shown { text-align: right; }
+.sf input::placeholder { color: var(--muted); }
+.sf input:focus, .sf select:focus, .sf textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
+.sf .hp { position: absolute; inset-inline-start: -9999px; width: 1px; height: 1px; opacity: 0; }
+.sf-foot { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.sf .btn[disabled] { opacity: .7; cursor: default; }
+.sf-msg { margin: 0; font-size: 14px; font-weight: 600; }
+.sf-msg.ok { color: #16a34a; } .sf-msg.err { color: #dc2626; }
+.sf-note { margin: 0; font-size: 13px; color: var(--muted); }
+.sf-note a { color: var(--link); }
+.sf.done .sf-row, .sf.done > .sf-field, .sf.done .sf-foot .btn { display: none; }
+@media (max-width: 900px) { .sup-wrap, .sf-row { grid-template-columns: 1fr; } .sf { padding: 22px; } }

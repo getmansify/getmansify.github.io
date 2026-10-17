@@ -267,3 +267,42 @@
     btn.disabled = false;
   });
 })();
+
+/* ---------- support form → POST /api/support (worker.js saves it in mansify-support and emails it to us) ---------- */
+(() => {
+  const form = document.querySelector('[data-support]');
+  if (!form) return;
+  const root = document.documentElement, msg = form.querySelector('.sf-msg'), btn = form.querySelector('button[type="submit"]');
+  // <option> cannot hold the two language spans, so its text follows the page language here.
+  const opts = () => form.querySelectorAll('option[data-en]').forEach((o) => { o.textContent = o.dataset[root.lang === 'ar' ? 'ar' : 'en']; });
+  opts(); new MutationObserver(opts).observe(root, { attributes: true, attributeFilter: ['lang'] });
+  // ?bye=1 = opened by Chrome after the extension was removed: offer "I removed the extension" and pick it.
+  const bye = !!new URLSearchParams(location.search).get('bye');
+  if (bye) { const o = form.querySelector('option[value="removed"]'); if (o) { o.hidden = false; form.topic.value = 'removed'; } }
+  const T = {
+    ok: ['Thank you! Your message reached us. We will reply by email.', 'شكرًا! وصلتنا رسالتك، وسنرد عليك بالبريد.'],
+    topic: ['Please choose what it is about.', 'اختر موضوع رسالتك.'],
+    email: ['Please enter a valid email.', 'اكتب بريدًا إلكترونيًا صحيحًا.'],
+    message: ['Please write your message.', 'اكتب رسالتك.'],
+    busy: ['Too many messages. Wait a minute and try again.', 'رسائل كثيرة. انتظر دقيقة ثم حاول مرة أخرى.'],
+    fail: ['Could not send it. Email us at support@mansify.app', 'تعذّر الإرسال. راسلنا على support@mansify.app'],
+  };
+  const say = (k, cls) => { msg.textContent = T[k][root.lang === 'ar' ? 1 : 0]; msg.className = 'sf-msg ' + cls; };
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = form.email.value.trim(), message = form.message.value.trim();
+    if (!form.topic.value) { say('topic', 'err'); form.topic.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { say('email', 'err'); form.email.focus(); return; }
+    if (message.length < 3) { say('message', 'err'); form.message.focus(); return; }
+    btn.disabled = true;
+    try {
+      const r = await fetch('/api/support', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ product: form.dataset.support, topic: form.topic.value, email, message, lang: root.lang,
+          context: bye ? 'uninstall' : 'page', website: form.website.value }) });
+      const j = await r.json().catch(() => ({}));
+      if (r.ok && j.ok) { say('ok', 'ok'); form.classList.add('done'); }
+      else say(['topic', 'email', 'message'].includes(j.error) ? j.error : r.status === 429 ? 'busy' : 'fail', 'err');
+    } catch { say('fail', 'err'); }
+    btn.disabled = false;
+  });
+})();

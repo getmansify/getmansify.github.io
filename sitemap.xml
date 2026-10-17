@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Public pages of mansify.app (add a line for each new product page). -->
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://mansify.app/</loc><lastmod>2026-10-17</lastmod></url>
-  <url><loc>https://mansify.app/prompt-batch/</loc><lastmod>2026-10-17</lastmod></url>
-  <url><loc>https://mansify.app/icon-tool/</loc><lastmod>2026-10-17</lastmod></url>
-  <url><loc>https://mansify.app/privacy/</loc><lastmod>2026-10-17</lastmod></url>
-  <url><loc>https://mansify.app/terms/</loc><lastmod>2026-10-17</lastmod></url>
+<!-- Public pages of mansify.app, English + Arabic (?lang=ar). Add both lines for each new product page. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://mansify.app/</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mansify.app/"/><xhtml:link rel="alternate" hreflang="ar" href="https://mansify.app/?lang=ar"/></url>
+  <url><loc>https://mansify.app/?lang=ar</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mansify.app/"/><xhtml:link rel="alternate" hreflang="ar" href="https://mansify.app/?lang=ar"/></url>
+  <url><loc>https://mansify.app/prompt-batch/</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mansify.app/prompt-batch/"/><xhtml:link rel="alternate" hreflang="ar" href="https://mansify.app/prompt-batch/?lang=ar"/></url>
+  <url><loc>https://mansify.app/prompt-batch/?lang=ar</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mansify.app/prompt-batch/"/><xhtml:link rel="alternate" hreflang="ar" href="https://mansify.app/prompt-batch/?lang=ar"/></url>
+  <url><loc>https://mansify.app/icon-tool/</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mansify.app/icon-tool/"/><xhtml:link rel="alternate" hreflang="ar" href="https://mansify.app/icon-tool/?lang=ar"/></url>
+  <url><loc>https://mansify.app/icon-tool/?lang=ar</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mansify.app/icon-tool/"/><xhtml:link rel="alternate" hreflang="ar" href="https://mansify.app/icon-tool/?lang=ar"/></url>
+  <url><loc>https://mansify.app/privacy/</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mansify.app/privacy/"/><xhtml:link rel="alternate" hreflang="ar" href="https://mansify.app/privacy/?lang=ar"/></url>
+  <url><loc>https://mansify.app/privacy/?lang=ar</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mansify.app/privacy/"/><xhtml:link rel="alternate" hreflang="ar" href="https://mansify.app/privacy/?lang=ar"/></url>
+  <url><loc>https://mansify.app/terms/</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mansify.app/terms/"/><xhtml:link rel="alternate" hreflang="ar" href="https://mansify.app/terms/?lang=ar"/></url>
+  <url><loc>https://mansify.app/terms/?lang=ar</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mansify.app/terms/"/><xhtml:link rel="alternate" hreflang="ar" href="https://mansify.app/terms/?lang=ar"/></url>
 </urlset>

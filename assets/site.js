@@ -15,9 +15,15 @@
   const setLang = (l) => {
     root.lang = l; root.dir = l === 'ar' ? 'rtl' : 'ltr';
     if (titles[l]) document.title = titles[l];
+    // The address says the language (?lang=ar), so a shared link opens in Arabic and gets the Arabic share card (worker.js).
+    try { const u = new URL(location.href); if (l === 'ar') u.searchParams.set('lang', 'ar'); else u.searchParams.delete('lang');
+      if (u.href !== location.href) history.replaceState(history.state, '', u); } catch {}
     langListeners.forEach((f) => f(l));
   };
-  const savedLang = get('mansify-lang');
+  // A link's ?lang= wins (and is remembered), then the saved choice, then the browser's language.
+  const urlLang = new URLSearchParams(location.search).get('lang');
+  if (urlLang === 'ar' || urlLang === 'en') put('mansify-lang', urlLang);
+  const savedLang = urlLang === 'ar' || urlLang === 'en' ? urlLang : get('mansify-lang');
   setLang(savedLang === 'ar' || savedLang === 'en' ? savedLang : ((navigator.language || '').toLowerCase().startsWith('ar') ? 'ar' : 'en'));
   $('#lang')?.addEventListener('click', () => { const l = root.lang === 'ar' ? 'en' : 'ar'; setLang(l); put('mansify-lang', l); });
 

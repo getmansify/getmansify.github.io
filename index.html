@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mansify | We build the tools that should already exist</title>
+<meta name="description" content="Mansify is an independent software studio. We build browser extensions, design plugins, apps and automations, each one solving a real problem. Whatever it is, Mansify it.">
+<meta name="theme-color" content="#070b16">
+<script>
+// Set language and theme before the page paints, so there is no flash of the wrong one.
+(function () { var r = document.documentElement, l = null, t = null;
+  try { l = localStorage.getItem('mansify-lang'); t = localStorage.getItem('mansify-theme'); } catch (e) {}
+  if (l !== 'ar' && l !== 'en') l = (navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en';
+  r.lang = l; r.dir = l === 'ar' ? 'rtl' : 'ltr'; if (t === 'light' || t === 'dark') r.dataset.theme = t; })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-title-en="Mansify | We build the tools that should already exist" data-title-ar="Mansify | نصنع الأدوات التي كان يجب أن تكون موجودة">
+<div class="progress" aria-hidden="true"></div>
+
+<div class="nav" id="nav">
+  <div class="wrap bar">
+    <a class="logo" href="index.html" aria-label="Mansify home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M8.5 22V11l7.5 8 7.5-8v11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.2"/></svg>
+      Mansify
+    </a>
+    <nav>
+      <a class="opt" href="#products"><span class="en">Products</span><span class="ar">المنتجات</span></a>
+      <a class="opt" href="#approach"><span class="en">Approach</span><span class="ar">طريقتنا</span></a>
+      <a class="opt" href="#contact"><span class="en">Contact</span><span class="ar">تواصل</span></a>
+      <button class="icon-btn" id="theme" type="button" aria-label="Switch light or dark mode">
+        <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="lang" id="lang" type="button"><span class="en">العربية</span><span class="ar">English</span></button>
+    </nav>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="aurora a"></div><div class="aurora b"></div>
+  <div class="wrap center">
+    <span class="eyebrow rv"><b><span class="en">Studio</span><span class="ar">استوديو</span></b><span class="en">Independent software, made with care</span><span class="ar">برمجيات مستقلة، مصنوعة بعناية</span></span>
+    <h1 class="rv" data-split>
+      <span class="en">We build the tools that <span class="serif">should already exist.</span></span>
+      <span class="ar">نصنع الأدوات التي <span class="serif">كان يجب أن تكون موجودة.</span></span>
+    </h1>
+    <p class="lead rv" data-d="1">
+      <span class="en">Browser extensions, design plugins, apps and automations. Different fields, one standard: each product solves a real problem in the simplest way possible.</span>
+      <span class="ar">إضافات للمتصفح، وأدوات للمصممين، وتطبيقات، وحلول آلية. مجالات مختلفة ومعيار واحد: كل منتج يحل مشكلة حقيقية بأبسط طريقة ممكنة.</span>
+    </p>
+    <div class="cta rv" data-d="2">
+      <a class="btn solid" href="#products"><span class="en">Explore products</span><span class="ar">استكشف المنتجات</span><svg class="arr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <a class="btn line" href="#contact"><span class="en">Start a conversation</span><span class="ar">ابدأ محادثة</span></a>
+    </div>
+  </div>
+
+  <div class="stage wrap rv" data-d="3" aria-hidden="true">
+    <div class="float f1"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></span><span><span class="en">Browser extension</span><span class="ar">إضافة متصفح</span><small>Prompt Batch</small></span></div>
+    <div class="float f2"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6-4.5-4.2 6.1-.7z"/></svg></span><span><span class="en">Figma plugin</span><span class="ar">إضافة Figma</span><small><span class="en">Coming soon</span><span class="ar">قريبًا</span></small></span></div>
+    <div class="float f3"><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span><span class="en">Up to 50 prompts</span><span class="ar">حتى 50 أمرًا</span><small><span class="en">in one batch run</span><span class="ar">في تشغيل واحد</span></small></span></div>
+    <div class="float f4"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8"/></svg></span><span><span class="en">Apps &amp; automations</span><span class="ar">تطبيقات وحلول آلية</span><small><span class="en">More on the way</span><span class="ar">المزيد في الطريق</span></small></span></div>
+    <div class="frame"><div class="chrome"><i></i><i></i><i></i></div><img src="img/prompt-batch.jpg" alt="" width="1280" height="800"></div>
+  </div>
+
+  <div class="strip" aria-hidden="true">
+    <div class="track">
+      <span class="en">Browser extensions</span><span class="en">Design plugins</span><span class="en">Web apps</span><span class="en">Desktop apps</span><span class="en">Automations</span><span class="en">Creative tools</span><span class="en">Productivity</span>
+      <span class="en">Browser extensions</span><span class="en">Design plugins</span><span class="en">Web apps</span><span class="en">Desktop apps</span><span class="en">Automations</span><span class="en">Creative tools</span><span class="en">Productivity</span>
+      <span class="ar">إضافات المتصفح</span><span class="ar">أدوات التصميم</span><span class="ar">تطبيقات الويب</span><span class="ar">تطبيقات الحاسوب</span><span class="ar">حلول آلية</span><span class="ar">أدوات إبداعية</span><span class="ar">إنتاجية</span>
+      <span class="ar">إضافات المتصفح</span><span class="ar">أدوات التصميم</span><span class="ar">تطبيقات الويب</span><span class="ar">تطبيقات الحاسوب</span><span class="ar">حلول آلية</span><span class="ar">أدوات إبداعية</span><span class="ar">إنتاجية</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="block wrap" id="products">
+    <div class="head rv">
+      <div>
+        <span class="mono"><span class="en">01 / Products</span><span class="ar">01 / المنتجات</span></span>
+        <h2 data-split><span class="en">Made to be <span class="serif">used,</span> not admired.</span><span class="ar">صُنعت <span class="serif">لتُستخدم،</span> لا لتُعرض.</span></h2>
+      </div>
+      <p><span class="en">Every product starts from a real problem and ends as something simple you can rely on every day.</span><span class="ar">يبدأ كل منتج من مشكلة حقيقية، وينتهي بأداة بسيطة تعتمد عليها كل يوم.</span></p>
+    </div>
+
+    <div class="bento">
+      <article class="tile spot-card rv">
+        <div class="visual"><img class="shot" src="img/prompt-batch.jpg" alt="Prompt Batch side panel next to a grid of generated images" width="1280" height="800" loading="lazy"></div>
+        <div class="meta">
+          <div class="row">
+            <div class="id">
+              <img class="pic" src="img/prompt-batch-icon.png" alt="" width="48" height="48">
+              <div><h3>Prompt Batch</h3><span class="type"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M20 16l-5-2.5M4 16l5-2.5"/></svg><span class="en">Chrome extension</span><span class="ar">إضافة Chrome</span></span></div>
+            </div>
+            <span class="chip review"><span class="en">Launching soon</span><span class="ar">يُطلق قريبًا</span></span>
+          </div>
+          <p><span class="en">Runs a whole file of prompts in Google Flow, then names and downloads every image and video for you.</span><span class="ar">تشغّل ملفًا كاملًا من الأوامر في Google Flow، ثم تسمّي كل صورة وكل فيديو وتحمّلها لك.</span></p>
+          <a class="go stretch" href="prompt-batch/index.html"><span class="en">View product</span><span class="ar">عرض المنتج</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
+      </article>
+
+      <article class="tile spot-card rv" data-d="1">
+        <div class="visual">
+          <div class="demo">
+            <div class="icons" id="icons">
+              <div><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></div>
+              <div><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></div>
+              <div><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></div>
+              <div><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></div>
+            </div>
+            <label class="slider" data-stroke="#icons"><span class="en">Stroke</span><span class="ar">سُمك الخط</span><input type="range" min="0.75" max="3.25" step="0.05" value="1.75" aria-label="Stroke width"><output>1.75 px</output></label>
+          </div>
+        </div>
+        <div class="meta">
+          <div class="row">
+            <div class="id">
+              <img class="pic" src="img/icon-tool-icon.svg" alt="" width="48" height="48">
+              <div><h3><span class="en">Icon tool</span><span class="ar">أداة الأيقونات</span></h3><span class="type"><svg viewBox="0 0 24 24"><path d="M9 3h3a3 3 0 0 1 0 6H9zM9 9h3a3 3 0 0 1 0 6H9zM9 15h3a3 3 0 1 1-3 3zM9 3H6a3 3 0 0 0 0 6h3zM9 9H6a3 3 0 0 0 0 6h3"/></svg><span class="en">Figma plugin</span><span class="ar">إضافة Figma</span></span></div>
+            </div>
+            <span class="chip soon"><span class="en">Coming soon</span><span class="ar">قريبًا</span></span>
+          </div>
+          <p><span class="en">Turns outlined icons back into real strokes, so line weight is one slider away. Try it above.</span><span class="ar">تعيد الأيقونات المحوّلة إلى أشكال إلى خطوط حقيقية، فيصبح سُمك الخط على بُعد حركة واحدة. جرّبها في الأعلى.</span></p>
+          <a class="go stretch" href="icon-tool/index.html"><span class="en">View product</span><span class="ar">عرض المنتج</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block wrap" id="approach">
+    <div class="head rv">
+      <div>
+        <span class="mono"><span class="en">02 / Approach</span><span class="ar">02 / طريقتنا</span></span>
+        <h2 data-split><span class="en">Four rules, <span class="serif">every</span> product.</span><span class="ar">أربع قواعد في <span class="serif">كل</span> منتج.</span></h2>
+      </div>
+      <p><span class="en">The field changes from one product to the next. The way we build them does not.</span><span class="ar">يتغير المجال من منتج إلى آخر، أما طريقة صنعه فلا تتغير.</span></p>
+    </div>
+    <div class="rules">
+      <div class="rule"><div class="num">01</div><h4><span class="en">A real problem</span><span class="ar">مشكلة حقيقية</span></h4><p><span class="en">Each product starts from a problem someone actually had, not from a feature list.</span><span class="ar">يبدأ كل منتج من مشكلة واجهها أحدهم بالفعل، لا من قائمة مزايا.</span></p></div>
+      <div class="rule"><div class="num">02</div><h4><span class="en">Simple from minute one</span><span class="ar">بسيط من الدقيقة الأولى</span></h4><p><span class="en">Useful right away, with no setup guide and no learning curve.</span><span class="ar">مفيد فورًا، من دون دليل إعداد ولا وقت للتعلّم.</span></p></div>
+      <div class="rule"><div class="num">03</div><h4><span class="en">Private by default</span><span class="ar">الخصوصية أولًا</span></h4><p><span class="en">Your files and data stay with you. We only collect what a feature truly needs.</span><span class="ar">تبقى ملفاتك وبياناتك معك، ولا نجمع إلا ما تحتاجه الميزة فعلًا.</span></p></div>
+      <div class="rule"><div class="num">04</div><h4><span class="en">Fair and clear</span><span class="ar">واضح وعادل</span></h4><p><span class="en">A free way to try, honest pricing, and a real person answering support.</span><span class="ar">تجربة مجانية، وأسعار واضحة، وشخص حقيقي يرد على الدعم.</span></p></div>
+    </div>
+  </section>
+</main>
+
+<section class="finale" id="contact">
+  <div class="aurora a"></div>
+  <div class="wrap">
+    <p class="slogan rv" data-split><span class="en">Whatever it is, <span class="serif">Mansify it.</span></span><span class="ar">أيًّا كانت المشكلة، <span class="serif">Mansify لها.</span></span></p>
+    <div class="contact rv">
+      <a class="mail spot-card" href="mailto:contact@mansify.app">
+        <span><small><span class="en">Ideas, partnerships, press</span><span class="ar">الأفكار والشراكات والإعلام</span></small><strong>contact@mansify.app</strong></span>
+        <span class="circ"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+      <a class="mail spot-card" href="mailto:support@mansify.app">
+        <span><small><span class="en">Help with a product</span><span class="ar">المساعدة في المنتجات</span></small><strong>support@mansify.app</strong></span>
+        <span class="circ"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+    </div>
+  </div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wm-outline" x="-5%" y="-10%" width="110%" height="120%"><feMorphology in="SourceGraphic" operator="dilate" radius="1.3" result="d"/><feComposite in="d" in2="SourceGraphic" operator="out"/></filter></svg>
+  <div class="wordmark" aria-hidden="true">mansify</div>
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Mansify</span>
+      <nav>
+        <a href="prompt-batch/index.html">Prompt Batch</a>
+        <a href="icon-tool/index.html"><span class="en">Icon tool</span><span class="ar">أداة الأيقونات</span></a>
+        <a href="privacy/index.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
+        <a href="terms/index.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
+      </nav>
+    </div>
+  </footer>
+</section>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "updated": "2026-10-17",
+  "minApp": "1.0.1",
+  "labels": {
+    "generate": [], "settings": [], "addRef": [], "model": [], "search": [], "tileMore": [],
+    "Mode": [], "Video type": [], "Aspect ratio": [], "Output count": [], "Video resolution": [], "Video duration": []
+  },
+  "startSlot": [],
+  "text": {
+    "block": [], "fail": [], "upscale": [], "credit": [],
+    "addToPrompt": [], "uploadMedia": [], "originalSize": [], "download": []
+  },
+  "selectors": { "promptBox": [], "agentChip": [], "tile": [], "menuItem": [], "backdrop": [] }
+}

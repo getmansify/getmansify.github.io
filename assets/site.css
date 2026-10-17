@@ -445,20 +445,21 @@ html[lang="ar"] .legal h2 { letter-spacing: 0; }
 
 /* thank-you: vertical steps (start side) + animated activation card (end side), 2026-10-17 */
 .act-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 64px; align-items: center; }
-.vsteps { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: 14px; --fill: 0; }
-.vsteps::before, .vsteps::after { content: ""; position: absolute; inset-inline-start: 23px; top: 28px; bottom: 28px; width: 2px; border-radius: 2px; background: var(--line); }
-.vsteps::after { background: linear-gradient(var(--accent), var(--accent-alt)); transform-origin: 50% 0; transform: scaleY(var(--fill)); transition: transform .8s var(--ease); }
-.vsteps[data-on="1"] { --fill: 0; } .vsteps[data-on="2"] { --fill: .5; } .vsteps[data-on="3"] { --fill: 1; }
-.vstep { position: relative; display: grid; grid-template-columns: 48px 1fr; gap: 18px; padding: 18px 20px 18px 0; border-radius: 18px; transition: background .4s, transform .4s var(--ease); }
-html[dir="rtl"] .vstep { padding: 18px 0 18px 20px; }
-.vstep .dot { position: relative; z-index: 1; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 17px; background: var(--paper); border: 2px solid var(--line); color: var(--muted); transition: background .4s, border-color .4s, color .4s, box-shadow .4s, transform .4s var(--ease); }
-.vstep h3 { margin: 4px 0 6px; font-size: 20px; letter-spacing: -0.02em; transition: color .4s; }
+.vsteps { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+/* each step draws the connector from its dot centre to the next dot centre, so the line always lands on the dots */
+.vstep { position: relative; display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start; }
+.vstep:not(:last-child)::before, .vstep:not(:last-child)::after { content: ""; position: absolute; inset-inline-start: 23px; top: 24px; height: calc(100% + 18px); width: 2px; border-radius: 2px; background: var(--line); }
+.vstep:not(:last-child)::after { background: linear-gradient(var(--accent), var(--accent-alt)); transform-origin: 50% 0; transform: scaleY(0); transition: transform .7s var(--ease); }
+.vstep.past::after { transform: scaleY(1); }
+.vstep .dot { position: relative; z-index: 1; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 17px; background: var(--paper); border: 2px solid var(--line); color: var(--muted); transition: background .4s, border-color .4s, color .4s, box-shadow .4s; }
+.vstep .body { padding: 10px 18px 14px; margin-top: -2px; border-radius: 16px; border: 1px solid transparent; transition: background .4s, border-color .4s, transform .4s var(--ease); }
+.vstep h3 { margin: 0 0 6px; font-size: 20px; line-height: 1.35; letter-spacing: -0.02em; transition: color .4s; }
 .vstep p { margin: 0; color: var(--muted); font-size: 16px; }
 .vstep.on .dot, .vstep.past .dot { background: var(--accent); border-color: var(--accent); color: #fff; }
-.vstep.on .dot { transform: scale(1.08); box-shadow: 0 0 0 7px color-mix(in srgb, var(--accent) 18%, transparent), 0 10px 26px -8px color-mix(in srgb, var(--accent) 80%, transparent); }
-.vstep.on { background: color-mix(in srgb, var(--accent) 7%, transparent); transform: translateX(6px); }
-html[dir="rtl"] .vstep.on { transform: translateX(-6px); }
+.vstep.on .dot { box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 18%, transparent), 0 10px 24px -8px color-mix(in srgb, var(--accent) 80%, transparent); }
+.vstep.on .body { background: var(--surface); border-color: color-mix(in srgb, var(--accent) 30%, var(--line)); box-shadow: 0 14px 34px -18px color-mix(in srgb, var(--accent) 45%, transparent); }
 .vstep.on h3 { color: var(--link); }
+.vstep kbd { margin-inline: 2px; }
 
 .act-demo { position: relative; padding: 24px; }
 .act-glow { position: absolute; inset: 0; z-index: 0; border-radius: 40px; background: radial-gradient(60% 60% at 50% 45%, color-mix(in srgb, var(--accent) 34%, transparent), transparent 70%), radial-gradient(40% 40% at 80% 85%, color-mix(in srgb, var(--accent-alt) 30%, transparent), transparent 70%); filter: blur(10px); animation: actGlow 6s ease-in-out infinite alternate; }
@@ -518,3 +519,4 @@ html[dir="rtl"] .act-panel[data-phase="2"] .ap-cursor { left: 7%; }
 @keyframes pop { 0% { opacity: 1; transform: translate(0,0) rotate(0); } 100% { opacity: 0; transform: translate(var(--x), var(--y)) rotate(260deg); } }
 @media (max-width: 900px) { .act-grid { grid-template-columns: 1fr; gap: 32px; } .act-demo { padding: 8px 0; } }
 @media (prefers-reduced-motion: reduce) { .act-panel, .act-glow { animation: none; } }
+.nw { white-space: nowrap; }

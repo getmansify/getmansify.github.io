@@ -306,3 +306,14 @@
     btn.disabled = false;
   });
 })();
+
+/* Product video: swap the poster for the YouTube player (privacy-enhanced domain) only when the visitor presses play. */
+document.querySelectorAll('a[data-yt]').forEach((a) => a.addEventListener('click', (e) => {
+  e.preventDefault();
+  const f = document.createElement('iframe');
+  f.src = `https://www.youtube-nocookie.com/embed/${a.dataset.yt}?autoplay=1&rel=0`;
+  f.title = a.querySelector('img')?.alt || 'Video';
+  f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+  f.allowFullscreen = true;
+  a.replaceChildren(f); a.removeAttribute('href');
+}));

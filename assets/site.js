@@ -249,6 +249,9 @@
    never changes the page height (that is what made the scroll freeze). Tabs mark the section in view. */
 (() => {
   const b = document.body, sec = document.querySelector('.phead');
+  // product sub-pages: a guide marks the Guides tab
+  if (sec && b.classList.contains('phead-fixed') && location.pathname.includes('/guides/'))
+    document.querySelectorAll('.ph-tabs a[href$="#guides"]').forEach((a) => a.classList.add('on'));
   if (!sec || b.classList.contains('phead-fixed')) return;
   const tabs = [...document.querySelectorAll('.ph-tabs a')];
   const ids = tabs.map((a) => (a.getAttribute('href').split('#')[1] || '')).filter((id) => id && id !== 'top' && document.getElementById(id));
@@ -258,8 +261,19 @@
     const y = scrollY, on = b.classList.contains('past-head');
     if (!on && y > 140) b.classList.add('past-head'); else if (on && y < 20) b.classList.remove('past-head');
     let cur = 'top'; ids.forEach((id) => { if (document.getElementById(id).getBoundingClientRect().top < 240) cur = id; });
-    tabs.forEach((a) => a.classList.toggle('on', a.getAttribute('href') === '#' + cur));
+    let shown = null;
+    tabs.forEach((a) => { const on = a.getAttribute('href') === '#' + cur; a.classList.toggle('on', on); if (on) shown = a; });
+    // on phones the tab row scrolls sideways: bring the marked tab into view (only when it changes)
+    if (shown && shown !== last) { last = shown; const row = shown.parentElement, r = row.getBoundingClientRect(), t = shown.getBoundingClientRect();
+      if (t.left < r.left || t.right > r.right) row.scrollBy({ left: (t.left + t.width / 2) - (r.left + r.width / 2), behavior: 'smooth' }); }
   };
+  let last = null;
+  // "Overview" (#top) points at this pinned header, which is always on screen, so the browser would not move:
+  // go to the top of the page instead.
+  document.querySelectorAll('.phead a[href="#top"]').forEach((a) => a.addEventListener('click', (e) => {
+    e.preventDefault(); history.replaceState(history.state, '', location.pathname + location.search);
+    scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  }));
   addEventListener('scroll', tick, { passive: true }); tick();
 })();
 

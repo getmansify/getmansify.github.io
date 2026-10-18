@@ -24,8 +24,24 @@
   const urlLang = new URLSearchParams(location.search).get('lang');
   if (urlLang === 'ar' || urlLang === 'en') put('mansify-lang', urlLang);
   const savedLang = urlLang === 'ar' || urlLang === 'en' ? urlLang : get('mansify-lang');
-  setLang(savedLang === 'ar' || savedLang === 'en' ? savedLang : ((navigator.language || '').toLowerCase().startsWith('ar') ? 'ar' : 'en'));
-  $('#lang')?.addEventListener('click', () => { const l = root.lang === 'ar' ? 'en' : 'ar'; setLang(l); put('mansify-lang', l); });
+  // mansify.app sends one language per address (worker.js, <html data-only>): that language is the page's, and the
+  // button opens the other address at the section being read. Elsewhere both languages are in the page.
+  const only = root.dataset.only === 'ar' || root.dataset.only === 'en' ? root.dataset.only : null;
+  setLang(only || (savedLang === 'ar' || savedLang === 'en' ? savedLang : ((navigator.language || '').toLowerCase().startsWith('ar') ? 'ar' : 'en')));
+  $('#lang')?.addEventListener('click', () => {
+    const l = root.lang === 'ar' ? 'en' : 'ar';
+    put('mansify-lang', l);
+    if (!only) { setLang(l); return; }
+    const u = new URL(location.href);
+    u.searchParams.set('lang', l);   // ?lang=en too, so a browser in Arabic with no saved choice is not sent back
+    // the section on screen (the last one whose top has passed the bars) becomes the address's #part; inside a
+    // guide the Arabic copy's sections end in "-ar"
+    let at = null;
+    $$('section[id]').forEach((sec) => { if (sec.getBoundingClientRect().top < 200) at = sec; });
+    u.hash = '';
+    if (at && scrollY > 200) u.hash = at.closest('article') ? (l === 'ar' ? at.id + '-ar' : at.id.replace(/-ar$/, '')) : at.id;
+    location.href = u.href;
+  });
 
   /* ---------- theme: follows the system until the visitor picks one ---------- */
   const dark = matchMedia('(prefers-color-scheme: dark)');

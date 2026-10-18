@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-ar="رسالة «requesting generations too quickly» في Google Flow: ماذا تفعل | Prompt Batch">Google Flow says "requesting generations too quickly": what to do | Prompt Batch</title>
+<meta name="description" content="What Flow's &quot;requesting generations too quickly&quot; and &quot;unusual activity&quot; messages mean, what to do when you see them, and how to pace long lists so you see them less." data-ar="ماذا تعني رسالتا «requesting generations too quickly» و«unusual activity» في Flow، وماذا تفعل عندما تراهما، وكيف تنظّم القوائم الطويلة لتقلّل ظهورهما.">
+<meta name="theme-color" content="#070b16">
+<script>
+/* Guide 3 (2026-10-19). ?lang=ar|en wins over the saved or browser language. */
+(function () { var r = document.documentElement, l = null, t = null, q = new URLSearchParams(location.search).get('lang');
+  try { l = localStorage.getItem('mansify-lang'); t = localStorage.getItem('mansify-theme'); } catch (e) {}
+  if (q === 'ar' || q === 'en') { l = q; try { localStorage.setItem('mansify-lang', q); } catch (e) {} }
+  if (l !== 'ar' && l !== 'en') l = (navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en';
+  r.lang = l; r.dir = l === 'ar' ? 'rtl' : 'ltr'; if (t === 'light' || t === 'dark') r.dataset.theme = t; })();
+</script>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/img/mansify-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/mansify-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<!-- layout:meta -->
+<link rel="canonical" href="https://mansify.app/prompt-batch/guides/google-flow-requesting-generations-too-quickly" data-ar="https://mansify.app/prompt-batch/guides/google-flow-requesting-generations-too-quickly?lang=ar">
+<link rel="alternate" hreflang="en" href="https://mansify.app/prompt-batch/guides/google-flow-requesting-generations-too-quickly">
+<link rel="alternate" hreflang="ar" href="https://mansify.app/prompt-batch/guides/google-flow-requesting-generations-too-quickly?lang=ar">
+<link rel="alternate" hreflang="x-default" href="https://mansify.app/prompt-batch/guides/google-flow-requesting-generations-too-quickly">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mansify">
+<meta property="og:locale" content="en_US" data-ar="ar_AR">
+<meta property="og:title" content="Google Flow says &quot;requesting generations too quickly&quot;: what to do | Prompt Batch" data-ar="رسالة «requesting generations too quickly» في Google Flow: ماذا تفعل | Prompt Batch">
+<meta property="og:description" content="What Flow's &amp;quot;requesting generations too quickly&amp;quot; and &amp;quot;unusual activity&amp;quot; messages mean, what to do when you see them, and how to pace long lists so you see them less." data-ar="ماذا تعني رسالتا «requesting generations too quickly» و«unusual activity» في Flow، وماذا تفعل عندما تراهما، وكيف تنظّم القوائم الطويلة لتقلّل ظهورهما.">
+<meta property="og:url" content="https://mansify.app/prompt-batch/guides/google-flow-requesting-generations-too-quickly" data-ar="https://mansify.app/prompt-batch/guides/google-flow-requesting-generations-too-quickly?lang=ar">
+<meta property="og:image" content="https://mansify.app/img/og/prompt-batch.png" data-ar="https://mansify.app/img/og/prompt-batch-ar.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Google Flow says \"requesting generations too quickly\": what to do",
+   "description": "What Flow's &quot;requesting generations too quickly&quot; and &quot;unusual activity&quot; messages mean, what to do when you see them, and how to pace long lists so you see them less.",
+   "url": "https://mansify.app/prompt-batch/guides/google-flow-requesting-generations-too-quickly",
+   "inLanguage": [
+    "en",
+    "ar"
+   ],
+   "datePublished": "2026-10-19",
+   "dateModified": "2026-10-19",
+   "image": "https://mansify.app/img/og/prompt-batch.png",
+   "author": {
+    "@id": "https://mansify.app/#org"
+   },
+   "publisher": {
+    "@id": "https://mansify.app/#org"
+   },
+   "about": {
+    "@id": "https://mansify.app/prompt-batch/#app"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Mansify",
+     "item": "https://mansify.app/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Prompt Batch",
+     "item": "https://mansify.app/prompt-batch/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Google Flow says \"requesting generations too quickly\": what to do",
+     "item": "https://mansify.app/prompt-batch/guides/google-flow-requesting-generations-too-quickly"
+    }
+   ]
+  },
+  {
+   "@type": "Organization",
+   "@id": "https://mansify.app/#org",
+   "name": "Mansify",
+   "url": "https://mansify.app/",
+   "logo": "https://mansify.app/img/mansify-icon-180.png",
+   "email": "contact@mansify.app",
+   "sameAs": [
+    "https://www.youtube.com/@mansify_app",
+    "https://github.com/getmansify"
+   ]
+  }
+ ]
+}
+</script>
+<!-- /layout:meta -->
+</head>
+<body data-title-en="Google Flow says &quot;requesting generations too quickly&quot;: what to do | Prompt Batch" data-title-ar="رسالة «requesting generations too quickly» في Google Flow: ماذا تفعل | Prompt Batch" class="has-phead phead-fixed past-head">
+<div class="progress" aria-hidden="true"></div>
+<!-- layout:nav -->
+<div class="nav" id="nav">
+  <div class="wrap bar">
+    <a class="logo" href="../../index.html" aria-label="Mansify home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M8.5 22V11l7.5 8 7.5-8v11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.2"/></svg>
+      Mansify
+    </a>
+    <nav>
+      <a href="../../index.html#products" aria-current="page"><span class="en">Products</span><span class="ar">المنتجات</span></a>
+      <a class="opt" href="../../index.html#approach"><span class="en">Approach</span><span class="ar">طريقتنا</span></a>
+      <a class="opt" href="../../index.html#contact"><span class="en">Contact</span><span class="ar">تواصل</span></a>
+      <button class="icon-btn" id="theme" type="button" aria-label="Switch light or dark mode">
+        <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="lang" id="lang" type="button"><span class="en">العربية</span><span class="ar">English</span></button>
+    </nav>
+  </div>
+</div>
+<!-- /layout:nav -->
+<!-- layout:phead -->
+<section class="phead wrap" id="top">
+  <div class="ph-card">
+    <div class="ph-main">
+      <a class="ph-iconlink" href="../../prompt-batch/index.html"><img class="ph-icon" src="../../img/prompt-batch-icon.png" width="88" height="88" alt=""></a>
+      <div class="ph-txt">
+        <span class="crumbs"><a href="../../index.html#products"><span class="en">Products</span><span class="ar">المنتجات</span></a><span aria-hidden="true">/</span><span><span class="en">Prompt Batch</span><span class="ar">Prompt Batch</span></span></span>
+        <p class="ph-name"><span class="en">Prompt Batch</span><span class="ar">Prompt Batch</span> <span class="chip live"><span class="en">Available now</span><span class="ar">متاحة الآن</span></span></p>
+        <p class="ph-line"><span class="en">Run a whole file of prompts in Google Flow</span><span class="ar">شغّل ملفًا كاملًا من الأوامر في Google Flow</span></p>
+        <div class="ph-meta"><span class="chip"><svg class="brand" viewBox="0 0 48 48" aria-hidden="true"><path fill="#DB4437" d="M24.00 14.00L43.60 14.00A22 22 0 0 0 5.54 12.03L15.34 29.00A10 10 0 0 1 24.00 14.00Z"/><path fill="#F4B400" d="M32.66 29.00L22.86 45.97A22 22 0 0 0 43.60 14.00L24.00 14.00A10 10 0 0 1 32.66 29.00Z"/><path fill="#0F9D58" d="M15.34 29.00L5.54 12.03A22 22 0 0 0 22.86 45.97L32.66 29.00A10 10 0 0 1 15.34 29.00Z"/><circle cx="24" cy="24" r="10" fill="#fff"/><circle cx="24" cy="24" r="8" fill="#4285F4"/></svg><span class="en">Chrome extension</span><span class="ar">إضافة Chrome</span></span><span class="chip"><span class="en">Works with Google Flow</span><span class="ar">تعمل مع Google Flow</span></span></div>
+      </div>
+      <div class="ph-side"><div class="cta"><a class="btn accent" href="https://chromewebstore.google.com/detail/mgangjbcmdppnmlmaielildhagdlegob?utm_source=mansify.app&amp;utm_medium=website"><span class="en">Add to Chrome</span><span class="ar">أضِفها إلى Chrome</span><svg class="arr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="btn line" href="../../prompt-batch/index.html#pricing"><span class="en">Pricing</span><span class="ar">الأسعار</span></a></div><p class="p-note"><span class="en">Free for your first 5 results · Pro from <span data-p="monthly">$6.50</span>/month or <span data-p="now">$15</span> once</span><span class="ar">مجانية لأول 5 نتائج · النسخة الاحترافية من <span data-p="monthly">$6.50</span> شهريًا أو <span data-p="now">$15</span> مرة واحدة</span></p></div>
+    </div>
+    <nav class="ph-tabs" aria-label="Prompt Batch"><a href="../../prompt-batch/index.html#top"><span class="en">Overview</span><span class="ar">نظرة عامة</span></a><a href="../../prompt-batch/index.html#pricing"><span class="en">Pricing</span><span class="ar">الأسعار</span></a><a href="../../prompt-batch/index.html#guides"><span class="en">Guides</span><span class="ar">الشروحات</span></a><a href="../../prompt-batch/index.html#how"><span class="en">How it works</span><span class="ar">طريقة العمل</span></a><a href="../../prompt-batch/index.html#features"><span class="en">Features</span><span class="ar">المزايا</span></a><a href="../../prompt-batch/index.html#faq"><span class="en">FAQ</span><span class="ar">الأسئلة</span></a><a href="../../prompt-batch/index.html#support"><span class="en">Support</span><span class="ar">الدعم</span></a><a href="../../prompt-batch/index.html#legal"><span class="en">Privacy and terms</span><span class="ar">الخصوصية والشروط</span></a></nav>
+  </div>
+</section>
+<!-- /layout:phead -->
+
+<header class="hero legal-hero">
+  <div class="aurora a"></div>
+  <div class="wrap">
+    <span class="crumbs rv"><a href="../index.html">Prompt Batch</a><span aria-hidden="true">/</span><span><span class="en">Guides</span><span class="ar">الشروحات</span></span></span>
+    <h1 class="rv" data-split><span class="en">Flow says you're going <span class="serif">too quickly.</span></span><span class="ar">يقول Flow إنك تطلب <span class="serif">بسرعة كبيرة.</span></span></h1>
+    <p class="updated rv"><span class="en">"Requesting generations too quickly" and "unusual activity" · 5-minute read · Updated October 19, 2026</span><span class="ar">رسالتا <span dir="ltr">«requesting generations too quickly»</span> و<span dir="ltr">«unusual activity»</span> · قراءة في 5 دقائق · آخر تحديث: 19 أكتوبر 2026</span></p>
+  </div>
+</header>
+
+<main class="wrap legal guide">
+  <nav class="toc en" aria-label="Sections">
+    <a href="#short">In short</a>
+    <a href="#messages">The messages</a>
+    <a href="#now">What to do now</a>
+    <a href="#avoid">How to see them less</a>
+    <a href="#pb">What Prompt Batch does</a>
+    <a href="#faq">Questions</a>
+  </nav>
+  <nav class="toc ar" aria-label="الأقسام">
+    <a href="#short-ar">باختصار</a>
+    <a href="#messages-ar">الرسائل</a>
+    <a href="#now-ar">ماذا تفعل الآن</a>
+    <a href="#avoid-ar">كيف تقلّلها</a>
+    <a href="#pb-ar">ما تفعله Prompt Batch</a>
+    <a href="#faq-ar">أسئلة</a>
+  </nav>
+
+  <article class="en" lang="en" dir="ltr">
+    <section id="short">
+      <div class="box">
+        <p><strong>In short:</strong> these messages mean Google Flow wants you to slow down. Stop sending, wait, and come back at a calmer pace. There is no safe way around them, and trying again and again usually makes the wait longer. For long lists, space your prompts out, take breaks between files, and run one list at a time.</p>
+      </div>
+      <p>Google does not publish Flow's exact limits, and they can change. What follows is based on the messages Flow shows and on what many users report on <a href="https://discuss.ai.google.dev/t/generation-error-during-the-week-youre-requesting-generations-too-quickly-please-wait-a-moment-and-try-again/169524" rel="noopener">Google's AI developer forum</a>.</p>
+    </section>
+
+    <section id="messages">
+      <h2>The messages</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>Flow says</th><th>What it means</th></tr></thead>
+        <tbody>
+          <tr><td><em>You're requesting generations too quickly. Please wait a moment and try again.</em></td><td>Too many requests in a short time. Usually the lighter of the two, but users report it can last from minutes to several hours.</td></tr>
+          <tr><td><em>We noticed some unusual activity…</em></td><td>A stronger stop on the account. Generations fail until it is lifted, and users report it can last much longer.</td></tr>
+          <tr><td>Not enough credits</td><td>Not a speed limit: your account has run out of credits for that model.</td></tr>
+        </tbody>
+      </table></div>
+      <p>If you use Flow in Arabic, it shows the same messages in Arabic.</p>
+    </section>
+
+    <section id="now">
+      <h2>What to do now</h2>
+      <ol>
+        <li><strong>Stop sending.</strong> If a list is running in Prompt Batch, press <strong>Stop</strong>.</li>
+        <li><strong>Wait.</strong> Give it at least an hour before trying again. After "unusual activity", wait longer.</li>
+        <li><strong>Don't retry in a loop.</strong> Pressing Generate again and again, or opening another tab or browser to keep going, tends to make the stop last longer.</li>
+        <li><strong>Test with one prompt by hand.</strong> When it works again, start back slowly.</li>
+        <li><strong>Still stuck after a day?</strong> Use the <strong>Feedback</strong> option inside Flow. Google's forum moderators point Flow users there.</li>
+      </ol>
+    </section>
+
+    <section id="avoid">
+      <h2>How to see them less</h2>
+      <ul>
+        <li><strong>Space your prompts out.</strong> In Prompt Batch, raise <strong>Seconds between prompts</strong> to 30 or more for long lists. Slower runs are gentler on your account.</li>
+        <li><strong>Take breaks.</strong> Run one file, then rest before the next one, instead of running lists back to back all day.</li>
+        <li><strong>One list at a time.</strong> Don't run several lists in parallel, in several tabs or on several computers, on the same account.</li>
+        <li><strong>Make each prompt count.</strong> Test a few prompts first and fix them before running fifty. Fewer retries means fewer requests.</li>
+        <li><strong>Send by hand if you prefer.</strong> In Prompt Batch, turn on <strong>I press send myself (safer)</strong>: the extension prepares each prompt and you press Flow's send arrow yourself.</li>
+      </ul>
+    </section>
+
+    <section id="pb">
+      <h2>What Prompt Batch does for you</h2>
+      <ul>
+        <li>It waits at least 10 seconds between prompts, a little different each time, and never less, even if a setting is changed.</li>
+        <li>It stops the whole list on its own when Flow reports <em>unusual activity</em>, and tells you to wait about an hour.</li>
+        <li>It stops on its own when your Flow credits run out.</li>
+        <li>On other errors it marks the row as failed and moves to the next one. So if you see "requesting generations too quickly" during a run, press <strong>Stop</strong> yourself and wait.</li>
+      </ul>
+      <p>Prompt Batch does not get around Flow's limits, and it is not made or endorsed by Google. It does in your own account what you would do by hand, and you are responsible for following Google's terms.</p>
+    </section>
+
+    <section id="faq">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details><summary>Is there a way around the limit?</summary><p>No, and we don't recommend looking for one. The limits protect Flow and your account. The only reliable fix is to wait and come back at a calmer pace.</p></details>
+        <details><summary>How long does it last?</summary><p>Google does not say. Users report anything from a few minutes to several hours, and sometimes longer after "unusual activity". Waiting without retrying is what helps most.</p></details>
+        <details><summary>Does it only happen with extensions?</summary><p>No. Users report seeing it while working by hand too, especially after many generations close together.</p></details>
+        <details><summary>Will my account be safe with Prompt Batch?</summary><p>Prompt Batch works at a calm pace and stops on Flow's strongest warning, but no tool can promise how Google will treat an account. Use it at a pace you are comfortable with, and follow Google's terms.</p></details>
+      </div>
+    </section>
+  </article>
+
+  <article class="ar" lang="ar" dir="rtl">
+    <section id="short-ar">
+      <div class="box">
+        <p><strong>باختصار:</strong> تعني هذه الرسائل أن Google Flow يطلب منك أن تبطئ. توقّف عن الإرسال، وانتظر، ثم عُد بإيقاع أهدأ. لا توجد طريقة آمنة للالتفاف عليها، وتكرار المحاولة غالبًا يطيل الانتظار. وللقوائم الطويلة، باعد بين الأوامر، وخذ استراحة بين الملفات، وشغّل قائمة واحدة في كل مرة.</p>
+      </div>
+      <p>لا تنشر Google حدود Flow بالضبط، وقد تتغيّر. وما يلي مبني على الرسائل التي يعرضها Flow، وعلى ما يذكره كثير من المستخدمين في <a href="https://discuss.ai.google.dev/t/generation-error-during-the-week-youre-requesting-generations-too-quickly-please-wait-a-moment-and-try-again/169524" rel="noopener">منتدى Google للذكاء الاصطناعي</a>.</p>
+    </section>
+
+    <section id="messages-ar">
+      <h2>الرسائل</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>ماذا يقول Flow</th><th>ماذا تعني</th></tr></thead>
+        <tbody>
+          <tr><td dir="ltr"><em>You're requesting generations too quickly. Please wait a moment and try again.</em></td><td>طلبات كثيرة في وقت قصير. وهي غالبًا الأخف بين الرسالتين، لكن المستخدمين يذكرون أنها قد تستمر من دقائق إلى عدة ساعات.</td></tr>
+          <tr><td dir="ltr"><em>We noticed some unusual activity…</em></td><td>توقف أقوى على الحساب، تفشل فيه عمليات الإنشاء حتى يُرفع، ويذكر المستخدمون أنه قد يستمر مدة أطول بكثير.</td></tr>
+          <tr><td>نفاد الوحدات</td><td>ليس حدًّا للسرعة: نفدت وحدات حسابك لهذا النموذج.</td></tr>
+        </tbody>
+      </table></div>
+      <p>إذا كنت تستخدم Flow بالعربية، فسيعرض الرسائل نفسها بالعربية.</p>
+    </section>
+
+    <section id="now-ar">
+      <h2>ماذا تفعل الآن</h2>
+      <ol>
+        <li><strong>توقّف عن الإرسال.</strong> إذا كانت قائمة تعمل في Prompt Batch، فاضغط <strong>«إيقاف»</strong>.</li>
+        <li><strong>انتظر.</strong> ساعة على الأقل قبل أن تحاول مرة أخرى، وأطول من ذلك بعد رسالة «unusual activity».</li>
+        <li><strong>لا تكرر المحاولة مرارًا.</strong> الضغط على زر الإنشاء مرة بعد مرة، أو فتح تبويب أو متصفح آخر لتكمل، يطيل التوقف غالبًا.</li>
+        <li><strong>جرّب أمرًا واحدًا بيدك.</strong> وعندما يعمل من جديد، ابدأ ببطء.</li>
+        <li><strong>ما زلت متوقفًا بعد يوم؟</strong> استخدم خيار <strong>Feedback</strong> داخل Flow، فمشرفو منتدى Google يوجّهون مستخدمي Flow إليه.</li>
+      </ol>
+    </section>
+
+    <section id="avoid-ar">
+      <h2>كيف تقلّل ظهورها</h2>
+      <ul>
+        <li><strong>باعد بين الأوامر.</strong> في Prompt Batch ارفع <strong>«ثوانٍ بين كل أمر»</strong> إلى 30 أو أكثر للقوائم الطويلة. فالتشغيل الأبطأ أرفق بحسابك.</li>
+        <li><strong>خذ استراحات.</strong> شغّل ملفًا واحدًا، ثم استرح قبل الملف التالي، بدل تشغيل القوائم وراء بعضها طوال اليوم.</li>
+        <li><strong>قائمة واحدة في كل مرة.</strong> لا تشغّل عدة قوائم معًا، في عدة تبويبات أو على عدة أجهزة، بالحساب نفسه.</li>
+        <li><strong>اجعل كل أمر مدروسًا.</strong> جرّب بضعة أوامر أولًا وأصلحها قبل أن تشغّل خمسين. فإعادات أقل تعني طلبات أقل.</li>
+        <li><strong>أرسل بيدك إن أردت.</strong> في Prompt Batch فعّل خيار <strong>«أضغط الإرسال بنفسي (أكثر أمانًا)»</strong>: تجهّز الإضافة كل أمر، وتضغط أنت سهم الإرسال في Flow.</li>
+      </ul>
+    </section>
+
+    <section id="pb-ar">
+      <h2>ما تفعله Prompt Batch لك</h2>
+      <ul>
+        <li>تنتظر 10 ثوانٍ على الأقل بين الأوامر، وتتغيّر المدة قليلًا في كل مرة، ولا تقل عن ذلك أبدًا حتى لو غُيّر الإعداد.</li>
+        <li>توقف القائمة كلها وحدها عندما يبلغ Flow عن «نشاط غير معتاد»، وتطلب منك الانتظار نحو ساعة.</li>
+        <li>تتوقف وحدها عندما تنفد وحداتك في Flow.</li>
+        <li>عند الأخطاء الأخرى تعلّم الصف بأنه فشل وتنتقل إلى التالي. لذلك إذا ظهرت رسالة <span dir="ltr">«requesting generations too quickly»</span> أثناء التشغيل، فاضغط <strong>«إيقاف»</strong> بنفسك وانتظر.</li>
+      </ul>
+      <p>لا تلتف Prompt Batch على حدود Flow، ولم تصنعها Google ولا تعتمدها. فهي تفعل داخل حسابك ما كنت ستفعله بيدك، وأنت مسؤول عن الالتزام بشروط Google.</p>
+    </section>
+
+    <section id="faq-ar">
+      <h2>أسئلة</h2>
+      <div class="faq">
+        <details><summary>هل توجد طريقة لتجاوز الحد؟</summary><p>لا، ولا ننصح بالبحث عنها. فهذه الحدود تحمي Flow وتحمي حسابك. والحل الموثوق الوحيد هو الانتظار ثم العودة بإيقاع أهدأ.</p></details>
+        <details><summary>كم يستمر التوقف؟</summary><p>لا تذكر Google ذلك. ويذكر المستخدمون مددًا من دقائق إلى عدة ساعات، وأحيانًا أطول بعد رسالة «unusual activity». وأكثر ما يساعد هو الانتظار دون تكرار المحاولة.</p></details>
+        <details><summary>هل يحدث هذا مع الإضافات فقط؟</summary><p>لا. يذكر المستخدمون أنهم يرونه أثناء العمل بأيديهم أيضًا، خاصة بعد عمليات إنشاء كثيرة متقاربة.</p></details>
+        <details><summary>هل سيكون حسابي آمنًا مع Prompt Batch؟</summary><p>تعمل Prompt Batch بإيقاع هادئ وتتوقف عند أقوى تحذير من Flow، لكن لا تستطيع أي أداة أن تضمن كيف تتعامل Google مع حساب ما. استخدمها بالإيقاع الذي يريحك، والتزم بشروط Google.</p></details>
+      </div>
+    </section>
+  </article>
+</main>
+
+<section class="block wrap guide-cta">
+  <div class="cta rv">
+    <a class="btn accent" href="https://chromewebstore.google.com/detail/mgangjbcmdppnmlmaielildhagdlegob?utm_source=mansify.app&amp;utm_medium=website"><span class="en">Add to Chrome, free</span><span class="ar">أضِفها إلى Chrome مجانًا</span><svg class="arr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <a class="btn line" href="run-many-prompts-google-flow"><span class="en">Guide 1: run many prompts</span><span class="ar">الشرح الأول: تشغيل أوامر كثيرة</span></a>
+  </div>
+</section>
+
+<section class="finale" id="contact">
+  <div class="aurora a"></div>
+  <div class="wrap">
+    <p class="slogan rv" data-split><span class="en">Questions? <span class="serif">Just ask.</span></span><span class="ar">لديك سؤال؟ <span class="serif">راسلنا.</span></span></p>
+    <div class="contact rv">
+      <a class="mail spot-card" href="mailto:support@mansify.app?subject=Prompt%20Batch">
+        <span><small><span class="en">Help with Prompt Batch</span><span class="ar">المساعدة في Prompt Batch</span></small><strong>support@mansify.app</strong></span>
+        <span class="circ"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+      <a class="mail spot-card" href="../index.html">
+        <span><small><span class="en">The extension</span><span class="ar">الإضافة</span></small><strong>Prompt Batch</strong></span>
+        <span class="circ"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+    </div>
+  </div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wm-outline" x="-5%" y="-10%" width="110%" height="120%"><feMorphology in="SourceGraphic" operator="dilate" radius="1.3" result="d"/><feComposite in="d" in2="SourceGraphic" operator="out"/></filter></svg>
+  <div class="wordmark" aria-hidden="true">mansify</div>
+  <!-- layout:footer -->
+  <footer class="site-foot">
+    <div class="wrap fgrid">
+      <div class="fbrand">
+        <a class="logo" href="../../index.html" aria-label="Mansify home"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M8.5 22V11l7.5 8 7.5-8v11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.2"/></svg>Mansify</a>
+        <p><span class="en">An independent software studio.</span><span class="ar">استوديو برمجيات مستقل.</span></p>
+      </div>
+      <div class="fcol"><h4>Mansify</h4><a href="../../index.html#products"><span class="en">Products</span><span class="ar">المنتجات</span></a><a href="../../index.html#approach"><span class="en">Approach</span><span class="ar">طريقتنا</span></a><a href="mailto:contact@mansify.app"><span class="en">Contact</span><span class="ar">تواصل</span></a></div>
+      <div class="fcol"><h4><span class="en">Legal</span><span class="ar">قانوني</span></h4><a href="../../privacy/index.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a><a href="../../terms/index.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></div>
+    </div>
+    <div class="wrap fbase"><span dir="ltr">© 2026 Mansify</span></div>
+  </footer>
+  <!-- /layout:footer -->
+</section>
+
+<script src="../../assets/site.js"></script>
+</body>
+</html>

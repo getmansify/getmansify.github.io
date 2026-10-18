@@ -330,6 +330,14 @@
   });
 })();
 
+/* "Add to Chrome" presses: one count per press, sent to mansify.app (only the page and language, nothing about the visitor).
+   The GitHub Pages copy sends nothing. */
+document.addEventListener('click', (e) => {
+  const a = e.target.closest?.('a[href*="chromewebstore.google.com"]');
+  if (!a || !/(^|\.)mansify\.app$|^localhost$|^127\.0\.0\.1$/.test(location.hostname)) return;
+  try { navigator.sendBeacon('/api/click', JSON.stringify({ page: location.pathname, lang: document.documentElement.lang })); } catch {}
+});
+
 /* Product video: swap the poster for the YouTube player (privacy-enhanced domain) only when the visitor presses play. */
 document.querySelectorAll('a[data-yt]').forEach((a) => a.addEventListener('click', (e) => {
   e.preventDefault();

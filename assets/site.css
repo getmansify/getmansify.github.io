@@ -756,3 +756,35 @@ html[dir="rtl"] .sf input[type="email"]:placeholder-shown { text-align: right; }
 .sf-note a { color: var(--link); }
 .sf.done .sf-row, .sf.done > .sf-field, .sf.done .sf-foot .btn { display: none; }
 @media (max-width: 900px) { .sup-wrap, .sf-row { grid-template-columns: 1fr; } .sf { padding: 22px; } }
+
+/* Guides (prompt-batch/guides/, 2026-10-19): the legal page layout + tables, code and a closing video/CTA. */
+.guide article { min-width: 0; }   /* lets wide code/tables scroll inside instead of widening the page */
+.guide section { scroll-margin-top: 160px; }
+.guide .toc { top: 160px; }   /* below the pinned product bar */
+.guide ol { margin: 0 0 12px; padding-inline-start: 22px; color: var(--muted); }
+.guide ol li::marker { color: var(--accent); font-weight: 600; }
+.guide code { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: .86em; padding: 1px 6px; border-radius: 6px; background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--text); }
+.guide pre { margin: 0 0 16px; padding: 16px 18px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); overflow-x: auto; text-align: left; }
+.guide pre code { padding: 0; background: none; font-size: 13px; line-height: 1.7; white-space: pre; }
+.guide .tbl { overflow-x: auto; margin: 0 0 16px; border: 1px solid var(--line); border-radius: 14px; }
+.guide table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.guide th, .guide td { padding: 10px 14px; text-align: start; vertical-align: top; border-bottom: 1px solid var(--line); }
+.guide th { color: var(--text); font-weight: 600; background: var(--surface); }
+.guide td { color: var(--muted); }
+.guide tr:last-child td { border-bottom: 0; }
+.guide .faq summary { font-size: 17px; }
+.guide figure { margin: 8px 0 16px; }
+.guide figure img { width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid var(--line); }
+.guide figcaption { margin-top: 8px; font-size: 14px; color: var(--muted); }
+.guide-cta { padding-top: 0; }
+.guide-cta .cta { margin-top: 28px; }
+/* Guides list on a product page (#guides): cards are links; "soon" cards are quiet. */
+.guides-list a.step { text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+.guides-list a.step p { flex: 1; }
+.guides-list .more { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; color: var(--link); font-weight: 600; font-size: 15px; }
+html[dir="rtl"] .guides-list .more .arr { transform: scaleX(-1); }
+.guides-list .step.soon { opacity: .6; }
+.guides-list .step.soon:hover { transform: none; border-color: var(--line); }
+.guides-list .gpic { display: block; margin: -12px -12px 20px; border-radius: 14px; overflow: hidden; aspect-ratio: 16 / 10; background: var(--surface); border: 1px solid var(--line); }
+.guides-list .gpic img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease); }
+.guides-list a.step:hover .gpic img { transform: scale(1.04); }

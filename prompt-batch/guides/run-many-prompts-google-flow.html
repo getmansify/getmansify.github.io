@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-ar="تشغيل أوامر كثيرة في Google Flow دفعة واحدة | Prompt Batch">Run many prompts in Google Flow at once | Prompt Batch</title>
+<meta name="description" content="Google Flow takes one prompt at a time. Here is how to run a whole list from Excel, CSV or a text file, and get every image and video named and downloaded." data-ar="يرسل Google Flow أمرًا واحدًا في كل مرة. هذه طريقة تشغيل قائمة كاملة من ملف Excel أو CSV أو نص، مع تسمية كل صورة وفيديو وتحميله.">
+<meta name="theme-color" content="#070b16">
+<script>
+/* Guide 1 (2026-10-19). ?lang=ar|en wins over the saved or browser language. */
+(function () { var r = document.documentElement, l = null, t = null, q = new URLSearchParams(location.search).get('lang');
+  try { l = localStorage.getItem('mansify-lang'); t = localStorage.getItem('mansify-theme'); } catch (e) {}
+  if (q === 'ar' || q === 'en') { l = q; try { localStorage.setItem('mansify-lang', q); } catch (e) {} }
+  if (l !== 'ar' && l !== 'en') l = (navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en';
+  r.lang = l; r.dir = l === 'ar' ? 'rtl' : 'ltr'; if (t === 'light' || t === 'dark') r.dataset.theme = t; })();
+</script>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/img/mansify-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/mansify-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<!-- layout:meta -->
+<link rel="canonical" href="https://mansify.app/prompt-batch/guides/run-many-prompts-google-flow" data-ar="https://mansify.app/prompt-batch/guides/run-many-prompts-google-flow?lang=ar">
+<link rel="alternate" hreflang="en" href="https://mansify.app/prompt-batch/guides/run-many-prompts-google-flow">
+<link rel="alternate" hreflang="ar" href="https://mansify.app/prompt-batch/guides/run-many-prompts-google-flow?lang=ar">
+<link rel="alternate" hreflang="x-default" href="https://mansify.app/prompt-batch/guides/run-many-prompts-google-flow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mansify">
+<meta property="og:locale" content="en_US" data-ar="ar_AR">
+<meta property="og:title" content="Run many prompts in Google Flow at once | Prompt Batch" data-ar="تشغيل أوامر كثيرة في Google Flow دفعة واحدة | Prompt Batch">
+<meta property="og:description" content="Google Flow takes one prompt at a time. Here is how to run a whole list from Excel, CSV or a text file, and get every image and video named and downloaded." data-ar="يرسل Google Flow أمرًا واحدًا في كل مرة. هذه طريقة تشغيل قائمة كاملة من ملف Excel أو CSV أو نص، مع تسمية كل صورة وفيديو وتحميله.">
+<meta property="og:url" content="https://mansify.app/prompt-batch/guides/run-many-prompts-google-flow" data-ar="https://mansify.app/prompt-batch/guides/run-many-prompts-google-flow?lang=ar">
+<meta property="og:image" content="https://mansify.app/img/og/prompt-batch.png" data-ar="https://mansify.app/img/og/prompt-batch-ar.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Run many prompts in Google Flow at once (Excel, CSV or text)",
+   "description": "Google Flow takes one prompt at a time. Here is how to run a whole list from Excel, CSV or a text file, and get every image and video named and downloaded.",
+   "url": "https://mansify.app/prompt-batch/guides/run-many-prompts-google-flow",
+   "inLanguage": [
+    "en",
+    "ar"
+   ],
+   "datePublished": "2026-10-19",
+   "dateModified": "2026-10-19",
+   "image": "https://mansify.app/img/og/prompt-batch.png",
+   "author": {
+    "@id": "https://mansify.app/#org"
+   },
+   "publisher": {
+    "@id": "https://mansify.app/#org"
+   },
+   "about": {
+    "@id": "https://mansify.app/prompt-batch/#app"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Mansify",
+     "item": "https://mansify.app/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Prompt Batch",
+     "item": "https://mansify.app/prompt-batch/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Run many prompts in Google Flow at once (Excel, CSV or text)",
+     "item": "https://mansify.app/prompt-batch/guides/run-many-prompts-google-flow"
+    }
+   ]
+  },
+  {
+   "@type": "Organization",
+   "@id": "https://mansify.app/#org",
+   "name": "Mansify",
+   "url": "https://mansify.app/",
+   "logo": "https://mansify.app/img/mansify-icon-180.png",
+   "email": "contact@mansify.app",
+   "sameAs": [
+    "https://www.youtube.com/@mansify_app",
+    "https://github.com/getmansify"
+   ]
+  }
+ ]
+}
+</script>
+<!-- /layout:meta -->
+</head>
+<body data-title-en="Run many prompts in Google Flow at once | Prompt Batch" data-title-ar="تشغيل أوامر كثيرة في Google Flow دفعة واحدة | Prompt Batch" class="has-phead phead-fixed past-head">
+<div class="progress" aria-hidden="true"></div>
+<!-- layout:nav -->
+<div class="nav" id="nav">
+  <div class="wrap bar">
+    <a class="logo" href="../../index.html" aria-label="Mansify home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M8.5 22V11l7.5 8 7.5-8v11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.2"/></svg>
+      Mansify
+    </a>
+    <nav>
+      <a href="../../index.html#products" aria-current="page"><span class="en">Products</span><span class="ar">المنتجات</span></a>
+      <a class="opt" href="../../index.html#approach"><span class="en">Approach</span><span class="ar">طريقتنا</span></a>
+      <a class="opt" href="../../index.html#contact"><span class="en">Contact</span><span class="ar">تواصل</span></a>
+      <button class="icon-btn" id="theme" type="button" aria-label="Switch light or dark mode">
+        <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="lang" id="lang" type="button"><span class="en">العربية</span><span class="ar">English</span></button>
+    </nav>
+  </div>
+</div>
+<!-- /layout:nav -->
+<!-- layout:phead -->
+<section class="phead wrap" id="top">
+  <div class="ph-card">
+    <div class="ph-main">
+      <a class="ph-iconlink" href="../../prompt-batch/index.html"><img class="ph-icon" src="../../img/prompt-batch-icon.png" width="88" height="88" alt=""></a>
+      <div class="ph-txt">
+        <span class="crumbs"><a href="../../index.html#products"><span class="en">Products</span><span class="ar">المنتجات</span></a><span aria-hidden="true">/</span><span><span class="en">Prompt Batch</span><span class="ar">Prompt Batch</span></span></span>
+        <p class="ph-name"><span class="en">Prompt Batch</span><span class="ar">Prompt Batch</span> <span class="chip live"><span class="en">Available now</span><span class="ar">متاحة الآن</span></span></p>
+        <p class="ph-line"><span class="en">Run a whole file of prompts in Google Flow</span><span class="ar">شغّل ملفًا كاملًا من الأوامر في Google Flow</span></p>
+        <div class="ph-meta"><span class="chip"><svg class="brand" viewBox="0 0 48 48" aria-hidden="true"><path fill="#DB4437" d="M24.00 14.00L43.60 14.00A22 22 0 0 0 5.54 12.03L15.34 29.00A10 10 0 0 1 24.00 14.00Z"/><path fill="#F4B400" d="M32.66 29.00L22.86 45.97A22 22 0 0 0 43.60 14.00L24.00 14.00A10 10 0 0 1 32.66 29.00Z"/><path fill="#0F9D58" d="M15.34 29.00L5.54 12.03A22 22 0 0 0 22.86 45.97L32.66 29.00A10 10 0 0 1 15.34 29.00Z"/><circle cx="24" cy="24" r="10" fill="#fff"/><circle cx="24" cy="24" r="8" fill="#4285F4"/></svg><span class="en">Chrome extension</span><span class="ar">إضافة Chrome</span></span><span class="chip"><span class="en">Works with Google Flow</span><span class="ar">تعمل مع Google Flow</span></span></div>
+      </div>
+      <div class="ph-side"><div class="cta"><a class="btn accent" href="https://chromewebstore.google.com/detail/mgangjbcmdppnmlmaielildhagdlegob?utm_source=mansify.app&amp;utm_medium=website"><span class="en">Add to Chrome</span><span class="ar">أضِفها إلى Chrome</span><svg class="arr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="btn line" href="../../prompt-batch/index.html#pricing"><span class="en">Pricing</span><span class="ar">الأسعار</span></a></div><p class="p-note"><span class="en">Free for your first 5 results · Pro from <span data-p="monthly">$6.50</span>/month or <span data-p="now">$15</span> once</span><span class="ar">مجانية لأول 5 نتائج · النسخة الاحترافية من <span data-p="monthly">$6.50</span> شهريًا أو <span data-p="now">$15</span> مرة واحدة</span></p></div>
+    </div>
+    <nav class="ph-tabs" aria-label="Prompt Batch"><a href="../../prompt-batch/index.html#top"><span class="en">Overview</span><span class="ar">نظرة عامة</span></a><a href="../../prompt-batch/index.html#pricing"><span class="en">Pricing</span><span class="ar">الأسعار</span></a><a href="../../prompt-batch/index.html#how"><span class="en">How it works</span><span class="ar">طريقة العمل</span></a><a href="../../prompt-batch/index.html#guides"><span class="en">Guides</span><span class="ar">الشروحات</span></a><a href="../../prompt-batch/index.html#faq"><span class="en">FAQ</span><span class="ar">الأسئلة</span></a><a href="../../prompt-batch/index.html#support"><span class="en">Support</span><span class="ar">الدعم</span></a><a href="../../prompt-batch/index.html#legal"><span class="en">Privacy and terms</span><span class="ar">الخصوصية والشروط</span></a></nav>
+  </div>
+</section>
+<!-- /layout:phead -->
+
+<header class="hero legal-hero">
+  <div class="aurora a"></div>
+  <div class="wrap">
+    <span class="crumbs rv"><a href="../index.html">Prompt Batch</a><span aria-hidden="true">/</span><span><span class="en">Guides</span><span class="ar">الشروحات</span></span></span>
+    <h1 class="rv" data-split><span class="en">Run many prompts in Google Flow <span class="serif">at once.</span></span><span class="ar">شغّل أوامر كثيرة في <span dir="ltr">Google Flow</span> <span class="serif">دفعة واحدة.</span></span></h1>
+    <p class="updated rv"><span class="en">From an Excel, CSV or text file · 6-minute read · Updated October 19, 2026</span><span class="ar">من ملف Excel أو CSV أو نص · قراءة في 6 دقائق · آخر تحديث: 19 أكتوبر 2026</span></p>
+  </div>
+</header>
+
+<main class="wrap legal guide">
+  <nav class="toc en" aria-label="Sections">
+    <a href="#short">In short</a>
+    <a href="#before">Before you start</a>
+    <a href="#file">1. Prepare your file</a>
+    <a href="#load">2. Load it in Flow</a>
+    <a href="#settings">3. Check the settings</a>
+    <a href="#start">4. Press Start</a>
+    <a href="#files">5. Find your files</a>
+    <a href="#tips">Tips</a>
+    <a href="#faq">Questions</a>
+  </nav>
+  <nav class="toc ar" aria-label="الأقسام">
+    <a href="#short-ar">باختصار</a>
+    <a href="#before-ar">قبل أن تبدأ</a>
+    <a href="#file-ar">1. جهّز ملفك</a>
+    <a href="#load-ar">2. حمّله في Flow</a>
+    <a href="#settings-ar">3. راجع الإعدادات</a>
+    <a href="#start-ar">4. اضغط «ابدأ»</a>
+    <a href="#files-ar">5. اعثر على ملفاتك</a>
+    <a href="#tips-ar">نصائح</a>
+    <a href="#faq-ar">أسئلة</a>
+  </nav>
+
+  <article class="en" lang="en" dir="ltr">
+    <section id="short">
+      <div class="box">
+        <p><strong>In short:</strong> Google Flow's prompt box sends one prompt at a time, and you wait for each result before typing the next. To run a whole list, put your prompts in a file (Excel, CSV or plain text) and let <a href="../index.html">Prompt Batch</a>, a Chrome extension, send them one by one in your own Flow project. It waits for each image or video, names it and downloads it for you.</p>
+      </div>
+      <p>This guide shows the whole run, from an empty spreadsheet to a folder of named files. Prompt Batch is free for your first 5 results, with every feature included, so you can try it on a small list first.</p>
+    </section>
+
+    <section id="before">
+      <h2>Before you start</h2>
+      <ul>
+        <li><strong>Chrome on a computer.</strong> Prompt Batch is a Chrome extension; it does not run on phones.</li>
+        <li><strong>A Google account that can use Flow.</strong> Prompt Batch works in your own account and uses your own Flow credits, exactly as if you typed each prompt yourself.</li>
+        <li><strong>Prompt Batch added to Chrome</strong> from the <a href="https://chromewebstore.google.com/detail/mgangjbcmdppnmlmaielildhagdlegob?utm_source=mansify.app&amp;utm_medium=website">Chrome Web Store</a>. Pin it so its icon stays in the toolbar.</li>
+        <li><strong>A Flow project</strong> open at <span class="nw">flow.google.com</span>. Any project works, even an empty one.</li>
+      </ul>
+    </section>
+
+    <section id="file">
+      <h2>1. Prepare your file</h2>
+      <p>Make a spreadsheet with a header row. Only the <strong>prompt</strong> column is required; every other column is optional, and the columns can be in any order.</p>
+      <div class="tbl"><table>
+        <thead><tr><th>Column</th><th>What it does</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><code>prompt</code></td><td>The text sent to Flow (required).</td><td>A quiet harbour at dawn</td></tr>
+          <tr><td><code>type</code></td><td><code>image</code> or <code>video</code>. Empty = the panel's default.</td><td>image</td></tr>
+          <tr><td><code>aspect</code></td><td>Shape of the result.</td><td>16:9, 9:16, 1:1</td></tr>
+          <tr><td><code>count</code></td><td>How many results for this prompt (1 to 4).</td><td>2</td></tr>
+          <tr><td><code>name</code></td><td>The file name, and the result's name inside Flow.</td><td>harbour</td></tr>
+          <tr><td><code>ref</code></td><td>Pictures already in the project to use as a reference.</td><td>oil, gouache</td></tr>
+          <tr><td><code>start_image</code></td><td>A picture to animate into a video (this row becomes a video).</td><td>harbour</td></tr>
+          <tr><td><code>model</code></td><td>A Flow model for this row. Empty = the cheapest one.</td><td></td></tr>
+          <tr><td><code>resolution</code>, <code>duration</code></td><td>For videos. Empty = Flow's current setting.</td><td>720p, 8</td></tr>
+        </tbody>
+      </table></div>
+      <p>Here is a small file that makes two pictures, then turns the first one into a video:</p>
+      <pre dir="ltr"><code>prompt,type,aspect,name,start_image
+"A quiet harbour at dawn, fishing boats, soft mist",image,16:9,harbour,
+"The same harbour at night, lanterns on the boats",image,16:9,harbour_night,
+"Slow push-in, gentle waves, mist drifting",,16:9,harbour_clip,harbour</code></pre>
+      <p>A plain text file works too: one prompt per line, and the panel's defaults decide the rest. You can also paste prompts straight into the panel. Each file can hold up to 50 prompts; for a longer list, split it into several files.</p>
+      <p>Don't want to start from zero? The panel has two ready templates (an empty one and a small test run) under the drop box.</p>
+      <figure><img src="../../img/guides/pb-panel-3-en.jpg" width="1280" height="800" loading="lazy" alt="Prompt Batch welcome screen with tips and templates"><figcaption>Tips and ready templates, inside the panel (⚙ → Tips &amp; templates).</figcaption></figure>
+    </section>
+
+    <section id="load">
+      <h2>2. Load it in Flow</h2>
+      <ol>
+        <li>Open your Flow project.</li>
+        <li>Click the Prompt Batch icon in Chrome's toolbar. The side panel opens next to Flow.</li>
+        <li>Drop your file on the panel (or press it to choose the file).</li>
+      </ol>
+      <p>Each prompt becomes a row in the queue. Above the Start button, the panel shows what the run will make: how many images and videos, and about how many credits. If a row's <code>ref</code> or <code>start_image</code> names a picture that is not in the project, the panel tells you before anything is made.</p>
+      <figure><img src="../../img/guides/pb-panel-1-en.jpg" width="1280" height="800" loading="lazy" alt="A Prompt Batch run in progress in the side panel"><figcaption>A run in progress: every row with its file name, and the status line at the bottom.</figcaption></figure>
+    </section>
+
+    <section id="settings">
+      <h2>3. Check the settings</h2>
+      <ul>
+        <li><strong>Defaults:</strong> the type, shape and model used by rows that leave those columns empty. "Cheapest (automatic)" picks the Flow model that costs the fewest credits.</li>
+        <li><strong>Download:</strong> the folder name inside your Downloads folder, and the size to save.</li>
+        <li><strong>Sending:</strong> the wait between prompts. It is at least 10 seconds and changes a little each time, so the run keeps a calm, human pace. A slower pace is gentler on your account; see <a href="#tips">Tips</a>.</li>
+      </ul>
+    </section>
+
+    <section id="start">
+      <h2>4. Press Start</h2>
+      <p>Press <strong>Start</strong>. If the run includes videos, the panel asks you to confirm before it spends credits. Then Prompt Batch types each prompt into Flow, waits for the result, names it, downloads it and moves on.</p>
+      <ul>
+        <li>Keep the Flow tab open. It can stay in the background while you do other things.</li>
+        <li>The status line shows what is happening now, for example <em>waiting for the video, row 3 of 24</em>.</li>
+        <li>If one row fails, it is marked and the next one starts. One failure never stops the whole run.</li>
+        <li>At the end you get a summary: how many succeeded, failed or were already in the project.</li>
+      </ul>
+      <p>Chrome shows a bar saying Prompt Batch started debugging the browser. That is expected: it is how the extension presses keys in Flow, the same way you would.</p>
+      <figure><img src="../../img/guides/pb-panel-2-en.jpg" width="1280" height="800" loading="lazy" alt="A finished Prompt Batch run with its summary"><figcaption>The end of a run: a clear summary of what succeeded and what failed.</figcaption></figure>
+    </section>
+
+    <section id="files">
+      <h2>5. Find your files</h2>
+      <p>Every result lands in <code>Downloads/&lt;your folder&gt;/</code>, numbered in the order of your file: <code>01_harbour.jpg</code>, <code>02_harbour_night.jpg</code>, <code>03_harbour_clip.mp4</code>. When a prompt makes more than one result, they get <code>_1</code>, <code>_2</code>… at the end.</p>
+      <p>The first time, Chrome may ask to allow several downloads from flow.google.com. Allow it.</p>
+    </section>
+
+    <section id="tips">
+      <h2>Tips for a smooth run</h2>
+      <ul>
+        <li><strong>Start small.</strong> Run 3 to 5 prompts first, check the results, then load the full list.</li>
+        <li><strong>Give rows a name.</strong> Named results are easy to find, and a later row can use them in <code>ref</code> or <code>start_image</code>. Put pictures above the videos that animate them.</li>
+        <li><strong>Let an AI tool write the file.</strong> In the panel, open ⚙ → Tips &amp; templates → "Using AI to write your prompts?". Copy the ready prompt, add your idea, and save the answer as a .csv file.</li>
+        <li><strong>Respect Flow's limits.</strong> If Flow shows "We noticed some unusual activity", Prompt Batch stops before the next prompt. Wait about an hour before running again, and raise the wait between prompts. Never retry in a loop: your Google account matters more than one batch.</li>
+        <li><strong>Run it again safely.</strong> Rows whose result is already in the project are found and skipped, so a second run continues where the first stopped.</li>
+      </ul>
+    </section>
+
+    <section id="faq">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details><summary>Can Google Flow run a list of prompts on its own?</summary><p>Flow's prompt box takes one prompt at a time, so a list means sending them one by one. Prompt Batch does that sending for you, in your own project.</p></details>
+        <details><summary>Does it use my Flow credits?</summary><p>Yes. It works in your own Flow account, exactly as if you typed each prompt yourself. The panel shows the expected credits before the run starts.</p></details>
+        <details><summary>Is it free?</summary><p>Your first 5 results are free, with every feature. Pro removes that limit: <a href="../index.html#pricing">see the prices</a>.</p></details>
+        <details><summary>Does it work with Flow in Arabic?</summary><p>Yes. It works with Flow in English and in Arabic, and the panel itself has eight languages, Arabic included. Arabic column names work too.</p></details>
+        <details><summary>Is Prompt Batch made by Google?</summary><p>No. It is an independent tool by Mansify, not made, endorsed or supported by Google. You are responsible for following Google's terms when you use Flow.</p></details>
+      </div>
+    </section>
+  </article>
+
+  <article class="ar" lang="ar" dir="rtl">
+    <section id="short-ar">
+      <div class="box">
+        <p><strong>باختصار:</strong> يرسل مربع الأوامر في Google Flow أمرًا واحدًا في كل مرة، وعليك أن تنتظر كل نتيجة قبل أن تكتب الأمر التالي. لتشغيل قائمة كاملة، ضع أوامرك في ملف (Excel أو CSV أو نص عادي)، ودع إضافة Chrome ‏<a href="../index.html">Prompt Batch</a> ترسلها واحدًا تلو الآخر في مشروعك على Flow. تنتظر الإضافة كل صورة أو فيديو، ثم تسمّيه وتحمّله لك.</p>
+      </div>
+      <p>يعرض هذا الشرح التشغيل كاملًا، من جدول فارغ إلى مجلد فيه ملفات مسمّاة. والإضافة مجانية لأول 5 نتائج، مع كل المزايا، فتستطيع أن تجرّبها على قائمة صغيرة أولًا.</p>
+    </section>
+
+    <section id="before-ar">
+      <h2>قبل أن تبدأ</h2>
+      <ul>
+        <li><strong>متصفح Chrome على حاسوب.</strong> الإضافة تعمل في Chrome، ولا تعمل على الهاتف.</li>
+        <li><strong>حساب Google يستطيع استخدام Flow.</strong> تعمل الإضافة داخل حسابك وتستخدم رصيدك أنت في Flow، تمامًا كما لو كتبت كل أمر بنفسك.</li>
+        <li><strong>إضافة Prompt Batch</strong> من <a href="https://chromewebstore.google.com/detail/mgangjbcmdppnmlmaielildhagdlegob?utm_source=mansify.app&amp;utm_medium=website">متجر Chrome</a>. ثبّتها في شريط الأدوات ليبقى رمزها ظاهرًا.</li>
+        <li><strong>مشروع مفتوح في Flow</strong> على <span class="nw" dir="ltr">flow.google.com</span>. يصلح أي مشروع، حتى المشروع الفارغ.</li>
+      </ul>
+    </section>
+
+    <section id="file-ar">
+      <h2>1. جهّز ملفك</h2>
+      <p>أنشئ جدولًا في أوله صف للعناوين. العمود الوحيد المطلوب هو <strong>prompt</strong>، وباقي الأعمدة اختيارية، ويمكن أن تأتي بأي ترتيب. وتعمل أيضًا العناوين العربية: برومبت، نوع، مقاس، عدد، اسم، مرجع، صورة البداية.</p>
+      <div class="tbl"><table>
+        <thead><tr><th>العمود</th><th>ماذا يفعل</th><th>مثال</th></tr></thead>
+        <tbody>
+          <tr><td><code>prompt</code></td><td>النص الذي يُرسل إلى Flow (مطلوب).</td><td>ميناء هادئ عند الفجر</td></tr>
+          <tr><td><code>type</code></td><td>صورة <code>image</code> أو فيديو <code>video</code>. فارغ = النوع الافتراضي في اللوحة.</td><td dir="ltr">image</td></tr>
+          <tr><td><code>aspect</code></td><td>شكل النتيجة.</td><td dir="ltr">16:9, 9:16, 1:1</td></tr>
+          <tr><td><code>count</code></td><td>عدد النتائج لهذا الأمر (من 1 إلى 4).</td><td>2</td></tr>
+          <tr><td><code>name</code></td><td>اسم الملف، واسم النتيجة داخل Flow.</td><td dir="ltr">harbour</td></tr>
+          <tr><td><code>ref</code></td><td>صور موجودة في المشروع تُستخدم مرجعًا.</td><td dir="ltr">oil, gouache</td></tr>
+          <tr><td><code>start_image</code></td><td>صورة تتحوّل إلى فيديو (فيصبح هذا الصف فيديو).</td><td dir="ltr">harbour</td></tr>
+          <tr><td><code>model</code></td><td>نموذج Flow لهذا الصف. فارغ = الأرخص.</td><td></td></tr>
+          <tr><td><code>resolution</code>، <code>duration</code></td><td>للفيديو. فارغ = إعداد Flow الحالي.</td><td dir="ltr">720p, 8</td></tr>
+        </tbody>
+      </table></div>
+      <p>هذا ملف صغير يصنع صورتين، ثم يحوّل الأولى إلى فيديو:</p>
+      <pre dir="ltr"><code>prompt,type,aspect,name,start_image
+"A quiet harbour at dawn, fishing boats, soft mist",image,16:9,harbour,
+"The same harbour at night, lanterns on the boats",image,16:9,harbour_night,
+"Slow push-in, gentle waves, mist drifting",,16:9,harbour_clip,harbour</code></pre>
+      <p>ويصلح أيضًا ملف نصي عادي: أمر واحد في كل سطر، وتحدد إعدادات اللوحة الباقي. ويمكنك كذلك أن تلصق الأوامر في اللوحة مباشرة. يتّسع كل ملف لـ 50 أمرًا، فإذا كانت قائمتك أطول فقسّمها على أكثر من ملف.</p>
+      <p>لا تريد أن تبدأ من الصفر؟ تحت مربع الإفلات في اللوحة قالبان جاهزان: قالب فارغ، وتجربة صغيرة.</p>
+      <figure><img src="../../img/guides/pb-panel-3-ar.jpg" width="1280" height="800" loading="lazy" alt="شاشة الترحيب في Prompt Batch مع النصائح والنماذج"><figcaption>النصائح والنماذج الجاهزة داخل اللوحة (⚙ ← نصائح ونماذج).</figcaption></figure>
+    </section>
+
+    <section id="load-ar">
+      <h2>2. حمّله في Flow</h2>
+      <ol>
+        <li>افتح مشروعك في Flow.</li>
+        <li>اضغط رمز Prompt Batch في شريط أدوات Chrome، فتُفتح اللوحة الجانبية بجوار Flow.</li>
+        <li>أفلت ملفك على اللوحة، أو اضغطها لتختار الملف.</li>
+      </ol>
+      <p>يصبح كل أمر صفًا في القائمة. وفوق زر «ابدأ» تعرض اللوحة ما سيُصنع: عدد الصور والفيديوهات، والرصيد المتوقع تقريبًا. وإذا ذكر صفٌّ في <code>ref</code> أو <code>start_image</code> صورة غير موجودة في المشروع، تخبرك اللوحة بذلك قبل أن يُصنع أي شيء.</p>
+      <figure><img src="../../img/guides/pb-panel-1-ar.jpg" width="1280" height="800" loading="lazy" alt="تشغيل قيد العمل في لوحة Prompt Batch"><figcaption>تشغيل قيد العمل: كل صف مع اسم ملفه، وسطر الحالة في الأسفل.</figcaption></figure>
+    </section>
+
+    <section id="settings-ar">
+      <h2>3. راجع الإعدادات</h2>
+      <ul>
+        <li><strong>الإعدادات الافتراضية:</strong> النوع والشكل والنموذج للصفوف التي تترك هذه الأعمدة فارغة. وخيار «الأرخص (تلقائي)» يختار نموذج Flow الذي يستهلك أقل رصيد.</li>
+        <li><strong>التحميل:</strong> اسم المجلد داخل مجلد التنزيلات، والحجم الذي يُحفظ.</li>
+        <li><strong>الإرسال:</strong> مدة الانتظار بين الأوامر. لا تقل عن 10 ثوانٍ، وتتغيّر قليلًا في كل مرة، فيبقى الإيقاع هادئًا يشبه إيقاع الإنسان. والإيقاع الأبطأ أرفق بحسابك، كما في <a href="#tips-ar">النصائح</a>.</li>
+      </ul>
+    </section>
+
+    <section id="start-ar">
+      <h2>4. اضغط «ابدأ»</h2>
+      <p>اضغط <strong>«ابدأ»</strong>. وإذا كان في القائمة فيديوهات، تطلب اللوحة تأكيدك قبل استهلاك الرصيد. بعد ذلك تكتب الإضافة كل أمر في Flow، وتنتظر النتيجة، وتسمّيها، وتحمّلها، ثم تنتقل إلى الأمر التالي.</p>
+      <ul>
+        <li>اترك تبويب Flow مفتوحًا. ويمكن أن يبقى في الخلفية وأنت تعمل على شيء آخر.</li>
+        <li>يعرض سطر الحالة ما يحدث الآن، مثل: <em>في انتظار الفيديو، الصف 3 من 24</em>.</li>
+        <li>إذا فشل صف، يُعلَّم ويبدأ الصف التالي. فشل صف واحد لا يوقف القائمة كلها.</li>
+        <li>في النهاية يظهر ملخص: كم نجح، وكم فشل، وكم كان موجودًا في المشروع من قبل.</li>
+      </ul>
+      <p>سيعرض Chrome شريطًا يقول إن Prompt Batch بدأت تصحيح المتصفح. هذا متوقع: هكذا تضغط الإضافة المفاتيح في Flow، كما تفعل أنت تمامًا.</p>
+      <figure><img src="../../img/guides/pb-panel-2-ar.jpg" width="1280" height="800" loading="lazy" alt="تشغيل مكتمل في Prompt Batch مع الملخص"><figcaption>نهاية التشغيل: ملخص واضح لما نجح وما فشل.</figcaption></figure>
+    </section>
+
+    <section id="files-ar">
+      <h2>5. اعثر على ملفاتك</h2>
+      <p>تُحفظ كل نتيجة في <code dir="ltr">Downloads/&lt;مجلدك&gt;/</code>، مرقّمة بترتيب ملفك: <code dir="ltr">01_harbour.jpg</code> و<code dir="ltr">02_harbour_night.jpg</code> و<code dir="ltr">03_harbour_clip.mp4</code>. وإذا صنع الأمر أكثر من نتيجة، يُضاف إلى آخر الاسم <code dir="ltr">_1</code> و<code dir="ltr">_2</code>…</p>
+      <p>في أول مرة، قد يسألك Chrome عن السماح بتنزيل عدة ملفات من flow.google.com. اسمح بذلك.</p>
+    </section>
+
+    <section id="tips-ar">
+      <h2>نصائح لتشغيل هادئ</h2>
+      <ul>
+        <li><strong>ابدأ بقائمة صغيرة.</strong> شغّل من 3 إلى 5 أوامر أولًا، وراجع النتائج، ثم حمّل القائمة كاملة.</li>
+        <li><strong>أعطِ الصفوف أسماء.</strong> النتائج المسمّاة يسهل العثور عليها، ويستطيع صف لاحق أن يستخدمها في <code>ref</code> أو <code>start_image</code>. ضع الصور فوق الفيديوهات التي تحرّكها.</li>
+        <li><strong>اترك أداة ذكاء اصطناعي تكتب الملف.</strong> في اللوحة افتح ⚙ ← «نصائح ونماذج» ← «هل تستخدم الذكاء الاصطناعي لكتابة أوامرك؟». انسخ الأمر الجاهز، وأضف فكرتك، واحفظ الإجابة ملف .csv.</li>
+        <li><strong>احترم حدود Flow.</strong> إذا أبلغ Flow عن «نشاط غير معتاد»، تتوقف الإضافة قبل الأمر التالي. انتظر نحو ساعة قبل التشغيل مرة أخرى، وزِد مدة الانتظار بين الأوامر. ولا تُعِد المحاولة مرارًا: حسابك في Google أهم من أي قائمة.</li>
+        <li><strong>أعِد التشغيل بأمان.</strong> الصفوف التي توجد نتيجتها في المشروع تُكتشف وتُتخطّى، فيكمل التشغيل الثاني من حيث توقف الأول.</li>
+      </ul>
+    </section>
+
+    <section id="faq-ar">
+      <h2>أسئلة</h2>
+      <div class="faq">
+        <details><summary>هل يستطيع Google Flow تشغيل قائمة أوامر وحده؟</summary><p>يأخذ مربع الأوامر في Flow أمرًا واحدًا في كل مرة، فتشغيل قائمة يعني إرسال أوامرها واحدًا تلو الآخر. وPrompt Batch تتولى هذا الإرسال عنك، داخل مشروعك.</p></details>
+        <details><summary>هل تستخدم رصيدي في Flow؟</summary><p>نعم. تعمل داخل حسابك في Flow، تمامًا كما لو كتبت كل أمر بنفسك. وتعرض اللوحة الرصيد المتوقع قبل بدء التشغيل.</p></details>
+        <details><summary>هل هي مجانية؟</summary><p>أول 5 نتائج مجانية، مع كل المزايا. والنسخة الاحترافية تزيل هذا الحد: <a href="../index.html#pricing">اطّلع على الأسعار</a>.</p></details>
+        <details><summary>هل تعمل مع Flow باللغة العربية؟</summary><p>نعم. تعمل مع Flow بالإنجليزية وبالعربية، واللوحة نفسها بثماني لغات منها العربية. وتعمل أيضًا عناوين الأعمدة العربية.</p></details>
+        <details><summary>هل صنعت Google إضافة Prompt Batch؟</summary><p>لا. إنها أداة مستقلة من Mansify، لم تصنعها Google ولا تعتمدها ولا تدعمها. وأنت مسؤول عن الالتزام بشروط Google عند استخدام Flow.</p></details>
+      </div>
+    </section>
+  </article>
+</main>
+
+<section class="block wrap guide-cta">
+  <div class="pvid-wrap rv">
+    <a class="pvid en" href="https://youtu.be/D94U4ePladc" data-yt="D94U4ePladc" target="_blank" rel="noopener"><img src="../../img/pb-video-en.jpg" width="1280" height="720" loading="lazy" alt="Watch the Prompt Batch tutorial"></a>
+    <a class="pvid ar" href="https://youtu.be/sWJLdTrwzoQ" data-yt="sWJLdTrwzoQ" target="_blank" rel="noopener"><img src="../../img/pb-video-ar.jpg" width="1280" height="720" loading="lazy" alt="شاهد شرح Prompt Batch"></a>
+    <p class="pvid-note"><span class="en">See a full run in 2 minutes. The video loads from YouTube when you press play.</span><span class="ar">شاهد تشغيلًا كاملًا في دقيقتين. يُحمَّل الفيديو من YouTube عندما تضغط التشغيل.</span></p>
+  </div>
+  <div class="cta rv">
+    <a class="btn accent" href="https://chromewebstore.google.com/detail/mgangjbcmdppnmlmaielildhagdlegob?utm_source=mansify.app&amp;utm_medium=website"><span class="en">Add to Chrome, free</span><span class="ar">أضِفها إلى Chrome مجانًا</span><svg class="arr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <a class="btn line" href="../index.html"><span class="en">About Prompt Batch</span><span class="ar">عن Prompt Batch</span></a>
+  </div>
+</section>
+
+<section class="finale" id="contact">
+  <div class="aurora a"></div>
+  <div class="wrap">
+    <p class="slogan rv" data-split><span class="en">Questions? <span class="serif">Just ask.</span></span><span class="ar">لديك سؤال؟ <span class="serif">راسلنا.</span></span></p>
+    <div class="contact rv">
+      <a class="mail spot-card" href="mailto:support@mansify.app?subject=Prompt%20Batch">
+        <span><small><span class="en">Help with Prompt Batch</span><span class="ar">المساعدة في Prompt Batch</span></small><strong>support@mansify.app</strong></span>
+        <span class="circ"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+      <a class="mail spot-card" href="../index.html">
+        <span><small><span class="en">The extension</span><span class="ar">الإضافة</span></small><strong>Prompt Batch</strong></span>
+        <span class="circ"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+    </div>
+  </div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wm-outline" x="-5%" y="-10%" width="110%" height="120%"><feMorphology in="SourceGraphic" operator="dilate" radius="1.3" result="d"/><feComposite in="d" in2="SourceGraphic" operator="out"/></filter></svg>
+  <div class="wordmark" aria-hidden="true">mansify</div>
+  <!-- layout:footer -->
+  <footer class="site-foot">
+    <div class="wrap fgrid">
+      <div class="fbrand">
+        <a class="logo" href="../../index.html" aria-label="Mansify home"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M8.5 22V11l7.5 8 7.5-8v11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.2"/></svg>Mansify</a>
+        <p><span class="en">An independent software studio.</span><span class="ar">استوديو برمجيات مستقل.</span></p>
+      </div>
+      <div class="fcol"><h4>Mansify</h4><a href="../../index.html#products"><span class="en">Products</span><span class="ar">المنتجات</span></a><a href="../../index.html#approach"><span class="en">Approach</span><span class="ar">طريقتنا</span></a><a href="mailto:contact@mansify.app"><span class="en">Contact</span><span class="ar">تواصل</span></a></div>
+      <div class="fcol"><h4><span class="en">Legal</span><span class="ar">قانوني</span></h4><a href="../../privacy/index.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a><a href="../../terms/index.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></div>
+    </div>
+    <div class="wrap fbase"><span dir="ltr">© 2026 Mansify</span></div>
+  </footer>
+  <!-- /layout:footer -->
+</section>
+
+<script src="../../assets/site.js"></script>
+</body>
+</html>

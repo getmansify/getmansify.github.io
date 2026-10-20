@@ -347,10 +347,11 @@ html[dir="rtl"] .price { text-align: right; }
 @keyframes seat-spin { to { --seat-a: 360deg; } }
 @keyframes seat-halo { 0%, 100% { box-shadow: 0 0 0 transparent; } 50% { box-shadow: 0 0 18px -4px color-mix(in srgb, var(--spark) 55%, transparent); } }
 .seats .hot { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; }
-.seats .hot svg { width: 20px; height: 20px; flex: none; fill: none; stroke: var(--spark); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.seats .hot svg { width: 20px; height: 20px; flex: none; fill: none; stroke: var(--spark); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; animation: seat-wiggle 3s ease-in-out infinite; }
+@keyframes seat-wiggle { 0%, 78%, 100% { transform: rotate(0) scale(1); } 83% { transform: rotate(-14deg) scale(1.12); } 88% { transform: rotate(11deg) scale(1.12); } 93% { transform: rotate(-6deg) scale(1.05); } }
 .seats .hot [data-p="seatsText"] { color: var(--text); }
 .seats .end { color: var(--muted); font-weight: 600; font-size: 13px; white-space: nowrap; }
-@media (prefers-reduced-motion: reduce) { .plan .seats .top, .plan .seats .top::before { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .plan .seats .top, .plan .seats .top::before, .seats .hot svg { animation: none; } }
 .plan ul { margin-bottom: 26px; }
 .buy .soon, .buy.is-soon .go { display: none; }
 .buy.is-soon .soon { display: inline; }

@@ -285,6 +285,7 @@ footer a:hover { color: var(--hero-text); }
 .p-hero h1 { font-size: clamp(40px, 6.2vw, 76px); margin: 18px 0; }
 html[lang="ar"] .p-hero h1 { font-size: clamp(36px, 5.4vw, 64px); }
 .p-hero .lead { margin: 0 0 28px; }
+.p-meta { margin: -12px 0 28px; font-size: 14px; font-weight: 600; color: var(--hero-muted); }
 .p-hero .cta { justify-content: flex-start; }
 .crumbs { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--hero-muted); }
 .crumbs a { text-decoration: none; } .crumbs a:hover { color: var(--hero-text); }

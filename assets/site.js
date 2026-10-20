@@ -179,13 +179,11 @@
       set('was', launch == null ? null : m(p.lifetime));
       $$('[data-p="offer"]').forEach((e) => { e.hidden = launch == null; });
       const seats = $('[data-p="seats"]');
-      const count = Number.isInteger(p.launchTotal) && Number.isInteger(p.launchLeft) && p.launchTotal > 0;
+      // 2026-10-20: no coupon count on the site any more, only "Limited coupons" + the end date (the panel keeps its count).
       if (seats) {
-        seats.hidden = !(launch != null && (count || !isNaN(ends)));
-        $('[data-p="seatsText"]', seats).textContent = count ? (l === 'ar' ? 'بقي ' + p.launchLeft + ' من ' + p.launchTotal + ' قسيمة إطلاق' : p.launchLeft + ' of ' + p.launchTotal + ' launch coupons left') : '';
+        seats.hidden = launch == null;
+        $('[data-p="seatsText"]', seats).textContent = l === 'ar' ? 'قسائم محدودة' : 'Limited coupons';
         $('[data-p="seatsEnd"]', seats).textContent = isNaN(ends) ? '' : (l === 'ar' ? 'ينتهي ' : 'Ends ') + new Date(ends).toLocaleDateString(l === 'ar' ? 'ar-EG' : 'en-US', { month: 'long', day: 'numeric', timeZone: 'UTC' });
-        $('.bar', seats).hidden = !count;
-        if (count) $('.bar i', seats).style.width = Math.round((p.launchLeft / p.launchTotal) * 100) + '%';
       }
       buy(launch != null ? p.coupon : '');
     };
@@ -226,6 +224,31 @@
     });
     fetch(priceBox.dataset.prices, { cache: 'no-cache' }).then((r) => r.json()).then((j) => { p = j; render(root.lang); }).catch(() => {});
     langListeners.push(render);
+  }
+
+  /* ---------- Prompt Batch store numbers (users + rating), read live from the Web Store by the Worker ---------- */
+  const statBox = $('[data-stats]');
+  if (statBox) {
+    let st = null;
+    // Arabic counted noun: 1 / 2 / 3–10 / 11–99 / 100+ (same rule for every number).
+    const arN = (n, f) => { const r = n % 100; return n === 1 ? f[0] : n === 2 ? f[1] : r >= 3 && r <= 10 ? n + ' ' + f[2] : r >= 11 ? n + ' ' + f[3] : n + ' ' + f[4]; };
+    const fmt = (n) => n.toLocaleString('en-US');
+    const draw = (l) => {
+      if (!st) return;
+      const u = $('[data-stat="users"]', statBox), r = $('[data-stat="rating"]', statBox);
+      if (Number.isInteger(st.users)) {
+        const n = st.users, plus = st.plus ? '+' : '';
+        u.textContent = (l === 'ar' ? (plus ? fmt(n) + '+ مستخدم' : arN(n, ['مستخدم واحد', 'مستخدمان', 'مستخدمين', 'مستخدمًا', 'مستخدم'])) : fmt(n) + plus + (n === 1 && !plus ? ' user' : ' users')) + ' · ';
+        u.hidden = false;
+      }
+      if (st.rating && st.ratings > 0) {
+        const n = st.ratings;
+        r.textContent = '★ ' + st.rating.toFixed(1) + ' (' + (l === 'ar' ? arN(n, ['تقييم واحد', 'تقييمان', 'تقييمات', 'تقييمًا', 'تقييم']) : fmt(n) + (n === 1 ? ' review' : ' reviews')) + ') · ';
+        r.hidden = false;
+      }
+    };
+    fetch(statBox.dataset.stats).then((x) => x.json()).then((j) => { st = j; draw(root.lang); }).catch(() => {});
+    langListeners.push(draw);
   }
 })();
 

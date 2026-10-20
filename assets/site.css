@@ -292,7 +292,6 @@ html[lang="ar"] .p-hero h1 { font-size: clamp(36px, 5.4vw, 64px); }
 .p-stats svg { width: 15px; height: 15px; flex: none; fill: none; stroke: var(--accent); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .p-stats svg.fill { fill: #F5B301; stroke: none; }
 .tile-stats { margin-top: 10px !important; }
-.tile-stats .p-stats { font-size: 13px; }
 .p-hero .cta { justify-content: flex-start; }
 .crumbs { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--hero-muted); }
 .crumbs a { text-decoration: none; } .crumbs a:hover { color: var(--hero-text); }

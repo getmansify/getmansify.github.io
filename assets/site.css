@@ -338,6 +338,13 @@ html[dir="rtl"] .price { text-align: right; }
 .plan-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; min-height: 30px; }
 .plan-top .offer { margin-top: 0; }
 .plan .seats { max-width: none; margin: -8px 0 22px; }
+.plan .seats .top { align-items: center; padding: 10px 14px; border-radius: 14px; border: 1px solid color-mix(in srgb, var(--spark) 45%, transparent);
+  background: color-mix(in srgb, var(--spark) 12%, transparent); }
+.seats .hot { display: inline-flex; align-items: center; gap: 8px; color: color-mix(in srgb, var(--spark) 45%, var(--text)); font-size: 14.5px; font-weight: 700; }
+.seats .hot svg { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; animation: seat-wiggle 3.2s ease-in-out infinite; }
+.seats .end { color: var(--muted); font-weight: 600; font-size: 13px; white-space: nowrap; }
+@keyframes seat-wiggle { 0%, 80%, 100% { transform: rotate(0); } 85% { transform: rotate(-12deg); } 90% { transform: rotate(10deg); } 95% { transform: rotate(-6deg); } }
+@media (prefers-reduced-motion: reduce) { .seats .hot svg { animation: none; } }
 .plan ul { margin-bottom: 26px; }
 .buy .soon, .buy.is-soon .go { display: none; }
 .buy.is-soon .soon { display: inline; }

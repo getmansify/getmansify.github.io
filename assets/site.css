@@ -285,7 +285,13 @@ footer a:hover { color: var(--hero-text); }
 .p-hero h1 { font-size: clamp(40px, 6.2vw, 76px); margin: 18px 0; }
 html[lang="ar"] .p-hero h1 { font-size: clamp(36px, 5.4vw, 64px); }
 .p-hero .lead { margin: 0 0 28px; }
-.p-meta { margin: -12px 0 28px; font-size: 14px; font-weight: 600; color: var(--hero-muted); }
+.p-stats { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; }
+.p-stats .st { display: inline-flex; align-items: center; gap: 6px; }
+.p-stats .st[hidden] { display: none; }
+.p-stats b { font-weight: 600; color: var(--text); }
+.p-stats svg { width: 17px; height: 17px; flex: none; fill: none; stroke: var(--accent); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.p-stats svg.fill { fill: #F5B301; stroke: none; }
+.tile-stats { margin-top: 10px !important; font-size: 14px; }
 .p-hero .cta { justify-content: flex-start; }
 .crumbs { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--hero-muted); }
 .crumbs a { text-decoration: none; } .crumbs a:hover { color: var(--hero-text); }

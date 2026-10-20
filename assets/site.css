@@ -346,15 +346,11 @@ html[dir="rtl"] .price { text-align: right; }
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: seat-spin 3s linear infinite; }
 @keyframes seat-spin { to { --seat-a: 360deg; } }
 @keyframes seat-halo { 0%, 100% { box-shadow: 0 0 0 transparent; } 50% { box-shadow: 0 0 18px -4px color-mix(in srgb, var(--spark) 55%, transparent); } }
-/* "Limited coupons": plain text with a light that sweeps across it (2026-10-20) */
 .seats .hot { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; }
-.seats .hot svg { width: 20px; height: 20px; flex: none; fill: none; stroke: var(--spark); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; animation: seat-glow 2.8s ease-in-out infinite; }
-.seats .hot [data-p="seatsText"] { color: var(--text); background: linear-gradient(105deg, var(--text) 42%, var(--spark) 50%, var(--text) 58%) 0 0 / 250% 100%;
-  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: seat-shine 2.8s linear infinite; }
+.seats .hot svg { width: 20px; height: 20px; flex: none; fill: none; stroke: var(--spark); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.seats .hot [data-p="seatsText"] { color: var(--text); }
 .seats .end { color: var(--muted); font-weight: 600; font-size: 13px; white-space: nowrap; }
-@keyframes seat-shine { from { background-position: 100% 0; } to { background-position: 0 0; } }
-@keyframes seat-glow { 0%, 100% { filter: drop-shadow(0 0 0 transparent); } 50% { filter: drop-shadow(0 0 6px var(--spark)); } }
-@media (prefers-reduced-motion: reduce) { .seats .hot svg, .seats .hot [data-p="seatsText"], .plan .seats .top, .plan .seats .top::before { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .plan .seats .top, .plan .seats .top::before { animation: none; } }
 .plan ul { margin-bottom: 26px; }
 .buy .soon, .buy.is-soon .go { display: none; }
 .buy.is-soon .soon { display: inline; }

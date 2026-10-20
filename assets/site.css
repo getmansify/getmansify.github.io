@@ -318,7 +318,6 @@ html[dir="rtl"] .p-shot { --ry: 6deg; }
 .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .plan { display: flex; flex-direction: column; position: relative; padding: 32px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); overflow: hidden; transition: transform .4s var(--ease), box-shadow .4s; }
 .plan:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
-.plan.pro { border-color: var(--accent); background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 7%, var(--surface)), var(--surface) 55%); }
 .plan h3 { margin: 0; font-size: 20px; }
 .price { font-size: 44px; font-weight: 700; letter-spacing: -0.04em; margin: 10px 0 2px; direction: ltr; text-align: start; }
 html[dir="rtl"] .price { text-align: right; }
@@ -338,7 +337,15 @@ html[dir="rtl"] .price { text-align: right; }
 .plan-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; min-height: 30px; }
 .plan-top .offer { margin-top: 0; }
 .plan .seats { max-width: none; margin: -8px 0 22px; }
-.plan .seats .top { align-items: center; }
+.plan .seats .top { position: relative; align-items: center; padding: 10px 14px; border-radius: 14px;
+  background: color-mix(in srgb, var(--spark) 8%, transparent); animation: seat-halo 3s ease-in-out infinite; }
+/* a light that runs around the coupon frame (2026-10-20) */
+@property --seat-a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+.plan .seats .top::before { content: ''; position: absolute; inset: 0; padding: 1.5px; border-radius: inherit; pointer-events: none;
+  background: conic-gradient(from var(--seat-a), color-mix(in srgb, var(--spark) 30%, transparent) 0deg 240deg, var(--spark) 300deg, #fff 325deg, var(--spark) 345deg, color-mix(in srgb, var(--spark) 30%, transparent) 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: seat-spin 3s linear infinite; }
+@keyframes seat-spin { to { --seat-a: 360deg; } }
+@keyframes seat-halo { 0%, 100% { box-shadow: 0 0 0 transparent; } 50% { box-shadow: 0 0 18px -4px color-mix(in srgb, var(--spark) 55%, transparent); } }
 /* "Limited coupons": plain text with a light that sweeps across it (2026-10-20) */
 .seats .hot { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; }
 .seats .hot svg { width: 20px; height: 20px; flex: none; fill: none; stroke: var(--spark); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; animation: seat-glow 2.8s ease-in-out infinite; }
@@ -347,7 +354,7 @@ html[dir="rtl"] .price { text-align: right; }
 .seats .end { color: var(--muted); font-weight: 600; font-size: 13px; white-space: nowrap; }
 @keyframes seat-shine { from { background-position: 100% 0; } to { background-position: 0 0; } }
 @keyframes seat-glow { 0%, 100% { filter: drop-shadow(0 0 0 transparent); } 50% { filter: drop-shadow(0 0 6px var(--spark)); } }
-@media (prefers-reduced-motion: reduce) { .seats .hot svg, .seats .hot [data-p="seatsText"] { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .seats .hot svg, .seats .hot [data-p="seatsText"], .plan .seats .top, .plan .seats .top::before { animation: none; } }
 .plan ul { margin-bottom: 26px; }
 .buy .soon, .buy.is-soon .go { display: none; }
 .buy.is-soon .soon { display: inline; }

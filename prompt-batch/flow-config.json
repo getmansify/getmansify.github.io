@@ -9,7 +9,8 @@
   "startSlot": [],
   "text": {
     "block": [], "fail": [], "upscale": [], "credit": [],
-    "addToPrompt": [], "uploadMedia": [], "originalSize": [], "download": []
+    "addToPrompt": [], "uploadMedia": [], "originalSize": [], "download": [],
+    "tooFast": [], "audio": [], "quota": [], "promptLost": []
   },
   "selectors": { "promptBox": [], "agentChip": [], "tile": [], "menuItem": [], "backdrop": [] }
 }

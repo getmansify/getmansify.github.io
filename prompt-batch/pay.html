@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-ar="إتمام الشراء | Prompt Batch Pro">Checkout | Prompt Batch Pro</title>
+<meta name="description" content="Buy Prompt Batch Pro by InstaPay or Vodafone Cash." data-ar="اشترِ Prompt Batch Pro عبر إنستاباي أو فودافون كاش.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#070b16">
+<script>
+/* Language before the first paint. mansify.app sends one language per address (worker.js sets <html data-only>):
+   an English address opened by someone who chose Arabic (or whose browser is Arabic) moves to ?lang=ar.
+   Elsewhere (GitHub Pages copy, local files) both languages are there: ?lang, then the saved choice, then the browser. */
+(function () { var r = document.documentElement, l = null, t = null, q = new URLSearchParams(location.search).get('lang'), only = r.getAttribute('data-only');
+  try { l = localStorage.getItem('mansify-lang'); t = localStorage.getItem('mansify-theme'); } catch (e) {}
+  if (q === 'ar' || q === 'en') { l = q; try { localStorage.setItem('mansify-lang', q); } catch (e) {} }
+  if (l !== 'ar' && l !== 'en') l = (navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en';
+  if (only === 'en' && l === 'ar' && !q) { var u = new URL(location.href); u.searchParams.set('lang', 'ar'); location.replace(u.href); }
+  if (only === 'ar' || only === 'en') l = only;
+  r.lang = l; r.dir = l === 'ar' ? 'rtl' : 'ltr'; if (t === 'light' || t === 'dark') r.dataset.theme = t; })();
+</script>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/img/mansify-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/mansify-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<!-- layout:meta -->
+<link rel="canonical" href="https://mansify.app/prompt-batch/pay" data-ar="https://mansify.app/prompt-batch/pay?lang=ar">
+<link rel="alternate" hreflang="en" href="https://mansify.app/prompt-batch/pay">
+<link rel="alternate" hreflang="ar" href="https://mansify.app/prompt-batch/pay?lang=ar">
+<link rel="alternate" hreflang="x-default" href="https://mansify.app/prompt-batch/pay">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mansify">
+<meta property="og:locale" content="en_US" data-ar="ar_AR">
+<meta property="og:title" content="Checkout | Prompt Batch Pro" data-ar="إتمام الشراء | Prompt Batch Pro">
+<meta property="og:description" content="Buy Prompt Batch Pro by InstaPay or Vodafone Cash." data-ar="اشترِ Prompt Batch Pro عبر إنستاباي أو فودافون كاش.">
+<meta property="og:url" content="https://mansify.app/prompt-batch/pay" data-ar="https://mansify.app/prompt-batch/pay?lang=ar">
+<meta property="og:image" content="https://mansify.app/img/og/prompt-batch.png" data-ar="https://mansify.app/img/og/prompt-batch-ar.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!-- /layout:meta -->
+</head>
+<body data-title-en="Checkout | Prompt Batch Pro" data-title-ar="إتمام الشراء | Prompt Batch Pro" class="has-phead phead-fixed past-head">
+<div class="progress" aria-hidden="true"></div>
+
+<!-- layout:nav -->
+<div class="nav" id="nav">
+  <div class="wrap bar">
+    <a class="logo" href="../index.html" aria-label="Mansify home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M8.5 22V11l7.5 8 7.5-8v11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.2"/></svg>
+      Mansify
+    </a>
+    <nav>
+      <a href="../index.html#products" aria-current="page"><span class="en">Products</span><span class="ar">المنتجات</span></a>
+      <a class="opt" href="../index.html#approach"><span class="en">Approach</span><span class="ar">طريقتنا</span></a>
+      <a class="opt" href="../index.html#contact"><span class="en">Contact</span><span class="ar">تواصل</span></a>
+      <button class="icon-btn" id="theme" type="button" aria-label="Switch light or dark mode">
+        <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="lang" id="lang" type="button"><span class="en">العربية</span><span class="ar">English</span></button>
+    </nav>
+  </div>
+</div>
+<!-- /layout:nav -->
+<!-- layout:phead -->
+<section class="phead wrap" id="top">
+  <div class="ph-card">
+    <div class="ph-main">
+      <a class="ph-iconlink" href="../prompt-batch/index.html"><img class="ph-icon" src="../img/prompt-batch-icon.png" width="88" height="88" alt=""></a>
+      <div class="ph-txt">
+        <span class="crumbs"><a href="../index.html#products"><span class="en">Products</span><span class="ar">المنتجات</span></a><span aria-hidden="true">/</span><span><span class="en">Prompt Batch</span><span class="ar">Prompt Batch</span></span></span>
+        <p class="ph-name"><span class="en">Prompt Batch</span><span class="ar">Prompt Batch</span> <span class="chip live"><span class="en">Available now</span><span class="ar">متاحة الآن</span></span></p>
+        <p class="ph-line"><span class="p-stats" data-stats="/api/stats"><span class="st" data-stat="users" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.3a6.5 6.5 0 0 1 3.5 5.7"/></svg><b></b></span><span class="st" data-stat="rating" hidden><svg class="fill" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.3.8-4.6 4.4 1.2 6.3L12 17l-5.7 3.1 1.2-6.3-4.6-4.4 6.3-.8z"/></svg><b></b></span><span class="st"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="en">Launched October 17, 2026</span><span class="ar">أُطلقت في 17 أكتوبر 2026</span></span></span></p>
+        <div class="ph-meta"><span class="chip"><svg class="brand" viewBox="0 0 48 48" aria-hidden="true"><path fill="#DB4437" d="M24.00 14.00L43.60 14.00A22 22 0 0 0 5.54 12.03L15.34 29.00A10 10 0 0 1 24.00 14.00Z"/><path fill="#F4B400" d="M32.66 29.00L22.86 45.97A22 22 0 0 0 43.60 14.00L24.00 14.00A10 10 0 0 1 32.66 29.00Z"/><path fill="#0F9D58" d="M15.34 29.00L5.54 12.03A22 22 0 0 0 22.86 45.97L32.66 29.00A10 10 0 0 1 15.34 29.00Z"/><circle cx="24" cy="24" r="10" fill="#fff"/><circle cx="24" cy="24" r="8" fill="#4285F4"/></svg><span class="en">Chrome extension</span><span class="ar">إضافة Chrome</span></span><span class="chip"><span class="en">Works with Google Flow</span><span class="ar">تعمل مع Google Flow</span></span></div>
+      </div>
+      <div class="ph-side"><div class="cta"><a class="btn accent" href="https://chromewebstore.google.com/detail/mgangjbcmdppnmlmaielildhagdlegob?utm_source=mansify.app&amp;utm_medium=website"><span class="en">Add to Chrome</span><span class="ar">أضِفها إلى Chrome</span><svg class="arr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="btn line" href="../prompt-batch/index.html#pricing"><span class="en">Pricing</span><span class="ar">الأسعار</span></a></div><p class="p-note"><span class="world-only"><span class="en">Free for your first 8 results · Pro from <span data-p="monthly">$6.50</span>/month or <span data-p="now">$15</span> once</span><span class="ar">مجانية لأول 8 نتائج · النسخة الاحترافية من <span data-p="monthly">$6.50</span> شهريًا أو <span data-p="now">$15</span> مرة واحدة</span></span><span class="eg-only"><span class="en">Free for your first 8 results · Pro from <span data-p="monthly">400 EGP</span>/year or <span data-p="now">750 EGP</span> once</span><span class="ar">مجانية لأول 8 نتائج · النسخة الاحترافية من <span data-p="monthly">400 جنيه</span> سنويًا أو <span data-p="now">750 جنيه</span> مرة واحدة</span></span></p></div>
+    </div>
+    <nav class="ph-tabs" aria-label="Prompt Batch"><a href="../prompt-batch/index.html#top"><span class="en">Overview</span><span class="ar">نظرة عامة</span></a><a href="../prompt-batch/index.html#pricing"><span class="en">Pricing</span><span class="ar">الأسعار</span></a><a href="../prompt-batch/index.html#guides"><span class="en">Guides</span><span class="ar">الشروحات</span></a><a href="../prompt-batch/index.html#how"><span class="en">How it works</span><span class="ar">طريقة العمل</span></a><a href="../prompt-batch/index.html#features"><span class="en">Features</span><span class="ar">المزايا</span></a><a href="../prompt-batch/index.html#faq"><span class="en">FAQ</span><span class="ar">الأسئلة</span></a><a href="../prompt-batch/index.html#support"><span class="en">Support</span><span class="ar">الدعم</span></a><a href="../prompt-batch/index.html#legal"><span class="en">Privacy and terms</span><span class="ar">الخصوصية والشروط</span></a></nav>
+  </div>
+</section>
+<!-- /layout:phead -->
+
+<main class="pay" id="pay">
+  <section class="block wrap">
+    <a class="pay-back" href="index.html#pricing"><svg class="arr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13 8H3M7 4 3 8l4 4"/></svg><span class="en">Back to prices</span><span class="ar">العودة إلى الأسعار</span></a>
+    <div class="head rv">
+      <div>
+        <span class="mono"><span class="en">Prompt Batch Pro</span><span class="ar">Prompt Batch Pro</span></span>
+        <h1 class="pay-h"><span class="en">Two steps <span class="serif">to Pro.</span></span><span class="ar">خطوتان <span class="serif">إلى Pro.</span></span></h1>
+      </div>
+      <p><span class="en">Send the amount by InstaPay or Vodafone Cash, then send the form with a picture of the transfer. We check it and your licence key appears on your order page.</span><span class="ar">حوّل المبلغ عبر إنستاباي أو فودافون كاش، ثم أرسل النموذج مع صورة من التحويل. نراجع التحويل، ثم يظهر مفتاح الترخيص في صفحة طلبك.</span></p>
+    </div>
+
+    <!-- the buyer's order page (?order=<token>) -->
+    <div class="pay-order" id="payOrder" hidden>
+      <div class="po-state" data-st="pending">
+        <span class="po-ic" aria-hidden="true">⏳</span>
+        <h2><span class="en">We received your order</span><span class="ar">استلمنا طلبك</span></h2>
+        <p><span class="en">We review transfers quickly. Keep this page open: your licence key appears here by itself, and we also send it to your email.</span><span class="ar">نراجع التحويلات بسرعة. أبقِ هذه الصفحة مفتوحة: سيظهر مفتاح الترخيص فيها تلقائيًا، ونرسله أيضًا إلى بريدك.</span></p>
+        <p class="pay-fast" data-fbnote hidden><span class="en">Want it even faster? Send us your order number on our Facebook page and we activate it right away.</span><span class="ar">تريده أسرع؟ أرسل لنا رقم طلبك على صفحتنا في فيسبوك، فنفعّله فورًا.</span></p>
+        <a class="btn line pay-fb" data-fb hidden target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg><span class="en">Message us on Facebook</span><span class="ar">راسلنا على فيسبوك</span></a>
+      </div>
+      <div class="po-state" data-st="approved">
+        <span class="po-ic ok" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+        <h2><span class="en">Your Pro licence is ready</span><span class="ar">ترخيص Pro جاهز</span></h2>
+        <div class="po-key"><code id="poKey" dir="ltr"></code><button class="btn line" type="button" id="poCopy"><span class="en">Copy</span><span class="ar">نسخ</span></button></div>
+        <p class="po-exp" id="poExp" hidden></p>
+        <p><span class="en">In Chrome, open the Prompt Batch side panel, press ⚙ then <b>Pro &amp; licence</b>, paste the key and press <b>Activate Pro</b>. The key works on 2 computers.</span><span class="ar">في Chrome افتح لوحة Prompt Batch، واضغط ⚙ ثم <b>Pro والترخيص</b>، والصق المفتاح واضغط <b>فعّل Pro</b>. يعمل المفتاح على جهازين.</span></p>
+        <a class="btn accent" href="thanks.html"><span class="en">See the activation steps</span><span class="ar">اعرض خطوات التفعيل</span></a>
+      </div>
+      <div class="po-state" data-st="rejected">
+        <span class="po-ic bad" aria-hidden="true">!</span>
+        <h2><span class="en">We could not confirm this transfer</span><span class="ar">لم نتمكن من تأكيد هذا التحويل</span></h2>
+        <p class="po-reason" id="poReason" hidden></p>
+        <p><span class="en">If you did pay, send the form again with a clear picture of the transfer, or write to support@mansify.app.</span><span class="ar">إن كنت قد دفعت، فأرسل النموذج مرة أخرى مع صورة واضحة من التحويل، أو راسلنا على support@mansify.app.</span></p>
+        <a class="btn accent" href="pay.html"><span class="en">Send the form again</span><span class="ar">أرسل النموذج مرة أخرى</span></a>
+      </div>
+      <p class="po-meta" id="poMeta"></p>
+    </div>
+
+    <div class="pay-flow" id="payFlow">
+      <!-- the plan picked on the pricing card (?plan=yearly|lifetime) -->
+      <div class="pay-plan rv">
+        <img src="../img/prompt-batch-icon.png" width="48" height="48" alt="">
+        <div class="pay-plan-txt">
+          <b><span class="en">Prompt Batch Pro · </span><span class="ar">Prompt Batch Pro · </span><span data-eg="planName"></span></b>
+          <span class="pay-small" data-eg="planSub"></span>
+        </div>
+        <div class="pay-plan-price"><s data-eg="was" hidden></s> <b data-eg="amountBig"></b></div>
+        <a class="pay-change" href="index.html#pricing"><span class="en">Change plan</span><span class="ar">غيّر الخطة</span></a>
+      </div>
+
+      <!-- 2. pay -->
+      <div class="pay-step rv">
+        <h3><span class="dot">1</span><span class="en">Send <b data-eg="amount"></b></span><span class="ar">حوّل <b data-eg="amount"></b></span></h3>
+        <div class="pay-methods">
+          <div class="pm" id="pmInsta">
+            <div class="pm-info">
+              <div class="pm-h"><img class="pm-logo" src="../img/pay/instapay.png" alt="" onerror="this.remove()"><b>InstaPay</b><span class="pm-tag"><span class="en">Instant bank transfer</span><span class="ar">تحويل بنكي فوري</span></span></div>
+              <ul class="pm-feat">
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span class="en">From any bank account or Meeza card</span><span class="ar">من أي حساب بنكي أو بطاقة ميزة</span></li>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span class="en">The money arrives at once</span><span class="ar">يصل المبلغ فورًا</span></li>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span class="en">Scan the code or open the link: our account is filled in for you</span><span class="ar">امسح الرمز أو افتح الرابط، فيظهر حسابنا جاهزًا</span></li>
+              </ul>
+              <p class="pm-amount"><span class="en">Amount: <b data-eg="amount"></b></span><span class="ar">المبلغ: <b data-eg="amount"></b></span></p>
+              <div class="pm-row" id="instaAddrRow" hidden><code id="instaAddr" dir="ltr"></code><button class="btn line sm" type="button" data-copy="instaAddr"><span class="en">Copy</span><span class="ar">نسخ</span></button></div>
+              <div class="pm-btns"><a class="btn accent" id="instaOpen" target="_blank" rel="noopener" hidden><span class="en">Open InstaPay</span><span class="ar">افتح إنستاباي</span></a><button class="btn line pm-copy" type="button" data-copylink="insta" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg><span class="en">Copy payment link</span><span class="ar">انسخ عنوان الدفع</span></button></div>
+              <p class="pm-missing" id="instaMissing" hidden><span class="en">InstaPay details are being added. Use Vodafone Cash for now.</span><span class="ar">تفاصيل إنستاباي قيد الإضافة. استخدم فودافون كاش حاليًا.</span></p>
+            </div>
+            <div class="pm-side">
+              <button class="pm-qr" id="instaQr" type="button" aria-label="Enlarge" hidden></button>
+              <button class="pm-qr-hint" id="instaQrHint" type="button" data-qr="instaQr" hidden><span class="en">Scan the code.</span><span class="ar">امسح الرمز.</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5M10.5 7.5v6M7.5 10.5h6"/></svg><span class="en">Press to enlarge</span><span class="ar">اضغط للتكبير</span></button>
+            </div>
+          </div>
+          <div class="pm" id="pmVf">
+            <div class="pm-info">
+              <div class="pm-h"><img class="pm-logo" src="../img/pay/vodafone-cash.png" alt="" onerror="this.remove()"><b>Vodafone Cash</b><span class="pm-tag"><span class="en">Or any mobile wallet</span><span class="ar">أو أي محفظة موبايل</span></span></div>
+              <ul class="pm-feat">
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span class="en">From Vodafone Cash or any mobile wallet</span><span class="ar">من فودافون كاش أو أي محفظة موبايل</span></li>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span class="en">The money arrives at once</span><span class="ar">يصل المبلغ فورًا</span></li>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span class="en">Scan the code: the app opens on our wallet</span><span class="ar">امسح الرمز، فيفتح التطبيق على محفظتنا مباشرة</span></li>
+              </ul>
+              <p class="pm-amount"><span class="en">Amount: <b data-eg="amount"></b></span><span class="ar">المبلغ: <b data-eg="amount"></b></span></p>
+              <div class="pm-row" id="vfRow" hidden><code id="vfNum" dir="ltr"></code><button class="btn line sm" type="button" data-copy="vfNum"><span class="en">Copy</span><span class="ar">نسخ</span></button></div>
+              <div class="pm-btns"><a class="btn accent" id="vfOpen" target="_blank" rel="noopener" hidden><span class="en">Open Vodafone Cash</span><span class="ar">افتح فودافون كاش</span></a><button class="btn line pm-copy" type="button" data-copylink="vf" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg><span class="en">Copy payment link</span><span class="ar">انسخ عنوان الدفع</span></button></div>
+              <p class="pay-small" id="vfHint" hidden><span class="en">From your phone: open the Vodafone Cash app (or dial *9#), choose transfer money, and paste this number.</span><span class="ar">من الموبايل: افتح تطبيق فودافون كاش (أو اطلب ‎*9#‎)، واختر تحويل أموال، والصق هذا الرقم.</span></p>
+              <p class="pm-missing" id="vfMissing" hidden><span class="en">Vodafone Cash details are being added. Use InstaPay for now.</span><span class="ar">تفاصيل فودافون كاش قيد الإضافة. استخدم إنستاباي حاليًا.</span></p>
+            </div>
+            <div class="pm-side">
+              <button class="pm-qr" id="vfQr" type="button" aria-label="Enlarge" hidden></button>
+              <button class="pm-qr-hint" id="vfQrHint" type="button" data-qr="vfQr" hidden><span class="en">Scan the code.</span><span class="ar">امسح الرمز.</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5M10.5 7.5v6M7.5 10.5h6"/></svg><span class="en">Press to enlarge</span><span class="ar">اضغط للتكبير</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. form -->
+      <div class="pay-step rv">
+        <h3><span class="dot">2</span><span class="en">Tell us about the transfer</span><span class="ar">أرسل بيانات التحويل</span></h3>
+        <form class="sf" id="payForm" novalidate>
+          <div class="sf-row">
+            <label class="sf-field"><span class="sf-l"><span class="en">Your name</span><span class="ar">اسمك</span></span>
+              <input type="text" name="name" required minlength="2" maxlength="80" autocomplete="name"></label>
+            <label class="sf-field"><span class="sf-l"><span class="en">Your email (we send the key to it)</span><span class="ar">بريدك الإلكتروني (نرسل المفتاح إليه)</span></span>
+              <input type="email" name="email" required maxlength="254" autocomplete="email" placeholder="name@example.com" dir="ltr"></label>
+          </div>
+          <div class="sf-row">
+            <div class="sf-field"><span class="sf-l"><span class="en">You paid by</span><span class="ar">دفعت عبر</span></span>
+              <div class="pay-by" role="radiogroup">
+                <label><input type="radio" name="method" value="instapay" required><img src="../img/pay/instapay.png" alt="" onerror="this.remove()"><b>InstaPay</b></label>
+                <label><input type="radio" name="method" value="vodafone" required><img src="../img/pay/vodafone-cash.png" alt="" onerror="this.remove()"><b>Vodafone Cash</b></label>
+              </div></div>
+            <label class="sf-field"><span class="sf-l"><span class="en">The number you paid from</span><span class="ar">الرقم الذي دفعت منه</span></span>
+              <input type="tel" name="phone" required inputmode="tel" autocomplete="tel" placeholder="01xxxxxxxxx" dir="ltr"></label>
+          </div>
+          <label class="sf-field"><span class="sf-l"><span class="en">A picture of the transfer (screenshot of the confirmation)</span><span class="ar">صورة من التحويل (لقطة شاشة لرسالة التأكيد)</span></span>
+            <span class="pay-file"><input type="file" name="proof" accept="image/*" required><span class="pay-file-name" id="proofName"></span></span>
+            <img class="pay-preview" id="proofPreview" alt="" hidden></label>
+          <label class="pay-agree"><input type="checkbox" name="agree" value="yes" required><span><span class="en">I have read and agree to the <a href="terms.html" target="_blank" rel="noopener">licence terms</a> and the <a href="privacy.html" target="_blank" rel="noopener">privacy policy</a>.</span><span class="ar">قرأت <a href="terms.html" target="_blank" rel="noopener">شروط الترخيص</a> و<a href="privacy.html" target="_blank" rel="noopener">سياسة الخصوصية</a> وأوافق عليهما.</span></span></label>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <p class="pay-fast"><span class="en">We review transfers quickly, and your key appears on your order page as soon as it is approved.</span><span class="ar">نراجع التحويلات بسرعة، ويظهر مفتاحك في صفحة طلبك فور الموافقة.</span><span data-fbnote hidden><span class="en"> To speed it up, message us on our Facebook page after you send.</span><span class="ar"> ولتسريع المراجعة والتفعيل راسلنا على صفحتنا في فيسبوك بعد الإرسال.</span></span></p>
+          <div class="sf-foot">
+            <button class="btn accent" type="submit"><span class="en">Send</span><span class="ar">أرسل</span></button>
+            <p class="sf-msg" id="payMsg" role="status" aria-live="polite"></p>
+          </div>
+          <p class="sf-note"><span class="en">Your details and the picture are used only to check this payment. <a href="../privacy/index.html">Privacy</a></span><span class="ar">تُستخدم بياناتك والصورة للتحقق من هذا الدفع فقط. <a href="../privacy/index.html">الخصوصية</a></span></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<section class="finale" id="contact">
+  <div class="aurora a"></div>
+  <div class="wrap">
+    <p class="slogan rv" data-split><span class="en">Questions? <span class="serif">Just ask.</span></span><span class="ar">لديك سؤال؟ <span class="serif">راسلنا.</span></span></p>
+    <div class="contact rv">
+      <a class="mail spot-card" href="mailto:support@mansify.app?subject=Prompt%20Batch">
+        <span><small><span class="en">Help with Prompt Batch</span><span class="ar">المساعدة في Prompt Batch</span></small><strong>support@mansify.app</strong></span>
+        <span class="circ"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+      <a class="mail spot-card" href="../index.html#products">
+        <span><small><span class="en">See what else we make</span><span class="ar">اكتشف منتجاتنا الأخرى</span></small><strong><span class="en">All products</span><span class="ar">كل المنتجات</span></strong></span>
+        <span class="circ"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+    </div>
+  </div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wm-outline" x="-5%" y="-10%" width="110%" height="120%"><feMorphology in="SourceGraphic" operator="dilate" radius="1.3" result="d"/><feComposite in="d" in2="SourceGraphic" operator="out"/></filter></svg>
+  <div class="wordmark" aria-hidden="true">mansify</div>
+  <!-- layout:footer -->
+  <footer class="site-foot">
+    <div class="wrap fgrid">
+      <div class="fbrand">
+        <a class="logo" href="../index.html" aria-label="Mansify home"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M8.5 22V11l7.5 8 7.5-8v11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.2"/></svg>Mansify</a>
+        <p><span class="en">An independent software studio.</span><span class="ar">استوديو برمجيات مستقل.</span></p>
+      </div>
+      <div class="fcol"><h4>Mansify</h4><a href="../index.html#products"><span class="en">Products</span><span class="ar">المنتجات</span></a><a href="../index.html#approach"><span class="en">Approach</span><span class="ar">طريقتنا</span></a><a href="mailto:contact@mansify.app"><span class="en">Contact</span><span class="ar">تواصل</span></a></div>
+      <div class="fcol"><h4><span class="en">Legal</span><span class="ar">قانوني</span></h4><a href="../privacy/index.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a><a href="../terms/index.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></div>
+    </div>
+    <div class="wrap fbase"><span dir="ltr">© 2026 Mansify</span></div>
+  </footer>
+  <!-- /layout:footer -->
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+  // InstaPay / Vodafone Cash checkout (2026-10-24; shown only where prices are in pounds, see worker.js). Prices, InstaPay and Vodafone Cash details come from prices.json ("egp");
+  // the order goes to /api/eg-order with a smaller copy of the picture. ?order=<token> shows that order instead.
+  (function () {
+    var root = document.documentElement, $ = function (id) { return document.getElementById(id); };
+    var ar = function () { return root.lang === 'ar'; };
+    var q = new URLSearchParams(location.search), order = q.get('order');
+    var eg = root.dataset.region === 'EG';
+    // this page is only for visitors who see prices in pounds; anyone else goes back to the prices
+    if (!eg && !order) { location.replace('index.html' + location.search.replace(/[?&]plan=[^&]*/, '').replace(/^&/, '?') + '#pricing'); return; }
+    $('payFlow').hidden = !!order;
+    var pounds = function (n) { return ar() ? '\u2067' + n + ' ج.م\u2069' : n + ' EGP'; };   // RLI…PDI: "400 ج.م" reads right to left
+    var P = null, amount = { yearly: 0, lifetime: 0 };
+
+    // ----- prices + where to pay -----
+    function draw() {
+      if (!P || !P.egp) return;
+      var e = P.egp, ends = /^\d{4}-\d{2}-\d{2}$/.test(P.launchEnds || '') ? Date.parse(P.launchEnds + 'T23:59:59Z') : NaN;
+      var launch = !(P.launchLeft === 0 || (!isNaN(ends) && Date.now() > ends)) && P.coupon && P.off;
+      amount.yearly = e.yearly; amount.lifetime = launch ? Math.round(e.lifetime * (100 - P.off) / 100) : e.lifetime;
+      var set = function (k, v) { document.querySelectorAll('[data-eg="' + k + '"]').forEach(function (n) { n.hidden = v == null; if (v != null) n.textContent = v; }); };
+      var pl = plan(), life = pl === 'lifetime';
+      set('planName', life ? (ar() ? 'مدى الحياة' : 'Lifetime') : (ar() ? 'سنوي' : 'Yearly'));
+      set('planSub', life ? (ar() ? 'ادفع مرة واحدة، وتبقى Pro دائمًا · مفتاح لجهازين' : 'Pay once, Pro for good · one key for 2 computers')
+                          : (ar() ? 'Pro لمدة 12 شهرًا · مفتاح لجهازين' : 'Pro for 12 months · one key for 2 computers'));
+      set('was', life && launch ? pounds(e.lifetime) : null);
+      set('amount', pounds(amount[pl])); set('amountBig', pounds(amount[pl]));
+      // InstaPay / Vodafone Cash: a payment link (QR to scan + open button) and/or an address or number to copy
+      var linkOf = function (u) { return /^https?:\/\/[^\s"<>]+$/.test(u || '') ? u : ''; };
+      var qrFor = function (box, hint, open, link) {
+        $(open).hidden = !link; if (link) $(open).href = link;
+        $(box).hidden = $(hint).hidden = !link || !window.qrcode;
+        if (link && window.qrcode && !$(box).firstChild) { var qr = qrcode(0, 'M'); qr.addData(link); qr.make(); $(box).innerHTML = qr.createSvgTag({ cellSize: 5, margin: 2, scalable: true }); }
+      };
+      var insta = linkOf(e.instapayLink), vf = linkOf(e.vodafoneLink);
+      qrFor('instaQr', 'instaQrHint', 'instaOpen', insta);
+      qrFor('vfQr', 'vfQrHint', 'vfOpen', vf);
+      $('instaAddrRow').hidden = !e.instapay; $('instaAddr').textContent = e.instapay || '';
+      $('instaMissing').hidden = !!(insta || e.instapay);
+      $('vfRow').hidden = $('vfHint').hidden = !e.vodafone; $('vfNum').textContent = e.vodafone || '';
+      $('vfMissing').hidden = !!(vf || e.vodafone);
+      var links = { insta: insta, vf: vf };
+      document.querySelectorAll('[data-copylink]').forEach(function (b) { b.hidden = !links[b.dataset.copylink]; b.dataset.link = links[b.dataset.copylink] || ''; });
+    }
+    var PLAN = q.get('plan') === 'yearly' || q.get('plan') === 'monthly' ? 'yearly' : 'lifetime';   // from the pricing card
+    var plan = function () { return PLAN; };
+    // a pressed QR code opens bigger over the page; a press anywhere or Esc closes it
+    document.querySelectorAll('.pm-qr, [data-qr]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var b = btn.dataset.qr ? $(btn.dataset.qr) : btn;
+        var box = document.createElement('div'); box.className = 'qr-big'; box.setAttribute('role', 'dialog');
+        var card = document.createElement('div'); card.className = 'qr-big-card'; card.innerHTML = b.innerHTML;
+        var t = document.createElement('p'); t.textContent = ar() ? 'امسح الرمز بكاميرا الموبايل' : 'Scan with your phone camera'; card.appendChild(t);
+        box.appendChild(card); document.body.appendChild(box);
+        var close = function () { box.remove(); document.removeEventListener('keydown', esc); b.focus(); };
+        var esc = function (e) { if (e.key === 'Escape') close(); };
+        box.addEventListener('click', close); document.addEventListener('keydown', esc);
+      });
+    });
+    document.querySelectorAll('[data-copy]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var t = $(b.dataset.copy).textContent, done = function () { var s = b.innerHTML; b.textContent = ar() ? 'تم النسخ ✓' : 'Copied ✓'; setTimeout(function () { b.innerHTML = s; }, 1600); };
+        (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(done, function () { var r = document.createRange(); r.selectNodeContents($(b.dataset.copy)); var s = getSelection(); s.removeAllRanges(); s.addRange(r); });
+      });
+    });
+    // Facebook page (prices.json "facebook"): shown under the form and on the order page to speed up the review
+    var fb = function () {
+      var u = P && /^https:\/\/(www\.|m\.)?(facebook\.com|fb\.com|m\.me)\/[^\s"<>]+$/.test(P.facebook || '') ? P.facebook : '';
+      document.querySelectorAll('[data-fb]').forEach(function (a) { a.hidden = !u; if (u) a.href = u; });
+      document.querySelectorAll('[data-fbnote]').forEach(function (n) { n.hidden = !u; });
+    };
+    fetch('prices.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (j) { P = j; if (!order) draw(); fb(); }).catch(function () {});
+    document.querySelectorAll('[data-copylink]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var s = b.innerHTML, done = function () { b.textContent = ar() ? 'تم النسخ ✓' : 'Copied ✓'; setTimeout(function () { b.innerHTML = s; }, 1600); };
+        if (navigator.clipboard) navigator.clipboard.writeText(b.dataset.link).then(done, function () { prompt('', b.dataset.link); }); else prompt('', b.dataset.link);
+      });
+    });
+    var lb = document.getElementById('lang'); if (lb) lb.addEventListener('click', function () { setTimeout(draw, 0); });
+
+    // ----- the picture: made smaller in the browser (max 1600 px, JPEG) before sending -----
+    var proof = null, form = $('payForm'), msg = $('payMsg');
+    var say = function (en, arT, ok) { msg.textContent = ar() ? arT : en; msg.className = 'sf-msg ' + (ok ? 'ok' : 'err'); };
+    form.proof.addEventListener('change', function () {
+      proof = null; $('proofPreview').hidden = true; $('proofName').textContent = '';
+      var f = form.proof.files[0]; if (!f) return;
+      $('proofName').textContent = f.name;
+      var img = new Image(), url = URL.createObjectURL(f);
+      img.onload = function () {
+        var k = Math.min(1, 1600 / Math.max(img.naturalWidth, img.naturalHeight)), c = document.createElement('canvas');
+        c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+        c.toBlob(function (b) { proof = b; $('proofPreview').src = url; $('proofPreview').hidden = false; msg.textContent = ''; }, 'image/jpeg', 0.82);
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); say('This file is not a picture we can read. Send a JPG or PNG screenshot.', 'تعذّرت قراءة هذا الملف كصورة. أرسل لقطة شاشة بصيغة JPG أو PNG.'); };
+      img.src = url;
+    });
+
+    var ERR = {
+      email: ['Check your email address.', 'تحقق من بريدك الإلكتروني.'], name: ['Write your name.', 'اكتب اسمك.'],
+      phone: ['Write the 11-digit number you paid from (01…).', 'اكتب الرقم الذي دفعت منه، 11 رقمًا يبدأ بـ 01.'],
+      method: ['Choose how you paid: InstaPay or Vodafone Cash.', 'اختر طريقة الدفع: إنستاباي أو فودافون كاش.'],
+      proof: ['Add a picture of the transfer.', 'أضف صورة من التحويل.'],
+      agree: ['Tick the box to agree to the licence terms and privacy policy.', 'علّم على خانة الموافقة على شروط الترخيص وسياسة الخصوصية.'], proofSize: ['The picture is too large. Send a screenshot.', 'الصورة كبيرة جدًا. أرسل لقطة شاشة.'],
+      busy: ['Too many tries. Wait a minute and send again.', 'محاولات كثيرة. انتظر دقيقة ثم أرسل مرة أخرى.'],
+      country: ['This payment is not available where you are. See the prices page.', 'طريقة الدفع هذه غير متاحة من مكانك. راجع صفحة الأسعار.'],
+    };
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var phone = form.phone.value.replace(/[٠-٩]/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'.indexOf(d); }).replace(/[\s-]/g, '').replace(/^\+?20(?=1)/, '0');
+      if (form.name.value.trim().length < 2) return say(ERR.name[0], ERR.name[1]);
+      if (!form.email.checkValidity() || !form.email.value) return say(ERR.email[0], ERR.email[1]);
+      if (!/^01\d{9}$/.test(phone)) return say(ERR.phone[0], ERR.phone[1]);
+      if (!form.querySelector('input[name="method"]:checked')) return say(ERR.method[0], ERR.method[1]);
+      if (!proof) return say(ERR.proof[0], ERR.proof[1]);
+      if (!form.agree.checked) return say(ERR.agree[0], ERR.agree[1]);
+      var d = new FormData();
+      d.append('plan', plan()); d.append('method', form.querySelector('input[name="method"]:checked').value); d.append('email', form.email.value.trim());
+      d.append('name', form.name.value.trim()); d.append('phone', phone); d.append('lang', root.lang);
+      d.append('website', form.website.value); d.append('agree', form.agree.checked ? 'yes' : ''); d.append('proof', proof, 'transfer.jpg');
+      var btn = form.querySelector('button[type="submit"]'); btn.disabled = true;
+      say('Sending…', 'جارٍ الإرسال…', true);
+      fetch('/api/eg-order', { method: 'POST', body: d }).then(function (r) { return r.json(); }).then(function (j) {
+        btn.disabled = false;
+        if (!j.ok) { var m = ERR[j.error] || ['Could not send. Try again.', 'تعذّر الإرسال. حاول مرة أخرى.']; return say(m[0], m[1]); }
+        location.href = 'pay.html?order=' + encodeURIComponent(j.token) + (root.dataset.only ? '&lang=' + root.lang : '');
+      }).catch(function () { btn.disabled = false; say('No connection. Try again.', 'لا يوجد اتصال. حاول مرة أخرى.'); });
+    });
+
+    // ----- order page -----
+    if (order) {
+      $('payOrder').hidden = false;
+      var show = function (o) {
+        document.querySelectorAll('.po-state').forEach(function (n) { n.hidden = n.dataset.st !== o.status; });
+        if (o.key) $('poKey').textContent = o.key;
+        if (o.expires) { $('poExp').hidden = false; $('poExp').textContent = (ar() ? 'صالح حتى ' : 'Valid until ') + new Date(o.expires.replace(' ', 'T') + 'Z').toLocaleDateString(ar() ? 'ar-EG' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric' }); }
+        $('poReason').hidden = !o.reason; $('poReason').textContent = o.reason || '';
+        $('poMeta').textContent = (ar() ? 'الطلب رقم ' : 'Order #') + o.id + ' · ' + (o.plan === 'yearly' ? (ar() ? 'سنوي' : 'Yearly') : (ar() ? 'مدى الحياة' : 'Lifetime')) + ' · ' + pounds(o.amount);
+      };
+      var load = function () {
+        fetch('/api/eg-order?t=' + encodeURIComponent(order), { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (j) {
+          if (!j.ok) { $('poMeta').textContent = ar() ? 'لم نجد هذا الطلب.' : 'Order not found.'; document.querySelectorAll('.po-state').forEach(function (n) { n.hidden = true; }); return; }
+          show(j.order);
+          if (j.order.status === 'pending') setTimeout(load, 60000);   // the key shows without a reload
+        }).catch(function () {});
+      };
+      document.querySelectorAll('.po-state').forEach(function (n) { n.hidden = true; });
+      load();
+      $('poCopy').addEventListener('click', function () { navigator.clipboard && navigator.clipboard.writeText($('poKey').textContent).then(function () { $('poCopy').textContent = ar() ? 'تم النسخ ✓' : 'Copied ✓'; }); });
+    }
+  })();
+</script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

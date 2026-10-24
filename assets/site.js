@@ -169,11 +169,12 @@
     let p = null;
     const render = (l) => {
       if (!p) return;
-      const m = (n) => '$' + (Number.isInteger(n) ? n : n.toFixed(2));
+      // pounds when the page is opened in Egypt (prices.json then carries currency EGP, worker.js / egypt.js)
+      const m = (n) => { const v = Number.isInteger(n) ? n : Number(n).toFixed(2); return p.currency === 'EGP' ? v + ' <small class="cur">' + (l === 'ar' ? 'ج.م' : 'EGP') + '</small>' : '$' + v; };
       const ends = /^\d{4}-\d{2}-\d{2}$/.test(p.launchEnds || '') ? Date.parse(p.launchEnds + 'T23:59:59Z') : NaN;
       const done = p.launchLeft === 0 || (!isNaN(ends) && Date.now() > ends);
       const launch = !done && p.coupon && p.off ? Math.round(p.lifetime * (100 - p.off)) / 100 : null;
-      const set = (k, v) => $$('[data-p="' + k + '"]').forEach((e) => { if (v === null) e.hidden = true; else { e.hidden = false; e.textContent = v; } });
+      const set = (k, v) => $$('[data-p="' + k + '"]').forEach((e) => { if (v === null) e.hidden = true; else { e.hidden = false; e.innerHTML = v; } });   // our own numbers + the currency mark
       set('monthly', m(p.monthly)); set('off', String(p.off));
       set('now', m(launch == null ? p.lifetime : launch));
       set('was', launch == null ? null : m(p.lifetime));
@@ -188,12 +189,15 @@
       buy(launch != null ? p.coupon : '');
     };
     // Buy buttons → Freemius checkout. Closed while data-sales="soon"; open since the Web Store launch (2026-10-17).
+    // Opened in Egypt (2026-10-24): our InstaPay / Vodafone Cash page instead, monthly card = yearly plan.
+    const egypt = root.dataset.region === 'EG';
     const buy = (coupon) => {
       const open = priceBox.dataset.sales === 'open';
       $$('[data-buy]', priceBox).forEach((b) => {
         b.classList.toggle('is-soon', !open);
         if (!open) { b.removeAttribute('href'); b.setAttribute('aria-disabled', 'true'); return; }
         const cycle = b.dataset.buy;
+        if (egypt) { b.href = 'pay.html?plan=' + (cycle === 'monthly' ? 'yearly' : 'lifetime'); b.dataset.coupon = ''; b.removeAttribute('aria-disabled'); return; }
         b.href = CHECKOUT + '?billing_cycle=' + cycle + (cycle === 'lifetime' && coupon ? '&coupon=' + encodeURIComponent(coupon) : '');
         b.dataset.coupon = cycle === 'lifetime' ? coupon : '';
         b.removeAttribute('aria-disabled');
@@ -204,11 +208,11 @@
     // not load, the button's href still opens the normal checkout page.
     const fsJs = document.createElement('script');
     fsJs.src = 'https://checkout.freemius.com/js/v1/'; fsJs.async = true;
-    document.head.appendChild(fsJs);
+    if (!egypt) document.head.appendChild(fsJs);
     let fs = null;
     priceBox.addEventListener('click', (e) => {
       const b = e.target.closest('[data-buy]');
-      if (!b || !b.href || !window.FS || !FS.Checkout) return;
+      if (!b || !b.href || egypt || !window.FS || !FS.Checkout) return;
       e.preventDefault();
       fs = fs || new FS.Checkout({ product_id: '41752', plan_id: '72512', public_key: 'pk_447cfcda82eb73741cd594d593603',
                                    image: 'https://mansify.app/img/prompt-batch-icon.png' });

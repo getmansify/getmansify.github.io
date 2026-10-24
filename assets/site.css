@@ -726,7 +726,7 @@ html[dir="rtl"] .legal2 summary { padding: 22px 24px 22px 60px; }
 html[dir="rtl"] .wl input[type="email"]:placeholder-shown { text-align: right; }
 .wl input[type="email"]::placeholder { color: var(--hero-muted); }
 .wl input[type="email"]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 28%, transparent); }
-.wl .hp { position: absolute; inset-inline-start: -9999px; width: 1px; height: 1px; opacity: 0; }
+.wl .hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); opacity: 0; pointer-events: none; }   /* no offset: -9999px pushed Arabic pages sideways */
 .wl .btn { flex: none; justify-content: center; }
 .wl .btn[disabled] { opacity: .7; cursor: default; }
 .wl-msg, .wl-note { grid-column: 2; margin: 0; font-size: 13px; color: var(--hero-muted); }
@@ -760,7 +760,7 @@ html[dir="rtl"] .sf select { background-position: left 14px center; }
 html[dir="rtl"] .sf input[type="email"]:placeholder-shown { text-align: right; }
 .sf input::placeholder { color: var(--muted); }
 .sf input:focus, .sf select:focus, .sf textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
-.sf .hp { position: absolute; inset-inline-start: -9999px; width: 1px; height: 1px; opacity: 0; }
+.sf .hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); opacity: 0; pointer-events: none; }   /* no offset: -9999px pushed Arabic pages sideways */
 .sf-foot { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
 .sf .btn[disabled] { opacity: .7; cursor: default; }
 .sf-msg { margin: 0; font-size: 14px; font-weight: 600; }
@@ -816,3 +816,129 @@ html[dir="rtl"] .guides-list .more .arr { transform: scaleX(-1); }
 html[lang="ar"] .fstat h3 { letter-spacing: 0; }
 .fstat p { margin: 0; color: var(--muted); font-size: 15px; }
 @media (max-width: 600px) { .fstats { grid-template-columns: 1fr; } .fstat { padding: 22px; } }
+
+/* ---------- Prompt Batch Pro from Egypt (2026-10-24): pricing in pounds + InstaPay / Vodafone Cash page ---------- */
+/* html[data-region] is set by worker.js from where the page is opened: EG = pounds, anything else = dollars */
+html:not([data-region="EG"]) .eg-only, html[data-region="EG"] .world-only { display: none !important; }
+.pay { padding-top: 40px; }
+.pay .head .pay-h { font-size: clamp(28px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.03em; margin: 10px 0 0; }
+.pay-away, .pay-order { padding: 28px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); display: grid; gap: 12px; justify-items: start; }
+.pay-away h3, .pay-order h2 { margin: 0; letter-spacing: -0.02em; }
+.pay-away p, .pay-order p { margin: 0; color: var(--muted); line-height: 1.6; }
+.pay-away[hidden], .pay-order[hidden], .pay-flow[hidden], .po-state[hidden] { display: none; }
+.po-state { display: grid; gap: 12px; justify-items: start; }
+.po-ic { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; font-size: 26px; background: color-mix(in srgb, var(--spark) 22%, transparent); }
+.po-ic.ok { background: var(--accent); } .po-ic.ok svg { width: 26px; height: 26px; stroke: #fff; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.po-ic.bad { background: #dc2626; color: #fff; font-weight: 800; }
+.po-key { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.po-key code { font-size: 17px; padding: 12px 16px; border-radius: 14px; background: var(--paper); border: 1px solid var(--line); overflow-wrap: anywhere; }
+.po-key .btn, .pm .btn.sm { padding: 10px 18px; font-size: 14.5px; color: var(--text); background: transparent; }
+.po-reason { color: var(--text) !important; font-weight: 600; }
+.po-meta { font-size: 13px; }
+.pay-flow { display: grid; gap: 22px; }
+.pay-step { padding: 26px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); display: grid; gap: 16px; }
+.pay-step h3 { margin: 0; display: flex; align-items: center; gap: 12px; font-size: 21px; letter-spacing: -0.02em; }
+.pay-step h3 .dot { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: #fff; font-size: 15px; flex: none; }
+.pay-step h3 b { color: var(--accent); }
+.pay-small { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.6; }
+.pay-plans { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.pp { position: relative; display: grid; gap: 6px; padding: 18px 20px; border-radius: 18px; border: 1.5px solid var(--line); background: var(--paper); cursor: pointer; transition: border-color .2s, box-shadow .2s; }
+.pp input { position: absolute; opacity: 0; pointer-events: none; }
+.pp:has(input:checked) { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent); }
+.pp:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+.pp-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.pp-off { font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: color-mix(in srgb, var(--spark) 30%, transparent); color: var(--soon-text); }
+.pp-off[hidden] { display: none; }
+.pp-price { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; }
+.pp-price s { font-size: 17px; font-weight: 500; color: var(--muted); }
+.pp-sub { font-size: 13.5px; color: var(--muted); }
+.pay-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: stretch; }
+.pm-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.pm-btns .btn { padding: 11px 18px; font-size: 14.5px; }
+.pm .btn.line.pm-copy { color: var(--text); background: transparent; }
+.pm-copy svg, .pay-fb svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.pm-copy[hidden], .pay-fb[hidden], [data-fbnote][hidden] { display: none !important; }
+.pay-plan { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding: 18px 22px; border-radius: var(--radius); background: var(--surface); border: 1.5px solid var(--accent); }
+.pay-plan img { border-radius: 12px; }
+.pay-plan-txt { display: grid; gap: 2px; flex: 1; min-width: 180px; }
+.pay-plan-txt b { font-size: 18px; }
+.pay-plan-price { font-size: 26px; font-weight: 800; } .pay-plan-price s { font-size: 16px; font-weight: 500; color: var(--muted); }
+.pay-change { font-size: 14px; color: var(--link); }
+.pay-by { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pay-by label { position: relative; display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-radius: 14px; border: 1.5px solid var(--line); background: var(--paper); cursor: pointer; transition: border-color .2s, box-shadow .2s; }
+.pay-by input { position: absolute; opacity: 0; pointer-events: none; }
+.pay-by label:has(input:checked) { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent); }
+.pay-by label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+.pay-by label::after { content: ""; margin-inline-start: auto; width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--line); flex: none; }
+.pay-by label:has(input:checked)::after { border: 5px solid var(--accent); }
+.pay-by img { height: 28px; width: auto; max-width: 80px; object-fit: contain; border-radius: 6px; }
+.pay-fast { margin: 0; padding: 12px 14px; border-radius: 14px; font-size: 14px; line-height: 1.6; background: color-mix(in srgb, var(--accent) 9%, transparent); }
+.pay-order .pay-fast { color: var(--text); }
+.pm { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding: 20px 24px; border-radius: 18px; border: 1px solid var(--line); background: var(--paper); }
+.pm-info { display: grid; gap: 12px; justify-items: start; min-width: 0; }
+.pm-side { display: grid; gap: 8px; justify-items: center; text-align: center; }
+.pm-side:not(:has(.pm-qr:not([hidden]))) { display: none; }
+.pm-feat { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; font-size: 14.5px; }
+.pm-feat li { display: flex; gap: 8px; align-items: flex-start; }
+.pm-feat svg { width: 16px; height: 16px; flex: none; margin-top: 3px; stroke: var(--accent); stroke-width: 2.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.pm-amount { margin: 0; font-size: 15px; } .pm-amount b { color: var(--accent); }
+.pm-h { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 18px; }
+.pm-tag { font-size: 12.5px; color: var(--muted); }
+.pm-logo { height: 34px; width: auto; max-width: 110px; border-radius: 8px; object-fit: contain; }   /* img/pay/: the official logos, sent by Khaled */
+.pm-qr { width: 168px; height: 168px; padding: 8px; border-radius: 14px; background: #fff; }
+.pm-qr svg { width: 100%; height: 100%; display: block; }
+.pm-qr[hidden], .pm-row[hidden], .pm-qr-hint[hidden], .pm-missing[hidden], .pm .btn[hidden], .pay-small[hidden] { display: none; }
+.pm-qr-hint, .pm-missing { margin: 0; font-size: 13px; color: var(--muted); }
+@media (pointer: coarse) and (max-width: 720px) { .pm-side { display: none !important; } }   /* on the phone itself the open button is enough */
+.pm-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.pm-row code { font-size: 18px; font-weight: 700; padding: 8px 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+.sf input[type="text"]:not(.hp), .sf input[type="tel"] { width: 100%; font: inherit; font-size: 16px; color: var(--text); background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; }
+html[dir="rtl"] .sf input[type="tel"]:placeholder-shown { text-align: right; }
+.sf input[type="text"]:focus, .sf input[type="tel"]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
+.pay-file { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.pay-file input { font: inherit; font-size: 14px; color: var(--muted); }
+.pay-file-name { font-size: 13px; color: var(--muted); }
+.pay-preview { max-width: 220px; max-height: 260px; border-radius: 12px; border: 1px solid var(--line); }
+.pay-preview[hidden] { display: none; }
+.pay-step, .pay-step > *, .pay .sf-field, .pay .sf input, .pay .sf select { min-width: 0; }
+@media (max-width: 1080px) { .pm { grid-template-columns: 1fr; } .pm-side { justify-items: start; } }
+@media (max-width: 760px) { .pay-plans, .pay-methods, .pay .sf-row, .pay-by { grid-template-columns: 1fr; } .pay-step, .pay-away, .pay-order { padding: 20px; } }
+.pay-logos { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 12px; font-size: 13px; color: var(--muted); }
+.pay-logos .pl { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--text); font-weight: 600; }
+.pay-logos img { height: 18px; width: auto; border-radius: 4px; }
+/* payment logos sit on a small white tile so they read in dark mode too (img/pay/, from Khaled 2026-10-24) */
+.pm-logo, .pay-by img, .pay-logos img { background: #fff; padding: 3px 5px; border-radius: 7px; box-sizing: content-box; }
+.pm-logo { height: 30px; }
+/* prices in pounds (2026-10-24): Arabic reads right to left, "400 ج.م / سنويًا", with a smaller currency mark */
+html[data-region="EG"][dir="rtl"] .price, html[data-region="EG"][dir="rtl"] .pay-plan-price { direction: rtl; }
+.price .cur { font-size: .45em; font-weight: 600; color: inherit; letter-spacing: 0; margin-inline-start: 2px; }
+.price s .cur { font-size: .6em; }
+/* payment methods on one line under the buy buttons */
+.pay-logos { flex-wrap: nowrap; gap: 6px; font-size: 12px; white-space: nowrap; }
+.pay-logos .pl { padding: 4px 8px; gap: 5px; font-size: 12px; }
+.pay-logos img { height: 15px; }
+/* back to prices, top of the checkout page (2026-10-24) */
+.pay-back { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 28px; padding: 9px 16px 9px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--text); font-size: 14.5px; font-weight: 600; text-decoration: none; transition: border-color .2s, transform .25s var(--ease); }
+.pay-back:hover { border-color: color-mix(in srgb, var(--accent) 55%, transparent); }
+.pay-back .arr { transition: transform .25s var(--ease); }
+.pay-back:hover .arr { transform: translateX(-3px); }
+html[dir="rtl"] .pay-back .arr { transform: scaleX(-1); }
+html[dir="rtl"] .pay-back:hover .arr { transform: scaleX(-1) translateX(-3px); }
+/* <button class="btn"> keeps the browser's own font unless told: same font as links */
+button.btn { font: inherit; font-weight: 600; cursor: pointer; }
+.pm-btns button.btn { font-size: 14.5px; }
+/* QR codes: press to see them bigger (2026-10-24) */
+button.pm-qr { position: relative; border: 0; cursor: zoom-in; transition: transform .2s var(--ease), box-shadow .2s; box-shadow: 0 0 0 1px var(--line); }
+button.pm-qr:hover, button.pm-qr:focus-visible { transform: scale(1.04); box-shadow: 0 10px 28px -10px color-mix(in srgb, var(--accent) 60%, transparent), 0 0 0 2px var(--accent); outline: none; }
+button.pm-qr.old-badge::after { content: ""; position: absolute; inset-inline-end: -8px; bottom: -8px; width: 30px; height: 30px; border-radius: 50%; background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6'/%3E%3Cpath d='m15 15 5 5M10.5 8v5M8 10.5h5'/%3E%3C/svg%3E") center / 17px no-repeat; box-shadow: 0 4px 12px rgba(0,0,0,.25); }
+.qr-big { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 16px; background: rgba(7,11,22,.72); backdrop-filter: blur(4px); cursor: zoom-out; animation: qrIn .2s var(--ease); }
+.qr-big-card { width: min(360px, 90vw); padding: 18px; border-radius: 22px; background: #fff; text-align: center; box-shadow: 0 30px 80px rgba(0,0,0,.45); }
+.qr-big-card svg { width: 100%; height: auto; display: block; }
+.qr-big-card p { margin: 10px 0 0; color: #12141b; font-size: 15px; font-weight: 600; }
+@keyframes qrIn { from { opacity: 0; transform: scale(.96); } }
+button.pm-qr-hint { display: inline-flex; align-items: center; gap: 5px; border: 0; background: none; padding: 2px 4px; font: inherit; font-size: 13px; color: var(--muted); cursor: zoom-in; border-radius: 8px; }
+button.pm-qr-hint:hover { color: var(--accent); }
+button.pm-qr-hint svg { width: 16px; height: 16px; stroke: var(--accent); stroke-width: 2.2; fill: none; stroke-linecap: round; }
+.pay-agree { display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; line-height: 1.6; cursor: pointer; }
+.pay-agree input { width: 19px; height: 19px; margin-top: 3px; flex: none; accent-color: var(--accent); }
+.pay-agree a { color: var(--link); }

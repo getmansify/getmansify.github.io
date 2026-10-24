@@ -6,5 +6,15 @@
   "launchTotal": 100,
   "launchLeft": 100,
   "launchEnds": "2026-11-16",
-  "launchUpdated": "2026-10-17"
+  "launchUpdated": "2026-10-17",
+  "egp": {
+    "yearly": 400,
+    "lifetime": 1500,
+    "instapay": "",
+    "instapayLink": "https://ipn.eg/S/kmexelqnb/instapay/3yWcGV",
+    "vodafone": "",
+    "vodafoneLink": "http://vf.eg/vfcash?id=mt&qrId=wbHnHf"
+  },
+  "facebook": "https://www.facebook.com/profile.php?id=61595487844847",
+  "region": "world"
 }

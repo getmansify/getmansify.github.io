@@ -397,6 +397,20 @@ document.addEventListener('click', (e) => {
   try { navigator.sendBeacon('/api/click', JSON.stringify({ page: location.pathname, lang: document.documentElement.lang })); } catch {}
 });
 
+/* Campaign links (2026-10-29): a visitor who came from a post link (?utm_campaign=reddit …) keeps that name on every
+   "Add to Chrome" link, so the Web Store dashboard shows which post brought the install. Kept for this visit only. */
+(() => {
+  let c = '';
+  try {
+    c = (new URLSearchParams(location.search).get('utm_campaign') || '').replace(/[^\w-]/g, '').slice(0, 40);
+    if (c) sessionStorage.setItem('utm_campaign', c); else c = sessionStorage.getItem('utm_campaign') || '';
+  } catch {}
+  if (!c) return;
+  document.querySelectorAll('a[href*="chromewebstore.google.com"]').forEach((a) => {
+    try { const u = new URL(a.href); u.searchParams.set('utm_campaign', c); a.href = u.toString(); } catch {}
+  });
+})();
+
 /* Product video: swap the poster for the YouTube player (privacy-enhanced domain) only when the visitor presses play. */
 document.querySelectorAll('a[data-yt]').forEach((a) => a.addEventListener('click', (e) => {
   e.preventDefault();

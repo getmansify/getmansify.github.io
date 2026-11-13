@@ -175,7 +175,7 @@
       const done = p.launchLeft === 0 || (!isNaN(ends) && Date.now() > ends);
       const launch = !done && p.coupon && p.off ? Math.round(p.lifetime * (100 - p.off)) / 100 : null;
       const set = (k, v) => $$('[data-p="' + k + '"]').forEach((e) => { if (v === null) e.hidden = true; else { e.hidden = false; e.innerHTML = v; } });   // our own numbers + the currency mark
-      set('monthly', m(p.monthly)); set('off', String(p.off));
+      set('monthly', m(p.monthly)); set('off', String(p.off)); set('free', m(0));   // free card: 0 in the page's currency (2026-11-13)
       set('now', m(launch == null ? p.lifetime : launch));
       set('was', launch == null ? null : m(p.lifetime));
       $$('[data-p="offer"]').forEach((e) => { e.hidden = launch == null; });

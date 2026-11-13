@@ -1,6 +1,6 @@
 {
-  "monthly": 6.5,
-  "lifetime": 30,
+  "monthly": 4.5,
+  "lifetime": 15,
   "off": 50,
   "coupon": "LAUNCH50",
   "launchTotal": 100,
@@ -9,8 +9,8 @@
   "launchEnds": "2026-12-16",
   "launchUpdated": "2026-11-13",
   "egp": {
-    "yearly": 400,
-    "lifetime": 1500,
+    "yearly": 250,
+    "lifetime": 700,
     "instapay": "",
     "instapayLink": "https://ipn.eg/S/kmexelqnb/instapay/3yWcGV",
     "vodafone": "",

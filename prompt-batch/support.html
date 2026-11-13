@@ -1,114 +1,215 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Prompt Batch Support</title>
-<meta name="description" content="Suggestions, problems and questions about Prompt Batch.">
-<style>
-  :root {
-    --bg: #f7f7f8; --card: #ffffff; --line: #dcdce1; --text: #1b1b1f; --muted: #6b6b75; --accent: #1a5fd0;
-    color-scheme: light;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) { --bg: #0f0f10; --card: #1a1a1c; --line: #2c2c30; --text: #ececee; --muted: #9a9aa2; --accent: #8ab4ff; color-scheme: dark; }
-  }
-  :root[data-theme="dark"] { --bg: #0f0f10; --card: #1a1a1c; --line: #2c2c30; --text: #ececee; --muted: #9a9aa2; --accent: #8ab4ff; color-scheme: dark; }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif; }
-  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 56px; }
-  header { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
-  .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 18px; }
-  .brand img { width: 32px; height: 32px; border-radius: 8px; }
-  nav a { color: var(--accent); text-decoration: none; padding: 6px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); font-size: 14px; }
-  article { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 24px 22px; margin-top: 20px; }
-  h1 { font-size: 26px; line-height: 1.3; margin: 0 0 4px; }
-  h2 { font-size: 17px; margin: 26px 0 6px; }
-  .date { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
-  ul { padding-inline-start: 22px; margin: 6px 0; }
-  li { margin: 4px 0; }
-  code { font-size: 14px; background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; }
-  a { color: var(--accent); }
-  [lang="ar"] { font-family: system-ui, "Geeza Pro", Tahoma, sans-serif; }
-  form { display: flex; flex-direction: column; gap: 12px; margin-top: 14px; }
-  label { font-weight: 600; font-size: 14px; display: flex; flex-direction: column; gap: 6px; }
-  select, input, textarea { font: inherit; font-weight: 400; color: var(--text); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; width: 100%; }
-  textarea { min-height: 140px; resize: vertical; }
-  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-  button { font: inherit; font-weight: 600; border-radius: 8px; padding: 10px 18px; cursor: pointer; border: 1px solid var(--line); background: var(--card); color: var(--text); }
-  .btn { display: inline-block; text-decoration: none; font-weight: 600; border-radius: 8px; padding: 12px 20px; }
-  .btn.primary, button.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
-  .hint { color: var(--muted); font-size: 14px; }
-  .bye { background: var(--card); border: 1px solid var(--accent); border-radius: 12px; padding: 18px 22px; margin-top: 20px; }
-  .bye[hidden] { display: none; }
-  .mail { font-family: ui-monospace, Menlo, monospace; font-size: 14px; }
-
-  /* Shared site frame (same as index.html), 2026-10-16 */
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-  article { scroll-margin-top: 24px; }
-  article + article { margin-top: 48px; }
-  .site-top { background: radial-gradient(1200px 500px at 80% -10%, #1d2c52 0%, transparent 60%), #0e1526; color: #f1f3f8; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .site-top { background-color: #0b1120; } }
-  .site-top .in { max-width: 1040px; margin: 0 auto; padding: 20px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-  .site-top .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 18px; color: #f1f3f8; text-decoration: none; }
-  .site-top .brand img { width: 32px; height: 32px; border-radius: 8px; }
-  .site-top nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; }
-  .site-top nav a { color: #aab3c6; text-decoration: none; padding: 0; border: 0; background: none; }
-  .site-top nav a:hover, .site-top nav a[aria-current] { color: #f1f3f8; }
-  .langs { display: flex; gap: 8px; flex-wrap: wrap; margin: 4px 0 0; }
-  .langs a { color: var(--accent); text-decoration: none; padding: 6px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); font-size: 14px; }
-  .site-foot { margin-top: 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
-  .site-foot .in { max-width: 1040px; margin: 0 auto; padding: 24px 16px 40px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-  .site-foot nav { display: flex; gap: 16px; flex-wrap: wrap; }
-</style>
-</head>
-<body>
-<header class="site-top"><div class="in">
-  <a class="brand" href="./"><img src="icon.png" alt="">Prompt Batch</a>
-  <nav><a href="./#how">How it works</a><a href="./#pricing">Pricing</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html" aria-current="page">Support</a></nav>
-</div></header>
-<main>
-  <nav class="langs"><a href="#en">English</a><a href="#ar" lang="ar">العربية</a></nav>
-  <section id="bye" class="bye" hidden>
-    <p lang="en"><strong>Sorry to see you go.</strong> Could you tell us in one line why you removed Prompt Batch? It helps us fix what got in your way.</p>
-    <p lang="ar" dir="rtl"><strong>يؤسفنا أنك أزلتها.</strong> هل تخبرنا في سطر واحد لماذا أزلت الإضافة؟ يساعدنا ذلك على إصلاح ما أزعجك.</p>
-    <p><a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLScNJ42kjUZWxfryVLoLmSuQmg7cGTOyLn5bJ0rkrlwkukIZEw/viewform" target="_blank" rel="noopener">Tell us why · أخبرنا بالسبب</a></p>
-  </section>
-
-  <article id="en" lang="en" dir="ltr">
-    <h1>Support</h1>
-    <p>Suggestions, problems, licence questions or anything else about Prompt Batch: write to us here. Before writing about a problem, check that the extension and the Flow tab were reloaded once.</p>
-    <p class="row" style="margin-top:14px"><a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLScNJ42kjUZWxfryVLoLmSuQmg7cGTOyLn5bJ0rkrlwkukIZEw/viewform" target="_blank" rel="noopener">Open the support form</a></p>
-    <p class="hint">A short Google Form: what it is about, your email, your message. Your message reaches us directly and we reply by email.</p>
-    <h2>Or email us directly</h2>
-    <div class="row"><span class="mail" dir="ltr">khaledabdelwahab23@gmail.com</span> <button type="button" class="copy" data-done="Copied ✓">Copy</button></div>
-    <p class="hint">We usually reply within 2 working days.</p>
-  </article>
-
-  <article id="ar" lang="ar" dir="rtl">
-    <h1>الدعم</h1>
-    <p>اقتراح، أو مشكلة، أو سؤال عن الترخيص، أو أي أمر آخر يخص Prompt Batch: راسلنا من هنا. قبل الكتابة عن مشكلة، أعد تحميل الإضافة وعلامة تبويب Flow مرة واحدة.</p>
-    <p class="row" style="margin-top:14px"><a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLScNJ42kjUZWxfryVLoLmSuQmg7cGTOyLn5bJ0rkrlwkukIZEw/viewform" target="_blank" rel="noopener">افتح نموذج الدعم</a></p>
-    <p class="hint">نموذج قصير من Google: موضوع الرسالة، وبريدك الإلكتروني، ورسالتك. تصلنا رسالتك مباشرة ونرد عليك بالبريد.</p>
-    <h2>أو راسلنا مباشرة بالبريد</h2>
-    <div class="row"><span class="mail" dir="ltr">khaledabdelwahab23@gmail.com</span> <button type="button" class="copy" data-done="نُسخ ✓">نسخ</button></div>
-    <p class="hint">نرد عادةً خلال يومَي عمل.</p>
-  </article>
-</main>
-<footer class="site-foot"><div class="in">
-  <span>© 2026 Mansify</span>
-  <nav><a href="./">Home</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms &amp; refunds</a><a href="support.html">Support</a></nav>
-</div></footer>
+<title data-ar="الدعم | Prompt Batch">Support | Prompt Batch</title>
+<meta name="description" content="Get help with Prompt Batch: write to us here or by email." data-ar="احصل على المساعدة في Prompt Batch: راسلنا هنا أو عبر البريد الإلكتروني.">
+<meta name="theme-color" content="#070b16">
 <script>
-const TO = 'khaledabdelwahab23@gmail.com';
-if (new URLSearchParams(location.search).get('bye')) document.getElementById('bye').hidden = false;
-if (new URLSearchParams(location.search).get('lang') === 'ar' && !location.hash) document.getElementById('ar').scrollIntoView();
-for (const b of document.querySelectorAll('.copy')) {
-  b.addEventListener('click', async () => {
-    try { await navigator.clipboard.writeText(TO); const t = b.textContent; b.textContent = b.dataset.done; setTimeout(() => (b.textContent = t), 1500); } catch {}
-  });
-}
+/* Language before the first paint. mansify.app sends one language per address (worker.js sets <html data-only>):
+   an English address opened by someone who chose Arabic (or whose browser is Arabic) moves to ?lang=ar.
+   Elsewhere (GitHub Pages copy, local files) both languages are there: ?lang, then the saved choice, then the browser. */
+(function () { var r = document.documentElement, l = null, t = null, q = new URLSearchParams(location.search).get('lang'), only = r.getAttribute('data-only');
+  try { l = localStorage.getItem('mansify-lang'); t = localStorage.getItem('mansify-theme'); } catch (e) {}
+  if (q === 'ar' || q === 'en') { l = q; try { localStorage.setItem('mansify-lang', q); } catch (e) {} }
+  if (l !== 'ar' && l !== 'en') l = (navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en';
+  if (only === 'en' && l === 'ar' && !q) { var u = new URL(location.href); u.searchParams.set('lang', 'ar'); location.replace(u.href); }
+  if (only === 'ar' || only === 'en') l = only;
+  r.lang = l; r.dir = l === 'ar' ? 'rtl' : 'ltr'; if (t === 'light' || t === 'dark') r.dataset.theme = t; })();
 </script>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/img/mansify-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/mansify-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  /* support page only (2026-10-17) */
+  .support { padding-top: 64px; }
+  .support .bye { margin-bottom: 28px; padding: 26px 28px; border-radius: var(--radius); border: 1.5px solid color-mix(in srgb, var(--accent) 55%, transparent); background: color-mix(in srgb, var(--accent) 7%, var(--surface)); }
+  .support .bye[hidden] { display: none; }
+  .support .bye h2 { margin: 0 0 8px; font-size: 24px; letter-spacing: -0.02em; }
+  .support .bye p { margin: 0 0 16px; color: var(--muted); }
+  .support .cta { justify-content: flex-start; }
+  .sup-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; }
+  .sup-card { position: relative; padding: 30px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
+  .sup-card h2 { margin: 18px 0 10px; font-size: 24px; letter-spacing: -0.02em; }
+  .sup-card p { color: var(--muted); margin: 0 0 18px; }
+  .sup-card .hint { margin: 16px 0 0; font-size: 14px; }
+  .sup-ic { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--link); }
+  .sup-ic svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .mailrow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .mail-addr { font: 600 17px "JetBrains Mono", ui-monospace, monospace; color: var(--text); text-decoration: none; overflow-wrap: anywhere; }
+  .mailrow .btn.line { color: var(--text); background: transparent; padding: 9px 18px; font-size: 14px; }
+  .sup-links { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 28px; font-size: 15px; }
+  .sup-links a { color: var(--link); }
+  .sup-card .sf { padding: 0; border: 0; background: none; }
+  @media (max-width: 900px) { .sup-grid { grid-template-columns: 1fr; } }
+</style>
+<!-- layout:meta -->
+<link rel="canonical" href="https://mansify.app/prompt-batch/support" data-ar="https://mansify.app/prompt-batch/support?lang=ar">
+<link rel="alternate" hreflang="en" href="https://mansify.app/prompt-batch/support">
+<link rel="alternate" hreflang="ar" href="https://mansify.app/prompt-batch/support?lang=ar">
+<link rel="alternate" hreflang="x-default" href="https://mansify.app/prompt-batch/support">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mansify">
+<meta property="og:locale" content="en_US" data-ar="ar_AR">
+<meta property="og:title" content="Support | Prompt Batch" data-ar="الدعم | Prompt Batch">
+<meta property="og:description" content="Get help with Prompt Batch: write to us here or by email." data-ar="احصل على المساعدة في Prompt Batch: راسلنا هنا أو عبر البريد الإلكتروني.">
+<meta property="og:url" content="https://mansify.app/prompt-batch/support" data-ar="https://mansify.app/prompt-batch/support?lang=ar">
+<meta property="og:image" content="https://mansify.app/img/og/home.png" data-ar="https://mansify.app/img/og/home-ar.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!-- /layout:meta -->
+</head>
+<body data-title-en="Support | Prompt Batch" data-title-ar="الدعم | Prompt Batch" class="has-phead phead-fixed past-head">
+<div class="progress" aria-hidden="true"></div>
+
+<!-- layout:nav -->
+<div class="nav" id="nav">
+  <div class="wrap bar">
+    <a class="logo" href="../index.html" aria-label="Mansify home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M8.5 22V11l7.5 8 7.5-8v11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.2"/></svg>
+      Mansify
+    </a>
+    <nav>
+      <a href="../index.html#products" aria-current="page"><span class="en">Products</span><span class="ar">المنتجات</span></a>
+      <a class="opt" href="../index.html#approach"><span class="en">Approach</span><span class="ar">طريقتنا</span></a>
+      <a class="opt" href="../index.html#contact"><span class="en">Contact</span><span class="ar">تواصل</span></a>
+      <button class="icon-btn" id="theme" type="button" aria-label="Switch light or dark mode">
+        <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="lang" id="lang" type="button"><span class="en">العربية</span><span class="ar">English</span></button>
+    </nav>
+  </div>
+</div>
+<!-- /layout:nav -->
+<!-- layout:phead -->
+<section class="phead wrap" id="top">
+  <div class="ph-card">
+    <div class="ph-main">
+      <a class="ph-iconlink" href="../prompt-batch/index.html"><img class="ph-icon" src="../img/prompt-batch-icon.png" width="88" height="88" alt=""></a>
+      <div class="ph-txt">
+        <span class="crumbs"><a href="../index.html#products"><span class="en">Products</span><span class="ar">المنتجات</span></a><span aria-hidden="true">/</span><span><span class="en">Prompt Batch</span><span class="ar">Prompt Batch</span></span></span>
+        <p class="ph-name"><span class="en">Prompt Batch</span><span class="ar">Prompt Batch</span> <span class="chip live"><span class="en">Available now</span><span class="ar">متاحة الآن</span></span></p>
+        <p class="ph-line"><span class="p-stats" data-stats="/api/stats"><span class="st" data-stat="users" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.3a6.5 6.5 0 0 1 3.5 5.7"/></svg><b></b></span><span class="st" data-stat="rating" hidden><svg class="fill" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.3.8-4.6 4.4 1.2 6.3L12 17l-5.7 3.1 1.2-6.3-4.6-4.4 6.3-.8z"/></svg><b></b></span><span class="st"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="en">Launched October 17, 2026</span><span class="ar">أُطلقت في 17 أكتوبر 2026</span></span></span></p>
+        <div class="ph-meta"><span class="chip"><svg class="brand" viewBox="0 0 48 48" aria-hidden="true"><path fill="#DB4437" d="M24.00 14.00L43.60 14.00A22 22 0 0 0 5.54 12.03L15.34 29.00A10 10 0 0 1 24.00 14.00Z"/><path fill="#F4B400" d="M32.66 29.00L22.86 45.97A22 22 0 0 0 43.60 14.00L24.00 14.00A10 10 0 0 1 32.66 29.00Z"/><path fill="#0F9D58" d="M15.34 29.00L5.54 12.03A22 22 0 0 0 22.86 45.97L32.66 29.00A10 10 0 0 1 15.34 29.00Z"/><circle cx="24" cy="24" r="10" fill="#fff"/><circle cx="24" cy="24" r="8" fill="#4285F4"/></svg><span class="en">Chrome extension</span><span class="ar">إضافة Chrome</span></span><span class="chip"><span class="en">Works with Google Flow</span><span class="ar">تعمل مع Google Flow</span></span></div>
+      </div>
+      <div class="ph-side"><div class="cta"><a class="btn accent" href="https://chromewebstore.google.com/detail/mgangjbcmdppnmlmaielildhagdlegob?utm_source=mansify.app&amp;utm_medium=website"><span class="en">Add to Chrome</span><span class="ar">أضِفها إلى Chrome</span><svg class="arr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="btn line" href="../prompt-batch/index.html#pricing"><span class="en">Pricing</span><span class="ar">الأسعار</span></a></div><p class="p-note"><span class="world-only"><span class="en">Free for your first 8 results · Pro from <span data-p="monthly">$4.50</span>/month or <span data-p="now">$7.50</span> once</span><span class="ar">مجانية لأول 8 نتائج · النسخة الاحترافية من <span data-p="monthly">$4.50</span> شهريًا أو <span data-p="now">$7.50</span> مرة واحدة</span></span><span class="eg-only"><span class="en">Free for your first 8 results · Pro from <span data-p="monthly">250 EGP</span>/year or <span data-p="now">350 EGP</span> once</span><span class="ar">مجانية لأول 8 نتائج · النسخة الاحترافية من <span data-p="monthly">250 جنيه</span> سنويًا أو <span data-p="now">350 جنيه</span> مرة واحدة</span></span></p></div>
+    </div>
+    <nav class="ph-tabs" aria-label="Prompt Batch"><a href="../prompt-batch/index.html#top"><span class="en">Overview</span><span class="ar">نظرة عامة</span></a><a href="../prompt-batch/index.html#pricing"><span class="en">Pricing</span><span class="ar">الأسعار</span></a><a href="../prompt-batch/index.html#guides"><span class="en">Guides</span><span class="ar">الشروحات</span></a><a href="../prompt-batch/index.html#how"><span class="en">How it works</span><span class="ar">طريقة العمل</span></a><a href="../prompt-batch/index.html#features"><span class="en">Features</span><span class="ar">المزايا</span></a><a href="../prompt-batch/index.html#faq"><span class="en">FAQ</span><span class="ar">الأسئلة</span></a><a href="../prompt-batch/index.html#support"><span class="en">Support</span><span class="ar">الدعم</span></a><a href="../prompt-batch/index.html#legal"><span class="en">Privacy and terms</span><span class="ar">الخصوصية والشروط</span></a></nav>
+  </div>
+</section>
+<!-- /layout:phead -->
+
+<header class="hero legal-hero">
+  <div class="aurora a"></div>
+  <div class="wrap">
+    <span class="crumbs rv"><a href="../index.html#products"><span class="en">Products</span><span class="ar">المنتجات</span></a><span aria-hidden="true">/</span><a href="index.html">Prompt Batch</a><span aria-hidden="true">/</span><span><span class="en">Support</span><span class="ar">الدعم</span></span></span>
+    <a class="p-brand rv" href="index.html" style="text-decoration:none"><img src="../img/prompt-batch-icon.png" width="44" height="44" alt=""><span>Prompt Batch<small><span class="en">by Mansify</span><span class="ar">من Mansify</span></small></span></a>
+    <h1 class="rv" data-split><span class="en">We're here <span class="serif">to help.</span></span><span class="ar">نحن هنا <span class="serif">للمساعدة.</span></span></h1>
+    
+  </div>
+</header>
+
+<main class="wrap support">
+  <section class="bye" id="bye" hidden>
+    <h2><span class="en">Sorry to see you go.</span><span class="ar">يؤسفنا أنك أزلتها.</span></h2>
+    <p><span class="en">Could you tell us in one line, in the form below, why you removed Prompt Batch? It helps us fix what got in your way.</span><span class="ar">هل تخبرنا في سطر واحد، في النموذج أدناه، لماذا أزلت الإضافة؟ يساعدنا ذلك على إصلاح ما أزعجك.</span></p>
+  </section>
+  <div class="sup-grid">
+    <section class="sup-card spot-card rv">
+      <span class="sup-ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 9h8M8 12h5"/></svg></span>
+      <h2><span class="en">Write to us</span><span class="ar">راسلنا</span></h2>
+      <p><span class="en">Suggestions, problems, licence questions or anything else about Prompt Batch: write to us here. Before writing about a problem, check that the extension and the Flow tab were reloaded once.</span><span class="ar">اقتراح، أو مشكلة، أو سؤال عن الترخيص، أو أي أمر آخر يخص Prompt Batch: راسلنا من هنا. قبل الكتابة عن مشكلة، أعد تحميل الإضافة وعلامة تبويب Flow مرة واحدة.</span></p>
+<!-- support-form -->
+      <form class="sf" id="write" data-support="prompt-batch" novalidate>
+        <div class="sf-row">
+          <label class="sf-field"><span class="sf-l"><span class="en">What is it about?</span><span class="ar">ما موضوع رسالتك؟</span></span>
+            <select name="topic" required>
+              <option value="" data-en="Choose…" data-ar="اختر…" selected disabled>Choose…</option>
+              <option value="suggestion" data-en="Suggestion or idea" data-ar="اقتراح أو فكرة">Suggestion or idea</option>
+              <option value="problem" data-en="Problem or bug" data-ar="مشكلة أو عطل">Problem or bug</option>
+              <option value="licence" data-en="Pro licence or payment" data-ar="ترخيص Pro أو الدفع">Pro licence or payment</option>
+              <option value="complaint" data-en="Complaint" data-ar="شكوى">Complaint</option>
+              <option value="other" data-en="Something else" data-ar="أمر آخر">Something else</option>
+              <option value="removed" data-en="I removed the extension" data-ar="أزلت الإضافة" hidden>I removed the extension</option>
+            </select>
+          </label>
+          <label class="sf-field"><span class="sf-l"><span class="en">Your email (so we can reply)</span><span class="ar">بريدك الإلكتروني (لنرد عليك)</span></span>
+            <input type="email" name="email" required maxlength="254" autocomplete="email" placeholder="name@example.com" dir="ltr">
+          </label>
+        </div>
+        <label class="sf-field"><span class="sf-l"><span class="en">Your message</span><span class="ar">رسالتك</span></span>
+          <textarea name="message" required minlength="3" maxlength="5000" rows="6"></textarea>
+        </label>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="sf-foot">
+          <button class="btn accent" type="submit"><span class="en">Send message</span><span class="ar">أرسل الرسالة</span></button>
+          <p class="sf-msg" role="status" aria-live="polite"></p>
+        </div>
+        <p class="sf-note"><span class="en">We usually reply within 2 working days. Your message is kept only to help you. <a href="../privacy/index.html#support">Privacy</a></span><span class="ar">نرد عادةً خلال يومَي عمل، ونحتفظ برسالتك لمساعدتك فقط. <a href="../privacy/index.html#support">الخصوصية</a></span></p>
+      </form>
+<!-- /support-form -->
+    </section>
+    <section class="sup-card spot-card rv" data-d="1">
+      <span class="sup-ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+      <h2><span class="en">Or email us directly</span><span class="ar">أو راسلنا مباشرة بالبريد</span></h2>
+      <div class="mailrow"><a class="mail-addr" href="mailto:support@mansify.app?subject=Prompt%20Batch" dir="ltr">support@mansify.app</a><button type="button" class="btn line copy" data-mail="support@mansify.app"><span class="en" data-done="Copied ✓">Copy</span><span class="ar" data-done="نُسخ ✓">نسخ</span></button></div>
+      <p class="hint"><span class="en">We usually reply within 2 working days.</span><span class="ar">نرد عادةً خلال يومَي عمل.</span></p>
+    </section>
+  </div>
+  <section class="sup-links rv">
+    <a href="https://users.freemius.com/"><span class="en">Find my licence key</span><span class="ar">أين مفتاح الترخيص؟</span></a>
+    <a href="terms.html"><span class="en">Licence terms &amp; refunds</span><span class="ar">شروط الترخيص والاسترداد</span></a>
+    <a href="privacy.html"><span class="en">Privacy policy</span><span class="ar">سياسة الخصوصية</span></a>
+  </section>
+</main>
+
+<section class="finale" id="contact">
+  <div class="aurora a"></div>
+  <div class="wrap">
+    <p class="slogan rv" data-split><span class="en">Questions? <span class="serif">Just ask.</span></span><span class="ar">لديك سؤال؟ <span class="serif">راسلنا.</span></span></p>
+    <div class="contact rv">
+      <a class="mail spot-card" href="mailto:support@mansify.app?subject=Prompt%20Batch">
+        <span><small><span class="en">Help with Prompt Batch</span><span class="ar">المساعدة في Prompt Batch</span></small><strong>support@mansify.app</strong></span>
+        <span class="circ"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+      <a class="mail spot-card" href="../index.html#products">
+        <span><small><span class="en">See what else we make</span><span class="ar">اكتشف منتجاتنا الأخرى</span></small><strong><span class="en">All products</span><span class="ar">كل المنتجات</span></strong></span>
+        <span class="circ"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+    </div>
+  </div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wm-outline" x="-5%" y="-10%" width="110%" height="120%"><feMorphology in="SourceGraphic" operator="dilate" radius="1.3" result="d"/><feComposite in="d" in2="SourceGraphic" operator="out"/></filter></svg>
+  <div class="wordmark" aria-hidden="true">mansify</div>
+  <!-- layout:footer -->
+  <footer class="site-foot">
+    <div class="wrap fgrid">
+      <div class="fbrand">
+        <a class="logo" href="../index.html" aria-label="Mansify home"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M8.5 22V11l7.5 8 7.5-8v11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.2"/></svg>Mansify</a>
+        <p><span class="en">An independent software studio.</span><span class="ar">استوديو برمجيات مستقل.</span></p>
+      </div>
+      <div class="fcol"><h4>Mansify</h4><a href="../index.html#products"><span class="en">Products</span><span class="ar">المنتجات</span></a><a href="../index.html#approach"><span class="en">Approach</span><span class="ar">طريقتنا</span></a><a href="mailto:contact@mansify.app"><span class="en">Contact</span><span class="ar">تواصل</span></a></div>
+      <div class="fcol"><h4><span class="en">Legal</span><span class="ar">قانوني</span></h4><a href="../privacy/index.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a><a href="../terms/index.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></div>
+    </div>
+    <div class="wrap fbase"><span dir="ltr">© 2026 Mansify</span></div>
+  </footer>
+  <!-- /layout:footer -->
+</section>
+
+<script>
+  // ?bye=1 = opened by Chrome after the extension was removed (background.js setUninstallURL).
+  if (new URLSearchParams(location.search).get('bye')) document.getElementById('bye').hidden = false;
+  document.querySelectorAll('.copy').forEach(function (b) { b.addEventListener('click', function () {
+    navigator.clipboard.writeText(b.dataset.mail).then(function () {
+      b.querySelectorAll('[data-done]').forEach(function (s) { var t = s.textContent; s.textContent = s.dataset.done; setTimeout(function () { s.textContent = t; }, 1500); });
+    }).catch(function () {}); }); });
+</script>
+<script src="../assets/site.js"></script>
 </body>
 </html>

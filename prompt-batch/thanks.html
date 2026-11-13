@@ -1,163 +1,214 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Prompt Batch Pro Activation</title>
-<meta name="description" content="Thank you for buying Prompt Batch Pro. How to activate your licence key.">
+<title data-ar="شكرًا لك | Prompt Batch Pro">Thank you | Prompt Batch Pro</title>
+<meta name="description" content="Thank you for buying Prompt Batch Pro. How to activate your licence key." data-ar="شكرًا لشرائك Prompt Batch Pro. هذه طريقة تفعيل مفتاح الترخيص.">
 <meta name="robots" content="noindex">
-<link rel="icon" href="icon.png">
-<style>
-  /* Thank-you page after a Freemius purchase (2026-10-16). Freemius "Checkout Success Redirection" sends buyers here
-     with ?email=…&action=purchase|license_update|…; the licence key itself is not in the URL, it is in the email. */
-  :root {
-    --bg: #f5f6fa; --card: #ffffff; --line: #e1e4ee; --text: #171923; --muted: #565c70; --soft: #eceaff;
-    --accent: #5b47f5; --accent-2: #2f7bff; --ok: #1f8a4c; color-scheme: light;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) { --bg: #0c0d12; --card: #13151d; --line: #232736; --text: #eceef5; --muted: #a9aec0; --soft: #1e1b3a; --accent: #8f7bff; --accent-2: #3b8dff; --ok: #5ed492; color-scheme: dark; }
-  }
-  :root[data-theme="dark"] { --bg: #0c0d12; --card: #13151d; --line: #232736; --text: #eceef5; --muted: #a9aec0; --soft: #1e1b3a; --accent: #8f7bff; --accent-2: #3b8dff; --ok: #5ed492; color-scheme: dark; }
-  * { box-sizing: border-box; }
-  [hidden] { display: none !important; }
-  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif; }
-  [lang="ar"] { font-family: system-ui, "Geeza Pro", Tahoma, sans-serif; }
-  a { color: var(--accent); }
-
-  .site-top { background: radial-gradient(1200px 500px at 80% -10%, #2a2160 0%, transparent 60%), #0e1020; color: #f1f3f8; }
-  .site-top .in { max-width: 1040px; margin: 0 auto; padding: 20px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-  .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 18px; color: #f1f3f8; text-decoration: none; }
-  .brand img { width: 32px; height: 32px; border-radius: 8px; }
-  .switch { display: flex; gap: 6px; }
-  .switch button { font: inherit; font-size: 14px; color: #c9cde0; background: transparent; border: 1px solid #3a3f63; border-radius: 8px; padding: 5px 12px; cursor: pointer; }
-  .switch button[aria-pressed="true"] { background: #f1f3f8; color: #0e1020; border-color: #f1f3f8; }
-
-  main { max-width: 720px; margin: 0 auto; padding: 0 16px 56px; }
-  .hero { text-align: center; padding: 40px 0 8px; }
-  .tick { width: 72px; height: 72px; margin: 0 auto 18px; border-radius: 50%; display: grid; place-items: center;
-    background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: 0 10px 30px rgba(91, 71, 245, .35); }
-  .tick svg { width: 36px; height: 36px; stroke: #fff; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-  h1 { font-size: clamp(26px, 5vw, 34px); line-height: 1.25; margin: 0 0 8px; letter-spacing: -0.01em; }
-  .lead { color: var(--muted); font-size: 17px; margin: 0 auto; max-width: 32em; }
-  .lead b { color: var(--text); overflow-wrap: anywhere; }
-
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; margin-top: 24px; }
-  .card h2 { font-size: 18px; margin: 0 0 14px; }
-  ol.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
-  ol.steps li { display: grid; grid-template-columns: 32px 1fr; gap: 12px; align-items: start; }
-  .n { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font-weight: 750; font-size: 15px;
-    background: var(--soft); color: var(--accent); }
-  ol.steps b { display: block; }
-  ol.steps span { color: var(--muted); font-size: 15px; }
-  kbd { font: inherit; font-size: 14px; background: var(--soft); color: var(--text); border-radius: 6px; padding: 1px 7px; white-space: nowrap; }
-  .shot { display: block; width: 100%; max-width: 463px; height: auto; margin: 16px auto 0; border-radius: 12px; border: 1px solid var(--line); }
-
-  .help { display: grid; gap: 10px; }
-  .help p { margin: 0; color: var(--muted); font-size: 15px; }
-  .help p b { color: var(--text); }
-  .btns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
-  .btn { display: inline-block; text-decoration: none; font-weight: 650; font-size: 15px; border-radius: 10px; padding: 10px 18px; }
-  .btn.pri { background: linear-gradient(90deg, var(--accent), var(--accent-2)); color: #fff; }
-  .btn.ghost { border: 1px solid var(--line); color: var(--text); background: var(--card); }
-  .small { color: var(--muted); font-size: 14px; text-align: center; margin-top: 22px; }
-
-  .site-foot { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
-  .site-foot .in { max-width: 1040px; margin: 0 auto; padding: 24px 16px 40px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-  .site-foot nav { display: flex; gap: 16px; flex-wrap: wrap; }
-  .site-foot a { color: var(--muted); }
-</style>
+<meta name="theme-color" content="#070b16">
+<script>
+/* Language before the first paint. mansify.app sends one language per address (worker.js sets <html data-only>):
+   an English address opened by someone who chose Arabic (or whose browser is Arabic) moves to ?lang=ar.
+   Elsewhere (GitHub Pages copy, local files) both languages are there: ?lang, then the saved choice, then the browser. */
+(function () { var r = document.documentElement, l = null, t = null, q = new URLSearchParams(location.search).get('lang'), only = r.getAttribute('data-only');
+  try { l = localStorage.getItem('mansify-lang'); t = localStorage.getItem('mansify-theme'); } catch (e) {}
+  if (q === 'ar' || q === 'en') { l = q; try { localStorage.setItem('mansify-lang', q); } catch (e) {} }
+  if (l !== 'ar' && l !== 'en') l = (navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en';
+  if (only === 'en' && l === 'ar' && !q) { var u = new URL(location.href); u.searchParams.set('lang', 'ar'); location.replace(u.href); }
+  if (only === 'ar' || only === 'en') l = only;
+  r.lang = l; r.dir = l === 'ar' ? 'rtl' : 'ltr'; if (t === 'light' || t === 'dark') r.dataset.theme = t; })();
+</script>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/img/mansify-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/mansify-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<!-- layout:meta -->
+<link rel="canonical" href="https://mansify.app/prompt-batch/thanks" data-ar="https://mansify.app/prompt-batch/thanks?lang=ar">
+<link rel="alternate" hreflang="en" href="https://mansify.app/prompt-batch/thanks">
+<link rel="alternate" hreflang="ar" href="https://mansify.app/prompt-batch/thanks?lang=ar">
+<link rel="alternate" hreflang="x-default" href="https://mansify.app/prompt-batch/thanks">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mansify">
+<meta property="og:locale" content="en_US" data-ar="ar_AR">
+<meta property="og:title" content="Thank you | Prompt Batch Pro" data-ar="شكرًا لك | Prompt Batch Pro">
+<meta property="og:description" content="Thank you for buying Prompt Batch Pro. How to activate your licence key." data-ar="شكرًا لشرائك Prompt Batch Pro. هذه طريقة تفعيل مفتاح الترخيص.">
+<meta property="og:url" content="https://mansify.app/prompt-batch/thanks" data-ar="https://mansify.app/prompt-batch/thanks?lang=ar">
+<meta property="og:image" content="https://mansify.app/img/og/prompt-batch.png" data-ar="https://mansify.app/img/og/prompt-batch-ar.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!-- /layout:meta -->
 </head>
-<body>
-<header class="site-top"><div class="in">
-  <a class="brand" href="./"><img src="icon.png" alt="">Prompt Batch</a>
-  <div class="switch" role="group" aria-label="Language">
-    <button type="button" data-set="en" aria-pressed="true">English</button>
-    <button type="button" data-set="ar" lang="ar" aria-pressed="false">العربية</button>
+<body data-title-en="Thank you | Prompt Batch Pro" data-title-ar="شكرًا لك | Prompt Batch Pro" class="has-phead phead-fixed past-head">
+<div class="progress" aria-hidden="true"></div>
+
+<!-- layout:nav -->
+<div class="nav" id="nav">
+  <div class="wrap bar">
+    <a class="logo" href="../index.html" aria-label="Mansify home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M8.5 22V11l7.5 8 7.5-8v11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.2"/></svg>
+      Mansify
+    </a>
+    <nav>
+      <a href="../index.html#products" aria-current="page"><span class="en">Products</span><span class="ar">المنتجات</span></a>
+      <a class="opt" href="../index.html#approach"><span class="en">Approach</span><span class="ar">طريقتنا</span></a>
+      <a class="opt" href="../index.html#contact"><span class="en">Contact</span><span class="ar">تواصل</span></a>
+      <button class="icon-btn" id="theme" type="button" aria-label="Switch light or dark mode">
+        <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="lang" id="lang" type="button"><span class="en">العربية</span><span class="ar">English</span></button>
+    </nav>
   </div>
-</div></header>
-
-<main id="en" lang="en" dir="ltr">
-  <section class="hero">
-    <div class="tick"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
-    <h1>Thank you! Prompt Batch Pro is yours.</h1>
-    <p class="lead" data-mail>Your licence key is on its way to <b data-email>your email</b>.</p>
-    <p class="lead" data-nomail hidden>Your licence key is on its way to the email you bought with.</p>
-  </section>
-
-  <section class="card">
-    <h2>Activate Pro in 3 steps</h2>
-    <ol class="steps">
-      <li><div class="n">1</div><div><b>Copy your licence key</b><span>It's in the email from <b style="display:inline">Prompt Batch via Freemius</b>. Not in your inbox? Look in Spam or Promotions.</span></div></li>
-      <li><div class="n">2</div><div><b>Open the Pro screen</b><span>In Chrome, open the Prompt Batch side panel, then <kbd>⚙</kbd> → <kbd>Pro &amp; licence</kbd>.</span></div></li>
-      <li><div class="n">3</div><div><b>Paste the key and press Activate</b><span>Pro turns on at once. It works on up to 2 of your computers.</span></div></li>
-    </ol>
-    <img class="shot" src="img/activate.png" width="926" height="378" alt="The licence key box in the Prompt Batch panel, with the Activate button highlighted">
-  </section>
-
-  <section class="card help">
-    <h2>No email after 10 minutes?</h2>
-    <p>Your purchase also made you a <b>Freemius account</b>: your key is under <b>Licenses</b>, with your invoices. Sign in with the email you bought with and the <b>temporary password</b> from the purchase email.</p>
-    <p>No email at all? On the sign-in page press <b>Never received your password?</b> and type the email you bought with: a password is sent to you. Still nothing after that? Contact support.</p>
-    <div class="btns">
-      <a class="btn pri" href="https://users.freemius.com/">Open my account</a>
-      <a class="btn ghost" href="support.html">Contact support</a>
+</div>
+<!-- /layout:nav -->
+<!-- layout:phead -->
+<section class="phead wrap" id="top">
+  <div class="ph-card">
+    <div class="ph-main">
+      <a class="ph-iconlink" href="../prompt-batch/index.html"><img class="ph-icon" src="../img/prompt-batch-icon.png" width="88" height="88" alt=""></a>
+      <div class="ph-txt">
+        <span class="crumbs"><a href="../index.html#products"><span class="en">Products</span><span class="ar">المنتجات</span></a><span aria-hidden="true">/</span><span><span class="en">Prompt Batch</span><span class="ar">Prompt Batch</span></span></span>
+        <p class="ph-name"><span class="en">Prompt Batch</span><span class="ar">Prompt Batch</span> <span class="chip live"><span class="en">Available now</span><span class="ar">متاحة الآن</span></span></p>
+        <p class="ph-line"><span class="p-stats" data-stats="/api/stats"><span class="st" data-stat="users" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.3a6.5 6.5 0 0 1 3.5 5.7"/></svg><b></b></span><span class="st" data-stat="rating" hidden><svg class="fill" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.3.8-4.6 4.4 1.2 6.3L12 17l-5.7 3.1 1.2-6.3-4.6-4.4 6.3-.8z"/></svg><b></b></span><span class="st"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="en">Launched October 17, 2026</span><span class="ar">أُطلقت في 17 أكتوبر 2026</span></span></span></p>
+        <div class="ph-meta"><span class="chip"><svg class="brand" viewBox="0 0 48 48" aria-hidden="true"><path fill="#DB4437" d="M24.00 14.00L43.60 14.00A22 22 0 0 0 5.54 12.03L15.34 29.00A10 10 0 0 1 24.00 14.00Z"/><path fill="#F4B400" d="M32.66 29.00L22.86 45.97A22 22 0 0 0 43.60 14.00L24.00 14.00A10 10 0 0 1 32.66 29.00Z"/><path fill="#0F9D58" d="M15.34 29.00L5.54 12.03A22 22 0 0 0 22.86 45.97L32.66 29.00A10 10 0 0 1 15.34 29.00Z"/><circle cx="24" cy="24" r="10" fill="#fff"/><circle cx="24" cy="24" r="8" fill="#4285F4"/></svg><span class="en">Chrome extension</span><span class="ar">إضافة Chrome</span></span><span class="chip"><span class="en">Works with Google Flow</span><span class="ar">تعمل مع Google Flow</span></span></div>
+      </div>
+      <div class="ph-side"><div class="cta"><a class="btn accent" href="https://chromewebstore.google.com/detail/mgangjbcmdppnmlmaielildhagdlegob?utm_source=mansify.app&amp;utm_medium=website"><span class="en">Add to Chrome</span><span class="ar">أضِفها إلى Chrome</span><svg class="arr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="btn line" href="../prompt-batch/index.html#pricing"><span class="en">Pricing</span><span class="ar">الأسعار</span></a></div><p class="p-note"><span class="world-only"><span class="en">Free for your first 8 results · Pro from <span data-p="monthly">$4.50</span>/month or <span data-p="now">$7.50</span> once</span><span class="ar">مجانية لأول 8 نتائج · النسخة الاحترافية من <span data-p="monthly">$4.50</span> شهريًا أو <span data-p="now">$7.50</span> مرة واحدة</span></span><span class="eg-only"><span class="en">Free for your first 8 results · Pro from <span data-p="monthly">250 EGP</span>/year or <span data-p="now">350 EGP</span> once</span><span class="ar">مجانية لأول 8 نتائج · النسخة الاحترافية من <span data-p="monthly">250 جنيه</span> سنويًا أو <span data-p="now">350 جنيه</span> مرة واحدة</span></span></p></div>
     </div>
-  </section>
+    <nav class="ph-tabs" aria-label="Prompt Batch"><a href="../prompt-batch/index.html#top"><span class="en">Overview</span><span class="ar">نظرة عامة</span></a><a href="../prompt-batch/index.html#pricing"><span class="en">Pricing</span><span class="ar">الأسعار</span></a><a href="../prompt-batch/index.html#guides"><span class="en">Guides</span><span class="ar">الشروحات</span></a><a href="../prompt-batch/index.html#how"><span class="en">How it works</span><span class="ar">طريقة العمل</span></a><a href="../prompt-batch/index.html#features"><span class="en">Features</span><span class="ar">المزايا</span></a><a href="../prompt-batch/index.html#faq"><span class="en">FAQ</span><span class="ar">الأسئلة</span></a><a href="../prompt-batch/index.html#support"><span class="en">Support</span><span class="ar">الدعم</span></a><a href="../prompt-batch/index.html#legal"><span class="en">Privacy and terms</span><span class="ar">الخصوصية والشروط</span></a></nav>
+  </div>
+</section>
+<!-- /layout:phead -->
 
-  <p class="small">Bought the monthly plan? You can cancel any time from your account. Questions about refunds: see the <a href="terms.html">licence terms</a>.</p>
+<header class="hero thanks-hero">
+  <div class="aurora a"></div><div class="aurora b"></div>
+  <div class="wrap center">
+    <span class="crumbs rv"><a href="../index.html#products"><span class="en">Products</span><span class="ar">المنتجات</span></a><span aria-hidden="true">/</span><a href="index.html">Prompt Batch</a><span aria-hidden="true">/</span><span><span class="en">Thank you</span><span class="ar">شكرًا</span></span></span>
+    <a class="p-brand rv" href="index.html" style="text-decoration:none"><img src="../img/prompt-batch-icon.png" width="44" height="44" alt=""><span>Prompt Batch<small><span class="en">by Mansify</span><span class="ar">من Mansify</span></small></span></a>
+    <div class="tick rv" data-d="1"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
+    <h1 class="rv" data-d="1"><span class="en">Thank you! <span class="serif">Pro is yours.</span></span><span class="ar">شكرًا لك! <span class="serif">أصبحت Pro لك.</span></span></h1>
+    <p class="lead rv" data-d="2" data-mail><span class="en">Your licence key is on its way to <b data-email>your email</b>.</span><span class="ar">مفتاح الترخيص في طريقه إلى <b data-email dir="ltr">بريدك</b>.</span></p>
+    <p class="lead rv" data-d="2" data-nomail hidden><span class="en">Your licence key is on its way to the email you bought with.</span><span class="ar">مفتاح الترخيص في طريقه إلى البريد الذي اشتريت به.</span></p>
+  </div>
+</header>
+
+<main class="thanks">
+  <section class="block wrap">
+    <div class="head rv">
+      <div>
+        <span class="mono"><span class="en">Activate Pro</span><span class="ar">فعّل Pro</span></span>
+        <h2><span class="en">Three steps, <span class="serif">one minute.</span></span><span class="ar">ثلاث خطوات، <span class="serif">دقيقة واحدة.</span></span></h2>
+      </div>
+    </div>
+    <div class="act-grid">
+      <ol class="vsteps" id="vsteps">
+        <li class="vstep rv" data-step="1"><span class="dot">1</span><div class="body"><h3><span class="en">Copy your licence key</span><span class="ar">انسخ مفتاح الترخيص</span></h3><p><span class="en">It's in the email from <b>Prompt Batch via Freemius</b>. Not in your inbox? Look in Spam or Promotions.</span><span class="ar">تجده في الرسالة الواردة من <b dir="ltr">Prompt Batch via Freemius</b>. لم تجدها في البريد الوارد؟ ابحث في الرسائل غير المرغوب فيها (Spam) أو العروض.</span></p></div></li>
+        <li class="vstep rv" data-d="1" data-step="2"><span class="dot">2</span><div class="body"><h3><span class="en">Open the Pro screen</span><span class="ar">افتح شاشة Pro</span></h3><p><span class="en">In Chrome, open the Prompt Batch side panel, then <span class="nw"><kbd>⚙</kbd> → <kbd>Pro &amp; licence</kbd></span>.</span><span class="ar">في Chrome افتح اللوحة الجانبية لـ Prompt Batch، ثم <span class="nw"><kbd>⚙</kbd> ← <kbd>Pro والترخيص</kbd></span>.</span></p></div></li>
+        <li class="vstep rv" data-d="2" data-step="3"><span class="dot">3</span><div class="body"><h3><span class="en">Paste it and press Activate</span><span class="ar">الصق المفتاح واضغط «تفعيل»</span></h3><p><span class="en">Pro turns on at once. It works on up to 2 of your computers.</span><span class="ar">تعمل Pro فورًا، على جهازين من أجهزتك كحد أقصى.</span></p></div></li>
+      </ol>
+
+      <div class="act-demo rv" data-d="1" aria-hidden="true">
+        <div class="act-glow"></div>
+        <div class="act-panel" id="actPanel">
+          <div class="ap-top"><img src="../img/prompt-batch-icon.png" width="22" height="22" alt=""><b>Prompt Batch</b><span class="ap-gear"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></span></div>
+          <div class="ap-tab"><span class="en">Pro &amp; licence</span><span class="ar">Pro والترخيص</span></div>
+          <div class="ap-box">
+            <div class="ap-h"><span class="ap-ic"><svg viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M17 6l3 3"/></svg></span><b><span class="en">Already bought Pro?</span><span class="ar">اشتريت Pro بالفعل؟</span></b></div>
+            <p class="ap-hint"><span class="en">Paste the licence key from your purchase email. It starts with sk_</span><span class="ar">الصق مفتاح الترخيص من رسالة الشراء. يبدأ بـ sk_</span></p>
+            <div class="ap-field" dir="ltr"><svg viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M17 6l3 3"/></svg><span class="ap-key" id="apKey"></span><i class="ap-caret"></i><span class="ap-paste"><span class="en">Pasted</span><span class="ar">تم اللصق</span></span></div>
+            <div class="ap-btn" id="apBtn"><span class="ap-label"><span class="en">Activate Pro</span><span class="ar">فعّل Pro</span></span><span class="ap-done"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span class="en">Pro is active</span><span class="ar">Pro مفعّلة</span></span><i class="ap-ripple"></i></div>
+            <div class="ap-links"><span><span class="en">Can't find your key?</span><span class="ar">لا تجد مفتاحك؟</span></span><span><span class="en">Licence terms</span><span class="ar">شروط الترخيص</span></span></div>
+          </div>
+          <svg class="ap-cursor" id="apCursor" viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.6L10 19z"/></svg>
+        </div>
+        <div class="act-confetti" id="actConfetti"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+
+    <div class="help rv">
+      <h3><span class="en">No email after 10 minutes?</span><span class="ar">لم تصلك الرسالة بعد ١٠ دقائق؟</span></h3>
+      <p><span class="en">Your purchase also made you a <b>Freemius account</b>: your key is under <b>Licenses</b>, with your invoices. Sign in with the email you bought with and the <b>temporary password</b> from the purchase email.</span><span class="ar">أُنشئ لك مع الشراء <b>حساب في Freemius</b>: تجد المفتاح في قسم <b dir="ltr">Licenses</b> مع فواتيرك. سجّل الدخول بالبريد الذي اشتريت به و<b>كلمة المرور المؤقتة</b> الموجودة في رسالة الشراء.</span></p>
+      <p><span class="en">No email at all? On the sign-in page press <b>Never received your password?</b> and type the email you bought with: a password is sent to you. Still nothing after that? Contact support.</span><span class="ar">لم تصلك أي رسالة؟ اضغط في صفحة الدخول على <b dir="ltr">Never received your password?</b> واكتب البريد الذي اشتريت به، فتصلك كلمة مرور. وإن لم يصلك شيء بعدها، راسل الدعم.</span></p>
+      <div class="cta">
+        <a class="btn accent" href="https://users.freemius.com/"><span class="en">Open my account</span><span class="ar">افتح حسابي</span><svg class="arr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a class="btn line" href="support.html"><span class="en">Contact support</span><span class="ar">راسل الدعم</span></a>
+      </div>
+    </div>
+    <p class="note rv"><span class="en">Bought the monthly plan? You can cancel any time from your account. Questions about refunds: see the <a href="terms.html">licence terms</a>.</span><span class="ar">اشتركت في الخطة الشهرية؟ يمكنك إلغاؤها في أي وقت من حسابك. للأسئلة عن الاسترداد راجع <a href="terms.html">شروط الترخيص</a>.</span></p>
+  </section>
 </main>
 
-<main id="ar" lang="ar" dir="rtl" hidden>
-  <section class="hero">
-    <div class="tick"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
-    <h1>شكرًا لك! أصبحت Prompt Batch Pro لك.</h1>
-    <p class="lead" data-mail>مفتاح الترخيص في طريقه إلى <b data-email dir="ltr">بريدك</b>.</p>
-    <p class="lead" data-nomail hidden>مفتاح الترخيص في طريقه إلى البريد الذي اشتريت به.</p>
-  </section>
-
-  <section class="card">
-    <h2>فعّل Pro في ٣ خطوات</h2>
-    <ol class="steps">
-      <li><div class="n">١</div><div><b>انسخ مفتاح الترخيص</b><span>تجده في الرسالة الواردة من <b style="display:inline" dir="ltr">Prompt Batch via Freemius</b>. لم تجدها في البريد الوارد؟ ابحث في الرسائل غير المرغوب فيها (Spam) أو العروض.</span></div></li>
-      <li><div class="n">٢</div><div><b>افتح شاشة Pro</b><span>في Chrome افتح اللوحة الجانبية لـ Prompt Batch، ثم <kbd>⚙</kbd> ← <kbd>Pro والترخيص</kbd>.</span></div></li>
-      <li><div class="n">٣</div><div><b>الصق المفتاح واضغط «تفعيل»</b><span>تعمل Pro فورًا، على جهازين من أجهزتك كحد أقصى.</span></div></li>
-    </ol>
-    <img class="shot" src="img/activate.png" width="926" height="378" alt="خانة مفتاح الترخيص في لوحة Prompt Batch مع إبراز زر التفعيل">
-  </section>
-
-  <section class="card help">
-    <h2>لم تصلك الرسالة بعد ١٠ دقائق؟</h2>
-    <p>أُنشئ لك مع الشراء <b>حساب في Freemius</b>: تجد المفتاح في قسم <b dir="ltr">Licenses</b> مع فواتيرك. سجّل الدخول بالبريد الذي اشتريت به و<b>كلمة المرور المؤقتة</b> الموجودة في رسالة الشراء.</p>
-    <p>لم تصلك أي رسالة؟ اضغط في صفحة الدخول على <b dir="ltr">Never received your password?</b> واكتب البريد الذي اشتريت به، فتصلك كلمة مرور. وإن لم يصلك شيء بعدها، راسل الدعم.</p>
-    <div class="btns">
-      <a class="btn pri" href="https://users.freemius.com/">افتح حسابي</a>
-      <a class="btn ghost" href="support.html">راسل الدعم</a>
+<section class="finale" id="contact">
+  <div class="aurora a"></div>
+  <div class="wrap">
+    <p class="slogan rv" data-split><span class="en">Questions? <span class="serif">Just ask.</span></span><span class="ar">لديك سؤال؟ <span class="serif">راسلنا.</span></span></p>
+    <div class="contact rv">
+      <a class="mail spot-card" href="mailto:support@mansify.app?subject=Prompt%20Batch">
+        <span><small><span class="en">Help with Prompt Batch</span><span class="ar">المساعدة في Prompt Batch</span></small><strong>support@mansify.app</strong></span>
+        <span class="circ"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+      <a class="mail spot-card" href="../index.html#products">
+        <span><small><span class="en">See what else we make</span><span class="ar">اكتشف منتجاتنا الأخرى</span></small><strong><span class="en">All products</span><span class="ar">كل المنتجات</span></strong></span>
+        <span class="circ"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
     </div>
-  </section>
-
-  <p class="small">اشتركت في الخطة الشهرية؟ يمكنك إلغاؤها في أي وقت من حسابك. للأسئلة عن الاسترداد راجع <a href="terms.html">شروط الترخيص</a>.</p>
-</main>
-
-<footer class="site-foot"><div class="in">
-  <span>© 2026 Mansify</span>
-  <nav><a href="./">Home</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms &amp; refunds</a><a href="support.html">Support</a></nav>
-</div></footer>
+  </div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wm-outline" x="-5%" y="-10%" width="110%" height="120%"><feMorphology in="SourceGraphic" operator="dilate" radius="1.3" result="d"/><feComposite in="d" in2="SourceGraphic" operator="out"/></filter></svg>
+  <div class="wordmark" aria-hidden="true">mansify</div>
+  <!-- layout:footer -->
+  <footer class="site-foot">
+    <div class="wrap fgrid">
+      <div class="fbrand">
+        <a class="logo" href="../index.html" aria-label="Mansify home"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M8.5 22V11l7.5 8 7.5-8v11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.2"/></svg>Mansify</a>
+        <p><span class="en">An independent software studio.</span><span class="ar">استوديو برمجيات مستقل.</span></p>
+      </div>
+      <div class="fcol"><h4>Mansify</h4><a href="../index.html#products"><span class="en">Products</span><span class="ar">المنتجات</span></a><a href="../index.html#approach"><span class="en">Approach</span><span class="ar">طريقتنا</span></a><a href="mailto:contact@mansify.app"><span class="en">Contact</span><span class="ar">تواصل</span></a></div>
+      <div class="fcol"><h4><span class="en">Legal</span><span class="ar">قانوني</span></h4><a href="../privacy/index.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a><a href="../terms/index.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></div>
+    </div>
+    <div class="wrap fbase"><span dir="ltr">© 2026 Mansify</span></div>
+  </footer>
+  <!-- /layout:footer -->
+</section>
 
 <script>
-  // Buyer's email from Freemius' redirect (?email=…), shown as text only. Language: ?lang=ar, else the browser's.
-  const q = new URLSearchParams(location.search);
-  const email = (q.get('email') || '').trim();
-  document.querySelectorAll('[data-email]').forEach((e) => { e.textContent = email; });
-  document.querySelectorAll('[data-mail]').forEach((e) => { e.hidden = !email; });
-  document.querySelectorAll('[data-nomail]').forEach((e) => { e.hidden = !!email; });
-  const show = (l) => {
-    document.getElementById('en').hidden = l !== 'en';
-    document.getElementById('ar').hidden = l !== 'ar';
-    document.documentElement.lang = l;
-    document.querySelectorAll('.switch button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.set === l)));
-  };
-  document.querySelectorAll('.switch button').forEach((b) => b.addEventListener('click', () => show(b.dataset.set)));
-  show(q.get('lang') === 'ar' || (!q.get('lang') && /^ar\b/i.test(navigator.language || '')) ? 'ar' : 'en');
+  // Buyer's email from Freemius' redirect (?email=…), shown as text only.
+  (function () { var e = (new URLSearchParams(location.search).get('email') || '').trim();
+    document.querySelectorAll('[data-email]').forEach(function (n) { n.textContent = e; });
+    document.querySelectorAll('[data-mail]').forEach(function (n) { n.hidden = !e; });
+    document.querySelectorAll('[data-nomail]').forEach(function (n) { n.hidden = !!e; }); })();
 </script>
+<script>
+  // Activation demo: loops the 3 steps (copy key → open Pro screen → paste + Activate) in sync with the list.
+  (function () {
+    var steps = document.getElementById('vsteps'), panel = document.getElementById('actPanel');
+    if (!steps || !panel) return;
+    var keyEl = document.getElementById('apKey'), KEY = 'sk_7Hq2mRb9xY9Lm', timers = [];
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function at(ms, f) { timers.push(setTimeout(f, ms)); }
+    function step(n) { steps.dataset.on = n; panel.dataset.phase = n;
+      steps.querySelectorAll('.vstep').forEach(function (li) { var k = +li.dataset.step; li.classList.toggle('on', k === n); li.classList.toggle('past', k < n); }); }
+    function run() {
+      timers.forEach(clearTimeout); timers = [];
+      panel.classList.remove('pasted', 'clicked', 'done', 'gear', 'typing'); keyEl.textContent = '';
+      step(1);
+      at(400, function () { panel.classList.add('typing'); });
+      for (var i = 1; i <= KEY.length; i++) (function (i) { at(500 + i * 70, function () { keyEl.textContent = KEY.slice(0, i); }); })(i);
+      at(600 + KEY.length * 70, function () { panel.classList.add('pasted'); panel.classList.remove('typing'); });
+      at(2900, function () { step(2); panel.classList.add('gear'); });
+      at(5000, function () { step(3); panel.classList.remove('gear'); });
+      at(5900, function () { panel.classList.add('clicked'); });
+      at(6300, function () { panel.classList.add('done'); });
+      at(9800, run);
+    }
+    if (reduce) { keyEl.textContent = KEY; panel.classList.add('pasted', 'done'); step(3); return; }
+    var started = false;
+    new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting && !started) { started = true; run(); } }); }, { threshold: .35 }).observe(panel);
+  })();
+</script>
+<script src="../assets/site.js"></script>
 </body>
 </html>

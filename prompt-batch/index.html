@@ -1,199 +1,688 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Prompt Batch by Mansify</title>
-<meta name="description" content="Prompt Batch is a Chrome extension that runs a file of prompts in Google Flow and downloads every image and video for you.">
-<link rel="icon" href="icon.png">
-<style>
-  :root {
-    --bg: #f7f7f8; --card: #ffffff; --line: #dcdce1; --text: #1b1b1f; --muted: #6b6b75; --accent: #1a5fd0;
-    --accent-ink: #ffffff; --ok: #1f8a4c; --hero: #0e1526; --hero-text: #f1f3f8; --hero-muted: #aab3c6;
-    color-scheme: light;
+<title data-ar="Prompt Batch من Mansify | شغّل ملفًا كاملًا من الأوامر في Google Flow">Prompt Batch by Mansify | Run a whole file of prompts in Google Flow</title>
+<meta name="description" content="Prompt Batch is a Chrome extension. Load your prompts from Excel, CSV or text, press Start, and it makes every image and video in your Google Flow project, then renames and downloads each one for you." data-ar="إضافة Chrome تشغّل ملفًا كاملًا من الأوامر في Google Flow: حمّل أوامرك من Excel أو CSV أو نص، واضغط «ابدأ»، فتُصنع كل صورة وكل فيديو وتُسمّى وتُحمَّل لك.">
+<meta name="theme-color" content="#070b16">
+<script>
+/* Language before the first paint. mansify.app sends one language per address (worker.js sets <html data-only>):
+   an English address opened by someone who chose Arabic (or whose browser is Arabic) moves to ?lang=ar.
+   Elsewhere (GitHub Pages copy, local files) both languages are there: ?lang, then the saved choice, then the browser. */
+(function () { var r = document.documentElement, l = null, t = null, q = new URLSearchParams(location.search).get('lang'), only = r.getAttribute('data-only');
+  try { l = localStorage.getItem('mansify-lang'); t = localStorage.getItem('mansify-theme'); } catch (e) {}
+  if (q === 'ar' || q === 'en') { l = q; try { localStorage.setItem('mansify-lang', q); } catch (e) {} }
+  if (l !== 'ar' && l !== 'en') l = (navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en';
+  if (only === 'en' && l === 'ar' && !q) { var u = new URL(location.href); u.searchParams.set('lang', 'ar'); location.replace(u.href); }
+  if (only === 'ar' || only === 'en') l = only;
+  r.lang = l; r.dir = l === 'ar' ? 'rtl' : 'ltr'; if (t === 'light' || t === 'dark') r.dataset.theme = t; })();
+</script>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/img/mansify-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/mansify-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<!-- layout:meta -->
+<link rel="canonical" href="https://mansify.app/prompt-batch/" data-ar="https://mansify.app/prompt-batch/?lang=ar">
+<link rel="alternate" hreflang="en" href="https://mansify.app/prompt-batch/">
+<link rel="alternate" hreflang="ar" href="https://mansify.app/prompt-batch/?lang=ar">
+<link rel="alternate" hreflang="x-default" href="https://mansify.app/prompt-batch/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mansify">
+<meta property="og:locale" content="en_US" data-ar="ar_AR">
+<meta property="og:title" content="Prompt Batch by Mansify | Run a whole file of prompts in Google Flow" data-ar="Prompt Batch من Mansify | شغّل ملفًا كاملًا من الأوامر في Google Flow">
+<meta property="og:description" content="Prompt Batch is a Chrome extension. Load your prompts from Excel, CSV or text, press Start, and it makes every image and video in your Google Flow project, then renames and downloads each one for you." data-ar="إضافة Chrome تشغّل ملفًا كاملًا من الأوامر في Google Flow: حمّل أوامرك من Excel أو CSV أو نص، واضغط «ابدأ»، فتُصنع كل صورة وكل فيديو وتُسمّى وتُحمَّل لك.">
+<meta property="og:url" content="https://mansify.app/prompt-batch/" data-ar="https://mansify.app/prompt-batch/?lang=ar">
+<meta property="og:image" content="https://mansify.app/img/og/prompt-batch.png" data-ar="https://mansify.app/img/og/prompt-batch-ar.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "SoftwareApplication",
+   "@id": "https://mansify.app/prompt-batch/#app",
+   "name": "Prompt Batch",
+   "url": "https://mansify.app/prompt-batch/",
+   "description": "Prompt Batch is a Chrome extension. Load your prompts from Excel, CSV or text, press Start, and it makes every image and video in your Google Flow project, then renames and downloads each one for you.",
+   "applicationCategory": "BrowserApplication",
+   "applicationSubCategory": "Chrome extension",
+   "operatingSystem": "Google Chrome",
+   "browserRequirements": "Requires Google Chrome",
+   "installUrl": "https://chromewebstore.google.com/detail/prompt-batch/mgangjbcmdppnmlmaielildhagdlegob",
+   "image": "https://mansify.app/img/prompt-batch-icon.png",
+   "screenshot": "https://mansify.app/img/prompt-batch.jpg",
+   "inLanguage": [
+    "en",
+    "ar"
+   ],
+   "publisher": {
+    "@id": "https://mansify.app/#org"
+   },
+   "sameAs": [
+    "https://chromewebstore.google.com/detail/prompt-batch/mgangjbcmdppnmlmaielildhagdlegob"
+   ],
+   "offers": [
+    {
+     "@type": "Offer",
+     "name": "Free (first 8 results)",
+     "price": "0.00",
+     "priceCurrency": "USD",
+     "url": "https://mansify.app/prompt-batch/#pricing"
+    },
+    {
+     "@type": "Offer",
+     "name": "Pro monthly",
+     "price": "4.50",
+     "priceCurrency": "USD",
+     "url": "https://mansify.app/prompt-batch/#pricing"
+    },
+    {
+     "@type": "Offer",
+     "name": "Pro lifetime",
+     "price": "15.00",
+     "priceCurrency": "USD",
+     "url": "https://mansify.app/prompt-batch/#pricing"
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Mansify",
+     "item": "https://mansify.app/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Prompt Batch",
+     "item": "https://mansify.app/prompt-batch/"
+    }
+   ]
+  },
+  {
+   "@type": "VideoObject",
+   "name": "How to use Prompt Batch: run a whole file of prompts in Google Flow",
+   "description": "Load prompts from Excel, CSV or text, press Start, and Prompt Batch makes, names and downloads every result in Google Flow.",
+   "inLanguage": "en",
+   "uploadDate": "2026-10-17T12:00:00+00:00",
+   "thumbnailUrl": "https://mansify.app/img/pb-video-en.jpg",
+   "embedUrl": "https://www.youtube-nocookie.com/embed/D94U4ePladc",
+   "url": "https://www.youtube.com/watch?v=D94U4ePladc",
+   "publisher": {
+    "@id": "https://mansify.app/#org"
+   }
+  },
+  {
+   "@type": "VideoObject",
+   "name": "طريقة استخدام Prompt Batch: شغّل ملفًا كاملًا من الأوامر في Google Flow",
+   "description": "حمّل أوامرك من Excel أو CSV أو نص، واضغط «ابدأ»، فتصنع Prompt Batch كل نتيجة في Google Flow وتسمّيها وتحمّلها.",
+   "inLanguage": "ar",
+   "uploadDate": "2026-10-17T12:00:00+00:00",
+   "thumbnailUrl": "https://mansify.app/img/pb-video-ar.jpg",
+   "embedUrl": "https://www.youtube-nocookie.com/embed/sWJLdTrwzoQ",
+   "url": "https://www.youtube.com/watch?v=sWJLdTrwzoQ",
+   "publisher": {
+    "@id": "https://mansify.app/#org"
+   }
+  },
+  {
+   "@type": "Organization",
+   "@id": "https://mansify.app/#org",
+   "name": "Mansify",
+   "url": "https://mansify.app/",
+   "logo": "https://mansify.app/img/mansify-icon-180.png",
+   "email": "contact@mansify.app",
+   "sameAs": [
+    "https://www.youtube.com/@mansify_app",
+    "https://github.com/getmansify"
+   ]
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) { --bg: #0f0f10; --card: #1a1a1c; --line: #2c2c30; --text: #ececee; --muted: #9a9aa2; --accent: #8ab4ff; --accent-ink: #0f1420; --ok: #5fd08f; --hero: #0b1120; color-scheme: dark; }
-  }
-  :root[data-theme="dark"] { --bg: #0f0f10; --card: #1a1a1c; --line: #2c2c30; --text: #ececee; --muted: #9a9aa2; --accent: #8ab4ff; --accent-ink: #0f1420; --ok: #5fd08f; --hero: #0b1120; color-scheme: dark; }
-  * { box-sizing: border-box; }
-  [hidden] { display: none !important; }
-  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif; }
-  a { color: var(--accent); }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
-
-  .hero { background: radial-gradient(1200px 500px at 80% -10%, #1d2c52 0%, transparent 60%), var(--hero); color: var(--hero-text); }
-  .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 20px 0; }
-  .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 18px; color: var(--hero-text); text-decoration: none; }
-  .brand img { width: 32px; height: 32px; border-radius: 8px; }
-  .top nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; }
-  .top nav a { color: var(--hero-muted); text-decoration: none; }
-  .top nav a:hover { color: var(--hero-text); }
-  .hero-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 40px; align-items: center; padding: 36px 0 64px; }
-  .badge { display: inline-block; border: 1px solid #3a4a72; background: #16213b; color: #dfe6f5; border-radius: 999px; padding: 5px 14px; font-size: 14px; }
-  h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.12; margin: 18px 0 14px; letter-spacing: -0.02em; }
-  h1 span { color: #8ab4ff; }
-  .lead { color: var(--hero-muted); font-size: 18px; margin: 0 0 24px; max-width: 34em; }
-  .cta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-  .btn { display: inline-block; text-decoration: none; font-weight: 600; border-radius: 10px; padding: 11px 20px; }
-  .btn.primary { background: #8ab4ff; color: #0f1420; }
-  .btn.ghost { border: 1px solid #3a4a72; color: var(--hero-text); }
-  .small { font-size: 14px; color: var(--hero-muted); margin-top: 14px; }
-  .hero img.shot { width: 100%; height: auto; border-radius: 14px; border: 1px solid #2a3758; box-shadow: 0 20px 60px rgba(0,0,0,.45); display: block; }
-
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-  section.wrap { padding: 112px 16px 0; scroll-margin-top: 24px; }
-  main > section.wrap:first-child { padding-top: 88px; }
-  .sub { margin-bottom: 32px !important; }
-  @media (max-width: 820px) { section.wrap { padding-top: 80px; } main > section.wrap:first-child { padding-top: 64px; } }
-  .gallery + .cards { margin-top: 20px !important; }
-  h2 { font-size: 26px; line-height: 1.25; margin: 0 0 8px; letter-spacing: -0.01em; }
-  .sub { color: var(--muted); margin: 0 0 26px; }
-  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
-  .card h3 { font-size: 17px; margin: 0 0 6px; }
-  .card p { margin: 0; color: var(--muted); font-size: 15px; }
-  .num { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font-weight: 700; font-size: 14px; margin-bottom: 10px; }
-  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .gallery img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); display: block; }
-
-  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 760px; }
-  .plan { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
-  .plan.pro { border-color: var(--accent); }
-  .plan h3 { margin: 0; font-size: 18px; }
-  .price { font-size: 34px; font-weight: 700; margin: 6px 0 2px; }
-  .price small { font-size: 15px; font-weight: 500; color: var(--muted); }
-  .price s { font-size: 22px; font-weight: 500; color: var(--muted); margin-inline-end: 4px; }
-  .price.alt { font-size: 20px; margin-top: 0; }
-  .offer { display: inline-block; margin-top: 8px; background: #ffd34d; color: #3a2a00; font-size: 13px; font-weight: 750; border-radius: 999px; padding: 3px 12px; }
-  .plan ul { list-style: none; padding: 0; margin: 14px 0 0; }
-  .plan li { padding-inline-start: 26px; position: relative; margin: 7px 0; font-size: 15px; }
-  .plan li::before { content: "✓"; position: absolute; inset-inline-start: 0; color: var(--ok); font-weight: 700; }
-  .note { color: var(--muted); font-size: 14px; margin-top: 14px; max-width: 760px; }
-
-  details { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; margin: 10px 0; max-width: 760px; }
-  summary { cursor: pointer; font-weight: 600; }
-  details p { margin: 8px 0 0; color: var(--muted); font-size: 15px; }
-
-  footer { margin-top: 112px; border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--muted); font-size: 14px; }
-  footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-  footer nav { display: flex; gap: 16px; flex-wrap: wrap; }
-
-  @media (max-width: 820px) {
-    .hero-grid { grid-template-columns: 1fr; gap: 28px; padding-bottom: 44px; }
-    .cards, .gallery, .plans { grid-template-columns: 1fr; }
-  }
-</style>
+ ]
+}
+</script>
+<!-- /layout:meta -->
 </head>
-<body>
+<body data-title-en="Prompt Batch by Mansify | Run a whole file of prompts in Google Flow" data-title-ar="Prompt Batch من Mansify | شغّل ملفًا كاملًا من الأوامر في Google Flow" class="has-phead">
+<div class="progress" aria-hidden="true"></div>
 
-<header class="hero">
-  <div class="wrap">
-    <div class="top">
-      <a class="brand" href="./"><img src="icon.png" alt="">Prompt Batch</a>
-      <nav><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="support.html">Support</a></nav>
-    </div>
-    <div class="hero-grid">
-      <div>
-        <span class="badge">⇄ Works with Google Flow</span>
-        <h1>Run a whole file of prompts <span>in Flow</span></h1>
-        <p class="lead">Prompt Batch is a Chrome extension. Load your prompts from Excel, CSV or text, press Start, and it makes every image and video in your Flow project, then renames and downloads each one for you.</p>
-        <div class="cta">
-          <a class="btn primary" href="#pricing">Try it free</a>
-          <a class="btn ghost" href="#how">How it works</a>
-        </div>
-        <p class="small">Free for your first 5 results · Pro from <span data-p="monthly">$6.50</span>/month or <span data-p="now">$15</span> once<span data-p="launchTag"> (launch offer)</span></p>
+<!-- layout:nav -->
+<div class="nav" id="nav">
+  <div class="wrap bar">
+    <a class="logo" href="../index.html" aria-label="Mansify home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M8.5 22V11l7.5 8 7.5-8v11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.2"/></svg>
+      Mansify
+    </a>
+    <nav>
+      <a href="../index.html#products" aria-current="page"><span class="en">Products</span><span class="ar">المنتجات</span></a>
+      <a class="opt" href="../index.html#approach"><span class="en">Approach</span><span class="ar">طريقتنا</span></a>
+      <a class="opt" href="../index.html#contact"><span class="en">Contact</span><span class="ar">تواصل</span></a>
+      <button class="icon-btn" id="theme" type="button" aria-label="Switch light or dark mode">
+        <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="lang" id="lang" type="button"><span class="en">العربية</span><span class="ar">English</span></button>
+    </nav>
+  </div>
+</div>
+<!-- /layout:nav -->
+<!-- layout:phead -->
+<section class="phead wrap" id="top">
+  <div class="ph-card">
+    <div class="ph-main">
+      <a class="ph-iconlink" href="#top"><img class="ph-icon" src="../img/prompt-batch-icon.png" width="88" height="88" alt=""></a>
+      <div class="ph-txt">
+        <span class="crumbs"><a href="../index.html#products"><span class="en">Products</span><span class="ar">المنتجات</span></a><span aria-hidden="true">/</span><span><span class="en">Prompt Batch</span><span class="ar">Prompt Batch</span></span></span>
+        <p class="ph-name"><span class="en">Prompt Batch</span><span class="ar">Prompt Batch</span> <span class="chip live"><span class="en">Available now</span><span class="ar">متاحة الآن</span></span></p>
+        <p class="ph-line"><span class="p-stats" data-stats="/api/stats"><span class="st" data-stat="users" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.3a6.5 6.5 0 0 1 3.5 5.7"/></svg><b></b></span><span class="st" data-stat="rating" hidden><svg class="fill" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.3.8-4.6 4.4 1.2 6.3L12 17l-5.7 3.1 1.2-6.3-4.6-4.4 6.3-.8z"/></svg><b></b></span><span class="st"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="en">Launched October 17, 2026</span><span class="ar">أُطلقت في 17 أكتوبر 2026</span></span></span></p>
+        <div class="ph-meta"><span class="chip"><svg class="brand" viewBox="0 0 48 48" aria-hidden="true"><path fill="#DB4437" d="M24.00 14.00L43.60 14.00A22 22 0 0 0 5.54 12.03L15.34 29.00A10 10 0 0 1 24.00 14.00Z"/><path fill="#F4B400" d="M32.66 29.00L22.86 45.97A22 22 0 0 0 43.60 14.00L24.00 14.00A10 10 0 0 1 32.66 29.00Z"/><path fill="#0F9D58" d="M15.34 29.00L5.54 12.03A22 22 0 0 0 22.86 45.97L32.66 29.00A10 10 0 0 1 15.34 29.00Z"/><circle cx="24" cy="24" r="10" fill="#fff"/><circle cx="24" cy="24" r="8" fill="#4285F4"/></svg><span class="en">Chrome extension</span><span class="ar">إضافة Chrome</span></span><span class="chip"><span class="en">Works with Google Flow</span><span class="ar">تعمل مع Google Flow</span></span></div>
       </div>
-      <img class="shot" src="img/shot-1.jpg" width="1280" height="800" alt="The Prompt Batch side panel running a queue of prompts">
+      <div class="ph-side"><div class="cta"><a class="btn accent" href="https://chromewebstore.google.com/detail/mgangjbcmdppnmlmaielildhagdlegob?utm_source=mansify.app&amp;utm_medium=website"><span class="en">Add to Chrome</span><span class="ar">أضِفها إلى Chrome</span><svg class="arr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="btn line" href="#pricing"><span class="en">Pricing</span><span class="ar">الأسعار</span></a></div><p class="p-note"><span class="world-only"><span class="en">Free for your first 8 results · Pro from <span data-p="monthly">$4.50</span>/month or <span data-p="now">$7.50</span> once</span><span class="ar">مجانية لأول 8 نتائج · النسخة الاحترافية من <span data-p="monthly">$4.50</span> شهريًا أو <span data-p="now">$7.50</span> مرة واحدة</span></span><span class="eg-only"><span class="en">Free for your first 8 results · Pro from <span data-p="monthly">250 EGP</span>/year or <span data-p="now">350 EGP</span> once</span><span class="ar">مجانية لأول 8 نتائج · النسخة الاحترافية من <span data-p="monthly">250 جنيه</span> سنويًا أو <span data-p="now">350 جنيه</span> مرة واحدة</span></span></p></div>
     </div>
+    <nav class="ph-tabs" aria-label="Prompt Batch"><a href="#top" class="on"><span class="en">Overview</span><span class="ar">نظرة عامة</span></a><a href="#pricing"><span class="en">Pricing</span><span class="ar">الأسعار</span></a><a href="#guides"><span class="en">Guides</span><span class="ar">الشروحات</span></a><a href="#how"><span class="en">How it works</span><span class="ar">طريقة العمل</span></a><a href="#features"><span class="en">Features</span><span class="ar">المزايا</span></a><a href="#faq"><span class="en">FAQ</span><span class="ar">الأسئلة</span></a><a href="#support"><span class="en">Support</span><span class="ar">الدعم</span></a><a href="#legal"><span class="en">Privacy and terms</span><span class="ar">الخصوصية والشروط</span></a></nav>
+  </div>
+</section>
+<!-- /layout:phead -->
+
+<header class="hero p-hero">
+  <div class="aurora a"></div><div class="aurora b"></div>
+  <div class="wrap grid">
+    <div>
+      <h1 class="rv" data-split><span class="en">Run a whole file of prompts <span class="serif">in Flow.</span></span><span class="ar">شغّل ملفًا كاملًا من الأوامر <span class="serif">في Flow.</span></span></h1>
+      <p class="lead rv" data-d="1"><span class="en">Load your prompts from Excel, CSV or text, press Start, and Prompt Batch makes every image and video in your Google Flow project, then renames and downloads each one for you.</span><span class="ar">حمّل أوامرك من ملف Excel أو CSV أو نص، واضغط «ابدأ»، وستُنشئ Prompt Batch كل صورة وكل فيديو في مشروعك على Google Flow، ثم تعيد تسميتها وتحمّلها لك واحدًا تلو الآخر.</span></p>
+    </div>
+    <div class="p-shot rv" data-d="2"><img src="../img/prompt-batch.jpg" width="1280" height="800" alt="The Prompt Batch side panel running a queue of prompts"></div>
   </div>
 </header>
 
 <main>
-  <section id="how" class="wrap">
-    <h2>How it works</h2>
-    <p class="sub">Three steps. It works in your own Flow account and uses your own credits, just as if you did it by hand.</p>
-    <div class="cards">
-      <div class="card"><span class="num">1</span><h3>Load your prompts</h3><p>Drop an Excel, CSV or text file into the side panel, or paste one prompt per line. Each row can set type, aspect ratio, count, model and reference picture.</p></div>
-      <div class="card"><span class="num">2</span><h3>Open a Flow project</h3><p>Open your project in Google Flow in the same tab. The panel checks that your reference pictures are there and skips rows you already made.</p></div>
-      <div class="card"><span class="num">3</span><h3>Press Start</h3><p>Prompt Batch sends each prompt, waits for the result, renames it in your project and downloads it to the folder you choose.</p></div>
+  <section class="block wrap" id="pricing" data-prices="prices.json" data-sales="open">
+    <div class="head rv">
+      <div>
+        <span class="mono"><span class="en">01 / Pricing</span><span class="ar">01 / الأسعار</span></span>
+        <h2 data-split><span class="en">Try it first. <span class="serif">Pay if it helps.</span></span><span class="ar">جرّبها أولًا. <span class="serif">وادفع إن أفادتك.</span></span></h2>
+      </div>
+      <p><span class="en">Every feature is in the free version. Pro only removes the 8-result limit.</span><span class="ar">كل المزايا موجودة في النسخة المجانية، والنسخة الاحترافية ترفع حد النتائج الثماني فقط.</span></p>
     </div>
-  </section>
-
-  <section class="wrap">
-    <h2>Made for long lists</h2>
-    <p class="sub">Up to 50 prompts per file, at a calm, human pace, with a live status line and a summary at the end.</p>
-    <div class="gallery">
-      <img src="img/shot-2.jpg" width="1280" height="800" alt="Loading a file of prompts" loading="lazy">
-      <img src="img/shot-3.jpg" width="1280" height="800" alt="Settings for images, videos and downloads" loading="lazy">
-      <img src="img/shot-4.jpg" width="1280" height="800" alt="Finished queue with downloaded results" loading="lazy">
-    </div>
-    <div class="cards" style="margin-top:16px">
-      <div class="card"><h3>Images and videos</h3><p>Image or video per row, aspect ratio, 1–4 results, model, video resolution and length.</p></div>
-      <div class="card"><h3>Safe by design</h3><p>At least 10 seconds between prompts, one failed row never stops the rest, and it stops on its own if Flow reports unusual activity.</p></div>
-      <div class="card"><h3>8 languages</h3><p>English, Arabic, Spanish, Portuguese, French, Hindi, Indonesian and Turkish, in light or dark theme.</p></div>
-    </div>
-  </section>
-
-  <section id="pricing" class="wrap">
-    <h2>Pricing</h2>
-    <p class="sub">Try it first. Pay only if it saves you time.</p>
     <div class="plans">
-      <div class="plan">
-        <h3>Free</h3>
+      <div class="plan rv">
+        <div class="plan-top"><h3><span class="en">Free</span><span class="ar">مجانية</span></h3></div>
         <div class="price">$0</div>
         <ul>
-          <li>Your first 5 results (images or videos)</li>
-          <li>Every feature included</li>
-          <li>No account or sign-up</li>
+          <li><span class="en">Try 8 results free, images or videos</span><span class="ar">جرّب 8 نتائج مجانًا، صورًا أو فيديو</span></li>
+          <li><span class="en">The full extension, nothing locked</span><span class="ar">الإضافة كاملة، من دون أي ميزة مقفلة</span></li>
+          <li><span class="en">No account, no card, no sign-up</span><span class="ar">بلا حساب ولا بطاقة ولا تسجيل</span></li>
         </ul>
+        <a class="btn line" href="https://chromewebstore.google.com/detail/mgangjbcmdppnmlmaielildhagdlegob?utm_source=mansify.app&amp;utm_medium=website"><span class="en">Add to Chrome, free</span><span class="ar">أضِفها إلى Chrome مجانًا</span></a>
       </div>
-      <div class="plan pro">
-        <h3>Pro</h3>
-        <div class="offer" data-p="offer">Launch offer · <span data-p="off">50</span>% off lifetime</div>
-        <div class="price"><s data-p="was">$30</s> <span data-p="now">$15</span> <small>one-time, lifetime</small></div>
-        <div class="price alt">or <span data-p="monthly">$6.50</span> <small>/ month, cancel any time</small></div>
+      <div class="plan rv" data-d="1">
+        <div class="plan-top"><h3><span class="world-only"><span class="en">Pro monthly</span><span class="ar">الاحترافية الشهرية</span></span><span class="eg-only"><span class="en">Pro yearly</span><span class="ar">الاحترافية السنوية</span></span></h3></div>
+        <div class="price"><span data-p="monthly">$4.50</span> <small class="world-only"><span class="en">/ month</span><span class="ar">/ شهريًا</span></small><small class="eg-only"><span class="en">/ year</span><span class="ar">/ سنويًا</span></small></div>
         <ul>
-          <li>No 5-result limit</li>
-          <li>One licence key for up to 2 computers</li>
-          <li>All updates included</li>
-          <li>Refund within 7 days if it doesn't work for you</li>
+          <li><span class="en">No limits: run as many prompts as your Flow credits allow</span><span class="ar">بلا أي حد: شغّل أوامر بقدر رصيدك في Flow</span></li>
+          <li class="world-only"><span class="en">Cancel any time, Pro runs to the month's end</span><span class="ar">ألغِ متى شئت، وتبقى Pro حتى نهاية الشهر</span></li><li class="eg-only"><span class="en">Pro for 12 months, renew only if you want</span><span class="ar">Pro لمدة 12 شهرًا، وتجدّد فقط إن أردت</span></li>
+          <li><span class="en">One key that works on 2 computers</span><span class="ar">مفتاح واحد يعمل على جهازين</span></li>
+          <li><span class="en">Every new update, at no extra cost</span><span class="ar">كل التحديثات الجديدة بلا تكلفة إضافية</span></li>
+          <li><span class="en">Full refund within 7 days if it doesn't work for you</span><span class="ar">استرداد المبلغ كاملًا خلال 7 أيام إن لم تعمل معك</span></li>
         </ul>
+        <a class="btn accent buy" data-buy="monthly" role="link" aria-disabled="true"><span class="go"><span class="world-only"><span class="en">Subscribe monthly</span><span class="ar">اشترك شهريًا</span></span><span class="eg-only"><span class="en">Pay for a year</span><span class="ar">ادفع لسنة</span></span></span><span class="soon"><span class="en">Available soon</span><span class="ar">متاح قريبًا</span></span></a>
+        <div class="pay-logos eg-only"><span><span class="en">Pay by</span><span class="ar">ادفع عبر</span></span><span class="pl"><img src="../img/pay/instapay.png" alt="" onerror="this.remove()">InstaPay</span><span class="pl"><img src="../img/pay/vodafone-cash.png" alt="" onerror="this.remove()">Vodafone Cash</span></div>
+      </div>
+      <div class="plan pro rv" data-d="2">
+        <div class="plan-top"><h3><span class="en">Pro lifetime</span><span class="ar">الاحترافية مدى الحياة</span></h3> <div class="offer" data-p="offer"><span class="en">Launch offer · <span data-p="off">50</span>% off</span><span class="ar">عرض الإطلاق · خصم <span data-p="off">50</span>%</span></div></div>
+        <div class="price"><s data-p="was">$15</s> <span data-p="now">$7.50</span> <small><span class="en">one-time</span><span class="ar">مرة واحدة</span></small></div>
+        <ul>
+          <li><span class="en">No limits: run as many prompts as your Flow credits allow</span><span class="ar">بلا أي حد: شغّل أوامر بقدر رصيدك في Flow</span></li>
+          <li><span class="en">Pay once, no subscription ever</span><span class="ar">ادفع مرة واحدة، بلا اشتراك أبدًا</span></li>
+          <li><span class="en">One key that works on 2 computers</span><span class="ar">مفتاح واحد يعمل على جهازين</span></li>
+          <li><span class="en">Every new update, at no extra cost</span><span class="ar">كل التحديثات الجديدة بلا تكلفة إضافية</span></li>
+          <li><span class="en">Full refund within 7 days if it doesn't work for you</span><span class="ar">استرداد المبلغ كاملًا خلال 7 أيام إن لم تعمل معك</span></li>
+        </ul>
+        <div class="seats" data-p="seats" hidden><div class="top"><span class="hot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9V6.5A1.5 1.5 0 0 1 4.5 5h15A1.5 1.5 0 0 1 21 6.5V9a3 3 0 0 0 0 6v2.5a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5V15a3 3 0 0 0 0-6Z"/><path d="M14 5v2M14 11v2M14 17v2"/></svg><span data-p="seatsText"></span></span><span class="end" data-p="seatsEnd"></span></div></div>
+        <a class="btn accent buy" data-buy="lifetime" role="link" aria-disabled="true"><span class="go"><span class="en">Buy once</span><span class="ar">اشترِ مرة واحدة</span></span><span class="soon"><span class="en">Available soon</span><span class="ar">متاح قريبًا</span></span></a>
+        <div class="pay-logos eg-only"><span><span class="en">Pay by</span><span class="ar">ادفع عبر</span></span><span class="pl"><img src="../img/pay/instapay.png" alt="" onerror="this.remove()">InstaPay</span><span class="pl"><img src="../img/pay/vodafone-cash.png" alt="" onerror="this.remove()">Vodafone Cash</span></div>
       </div>
     </div>
-    <p class="note">Install Prompt Batch from the <a href="https://chromewebstore.google.com/detail/mgangjbcmdppnmlmaielildhagdlegob">Chrome Web Store</a>. You can buy Pro from inside the extension: open the side panel → ⚙ → Pro &amp; licence. Payments are handled by Freemius, our merchant of record, which also sends your licence key by email.</p>
+    <p class="note rv eg-only"><span class="en">Pay by InstaPay or Vodafone Cash. Send the transfer with the short form; we check it and your licence key appears on your order page, usually within a few hours.</span><span class="ar">ادفع عبر إنستاباي أو فودافون كاش. أرسل التحويل مع نموذج قصير، فنراجعه ويظهر مفتاح الترخيص في صفحة طلبك، عادةً خلال بضع ساعات.</span></p>
+    <p class="note rv world-only"><span class="en">Buy Pro here or from inside the extension (side panel → ⚙ → Pro &amp; licence). Payments are handled by Freemius, our merchant of record, which emails you your licence key. Then paste the key in the extension to turn Pro on.</span><span class="ar">اشترِ النسخة الاحترافية من هنا أو من داخل الإضافة (اللوحة الجانبية ← ⚙ ← Pro والترخيص). تتولى Freemius عملية الدفع بصفتها البائع الرسمي، وترسل إليك مفتاح الترخيص بالبريد، ثم تلصق المفتاح في الإضافة لتفعيل النسخة الاحترافية.</span></p>
   </section>
 
-  <section id="faq" class="wrap">
-    <h2>Questions</h2>
-    <details><summary>Does it use my Flow credits?</summary><p>Yes. It works in your own Flow account and uses your own credits, exactly as if you typed each prompt yourself. The panel shows how many images, videos and credits a run will use before it starts.</p></details>
-    <details><summary>Does it collect my data?</summary><p>No. Everything stays in your browser. Prompt Batch has no server. If you buy Pro, it sends only your licence key (with a random id for your computer) to Freemius to check it. Read the <a href="privacy.html">privacy policy</a>.</p></details>
-    <details><summary>Can I use one key on more than one computer?</summary><p>Yes, on up to 2 computers that belong to you. Please don't share your key; see the <a href="terms.html">licence terms</a>.</p></details>
-    <details><summary>I lost my licence key.</summary><p>Your key is in your purchase email and always at <a href="https://users.freemius.com/">users.freemius.com</a> (sign in with the email you bought with).</p></details>
-    <details><summary>Is this made by Google?</summary><p>No. Prompt Batch is an independent tool by Mansify. It is not made, endorsed or supported by Google. You are responsible for following Google's Terms of Service and Generative AI Prohibited Use Policy.</p></details>
+  <section class="block wrap" id="guides">
+    <div class="head rv">
+      <div>
+        <span class="mono"><span class="en">02 / Guides</span><span class="ar">02 / الشروحات</span></span>
+        <h2 data-split><span class="en">Step by step, <span class="serif">with examples.</span></span><span class="ar">خطوة بخطوة، <span class="serif">مع أمثلة.</span></span></h2>
+      </div>
+      <p><span class="en">Short guides for common jobs in Google Flow, in English and Arabic.</span><span class="ar">شروحات قصيرة لمهام شائعة في Google Flow، بالعربية والإنجليزية.</span></p>
+    </div>
+    <div class="steps guides-list">
+      <a class="step spot-card rv" href="guides/run-many-prompts-google-flow"><span class="gpic"><img class="en" src="../img/guides/pb-panel-1-en.jpg" width="1280" height="800" loading="lazy" alt="Prompt Batch running a list of prompts in Flow"><img class="ar" src="../img/guides/pb-panel-1-ar.jpg" width="1280" height="800" loading="lazy" alt="Prompt Batch تشغّل قائمة أوامر في Flow"></span><h3><span class="en">Run many prompts in Google Flow at once</span><span class="ar">شغّل أوامر كثيرة في Google Flow دفعة واحدة</span></h3><p><span class="en">From an Excel, CSV or text file to a folder of named images and videos.</span><span class="ar">من ملف Excel أو CSV أو نص، إلى مجلد فيه صور وفيديوهات مسمّاة.</span></p><span class="more"><span class="en">Read the guide</span><span class="ar">اقرأ الشرح</span><svg class="arr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+      <a class="step spot-card rv" data-d="1" href="guides/download-google-flow-results"><span class="gpic"><img class="en" src="../img/guides/pb-panel-2-en.jpg" width="1280" height="800" loading="lazy" alt="A finished run with every file downloaded"><img class="ar" src="../img/guides/pb-panel-2-ar.jpg" width="1280" height="800" loading="lazy" alt="تشغيل مكتمل وكل الملفات محمّلة"></span><h3><span class="en">Download every Flow result with clean names</span><span class="ar">حمّل كل نتائج Flow بأسماء مرتّبة</span></h3><p><span class="en">Every image and video saved as 01_name.jpg, in the order of your file, at the size you choose.</span><span class="ar">كل صورة وفيديو تُحفظ باسم مثل 01_name.jpg، بترتيب ملفك، وبالحجم الذي تختاره.</span></p><span class="more"><span class="en">Read the guide</span><span class="ar">اقرأ الشرح</span><svg class="arr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+      <a class="step spot-card rv" data-d="2" href="guides/google-flow-requesting-generations-too-quickly"><span class="gpic"><img class="en" src="../img/guides/pb-panel-3-en.jpg" width="1280" height="800" loading="lazy" alt="Prompt Batch tips for a calm pace"><img class="ar" src="../img/guides/pb-panel-3-ar.jpg" width="1280" height="800" loading="lazy" alt="نصائح Prompt Batch لإيقاع هادئ"></span><h3><span class="en">Flow says “requesting generations too quickly”</span><span class="ar">رسالة «<bdi dir="ltr">requesting generations too quickly</bdi>» في Flow</span></h3><p><span class="en">What the message means, what to do right now, and how to pace long lists so you see it less.</span><span class="ar">ماذا تعني الرسالة، وماذا تفعل الآن، وكيف تنظّم القوائم الطويلة لتقلّل ظهورها.</span></p><span class="more"><span class="en">Read the guide</span><span class="ar">اقرأ الشرح</span><svg class="arr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+    </div>
+  </section>
+
+  <section class="block wrap" id="how">
+    <div class="head rv">
+      <div>
+        <span class="mono"><span class="en">03 / How it works</span><span class="ar">03 / طريقة العمل</span></span>
+        <h2 data-split><span class="en">Three steps, <span class="serif">then relax.</span></span><span class="ar">ثلاث خطوات، <span class="serif">ثم استرح.</span></span></h2>
+      </div>
+      <p><span class="en">It works in your own Flow account and uses your own credits, just as if you did it by hand.</span><span class="ar">تعمل داخل حسابك على Flow وتستخدم رصيدك أنت، تمامًا كما لو كنت تفعل ذلك يدويًا.</span></p>
+    </div>
+    <div class="steps">
+      <div class="step spot-card rv"><span class="n">1</span><h3><span class="en">Load your prompts</span><span class="ar">حمّل أوامرك</span></h3><p><span class="en">Drop an Excel, CSV or text file into the side panel, or paste one prompt per line. Each row can set type, aspect ratio, count, model and reference picture.</span><span class="ar">أفلت ملف Excel أو CSV أو نص في اللوحة الجانبية، أو الصق أمرًا في كل سطر. ويمكن لكل صف أن يحدد النوع ونسبة الأبعاد والعدد والنموذج والصورة المرجعية.</span></p></div>
+      <div class="step spot-card rv" data-d="1"><span class="n">2</span><h3><span class="en">Open a Flow project</span><span class="ar">افتح مشروعًا في Flow</span></h3><p><span class="en">Open your project in Google Flow in the same tab. The panel checks that your reference pictures are there and skips rows you already made.</span><span class="ar">افتح مشروعك في Google Flow في التبويب نفسه. تتأكد اللوحة من وجود صورك المرجعية، وتتخطى الصفوف التي أنشأتها من قبل.</span></p></div>
+      <div class="step spot-card rv" data-d="2"><span class="n">3</span><h3><span class="en">Press Start</span><span class="ar">اضغط «ابدأ»</span></h3><p><span class="en">Prompt Batch sends each prompt, waits for the result, renames it in your project and downloads it to the folder you choose.</span><span class="ar">ترسل Prompt Batch كل أمر، وتنتظر النتيجة، ثم تعيد تسميتها في مشروعك وتحمّلها إلى المجلد الذي تختاره.</span></p></div>
+    </div>
+    <div class="pvid-wrap rv">
+      <a class="pvid en" href="https://youtu.be/D94U4ePladc" data-yt="D94U4ePladc" target="_blank" rel="noopener"><img src="../img/pb-video-en.jpg" width="1280" height="720" loading="lazy" alt="Watch the Prompt Batch tutorial (2 minutes)"><span class="play" aria-hidden="true"></span></a>
+      <a class="pvid ar" href="https://youtu.be/sWJLdTrwzoQ" data-yt="sWJLdTrwzoQ" target="_blank" rel="noopener"><img src="../img/pb-video-ar.jpg" width="1280" height="720" loading="lazy" alt="شاهد شرح Prompt Batch (دقيقتان)"><span class="play" aria-hidden="true"></span></a>
+      <p class="pvid-note"><span class="en">Watch it in 2 minutes. The video loads from YouTube when you press play.</span><span class="ar">شاهد الشرح في دقيقتين. يُحمَّل الفيديو من YouTube عند الضغط على التشغيل.</span></p>
+    </div>
+  </section>
+
+  <section class="block wrap" id="features">
+    <div class="head rv">
+      <div>
+        <span class="mono"><span class="en">04 / Features</span><span class="ar">04 / المزايا</span></span>
+        <h2 data-split><span class="en">Made for <span class="serif">long lists.</span></span><span class="ar">مصممة <span class="serif">للقوائم الطويلة.</span></span></h2>
+      </div>
+      <p><span class="en">Up to 50 prompts per file, at a calm, human pace, with a live status line and a summary at the end.</span><span class="ar">حتى 50 أمرًا في كل ملف، بإيقاع هادئ يشبه الإنسان، مع سطر حالة مباشر وملخص في النهاية.</span></p>
+    </div>
+    <div class="fstats">
+      <div class="fstat spot-card rv"><div class="ftop"><span class="fic"><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6h.01M4 12h.01M4 18h.01"/></svg></span><span class="big" dir="ltr">50</span></div><h3><span class="en">prompts in one file</span><span class="ar">أمرًا في ملف واحد</span></h3><p><span class="en">Images and videos together. Each row picks its own shape, model, 1–4 results, video resolution and length.</span><span class="ar">صور وفيديوهات معًا. ولكل صف شكله ونموذجه وعدد نتائجه (من 1 إلى 4)، ودقة الفيديو وطوله.</span></p></div>
+      <div class="fstat spot-card rv" data-d="1"><div class="ftop"><span class="fic"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></span><span class="big mono" dir="ltr">xlsx · csv · txt</span></div><h3><span class="en">Bring the file you have</span><span class="ar">ملفك كما هو</span></h3><p><span class="en">Load a spreadsheet or a text file, or paste your prompts. Arabic column names work too.</span><span class="ar">حمّل جدولًا أو ملفًا نصيًا، أو الصق أوامرك مباشرة. وتعمل عناوين الأعمدة العربية أيضًا.</span></p></div>
+      <div class="fstat spot-card rv" data-d="2"><div class="ftop"><span class="fic"><svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></span><span class="big mono" dir="ltr">01_name.jpg</span></div><h3><span class="en">Named and saved for you</span><span class="ar">تُسمّى وتُحفظ لك</span></h3><p><span class="en">Every result is renamed in Flow and downloaded in order, so a later row can use it as a reference.</span><span class="ar">تُسمّى كل نتيجة في Flow وتُحمَّل بالترتيب، فيستطيع صف لاحق أن يستخدمها مرجعًا.</span></p></div>
+      <div class="fstat spot-card rv"><div class="ftop"><span class="fic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="big" dir="ltr">10s+</span></div><h3><span class="en">A calm, human pace</span><span class="ar">إيقاع هادئ يشبه الإنسان</span></h3><p><span class="en">At least 10 seconds between prompts, a little different each time. It stops on its own if Flow reports unusual activity.</span><span class="ar">10 ثوانٍ على الأقل بين الأوامر، وتتغيّر قليلًا في كل مرة. وتتوقف وحدها إذا أبلغ Flow عن نشاط غير معتاد.</span></p></div>
+      <div class="fstat spot-card rv" data-d="1"><div class="ftop"><span class="fic"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="big" dir="ltr">7 ✓ · 1 ✕</span></div><h3><span class="en">One failure never stops the run</span><span class="ar">فشل صف لا يوقف القائمة</span></h3><p><span class="en">The next row simply starts. At the end you get a clear summary, and a second run skips what is already made.</span><span class="ar">يبدأ الصف التالي ببساطة. وفي النهاية يظهر ملخص واضح، والتشغيل الثاني يتخطّى ما صُنع من قبل.</span></p></div>
+      <div class="fstat spot-card rv" data-d="2"><div class="ftop"><span class="fic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span class="big" dir="ltr">8</span></div><h3><span class="en">languages, light or dark</span><span class="ar">لغات، فاتح أو داكن</span></h3><p><span class="en">English, Arabic and six more languages in the panel. It works with Flow in English or Arabic.</span><span class="ar">العربية والإنجليزية وست لغات أخرى في اللوحة. وتعمل مع Flow بالإنجليزية أو بالعربية.</span></p></div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="faq">
+    <div class="head rv">
+      <div>
+        <span class="mono"><span class="en">05 / Questions</span><span class="ar">05 / الأسئلة</span></span>
+        <h2 data-split><span class="en">Good <span class="serif">questions.</span></span><span class="ar">أسئلة <span class="serif">شائعة.</span></span></h2>
+      </div>
+    </div>
+    <div class="faq rv">
+      <details><summary><span class="en">Does it use my Flow credits?</span><span class="ar">هل تستخدم رصيدي في Flow؟</span></summary><p><span class="en">Yes. It works in your own Flow account and uses your own credits, exactly as if you typed each prompt yourself. The panel shows how many images, videos and credits a run will use before it starts.</span><span class="ar">نعم. تعمل داخل حسابك على Flow وتستخدم رصيدك، تمامًا كما لو كتبت كل أمر بنفسك. وتعرض اللوحة عدد الصور والفيديوهات والرصيد الذي سيستهلكه التشغيل قبل أن يبدأ.</span></p></details>
+      <details><summary><span class="en">Does it collect my data?</span><span class="ar">هل تجمع بياناتي؟</span></summary><p><span class="en">No. Everything stays in your browser. Prompt Batch has no server. If you buy Pro, it sends only your licence key (with a random id for your computer) to Freemius to check it. Read the <a href="privacy.html">privacy policy</a>.</span><span class="ar">لا. يبقى كل شيء في متصفحك، وليس لـ Prompt Batch أي خادم. وإذا اشتريت النسخة الاحترافية، فلا ترسل إلا مفتاح الترخيص (مع معرّف عشوائي لجهازك) إلى Freemius للتحقق منه. اقرأ <a href="privacy.html">سياسة الخصوصية</a>.</span></p></details>
+      <details><summary><span class="en">Can I use one key on more than one computer?</span><span class="ar">هل يمكنني استخدام المفتاح على أكثر من جهاز؟</span></summary><p><span class="en">Yes, on up to 2 computers that belong to you. Please don't share your key; see the <a href="terms.html">licence terms</a>.</span><span class="ar">نعم، على جهازين كحد أقصى من أجهزتك. نرجو ألا تشارك مفتاحك مع غيرك، واطّلع على <a href="terms.html">شروط الترخيص</a>.</span></p></details>
+      <details><summary><span class="en">I lost my licence key.</span><span class="ar">فقدت مفتاح الترخيص.</span></summary><p><span class="en">Your key is in your purchase email and always at <a href="https://users.freemius.com/">users.freemius.com</a> (sign in with the email you bought with).</span><span class="ar">مفتاحك موجود في رسالة الشراء، ودائمًا على <a href="https://users.freemius.com/">users.freemius.com</a> (سجّل الدخول بالبريد الذي اشتريت به).</span></p></details>
+      <details><summary><span class="en">Is this made by Google?</span><span class="ar">هل هذه الأداة من Google؟</span></summary><p><span class="en">No. Prompt Batch is an independent tool by Mansify. It is not made, endorsed or supported by Google. You are responsible for following Google's Terms of Service and Generative AI Prohibited Use Policy.</span><span class="ar">لا. Prompt Batch أداة مستقلة من Mansify، وليست من صنع Google ولا بتأييدها أو دعمها. وأنت مسؤول عن الالتزام بشروط خدمة Google وسياسة الاستخدام المحظور للذكاء الاصطناعي التوليدي.</span></p></details>
+    </div>
+  </section>
+
+  <section class="block wrap" id="support">
+    <div class="head rv"><div><span class="mono"><span class="en">06 / Support</span><span class="ar">06 / الدعم</span></span><h2><span class="en">We&rsquo;re here <span class="serif">to help.</span></span><span class="ar">نحن هنا <span class="serif">للمساعدة.</span></span></h2></div>
+      <p><span class="en">Suggestions, problems, licence questions or anything else about Prompt Batch. Before writing about a problem, reload the extension and the Flow tab once.</span><span class="ar">اقتراح، أو مشكلة، أو سؤال عن الترخيص، أو أي أمر آخر يخص Prompt Batch. قبل الكتابة عن مشكلة، أعد تحميل الإضافة وعلامة تبويب Flow مرة واحدة.</span></p></div>
+    <div class="sup-wrap rv">
+<!-- support-form -->
+      <form class="sf" id="write" data-support="prompt-batch" novalidate>
+        <div class="sf-row">
+          <label class="sf-field"><span class="sf-l"><span class="en">What is it about?</span><span class="ar">ما موضوع رسالتك؟</span></span>
+            <select name="topic" required>
+              <option value="" data-en="Choose…" data-ar="اختر…" selected disabled>Choose…</option>
+              <option value="suggestion" data-en="Suggestion or idea" data-ar="اقتراح أو فكرة">Suggestion or idea</option>
+              <option value="problem" data-en="Problem or bug" data-ar="مشكلة أو عطل">Problem or bug</option>
+              <option value="licence" data-en="Pro licence or payment" data-ar="ترخيص Pro أو الدفع">Pro licence or payment</option>
+              <option value="complaint" data-en="Complaint" data-ar="شكوى">Complaint</option>
+              <option value="other" data-en="Something else" data-ar="أمر آخر">Something else</option>
+              <option value="removed" data-en="I removed the extension" data-ar="أزلت الإضافة" hidden>I removed the extension</option>
+            </select>
+          </label>
+          <label class="sf-field"><span class="sf-l"><span class="en">Your email (so we can reply)</span><span class="ar">بريدك الإلكتروني (لنرد عليك)</span></span>
+            <input type="email" name="email" required maxlength="254" autocomplete="email" placeholder="name@example.com" dir="ltr">
+          </label>
+        </div>
+        <label class="sf-field"><span class="sf-l"><span class="en">Your message</span><span class="ar">رسالتك</span></span>
+          <textarea name="message" required minlength="3" maxlength="5000" rows="6"></textarea>
+        </label>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="sf-foot">
+          <button class="btn accent" type="submit"><span class="en">Send message</span><span class="ar">أرسل الرسالة</span></button>
+          <p class="sf-msg" role="status" aria-live="polite"></p>
+        </div>
+        <p class="sf-note"><span class="en">We usually reply within 2 working days. Your message is kept only to help you. <a href="../privacy/index.html#support">Privacy</a></span><span class="ar">نرد عادةً خلال يومَي عمل، ونحتفظ برسالتك لمساعدتك فقط. <a href="../privacy/index.html#support">الخصوصية</a></span></p>
+      </form>
+<!-- /support-form -->
+      <div class="sup-side">
+      <a class="sup2-card spot-card" href="mailto:support@mansify.app?subject=Prompt%20Batch"><span class="sup2-ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span><b dir="ltr">support@mansify.app</b><small><span class="en">We usually reply within 2 working days.</span><span class="ar">نرد عادةً خلال يومَي عمل.</span></small></span></a>
+      <a class="sup2-card spot-card" href="https://users.freemius.com/"><span class="sup2-ic"><svg viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M17 6l3 3"/></svg></span><span><b><span class="en">Find my licence key</span><span class="ar">أين مفتاح الترخيص؟</span></b><small><span class="en">Sign in with the email you bought with.</span><span class="ar">سجّل الدخول بالبريد الذي اشتريت به.</span></small></span></a>
+      </div>
+    </div>
+  </section>
+  <section class="block wrap" id="legal">
+    <div class="head rv"><div><span class="mono"><span class="en">07 / Privacy and terms</span><span class="ar">07 / الخصوصية والشروط</span></span><h2><span class="en">Plain rules, <span class="serif">no surprises.</span></span><span class="ar">قواعد واضحة، <span class="serif">بلا مفاجآت.</span></span></h2></div>
+      <p><span class="en">Prompt Batch collects nothing and has no server. Open each one to read it in full.</span><span class="ar">لا تجمع Prompt Batch أي بيانات وليس لها خادم. افتح كلًّا منهما لقراءته كاملًا.</span></p></div>
+    <div class="legal2 rv">
+      <details><summary><span class="lg-t"><span class="en">Privacy policy</span><span class="ar">سياسة الخصوصية</span></span><span class="lg-s"><span class="en">What the extension does with information</span><span class="ar">ما تفعله الإضافة بالمعلومات</span></span></summary>
+        <div class="lg-body legal"><!-- legal:privacy --><article class="en" lang="en" dir="ltr">
+    <section id="en-0"><div class="box"><p>Prompt Batch is a Chrome extension that runs a list of prompts, which you load yourself, in the Google Flow project you have open, and downloads the results. This policy explains what the extension does with information. In short: <strong>it collects nothing, has no server, and sends nothing to us.</strong> The only thing it ever sends outside Flow is a Pro licence key, if you buy one, to the licence service that checks it. It also downloads two public files from our site, the price list and a list of Flow's button and message names (so it keeps working when Flow renames them), without sending anything about you.</p></div></section>
+    <section id="en-1">
+      <h2>Information we collect</h2>
+    <p>None. Prompt Batch does not collect, record or transmit any personal information, browsing history, usage statistics or analytics. The extension has no server and no account system, so there is nowhere for your data to go. The only exception is the order form on our website, if you choose to pay by InstaPay or Vodafone Cash (see below).</p>
+    </section>
+    <section id="en-2">
+      <h2>Pro licence check</h2>
+    <p>Prompt Batch is free for the first 8 results. After that, a Pro licence (monthly or one-time lifetime) can be bought from our seller, <a href="https://freemius.com/privacy/">Freemius</a>, our merchant of record, which handles the payment and your email address under its own privacy policy. When you paste your licence key in the extension, it sends only the key, a random 32-character id for this computer made by the extension, the extension version, and a label for this computer (the system name, a random 4-character code made by the extension, and the date, for example "Mac · 7F3A · 16 Oct 2026") to Freemius' licence service (<code>api.freemius.com</code>) to check it, and checks it again from time to time: when the panel opens (at most every 6 hours), when you start a run, and when you open the Pro screen. Nothing about your prompts, files, Flow projects or browsing is sent. If you never enter a key, the extension makes no such request. Separately, when the panel or the Pro screen opens, the extension downloads our public price list (<code>mansify.app/prompt-batch/prices.json</code>) to show current prices; nothing about you is sent with it.</p>
+    </section>
+    <section id="en-3">
+      <h2>Paying by InstaPay or Vodafone Cash</h2>
+    <p>Where this way of paying is offered, you buy Pro from Mansify directly on our website, not through Freemius. The order form asks for your name, your email, the phone number you paid from, how you paid, and a picture (screenshot) of the transfer. With the order we also keep the plan, the amount, the date, the country your connection comes from, and that you agreed to the licence terms.</p>
+    <ul>
+      <li>We use this only to check that your payment arrived, to send you your licence key, and to handle a refund or a question about the order.</li>
+      <li>It is stored in our database on Cloudflare and only we can see it. It is never sold, shared or used for advertising.</li>
+      <li>When an order is approved, a licence for it is created at our licence service, Freemius, without your name, email, number or picture.</li>
+      <li>We keep orders for our sales records. You can ask us to delete your details and picture at any time through the <a href="#support">support form</a>, except what the law requires us to keep.</li>
+    </ul>
+    </section>
+    <section id="en-4">
+      <h2>Information stored on your computer</h2>
+    <p>To keep your work between sessions, the extension saves the following in Chrome's local extension storage, on your own computer only:</p>
+    <ul>
+      <li>the prompts and settings of the file you loaded, the file's name, and the status of each row;</li>
+      <li>your choices: language, theme, download folder and quality, waiting times, and whether to show the welcome screen;</li>
+      <li>the list of Flow models and their credit prices, read from the Flow page;</li>
+      <li>the last price list and the last list of Flow names downloaded from our site, so they still work without a connection;</li>
+      <li>how many free results have been made on this computer, and your Pro licence key with the activation details returned by the licence check and the random device codes, if you activate one. These items are also kept in Chrome's own sync storage, so they follow your Chrome account to your other computers and survive a reinstall. Chrome syncs them through your Google account like your other Chrome settings; they are never sent to us.</li>
+    </ul>
+    <p>Apart from the licence check described above, this information never leaves your browser. You can delete it at any time with the "Clear" or "Remove file" buttons, or by removing the extension.</p>
+    </section>
+    <section id="en-5">
+      <h2>How the extension works with Google Flow</h2>
+    <ul>
+      <li>The extension only works on <code>flow.google.com</code> and <code>labs.google</code> pages, in the account you are already signed in to. It types your prompts, presses the buttons and renames the results there, as you would by hand.</li>
+      <li>Your prompts, uploaded pictures and generated results are handled by Google under <a href="https://policies.google.com/privacy">Google's Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a>, exactly as when you use Flow without the extension. Prompt Batch has no access to your Google password or account settings.</li>
+      <li>Downloads are saved by Chrome to the folder you choose in your Downloads folder.</li>
+    </ul>
+    </section>
+    <section id="en-6">
+      <h2>Permissions</h2>
+    <ul>
+      <li><strong>Side panel</strong>: shows the extension's interface next to the Flow tab.</li>
+      <li><strong>Storage</strong>: keeps the information listed above on your computer.</li>
+      <li><strong>Downloads</strong>: saves each result with the name of its row.</li>
+      <li><strong>Tabs</strong> and <strong>scripting</strong>: find the Flow tab you have open and add the extension's script to it.</li>
+      <li><strong>Access to api.freemius.com</strong>: checks a Pro licence key you entered, as described above.</li>
+      <li><strong>Debugger</strong>: Flow's Generate button does not react to script events, so during a run you started, the extension sends real mouse clicks and Enter presses to the Flow tab. It is used only on Flow tabs, only to send input, and reads nothing through it. Chrome shows a notice while it is in use.</li>
+    </ul>
+    </section>
+    <section id="en-7">
+      <h2>Sharing and selling</h2>
+    <p>We do not sell, share, rent or transfer any information. The extension sends us nothing, and order details from InstaPay or Vodafone Cash payments stay with us, as described above. Our seller receives only what you give it when you buy, and the licence key when it is checked. The extension uses no advertising, no tracking and no remote code.</p>
+    </section>
+    <section id="en-8">
+      <h2>Children</h2>
+    <p>Prompt Batch is not meant for children. Google Flow itself requires users to be 18 or older.</p>
+    </section>
+    <section id="en-9">
+      <h2>Changes to this policy</h2>
+    <p>If this policy changes, the new version will be published on this page with a new effective date.</p>
+    </section>
+    <section id="en-10">
+      <h2>Contact</h2>
+    <p>Questions about this policy: <a href="mailto:support@mansify.app">support@mansify.app</a></p>
+    <p>Prompt Batch is an independent tool. It is not made, endorsed or supported by Google.</p>
+    </section>
+  </article><article class="ar" lang="ar" dir="rtl">
+    <section id="ar-0"><div class="box"><p>Prompt Batch إضافة لمتصفح Chrome تشغّل قائمة أوامر ترفعها بنفسك في مشروع Google Flow المفتوح لديك، ثم تنزّل النتائج. توضّح هذه السياسة ما تفعله الإضافة بالمعلومات. باختصار: <strong>لا تجمع الإضافة أي شيء، وليس لها خادم، ولا ترسل إلينا أي بيانات.</strong> الشيء الوحيد الذي قد يخرج خارج Flow هو مفتاح ترخيص Pro، إن اشتريته، إلى خدمة التراخيص التي تتحقق منه. وتُنزّل الإضافة أيضًا ملفين عامّين من موقعنا، هما قائمة الأسعار وقائمة بأسماء أزرار Flow ورسائله (لتستمر في العمل إذا غيّر Flow هذه الأسماء)، دون أن ترسل أي شيء عنك.</p></div></section>
+    <section id="ar-1">
+      <h2>المعلومات التي نجمعها</h2>
+    <p>لا شيء. لا تجمع Prompt Batch أي معلومات شخصية أو سجل تصفح أو إحصاءات استخدام، ولا تسجّلها ولا ترسلها. ليس للإضافة خادم ولا نظام حسابات، فلا يوجد مكان تذهب إليه بياناتك. والاستثناء الوحيد هو نموذج الطلب في موقعنا، إذا اخترت الدفع عبر إنستاباي أو فودافون كاش (انظر أدناه).</p>
+    </section>
+    <section id="ar-2">
+      <h2>التحقق من ترخيص Pro</h2>
+    <p>Prompt Batch مجانية لأول ٨ نتائج. بعد ذلك يمكن شراء ترخيص Pro (شهري أو مدى الحياة بدفعة واحدة) من البائع الذي نتعامل معه، <a href="https://freemius.com/privacy/">Freemius</a>، بصفته البائع الرسمي (Merchant of Record)، وهو الذي يتولى الدفع وبريدك الإلكتروني وفق سياسة الخصوصية الخاصة به. عندما تُدخل مفتاح الترخيص في الإضافة، ترسل المفتاح فقط مع معرّف عشوائي من ٣٢ حرفًا لهذا الجهاز تُنشئه الإضافة، ورقم إصدار الإضافة، واسم لهذا الجهاز (اسم النظام، ورمز عشوائي من ٤ أحرف تُنشئه الإضافة، والتاريخ، مثل «Mac · 7F3A · 16 Oct 2026») إلى خدمة التراخيص لدى Freemius (<code>api.freemius.com</code>) للتحقق منه، ثم تعيد التحقق من حين لآخر: عند فتح اللوحة (مرة كل ٦ ساعات على الأكثر)، وعند بدء تشغيل، وعند فتح شاشة Pro. لا يُرسل أي شيء عن أوامرك أو ملفاتك أو مشاريع Flow أو تصفحك. وإذا لم تُدخل مفتاحًا أبدًا، فلا ترسل الإضافة هذا الطلب إطلاقًا. وبشكل منفصل، عند فتح اللوحة أو شاشة Pro تُنزّل الإضافة قائمة الأسعار العامة الخاصة بنا (<code>mansify.app/prompt-batch/prices.json</code>) لعرض الأسعار الحالية، ولا يُرسل معها أي شيء عنك.</p>
+    </section>
+    <section id="ar-3">
+      <h2>الدفع عبر إنستاباي أو فودافون كاش</h2>
+    <p>حيث تتوفر طريقة الدفع هذه، تشتري Pro من Mansify مباشرة عبر موقعنا، وليس عبر Freemius. يطلب نموذج الطلب اسمك، وبريدك الإلكتروني، ورقم الهاتف الذي دفعت منه، وطريقة الدفع، وصورة (لقطة شاشة) من التحويل. ونحتفظ مع الطلب أيضًا بالخطة، والمبلغ، والتاريخ، والبلد الذي يأتي منه اتصالك، وموافقتك على شروط الترخيص.</p>
+    <ul>
+      <li>نستخدم هذه البيانات فقط للتحقق من وصول المبلغ، ولإرسال مفتاح الترخيص إليك، وللتعامل مع أي استرداد أو سؤال عن الطلب.</li>
+      <li>تُحفظ في قاعدة بياناتنا على Cloudflare، ولا يطّلع عليها أحد غيرنا. ولا تُباع ولا تُشارك ولا تُستخدم في الإعلانات.</li>
+      <li>عند الموافقة على الطلب، يُنشأ له ترخيص لدى خدمة التراخيص التي نتعامل معها، Freemius، دون اسمك أو بريدك أو رقمك أو الصورة.</li>
+      <li>نحتفظ بالطلبات ضمن سجلات المبيعات. ويمكنك أن تطلب منا حذف بياناتك والصورة في أي وقت عبر <a href="#support">نموذج الدعم</a>، باستثناء ما يُلزمنا القانون بالاحتفاظ به.</li>
+    </ul>
+    </section>
+    <section id="ar-4">
+      <h2>المعلومات المحفوظة على جهازك</h2>
+    <p>للحفاظ على عملك بين الجلسات، تحفظ الإضافة ما يلي في التخزين المحلي للإضافات في Chrome، على جهازك فقط:</p>
+    <ul>
+      <li>أوامر الملف الذي رفعته وإعداداته، واسم الملف، وحالة كل سطر؛</li>
+      <li>اختياراتك: اللغة، والمظهر، ومجلد التنزيل وجودته، وأوقات الانتظار، وظهور شاشة الترحيب من عدمه؛</li>
+      <li>قائمة نماذج Flow وتكلفتها بالوحدات، كما تُقرأ من صفحة Flow؛</li>
+      <li>آخر قائمة أسعار وآخر قائمة بأسماء Flow نُزّلتا من موقعنا، لتعملا حتى دون اتصال؛</li>
+      <li>عدد النتائج المجانية التي أُنشئت على هذا الجهاز، ومفتاح ترخيص Pro مع بيانات التفعيل التي تعود من التحقق والرموز العشوائية للجهاز، إن فعّلت ترخيصًا. تُحفظ هذه العناصر أيضًا في تخزين المزامنة الخاص بـ Chrome، فتنتقل مع حساب Chrome إلى أجهزتك الأخرى وتبقى بعد إعادة التثبيت. يزامنها Chrome عبر حسابك في Google مثل بقية إعدادات Chrome، ولا تُرسل إلينا أبدًا.</li>
+    </ul>
+    <p>باستثناء التحقق من الترخيص الموضّح أعلاه، لا تغادر هذه المعلومات متصفحك. يمكنك حذفها في أي وقت بزر «مسح» أو «حذف الملف»، أو بإزالة الإضافة.</p>
+    </section>
+    <section id="ar-5">
+      <h2>كيف تعمل الإضافة مع Google Flow</h2>
+    <ul>
+      <li>تعمل الإضافة على صفحات <code>flow.google.com</code> و<code>labs.google</code> فقط، في الحساب الذي سجّلت الدخول به أصلًا. تكتب أوامرك، وتضغط الأزرار، وتغيّر أسماء النتائج هناك، كما كنت ستفعل يدويًا.</li>
+      <li>تتعامل Google مع أوامرك والصور التي ترفعها والنتائج التي تُنشأ وفق <a href="https://policies.google.com/privacy">سياسة خصوصية Google</a> و<a href="https://policies.google.com/terms">شروط الخدمة</a>، تمامًا كما عند استخدام Flow دون الإضافة. لا تصل Prompt Batch إلى كلمة مرور حسابك في Google ولا إلى إعداداته.</li>
+      <li>يحفظ Chrome التنزيلات في المجلد الذي تختاره داخل مجلد التنزيلات.</li>
+    </ul>
+    </section>
+    <section id="ar-6">
+      <h2>الأذونات</h2>
+    <ul>
+      <li><strong>اللوحة الجانبية</strong>: تعرض واجهة الإضافة بجوار علامة تبويب Flow.</li>
+      <li><strong>التخزين</strong>: يحفظ المعلومات المذكورة أعلاه على جهازك.</li>
+      <li><strong>التنزيلات</strong>: تحفظ كل نتيجة باسم سطرها.</li>
+      <li><strong>علامات التبويب</strong> و<strong>البرامج النصية</strong>: للعثور على علامة تبويب Flow المفتوحة وإضافة برنامج الإضافة إليها.</li>
+      <li><strong>الوصول إلى api.freemius.com</strong>: للتحقق من مفتاح ترخيص Pro الذي أدخلته، كما هو موضّح أعلاه.</li>
+      <li><strong>أداة تصحيح الأخطاء (Debugger)</strong>: لا يستجيب زر الإنشاء في Flow لأحداث البرامج النصية، لذا ترسل الإضافة أثناء تشغيل بدأته أنت نقرات حقيقية وضغطات على Enter إلى علامة تبويب Flow. تُستخدم على علامات تبويب Flow فقط، ولإرسال الإدخال فقط، ولا تقرأ أي شيء من خلالها. يعرض Chrome تنبيهًا طوال مدة استخدامها.</li>
+    </ul>
+    </section>
+    <section id="ar-7">
+      <h2>المشاركة والبيع</h2>
+    <p>لا نبيع أي معلومات ولا نشاركها ولا نؤجّرها ولا ننقلها. لا ترسل الإضافة إلينا أي شيء، وتبقى بيانات طلبات الدفع عبر إنستاباي أو فودافون كاش لدينا كما هو موضّح أعلاه. يتلقى البائع فقط ما تقدّمه له عند الشراء، ومفتاح الترخيص عند التحقق منه. لا تستخدم الإضافة إعلانات ولا تتبّعًا ولا شيفرة تُحمَّل من الخارج.</p>
+    </section>
+    <section id="ar-8">
+      <h2>الأطفال</h2>
+    <p>Prompt Batch ليست موجّهة للأطفال، ويشترط Google Flow نفسه أن يكون عمر المستخدم ١٨ عامًا أو أكثر.</p>
+    </section>
+    <section id="ar-9">
+      <h2>التعديلات على هذه السياسة</h2>
+    <p>إذا تغيّرت هذه السياسة، تُنشر النسخة الجديدة في هذه الصفحة بتاريخ سريان جديد.</p>
+    </section>
+    <section id="ar-10">
+      <h2>التواصل</h2>
+    <p>للأسئلة عن هذه السياسة: <a href="mailto:support@mansify.app">support@mansify.app</a></p>
+    <p>Prompt Batch أداة مستقلة، وليست من إنتاج Google ولا معتمدة منها ولا مدعومة من جهتها.</p>
+    </section>
+  </article><!-- /legal:privacy --></div></details>
+      <details><summary><span class="lg-t"><span class="en">Licence terms and refunds</span><span class="ar">شروط الترخيص والاسترداد</span></span><span class="lg-s"><span class="en">One person, 2 computers, 7-day refund</span><span class="ar">شخص واحد، جهازان، استرداد خلال ٧ أيام</span></span></summary>
+        <div class="lg-body legal"><!-- legal:terms --><article class="en" lang="en" dir="ltr">
+    <section id="en-0"><div class="box"><p>These terms apply to Prompt Batch Pro, the paid licence for the Prompt Batch Chrome extension. By buying Pro or activating a licence key you agree to them.</p></div></section>
+    <section id="en-1">
+      <h2>1. What you get</h2>
+    <p>A personal, non-transferable licence for <strong>one person</strong> to use Prompt Batch Pro on up to 2 computers or Chrome accounts that belong to that person. Depending on how you pay, Pro is sold as:</p>
+    <ul>
+      <li><strong>Monthly subscription</strong> (card or PayPal): stays active while the subscription is paid; if you cancel, Pro keeps working until the end of the paid month.</li>
+      <li><strong>Yearly licence</strong> (InstaPay or Vodafone Cash): Pro for 12 months from the day it is approved. It does not renew by itself; to keep Pro after that, you buy it again.</li>
+      <li><strong>Lifetime licence</strong>: paid once. "Lifetime" means for as long as Prompt Batch is offered and updated, not forever.</li>
+    </ul>
+    <p>Updates are included for as long as the extension is offered.</p>
+    </section>
+    <section id="en-2">
+      <h2>2. No sharing</h2>
+    <ul>
+      <li>Do not share, give, sell, rent or publish your licence key, and do not let other people use your Pro activation.</li>
+      <li>Every person who uses Pro needs their own licence.</li>
+      <li>Keep your licence key private: it is all that is needed to activate Pro.</li>
+    </ul>
+    </section>
+    <section id="en-3">
+      <h2>3. If a licence is shared or misused</h2>
+    <p>We can see on how many computers each key is activated and when. If we find that a key is shared, resold or misused, we may remove its activations or <strong>disable the key permanently</strong>, without notice. A key disabled for sharing is not refunded, except where the law requires it.</p>
+    </section>
+    <section id="en-4">
+      <h2>4. Refunds</h2>
+    <ul>
+      <li>You can try Prompt Batch free (8 results) before buying, so you know it works with your Flow account.</li>
+      <li>If Pro doesn't work for you, ask for a refund <strong>within 7 days of purchase</strong> through the <a href="#support">support form</a>. We'll first try to fix the problem; if we can't, or you still want a refund, you get the <strong>full amount</strong> back.</li>
+      <li>Paid by card or PayPal: the refund goes back the same way, through our seller Freemius.</li>
+      <li>Paid by InstaPay or Vodafone Cash: the refund is sent to the same account or number you paid from, within 7 working days of the refund being agreed.</li>
+      <li>When an order is refunded, its licence key is disabled and Pro stops working.</li>
+      <li>Monthly subscription: you can cancel any time from your account at <a href="https://users.freemius.com/">users.freemius.com</a> (sign in with the email you bought with). Pro keeps working until the end of the month you paid for; months already paid are not refunded, except the first payment within the 7 days above.</li>
+      <li>Launch prices and discount codes apply only to the purchase they are used on.</li>
+      <li>After 7 days, purchases are not refunded, except where the law requires it.</li>
+    </ul>
+    </section>
+    <section id="en-5">
+      <h2>5. Your Google account</h2>
+    <p>Prompt Batch works in your own Google Flow account with your own credits. You are responsible for your account and for following Google's Terms of Service and Generative AI Prohibited Use Policy. Your Flow credits and plan belong to Google; we do not sell, control or refund them. We are not responsible for any limit or action Google takes on your account.</p>
+    </section>
+    <section id="en-6">
+      <h2>6. Google Flow changes and availability</h2>
+    <ul>
+      <li>Prompt Batch depends on Google Flow, which we do not own or control. We keep an eye on Flow: when a Flow update affects the extension, we work on a fix and release an update as fast as we can, usually within a few days. Updates are free for every Pro user.</li>
+      <li>We cannot promise that the extension will always work without interruption. A pause while we fix the extension after a Flow change does not by itself give a right to a refund.</li>
+      <li>If Google closes Flow, changes it so that the extension can no longer work, or blocks tools like Prompt Batch, this is outside our control. Purchases older than 7 days are then not refunded, except where the law requires it.</li>
+      <li>You can report any problem through the <a href="#support">support form</a>; it helps us fix things faster.</li>
+    </ul>
+    </section>
+    <section id="en-7">
+      <h2>7. Removing the extension or changing computers</h2>
+    <p>Your licence key stays yours. If you remove the extension or change computer, install it again and activate the same key, on up to 2 computers at a time. If both are taken, remove Pro from an old computer (⚙ → Pro &amp; licence → Remove from this computer) or ask us through the support form. Removing the extension is not a reason for a refund after the 7 days.</p>
+    </section>
+    <section id="en-8">
+      <h2>8. Warranty and liability</h2>
+    <p>Beyond what these terms say, the extension is provided "as is". To the extent the law allows, we are not liable for any indirect loss from using it, and in any case our total liability is limited to the amount you paid for your licence.</p>
+    </section>
+    <section id="en-9">
+      <h2>9. Payment</h2>
+    <ul>
+      <li><strong>Card or PayPal:</strong> payments are handled by our seller, Freemius, as merchant of record. Its terms apply to the purchase. The charge on your statement appears as "FREEMIUS* Prompt Batch".</li>
+      <li><strong>InstaPay or Vodafone Cash</strong> (where offered): you pay Mansify directly. After you send the transfer and the form, we check that the full amount arrived; your licence key then appears on your order page and is sent to your email. If the transfer cannot be found or does not match the order, the order is rejected and no key is given.</li>
+    </ul>
+    </section>
+    <section id="en-10">
+      <h2>10. Changes and contact</h2>
+    <p>If these terms change, the new version will be published on this page with a new date. Questions: <a href="mailto:support@mansify.app">support@mansify.app</a></p>
+    <p>Prompt Batch is an independent tool. It is not made, endorsed or supported by Google.</p>
+    </section>
+  </article><article class="ar" lang="ar" dir="rtl">
+    <section id="ar-0"><div class="box"><p>تنطبق هذه الشروط على Prompt Batch Pro، الترخيص المدفوع لإضافة Prompt Batch في Chrome. بشرائك Pro أو تفعيلك مفتاح ترخيص فإنك توافق عليها.</p></div></section>
+    <section id="ar-1">
+      <h2>١. ما الذي تحصل عليه</h2>
+    <p>ترخيص شخصي غير قابل للنقل <strong>لشخص واحد</strong> لاستخدام Prompt Batch Pro على جهازين أو حسابَي Chrome كحد أقصى يخصّان هذا الشخص. وحسب طريقة الدفع، يُباع Pro بأحد الأشكال التالية:</p>
+    <ul>
+      <li><strong>اشتراك شهري</strong> (بالبطاقة أو PayPal): يبقى مفعّلًا ما دام الاشتراك مدفوعًا، وإذا ألغيته يستمر Pro حتى نهاية الشهر المدفوع.</li>
+      <li><strong>ترخيص سنوي</strong> (عبر إنستاباي أو فودافون كاش): Pro لمدة ١٢ شهرًا من يوم الموافقة على الطلب. لا يتجدد تلقائيًا، ولكي تستمر في استخدام Pro بعد ذلك تشتريه مرة أخرى.</li>
+      <li><strong>ترخيص مدى الحياة</strong>: يُدفع مرة واحدة. وتعني «مدى الحياة» ما دامت Prompt Batch متاحة ومحدّثة، وليس إلى الأبد.</li>
+    </ul>
+    <p>والتحديثات مشمولة ما دامت الإضافة متاحة.</p>
+    </section>
+    <section id="ar-2">
+      <h2>٢. يُمنع المشاركة</h2>
+    <ul>
+      <li>لا تشارك مفتاح الترخيص ولا تعطه لأحد ولا تبعه ولا تؤجّره ولا تنشره، ولا تسمح لغيرك باستخدام تفعيل Pro الخاص بك.</li>
+      <li>كل شخص يستخدم Pro يحتاج إلى ترخيص خاص به.</li>
+      <li>احتفظ بمفتاح الترخيص لنفسك: فهو كل ما يلزم لتفعيل Pro.</li>
+    </ul>
+    </section>
+    <section id="ar-3">
+      <h2>٣. إذا شورك الترخيص أو أُسيء استخدامه</h2>
+    <p>يمكننا أن نرى عدد الأجهزة التي فُعّل عليها كل مفتاح ومتى. إذا تبيّن لنا أن مفتاحًا شورك أو أُعيد بيعه أو أُسيء استخدامه، فيحق لنا إزالة تفعيلاته أو <strong>إيقاف المفتاح نهائيًا</strong> دون إشعار. لا يُسترد ثمن المفتاح الموقوف بسبب المشاركة، إلا إذا ألزم القانون بذلك.</p>
+    </section>
+    <section id="ar-4">
+      <h2>٤. استرداد المبلغ</h2>
+    <ul>
+      <li>يمكنك تجربة Prompt Batch مجانًا (٨ نتائج) قبل الشراء، لتتأكد من أنها تعمل مع حسابك في Flow.</li>
+      <li>إذا لم تناسبك Pro، اطلب الاسترداد <strong>خلال ٧ أيام من الشراء</strong> عبر <a href="#support">نموذج الدعم</a>. سنحاول حل المشكلة أولًا؛ فإن لم نتمكن، أو ظللت ترغب في الاسترداد، يُعاد إليك <strong>المبلغ كاملًا</strong>.</li>
+      <li>إذا دفعت بالبطاقة أو PayPal: يُعاد المبلغ بالطريقة نفسها عبر البائع Freemius.</li>
+      <li>إذا دفعت عبر إنستاباي أو فودافون كاش: يُرسل المبلغ إلى الحساب أو الرقم نفسه الذي دفعت منه، خلال ٧ أيام عمل من الموافقة على الاسترداد.</li>
+      <li>عند استرداد مبلغ طلب، يُوقف مفتاح الترخيص الخاص به وتتوقف Pro عن العمل.</li>
+      <li>الاشتراك الشهري: يمكنك إلغاؤه في أي وقت من حسابك على <a href="https://users.freemius.com/">users.freemius.com</a> (سجّل الدخول بالبريد الذي اشتريت به). تستمر Pro حتى نهاية الشهر المدفوع، ولا تُسترد الشهور المدفوعة، باستثناء الدفعة الأولى خلال الأيام السبعة المذكورة أعلاه.</li>
+      <li>أسعار الإطلاق وأكواد الخصم تنطبق فقط على عملية الشراء التي استُخدمت فيها.</li>
+      <li>بعد ٧ أيام لا تُسترد المشتريات، إلا إذا ألزم القانون بذلك.</li>
+    </ul>
+    </section>
+    <section id="ar-5">
+      <h2>٥. حسابك في Google</h2>
+    <p>تعمل Prompt Batch في حسابك أنت على Google Flow وبوحداتك أنت. أنت المسؤول عن حسابك وعن الالتزام بشروط خدمة Google وسياسة الاستخدام المحظور للذكاء الاصطناعي التوليدي. ووحداتك وخطتك في Flow تابعة لـ Google، ونحن لا نبيعها ولا نتحكم فيها ولا نستردها. ولسنا مسؤولين عن أي قيد أو إجراء تتخذه Google على حسابك.</p>
+    </section>
+    <section id="ar-6">
+      <h2>٦. تغييرات Google Flow وتوفّر الإضافة</h2>
+    <ul>
+      <li>تعتمد Prompt Batch على Google Flow، وهي خدمة لا نملكها ولا نتحكم فيها. نتابع Flow باستمرار: عندما يؤثر تحديث في Flow على الإضافة، نعمل على إصلاح وننشر تحديثًا في أسرع وقت ممكن، عادةً خلال أيام قليلة. والتحديثات مجانية لكل مستخدمي Pro.</li>
+      <li>لا نستطيع أن نضمن عمل الإضافة دائمًا دون انقطاع. والتوقف المؤقت أثناء إصلاح الإضافة بعد تغيير في Flow لا يعطي وحده حقًّا في الاسترداد.</li>
+      <li>إذا أغلقت Google خدمة Flow، أو غيّرتها بحيث لا تستطيع الإضافة العمل، أو منعت الأدوات المشابهة لـ Prompt Batch، فهذا خارج عن إرادتنا. وعندها لا تُسترد المشتريات التي مضى عليها أكثر من ٧ أيام، إلا إذا ألزم القانون بذلك.</li>
+      <li>يمكنك الإبلاغ عن أي مشكلة عبر <a href="#support">نموذج الدعم</a>، فذلك يساعدنا على الإصلاح أسرع.</li>
+    </ul>
+    </section>
+    <section id="ar-7">
+      <h2>٧. حذف الإضافة أو تغيير الجهاز</h2>
+    <p>يبقى مفتاح الترخيص ملكك. إذا حذفت الإضافة أو غيّرت جهازك، فثبّتها من جديد وفعّل المفتاح نفسه، على جهازين كحد أقصى في الوقت نفسه. وإذا كان الجهازان مستخدمين، فأزل Pro من جهاز قديم (⚙ ← Pro والترخيص ← إزالتها من هذا الجهاز) أو اطلب ذلك منا عبر نموذج الدعم. وحذف الإضافة ليس سببًا للاسترداد بعد الأيام السبعة.</p>
+    </section>
+    <section id="ar-8">
+      <h2>٨. الضمان والمسؤولية</h2>
+    <p>فيما عدا ما تنص عليه هذه الشروط، تُقدَّم الإضافة «كما هي». وفي الحدود التي يسمح بها القانون، لسنا مسؤولين عن أي خسارة غير مباشرة تنتج عن استخدامها، وفي كل الأحوال لا تتجاوز مسؤوليتنا الإجمالية المبلغ الذي دفعته مقابل ترخيصك.</p>
+    </section>
+    <section id="ar-9">
+      <h2>٩. الدفع</h2>
+    <ul>
+      <li><strong>بالبطاقة أو PayPal:</strong> يتولى الدفع البائع الذي نتعامل معه، Freemius، بصفته البائع الرسمي (Merchant of Record)، وتنطبق شروطه على عملية الشراء. ويظهر الخصم في كشف حسابك باسم «FREEMIUS* Prompt Batch».</li>
+      <li><strong>عبر إنستاباي أو فودافون كاش</strong> (حيث يتوفر ذلك): تدفع إلى Mansify مباشرة. بعد إرسال التحويل والنموذج، نتحقق من وصول المبلغ كاملًا، ثم يظهر مفتاح الترخيص في صفحة طلبك ويُرسل إلى بريدك. وإذا لم نجد التحويل أو لم يطابق الطلب، يُرفض الطلب ولا يُعطى مفتاح.</li>
+    </ul>
+    </section>
+    <section id="ar-10">
+      <h2>١٠. التعديلات والتواصل</h2>
+    <p>إذا تغيّرت هذه الشروط، تُنشر النسخة الجديدة في هذه الصفحة بتاريخ جديد. للأسئلة: <a href="mailto:support@mansify.app">support@mansify.app</a></p>
+    <p>Prompt Batch أداة مستقلة، وليست من إنتاج Google ولا معتمدة منها ولا مدعومة من جهتها.</p>
+    </section>
+  </article><!-- /legal:terms --></div></details>
+    </div>
   </section>
 </main>
 
-<footer>
+<section class="finale" id="contact">
+  <div class="aurora a"></div>
   <div class="wrap">
-    <span>© 2026 Mansify</span>
-    <nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms &amp; refunds</a><a href="support.html">Support</a></nav>
+    <p class="slogan rv" data-split><span class="en">Questions? <span class="serif">Just ask.</span></span><span class="ar">لديك سؤال؟ <span class="serif">راسلنا.</span></span></p>
+    <div class="contact rv">
+      <a class="mail spot-card" href="mailto:support@mansify.app?subject=Prompt%20Batch">
+        <span><small><span class="en">Help with Prompt Batch</span><span class="ar">المساعدة في Prompt Batch</span></small><strong>support@mansify.app</strong></span>
+        <span class="circ"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+      <a class="mail spot-card" href="../index.html#products">
+        <span><small><span class="en">See what else we make</span><span class="ar">اكتشف منتجاتنا الأخرى</span></small><strong><span class="en">All products</span><span class="ar">كل المنتجات</span></strong></span>
+        <span class="circ"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+    </div>
   </div>
-</footer>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wm-outline" x="-5%" y="-10%" width="110%" height="120%"><feMorphology in="SourceGraphic" operator="dilate" radius="1.3" result="d"/><feComposite in="d" in2="SourceGraphic" operator="out"/></filter></svg>
+  <div class="wordmark" aria-hidden="true">mansify</div>
+  <!-- layout:footer -->
+  <footer class="site-foot">
+    <div class="wrap fgrid">
+      <div class="fbrand">
+        <a class="logo" href="../index.html" aria-label="Mansify home"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M8.5 22V11l7.5 8 7.5-8v11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.2"/></svg>Mansify</a>
+        <p><span class="en">An independent software studio.</span><span class="ar">استوديو برمجيات مستقل.</span></p>
+      </div>
+      <div class="fcol"><h4>Mansify</h4><a href="../index.html#products"><span class="en">Products</span><span class="ar">المنتجات</span></a><a href="../index.html#approach"><span class="en">Approach</span><span class="ar">طريقتنا</span></a><a href="mailto:contact@mansify.app"><span class="en">Contact</span><span class="ar">تواصل</span></a></div>
+      <div class="fcol"><h4><span class="en">Legal</span><span class="ar">قانوني</span></h4><a href="../privacy/index.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a><a href="../terms/index.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></div>
+    </div>
+    <div class="wrap fbase"><span dir="ltr">© 2026 Mansify</span></div>
+  </footer>
+  <!-- /layout:footer -->
+</section>
 
-<script>
-// Prices come from prices.json (the same file the extension reads), so a price change is one file edit.
-// The numbers written above are only the fallback.
-fetch('prices.json', { cache: 'no-cache' }).then((r) => r.json()).then((p) => {
-  const m = (n) => '$' + (Number.isInteger(n) ? n : n.toFixed(2));
-  const launch = p.coupon && p.off ? Math.round(p.lifetime * (100 - p.off)) / 100 : null;
-  const set = (k, v) => document.querySelectorAll('[data-p="' + k + '"]').forEach((e) => { if (v === null) e.hidden = true; else e.textContent = v; });
-  set('monthly', m(p.monthly)); set('off', String(p.off));
-  set('now', m(launch == null ? p.lifetime : launch));
-  set('was', launch == null ? null : m(p.lifetime));
-  if (launch == null) document.querySelectorAll('[data-p="offer"], [data-p="launchTag"]').forEach((e) => { e.hidden = true; });
-}).catch(() => {});
-</script>
+<script src="../assets/site.js"></script>
 </body>
 </html>

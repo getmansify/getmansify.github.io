@@ -3,9 +3,6 @@
   "lifetime": 15,
   "off": 50,
   "coupon": "LAUNCH50",
-  "launchTotal": 100,
-  "launchLeft": null,
-  "showCount": false,
   "launchEnds": "2026-12-16",
   "launchUpdated": "2026-11-13",
   "egp": {
@@ -16,5 +13,6 @@
     "vodafone": "",
     "vodafoneLink": "http://vf.eg/vfcash?id=mt&qrId=wbHnHf"
   },
-  "facebook": "https://www.facebook.com/profile.php?id=61595487844847"
+  "facebook": "https://www.facebook.com/profile.php?id=61595487844847",
+  "region": "world"
 }

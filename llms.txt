@@ -1,0 +1,34 @@
+# Mansify
+
+> Mansify is an independent software studio that makes browser extensions, design tools and small apps. Each product solves one real problem in the simplest way. Website: https://mansify.app (English and Arabic).
+
+## Prompt Batch
+
+Prompt Batch is a Chrome extension for Google Flow (Google's AI tool for images and Veo videos). It runs a whole list of prompts for you: load an Excel, CSV or text file with one prompt per row, open a Flow project and press Start. It types each prompt into Flow, waits for the image or video, renames it in the project and downloads it to a folder you choose, with clean numbered names.
+
+- Each row can set: type (image or video), aspect ratio, number of results (1 to 4), model, reference pictures, a start picture to animate into a video, video resolution and length.
+- Up to 50 prompts per file; at least 5 seconds between prompts, a calm human pace. It stops on its own if Flow reports unusual activity or the credits run out.
+- Works in the user's own Flow account and uses their own Flow credits, exactly as if they typed each prompt.
+- Privacy: everything stays in the browser; no server, no data collected.
+- Price: the first 8 results are free with every feature. Pro removes the limit: monthly plan or one-time lifetime licence, on up to 2 computers. Current prices: https://mansify.app/prompt-batch/#pricing
+- Languages: English, Arabic, Spanish, Portuguese, French, Hindi, Indonesian, Turkish.
+- Independent tool, not made or endorsed by Google.
+- Install: https://chromewebstore.google.com/detail/prompt-batch/mgangjbcmdppnmlmaielildhagdlegob
+
+### Pages
+
+- [Prompt Batch](https://mansify.app/prompt-batch/): product page, features, pricing, FAQ
+- [Run many prompts in Google Flow at once](https://mansify.app/prompt-batch/guides/run-many-prompts-google-flow): from an Excel, CSV or text file to a folder of named images and videos
+- [Make many Veo videos in Google Flow at once](https://mansify.app/prompt-batch/guides/make-many-veo-videos-google-flow): videos from text, animated pictures with a start image, or both
+- [Download every Google Flow result with clean names](https://mansify.app/prompt-batch/guides/download-google-flow-results): automatic, numbered downloads in the order of your file
+- [Google Flow says "requesting generations too quickly"](https://mansify.app/prompt-batch/guides/google-flow-requesting-generations-too-quickly): what the message means and what to do
+- [Video tutorial (2 minutes)](https://youtu.be/D94U4ePladc)
+
+## Iconaut (coming soon)
+
+A Figma plugin that turns outlined icons back into real, editable strokes, so the stroke weight can be changed in one step. Page: https://mansify.app/icon-tool/
+
+## Contact
+
+- Help with a product: support@mansify.app
+- General: contact@mansify.app

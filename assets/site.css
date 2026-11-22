@@ -792,6 +792,7 @@ html[dir="rtl"] .sf input[type="email"]:placeholder-shown { text-align: right; }
 .guide-cta { padding-top: 0; }
 .guide-cta .cta { margin-top: 28px; }
 /* Guides list on a product page (#guides): cards are links; "soon" cards are quiet. */
+@media (min-width: 901px) { .guides-list:has(> .step:nth-child(4):last-child) { grid-template-columns: repeat(2, 1fr); } }   /* 4 guides = 2 x 2 */
 .guides-list a.step { text-decoration: none; color: inherit; display: flex; flex-direction: column; }
 .guides-list a.step p { flex: 1; }
 .guides-list .more { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; color: var(--link); font-weight: 600; font-size: 15px; }

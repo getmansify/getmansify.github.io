@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="512" height="512">
+  <!-- Script to Scenes (test idea 2026-11-22): script lines turning into three scene frames -->
+  <rect width="48" height="48" rx="13" fill="#1d5ee6"/>
+  <path d="M10 14h11M10 19.5h8M10 25h11" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M10 30.5h8M10 36h11" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" opacity=".55"/>
+  <rect x="26" y="11" width="12" height="7.5" rx="2" fill="#ffffff"/>
+  <rect x="26" y="20.5" width="12" height="7.5" rx="2" fill="#ffffff" opacity=".75"/>
+  <rect x="26" y="30" width="12" height="7.5" rx="2" fill="#ffcf3f"/>
+</svg>

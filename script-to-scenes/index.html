@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-ar="من النص إلى المشاهد | فكرة من Mansify">Script to Scenes | An idea from Mansify</title>
+<meta name="description" content="A Chrome extension idea from Mansify: paste a video script, get it split into scenes with characters described the same way every time, and a prompt file ready for Google Flow and Prompt Batch." data-ar="فكرة إضافة Chrome من Mansify: الصق نص الفيديو، فيُقسَّم إلى مشاهد بشخصيات ثابتة الوصف، ويخرج ملف أوامر جاهز لـ Google Flow وPrompt Batch.">
+<!-- Demand test page (2026-11-22): hidden, reached only from posts. Not on the home page or in the sitemap. -->
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#070b16">
+<script>
+/* Language before the first paint (same as every mansify.app page). */
+(function () { var r = document.documentElement, l = null, t = null, q = new URLSearchParams(location.search).get('lang'), only = r.getAttribute('data-only');
+  try { l = localStorage.getItem('mansify-lang'); t = localStorage.getItem('mansify-theme'); } catch (e) {}
+  if (q === 'ar' || q === 'en') { l = q; try { localStorage.setItem('mansify-lang', q); } catch (e) {} }
+  if (l !== 'ar' && l !== 'en') l = (navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en';
+  if (only === 'en' && l === 'ar' && !q) { var u = new URL(location.href); u.searchParams.set('lang', 'ar'); location.replace(u.href); }
+  if (only === 'ar' || only === 'en') l = only;
+  r.lang = l; r.dir = l === 'ar' ? 'rtl' : 'ltr'; if (t === 'light' || t === 'dark') r.dataset.theme = t; })();
+</script>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/img/mansify-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/mansify-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+/* page-only mock-up of the tool (the visual area is always dark) */
+.mk { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1.25fr; gap: 14px; align-items: center; padding: 26px; }
+.mk-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 14px; color: #dfe5f3; font-size: 12.5px; line-height: 1.55; }
+.mk-card small { display: block; color: #8f9ab4; font-size: 11px; font-weight: 600; margin-bottom: 6px; letter-spacing: .02em; }
+.mk-line { height: 6px; border-radius: 4px; background: rgba(255,255,255,.18); margin: 8px 0; }
+.mk-scenes { display: grid; gap: 9px; }
+.mk-scene { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 9px 12px; color: #dfe5f3; font-size: 12px; line-height: 1.45; }
+.mk-scene b { color: #fff; font-weight: 600; }
+.mk-scene em { font-style: normal; color: var(--spark); }
+.mk-scene .t { float: inline-end; color: #8f9ab4; font-size: 11px; }
+.side-list { position: absolute; inset: 56px 22px 22px; display: grid; align-content: center; gap: 10px; color: #dfe5f3; font-size: 14.5px; line-height: 1.5; }
+.side-list p { margin: 0; padding-inline-start: 26px; position: relative; }
+.side-list p::before { content: ""; position: absolute; inset-inline-start: 0; top: .45em; width: 12px; height: 12px; border-radius: 50%; background: #e0565b; }
+.side-list.good p::before { background: #3ccf8e; }
+@media (max-width: 720px) { .mk { grid-template-columns: 1fr; padding: 18px; } .mk-src { display: none; } .side-list { font-size: 13.5px; } }
+</style>
+<!-- layout:meta -->
+<link rel="canonical" href="https://mansify.app/script-to-scenes/" data-ar="https://mansify.app/script-to-scenes/?lang=ar">
+<link rel="alternate" hreflang="en" href="https://mansify.app/script-to-scenes/">
+<link rel="alternate" hreflang="ar" href="https://mansify.app/script-to-scenes/?lang=ar">
+<link rel="alternate" hreflang="x-default" href="https://mansify.app/script-to-scenes/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mansify">
+<meta property="og:locale" content="en_US" data-ar="ar_AR">
+<meta property="og:title" content="Script to Scenes | An idea from Mansify" data-ar="من النص إلى المشاهد | فكرة من Mansify">
+<meta property="og:description" content="A Chrome extension idea from Mansify: paste a video script, get it split into scenes with characters described the same way every time, and a prompt file ready for Google Flow and Prompt Batch." data-ar="فكرة إضافة Chrome من Mansify: الصق نص الفيديو، فيُقسَّم إلى مشاهد بشخصيات ثابتة الوصف، ويخرج ملف أوامر جاهز لـ Google Flow وPrompt Batch.">
+<meta property="og:url" content="https://mansify.app/script-to-scenes/" data-ar="https://mansify.app/script-to-scenes/?lang=ar">
+<meta property="og:image" content="https://mansify.app/img/og/home.png" data-ar="https://mansify.app/img/og/home-ar.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!-- /layout:meta -->
+</head>
+<body data-title-en="Script to Scenes | An idea from Mansify" data-title-ar="من النص إلى المشاهد | فكرة من Mansify" class="has-phead">
+<div class="progress" aria-hidden="true"></div>
+
+<!-- layout:nav -->
+<div class="nav" id="nav">
+  <div class="wrap bar">
+    <a class="logo" href="../index.html" aria-label="Mansify home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M8.5 22V11l7.5 8 7.5-8v11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.2"/></svg>
+      Mansify
+    </a>
+    <nav>
+      <a href="../index.html#products" aria-current="page"><span class="en">Products</span><span class="ar">المنتجات</span></a>
+      <a class="opt" href="../index.html#approach"><span class="en">Approach</span><span class="ar">طريقتنا</span></a>
+      <a class="opt" href="../index.html#contact"><span class="en">Contact</span><span class="ar">تواصل</span></a>
+      <button class="icon-btn" id="theme" type="button" aria-label="Switch light or dark mode">
+        <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="lang" id="lang" type="button"><span class="en">العربية</span><span class="ar">English</span></button>
+    </nav>
+  </div>
+</div>
+<!-- /layout:nav -->
+<!-- layout:phead -->
+<section class="phead wrap" id="top">
+  <div class="ph-card">
+    <div class="ph-main">
+      <a class="ph-iconlink" href="#top"><img class="ph-icon" src="../img/script-to-scenes-icon.svg" width="88" height="88" alt=""></a>
+      <div class="ph-txt">
+        <span class="crumbs"><a href="../index.html#products"><span class="en">Products</span><span class="ar">المنتجات</span></a><span aria-hidden="true">/</span><span><span class="en">Script to Scenes</span><span class="ar">من النص إلى المشاهد</span></span></span>
+        <p class="ph-name"><span class="en">Script to Scenes</span><span class="ar">من النص إلى المشاهد</span> <span class="chip soon"><span class="en">In planning</span><span class="ar">قيد التخطيط</span></span></p>
+        <p class="ph-line"><span class="en">Turn a video script into ready scene prompts</span><span class="ar">حوّل نص الفيديو إلى أوامر مشاهد جاهزة</span></p>
+        <div class="ph-meta"><span class="chip"><svg class="brand" viewBox="0 0 48 48" aria-hidden="true"><path fill="#DB4437" d="M24.00 14.00L43.60 14.00A22 22 0 0 0 5.54 12.03L15.34 29.00A10 10 0 0 1 24.00 14.00Z"/><path fill="#F4B400" d="M32.66 29.00L22.86 45.97A22 22 0 0 0 43.60 14.00L24.00 14.00A10 10 0 0 1 32.66 29.00Z"/><path fill="#0F9D58" d="M15.34 29.00L5.54 12.03A22 22 0 0 0 22.86 45.97L32.66 29.00A10 10 0 0 1 15.34 29.00Z"/><circle cx="24" cy="24" r="10" fill="#fff"/><circle cx="24" cy="24" r="8" fill="#4285F4"/></svg><span class="en">Chrome extension</span><span class="ar">إضافة Chrome</span></span><span class="chip"><span class="en">For Google Flow</span><span class="ar">لـ Google Flow</span></span></div>
+      </div>
+      <div class="ph-side"><div class="cta"><a class="btn accent" href="#waitlist"><span class="en">Get early access</span><span class="ar">احصل على وصول مبكر</span><svg class="arr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div></div>
+    </div>
+    <nav class="ph-tabs" aria-label="Script to Scenes"><a href="#top" class="on"><span class="en">Overview</span><span class="ar">نظرة عامة</span></a><a href="#problem"><span class="en">The problem</span><span class="ar">المشكلة</span></a><a href="#how"><span class="en">How it works</span><span class="ar">طريقة العمل</span></a><a href="#faq"><span class="en">FAQ</span><span class="ar">الأسئلة</span></a></nav>
+  </div>
+</section>
+<!-- /layout:phead -->
+
+<header class="hero p-hero">
+  <div class="aurora a"></div><div class="aurora b"></div>
+  <div class="wrap grid">
+    <div>
+      <h1 class="rv" data-split><span class="en">From script <span class="serif">to scenes.</span></span><span class="ar">من النص <span class="serif">إلى المشاهد.</span></span></h1>
+      <p class="lead rv" data-d="1"><span class="en">Paste the script of your video. It is split into short scenes, each with a ready prompt, and your characters and places are described the same way in every scene, so they keep their look. You get one file you can run in Google Flow.</span><span class="ar">الصق نص الفيديو، فيُقسَّم إلى مشاهد قصيرة لكل منها أمر جاهز، وتُوصف شخصياتك وأماكنك بالطريقة نفسها في كل مشهد فيبقى شكلها ثابتًا. وتحصل على ملف واحد تشغّله في Google Flow.</span></p>
+    </div>
+    <div class="tile rv" data-d="2" style="border-color: transparent">
+      <div class="visual" style="aspect-ratio: 5 / 4">
+        <div class="mk" dir="ltr">
+          <div class="mk-card mk-src"><small>SCRIPT</small><div class="mk-line" style="width:92%"></div><div class="mk-line" style="width:76%"></div><div class="mk-line" style="width:88%"></div><div class="mk-line" style="width:60%"></div><div class="mk-line" style="width:84%"></div><div class="mk-line" style="width:70%"></div><div class="mk-line" style="width:90%"></div><div class="mk-line" style="width:52%"></div></div>
+          <div class="mk-scenes">
+            <div class="mk-scene"><span class="t">8 s</span><b>Scene 1</b><br><em>Old sailor, grey beard, blue coat</em> walks onto a foggy harbour at dawn</div>
+            <div class="mk-scene"><span class="t">8 s</span><b>Scene 2</b><br><em>Old sailor, grey beard, blue coat</em> unties a small red boat</div>
+            <div class="mk-scene"><span class="t">8 s</span><b>Scene 3</b><br>Wide shot: the red boat leaves the harbour, sun rising</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="block wrap" id="problem">
+    <div class="head rv">
+      <div>
+        <span class="mono"><span class="en">01 / The problem</span><span class="ar">01 / المشكلة</span></span>
+        <h2 data-split><span class="en">A long video is <span class="serif">fifty prompts.</span></span><span class="ar">الفيديو الطويل <span class="serif">خمسون أمرًا.</span></span></h2>
+      </div>
+      <p><span class="en">Each AI clip lasts a few seconds, so a story video needs many scenes. Writing them by hand takes hours, and the hero rarely looks the same twice.</span><span class="ar">كل مقطع بالذكاء الاصطناعي يستمر بضع ثوانٍ، فيحتاج فيديو القصة إلى مشاهد كثيرة. كتابتها يدويًا تأخذ ساعات، ونادرًا ما تبدو الشخصية نفسها مرتين.</span></p>
+    </div>
+    <div class="compare">
+      <div class="side rv">
+        <span class="label"><span class="en">Today · by hand</span><span class="ar">اليوم · يدويًا</span></span>
+        <div class="side-list">
+          <p><span class="en">You cut the script into scenes yourself</span><span class="ar">تقسّم النص إلى مشاهد بنفسك</span></p>
+          <p><span class="en">You rewrite each character in every prompt</span><span class="ar">تعيد وصف كل شخصية في كل أمر</span></p>
+          <p><span class="en">Faces, clothes and places drift between clips</span><span class="ar">تتغير الوجوه والملابس والأماكن بين المقاطع</span></p>
+          <p><span class="en">You copy prompts one by one into Flow</span><span class="ar">تنسخ الأوامر واحدًا واحدًا إلى Flow</span></p>
+        </div>
+      </div>
+      <div class="side rv" data-d="1">
+        <span class="label"><span class="en">With Script to Scenes</span><span class="ar">مع «من النص إلى المشاهد»</span></span>
+        <div class="side-list good">
+          <p><span class="en">Paste the whole script once</span><span class="ar">تلصق النص كله مرة واحدة</span></p>
+          <p><span class="en">Describe each character and place once</span><span class="ar">تصف كل شخصية وكل مكان مرة واحدة</span></p>
+          <p><span class="en">The same description goes into every scene</span><span class="ar">يدخل الوصف نفسه في كل مشهد</span></p>
+          <p><span class="en">One file, ready for Flow and Prompt Batch</span><span class="ar">ملف واحد جاهز لـ Flow وPrompt Batch</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="how">
+    <div class="head rv">
+      <div>
+        <span class="mono"><span class="en">02 / How it would work</span><span class="ar">02 / طريقة العمل المقترحة</span></span>
+        <h2 data-split><span class="en">Paste, check, <span class="serif">run.</span></span><span class="ar">الصق، راجع، <span class="serif">شغّل.</span></span></h2>
+      </div>
+      <p><span class="en">Made for creators of story, history and explainer videos built with Veo in Google Flow.</span><span class="ar">صُممت لصنّاع فيديوهات القصص والتاريخ والشرح الذين يعملون بـ Veo في Google Flow.</span></p>
+    </div>
+    <div class="steps">
+      <div class="step spot-card rv"><span class="n">1</span><h3><span class="en">Paste your script</span><span class="ar">الصق نصّك</span></h3><p><span class="en">Any length, in English or Arabic. Choose the style and how long each clip should be.</span><span class="ar">بأي طول، بالعربية أو الإنجليزية. اختر الأسلوب ومدة كل مقطع.</span></p></div>
+      <div class="step spot-card rv" data-d="1"><span class="n">2</span><h3><span class="en">Check the scenes</span><span class="ar">راجع المشاهد</span></h3><p><span class="en">See every scene and its prompt. Fix a character once and every scene follows.</span><span class="ar">شاهد كل مشهد وأمره. عدّل الشخصية مرة واحدة فتتبعها كل المشاهد.</span></p></div>
+      <div class="step spot-card rv" data-d="2"><span class="n">3</span><h3><span class="en">Run it in Flow</span><span class="ar">شغّله في Flow</span></h3><p><span class="en">Download a CSV or Excel file and run it with Prompt Batch, or copy any prompt by hand.</span><span class="ar">نزّل ملف CSV أو Excel وشغّله بـ Prompt Batch، أو انسخ أي أمر يدويًا.</span></p></div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="faq">
+    <div class="head rv">
+      <div>
+        <span class="mono"><span class="en">03 / Questions</span><span class="ar">03 / الأسئلة</span></span>
+        <h2 data-split><span class="en">Still an <span class="serif">idea.</span></span><span class="ar">ما زالت <span class="serif">فكرة.</span></span></h2>
+      </div>
+    </div>
+    <div class="faq rv">
+      <details><summary><span class="en">Does this exist yet?</span><span class="ar">هل هي موجودة الآن؟</span></summary><p><span class="en">Not yet. We build what people ask for, and this page helps us decide. If you want it, join the list below. We will build it if enough people do.</span><span class="ar">ليس بعد. نصنع ما يطلبه الناس، وهذه الصفحة تساعدنا على القرار. إن أردتها فسجّل في القائمة بالأسفل، وسنصنعها إن سجّل عدد كافٍ.</span></p></details>
+      <details><summary><span class="en">Do I need Prompt Batch?</span><span class="ar">هل أحتاج إلى Prompt Batch؟</span></summary><p><span class="en">No. The file works on its own, and you can copy prompts by hand. Prompt Batch just runs the whole file in Flow for you.</span><span class="ar">لا. الملف يعمل وحده، ويمكنك نسخ الأوامر يدويًا. Prompt Batch فقط تشغّل الملف كله في Flow بدلًا منك.</span></p></details>
+      <details><summary><span class="en">How much will it cost?</span><span class="ar">كم سيكون سعرها؟</span></summary><p><span class="en">Not decided yet. Like every Mansify product, there will be a free way to try it first.</span><span class="ar">لم يُحدد السعر بعد، ومثل كل منتجات Mansify ستكون هناك طريقة مجانية لتجربتها أولًا.</span></p></details>
+      <details><summary><span class="en">Can I tell you what I need?</span><span class="ar">هل يمكنني أن أخبركم بما أحتاجه؟</span></summary><p><span class="en">Please do. Write to contact@mansify.app with the kind of videos you make. It shapes what we build.</span><span class="ar">نرجو ذلك. راسلنا على contact@mansify.app واذكر نوع الفيديوهات التي تصنعها، فهذا يحدد ما نصنعه.</span></p></details>
+    </div>
+  </section>
+</main>
+
+<section class="finale" id="contact">
+  <div class="aurora a"></div>
+  <div class="wrap">
+    <p class="slogan rv" data-split><span class="en">Want this built? <span class="serif">Tell us.</span></span><span class="ar">تريد أن نصنعها؟ <span class="serif">أخبرنا.</span></span></p>
+    <form class="wl rv" id="waitlist" data-waitlist="script-to-scenes" novalidate>
+      <div class="wl-txt"><strong><span class="en">Be the first to try it</span><span class="ar">كن أول من يجرّبها</span></strong><small><span class="en">We will email you once, if it launches.</span><span class="ar">سنراسلك مرة واحدة إن صدرت.</span></small></div>
+      <div class="wl-row">
+        <label class="sr" for="wl-email"><span class="en">Your email</span><span class="ar">بريدك الإلكتروني</span></label>
+        <input id="wl-email" type="email" name="email" required maxlength="254" autocomplete="email" placeholder="name@example.com" dir="ltr">
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn accent" type="submit"><span class="en">I want it</span><span class="ar">أريدها</span></button>
+      </div>
+      <p class="wl-msg" role="status" aria-live="polite"></p>
+      <p class="wl-note"><span class="en">Only for this. No spam. Ask us any time to remove it. <a href="../privacy/index.html#waitlist">Privacy</a></span><span class="ar">لهذا الغرض فقط، ومن دون رسائل مزعجة، ويمكنك أن تطلب حذفه في أي وقت. <a href="../privacy/index.html#waitlist">الخصوصية</a></span></p>
+    </form>
+    <div class="contact rv">
+      <a class="mail spot-card" href="mailto:contact@mansify.app?subject=Script%20to%20Scenes">
+        <span><small><span class="en">Ideas and questions</span><span class="ar">الأفكار والأسئلة</span></small><strong>contact@mansify.app</strong></span>
+        <span class="circ"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+      <a class="mail spot-card" href="../prompt-batch/index.html">
+        <span><small><span class="en">Already available</span><span class="ar">متاحة الآن</span></small><strong>Prompt Batch</strong></span>
+        <span class="circ"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+    </div>
+  </div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wm-outline" x="-5%" y="-10%" width="110%" height="120%"><feMorphology in="SourceGraphic" operator="dilate" radius="1.3" result="d"/><feComposite in="d" in2="SourceGraphic" operator="out"/></filter></svg>
+  <div class="wordmark" aria-hidden="true">mansify</div>
+  <!-- layout:footer -->
+  <footer class="site-foot">
+    <div class="wrap fgrid">
+      <div class="fbrand">
+        <a class="logo" href="../index.html" aria-label="Mansify home"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M8.5 22V11l7.5 8 7.5-8v11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.2"/></svg>Mansify</a>
+        <p><span class="en">An independent software studio.</span><span class="ar">استوديو برمجيات مستقل.</span></p>
+      </div>
+      <div class="fcol"><h4>Mansify</h4><a href="../index.html#products"><span class="en">Products</span><span class="ar">المنتجات</span></a><a href="../index.html#approach"><span class="en">Approach</span><span class="ar">طريقتنا</span></a><a href="mailto:contact@mansify.app"><span class="en">Contact</span><span class="ar">تواصل</span></a></div>
+      <div class="fcol"><h4><span class="en">Legal</span><span class="ar">قانوني</span></h4><a href="../privacy/index.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a><a href="../terms/index.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></div>
+    </div>
+    <div class="wrap fbase"><span dir="ltr">© 2026 Mansify</span></div>
+  </footer>
+  <!-- /layout:footer -->
+</section>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>

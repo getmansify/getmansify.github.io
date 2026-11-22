@@ -22,6 +22,7 @@ Prompt Batch is a Chrome extension for Google Flow (Google's AI tool for images 
 - [Make many Veo videos in Google Flow at once](https://mansify.app/prompt-batch/guides/make-many-veo-videos-google-flow): videos from text, animated pictures with a start image, or both
 - [Download every Google Flow result with clean names](https://mansify.app/prompt-batch/guides/download-google-flow-results): automatic, numbered downloads in the order of your file
 - [Google Flow says "requesting generations too quickly"](https://mansify.app/prompt-batch/guides/google-flow-requesting-generations-too-quickly): what the message means and what to do
+- [Veo "Audio generation failed" in Google Flow](https://mansify.app/prompt-batch/guides/google-flow-veo-audio-generation-failed): what the message means, credits refunded, how to fix it
 - [Video tutorial (2 minutes)](https://youtu.be/D94U4ePladc)
 
 ## Iconaut (coming soon)

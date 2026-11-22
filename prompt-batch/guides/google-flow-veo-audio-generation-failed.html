@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-ar="رسالة «Audio generation failed» في Google Flow وVeo: ماذا تفعل | Prompt Batch">Veo &quot;Audio generation failed&quot; in Google Flow: what to do | Prompt Batch</title>
+<meta name="description" content="Google Flow says &quot;Audio generation failed&quot; on a Veo video? What the message means, whether you get your credits back, and how to fix it: retry, reword the prompt or turn on silent videos." data-ar="هل يقول Google Flow «Audio generation failed» على فيديو Veo؟ ماذا تعني الرسالة، وهل يعود رصيدك، وكيف تحلها: أعد المحاولة، أو غيّر صياغة الأمر، أو فعّل الفيديو الصامت.">
+<meta name="theme-color" content="#070b16">
+<script>
+/* Language before the first paint. mansify.app sends one language per address (worker.js sets <html data-only>):
+   an English address opened by someone who chose Arabic (or whose browser is Arabic) moves to ?lang=ar.
+   Elsewhere (GitHub Pages copy, local files) both languages are there: ?lang, then the saved choice, then the browser. */
+(function () { var r = document.documentElement, l = null, t = null, q = new URLSearchParams(location.search).get('lang'), only = r.getAttribute('data-only');
+  try { l = localStorage.getItem('mansify-lang'); t = localStorage.getItem('mansify-theme'); } catch (e) {}
+  if (q === 'ar' || q === 'en') { l = q; try { localStorage.setItem('mansify-lang', q); } catch (e) {} }
+  if (l !== 'ar' && l !== 'en') l = (navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en';
+  if (only === 'en' && l === 'ar' && !q) { var u = new URL(location.href); u.searchParams.set('lang', 'ar'); location.replace(u.href); }
+  if (only === 'ar' || only === 'en') l = only;
+  r.lang = l; r.dir = l === 'ar' ? 'rtl' : 'ltr'; if (t === 'light' || t === 'dark') r.dataset.theme = t; })();
+</script>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/img/mansify-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/mansify-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<!-- layout:meta -->
+<link rel="canonical" href="https://mansify.app/prompt-batch/guides/google-flow-veo-audio-generation-failed" data-ar="https://mansify.app/prompt-batch/guides/google-flow-veo-audio-generation-failed?lang=ar">
+<link rel="alternate" hreflang="en" href="https://mansify.app/prompt-batch/guides/google-flow-veo-audio-generation-failed">
+<link rel="alternate" hreflang="ar" href="https://mansify.app/prompt-batch/guides/google-flow-veo-audio-generation-failed?lang=ar">
+<link rel="alternate" hreflang="x-default" href="https://mansify.app/prompt-batch/guides/google-flow-veo-audio-generation-failed">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mansify">
+<meta property="og:locale" content="en_US" data-ar="ar_AR">
+<meta property="og:title" content="Veo &amp;quot;Audio generation failed&amp;quot; in Google Flow: what to do | Prompt Batch" data-ar="رسالة «Audio generation failed» في Google Flow وVeo: ماذا تفعل | Prompt Batch">
+<meta property="og:description" content="Google Flow says &amp;quot;Audio generation failed&amp;quot; on a Veo video? What the message means, whether you get your credits back, and how to fix it: retry, reword the prompt or turn on silent videos." data-ar="هل يقول Google Flow «Audio generation failed» على فيديو Veo؟ ماذا تعني الرسالة، وهل يعود رصيدك، وكيف تحلها: أعد المحاولة، أو غيّر صياغة الأمر، أو فعّل الفيديو الصامت.">
+<meta property="og:url" content="https://mansify.app/prompt-batch/guides/google-flow-veo-audio-generation-failed" data-ar="https://mansify.app/prompt-batch/guides/google-flow-veo-audio-generation-failed?lang=ar">
+<meta property="og:image" content="https://mansify.app/img/og/prompt-batch.png" data-ar="https://mansify.app/img/og/prompt-batch-ar.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Veo \"Audio generation failed\" in Google Flow: what to do",
+   "description": "Google Flow says &quot;Audio generation failed&quot; on a Veo video? What the message means, whether you get your credits back, and how to fix it: retry, reword the prompt or turn on silent videos.",
+   "url": "https://mansify.app/prompt-batch/guides/google-flow-veo-audio-generation-failed",
+   "inLanguage": [
+    "en",
+    "ar"
+   ],
+   "datePublished": "2026-11-22T12:00:00+00:00",
+   "dateModified": "2026-11-22T12:00:00+00:00",
+   "image": "https://mansify.app/img/og/prompt-batch.png",
+   "author": {
+    "@id": "https://mansify.app/#org"
+   },
+   "publisher": {
+    "@id": "https://mansify.app/#org"
+   },
+   "about": {
+    "@id": "https://mansify.app/prompt-batch/#app"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Mansify",
+     "item": "https://mansify.app/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Prompt Batch",
+     "item": "https://mansify.app/prompt-batch/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Veo \"Audio generation failed\" in Google Flow: what to do",
+     "item": "https://mansify.app/prompt-batch/guides/google-flow-veo-audio-generation-failed"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Do I lose my credits when audio generation fails?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Flow's message says you will be refunded for the failed video. You can check your credits in Flow after a run."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Why does audio generation fail?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Google does not explain it. It seems to happen now and then on any prompt, and trying again or rewording the prompt usually helps."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can I get the video without sound?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Turn on silent videos in Flow's settings and make the video again. Flow then returns it without sound."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is Prompt Batch made by Google?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. It is an independent tool by Mansify, not made, endorsed or supported by Google."
+     }
+    }
+   ]
+  },
+  {
+   "@type": "Organization",
+   "@id": "https://mansify.app/#org",
+   "name": "Mansify",
+   "url": "https://mansify.app/",
+   "logo": "https://mansify.app/img/mansify-icon-180.png",
+   "email": "contact@mansify.app",
+   "sameAs": [
+    "https://www.youtube.com/@mansify_app",
+    "https://github.com/getmansify"
+   ]
+  }
+ ]
+}
+</script>
+<!-- /layout:meta -->
+</head>
+<body data-title-en="Veo &quot;Audio generation failed&quot; in Google Flow: what to do | Prompt Batch" data-title-ar="رسالة «Audio generation failed» في Google Flow وVeo: ماذا تفعل | Prompt Batch" class="has-phead phead-fixed past-head">
+<div class="progress" aria-hidden="true"></div>
+<!-- layout:nav -->
+<div class="nav" id="nav">
+  <div class="wrap bar">
+    <a class="logo" href="../../index.html" aria-label="Mansify home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M8.5 22V11l7.5 8 7.5-8v11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.2"/></svg>
+      Mansify
+    </a>
+    <nav>
+      <a href="../../index.html#products" aria-current="page"><span class="en">Products</span><span class="ar">المنتجات</span></a>
+      <a class="opt" href="../../index.html#approach"><span class="en">Approach</span><span class="ar">طريقتنا</span></a>
+      <a class="opt" href="../../index.html#contact"><span class="en">Contact</span><span class="ar">تواصل</span></a>
+      <button class="icon-btn" id="theme" type="button" aria-label="Switch light or dark mode">
+        <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="lang" id="lang" type="button"><span class="en">العربية</span><span class="ar">English</span></button>
+    </nav>
+  </div>
+</div>
+<!-- /layout:nav -->
+<!-- layout:phead -->
+<section class="phead wrap" id="top">
+  <div class="ph-card">
+    <div class="ph-main">
+      <a class="ph-iconlink" href="../../prompt-batch/index.html"><img class="ph-icon" src="../../img/prompt-batch-icon.png" width="88" height="88" alt=""></a>
+      <div class="ph-txt">
+        <span class="crumbs"><a href="../../index.html#products"><span class="en">Products</span><span class="ar">المنتجات</span></a><span aria-hidden="true">/</span><span><span class="en">Prompt Batch</span><span class="ar">Prompt Batch</span></span></span>
+        <p class="ph-name"><span class="en">Prompt Batch</span><span class="ar">Prompt Batch</span> <span class="chip live"><span class="en">Available now</span><span class="ar">متاحة الآن</span></span></p>
+        <p class="ph-line"><span class="p-stats" data-stats="/api/stats"><span class="st" data-stat="users" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.3a6.5 6.5 0 0 1 3.5 5.7"/></svg><b></b></span><span class="st" data-stat="rating" hidden><svg class="fill" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.3.8-4.6 4.4 1.2 6.3L12 17l-5.7 3.1 1.2-6.3-4.6-4.4 6.3-.8z"/></svg><b></b></span><span class="st"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="en">Launched October 17, 2026</span><span class="ar">أُطلقت في 17 أكتوبر 2026</span></span></span></p>
+        <div class="ph-meta"><span class="chip"><svg class="brand" viewBox="0 0 48 48" aria-hidden="true"><path fill="#DB4437" d="M24.00 14.00L43.60 14.00A22 22 0 0 0 5.54 12.03L15.34 29.00A10 10 0 0 1 24.00 14.00Z"/><path fill="#F4B400" d="M32.66 29.00L22.86 45.97A22 22 0 0 0 43.60 14.00L24.00 14.00A10 10 0 0 1 32.66 29.00Z"/><path fill="#0F9D58" d="M15.34 29.00L5.54 12.03A22 22 0 0 0 22.86 45.97L32.66 29.00A10 10 0 0 1 15.34 29.00Z"/><circle cx="24" cy="24" r="10" fill="#fff"/><circle cx="24" cy="24" r="8" fill="#4285F4"/></svg><span class="en">Chrome extension</span><span class="ar">إضافة Chrome</span></span><span class="chip"><span class="en">Works with Google Flow</span><span class="ar">تعمل مع Google Flow</span></span></div>
+      </div>
+      <div class="ph-side"><div class="cta"><a class="btn accent" href="https://chromewebstore.google.com/detail/mgangjbcmdppnmlmaielildhagdlegob?utm_source=mansify.app&amp;utm_medium=website"><span class="en">Add to Chrome</span><span class="ar">أضِفها إلى Chrome</span><svg class="arr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="btn line" href="../../prompt-batch/index.html#pricing"><span class="en">Pricing</span><span class="ar">الأسعار</span></a></div><p class="p-note"><span class="world-only"><span class="en">Free for your first 8 results · Pro from <span data-p="monthly">$4.50</span>/month or <span data-p="now">$7.50</span> once</span><span class="ar">مجانية لأول 8 نتائج · النسخة الاحترافية من <span data-p="monthly">$4.50</span> شهريًا أو <span data-p="now">$7.50</span> مرة واحدة</span></span><span class="eg-only"><span class="en">Free for your first 8 results · Pro from <span data-p="monthly">250 EGP</span>/year or <span data-p="now">350 EGP</span> once</span><span class="ar">مجانية لأول 8 نتائج · النسخة الاحترافية من <span data-p="monthly">250 جنيه</span> سنويًا أو <span data-p="now">350 جنيه</span> مرة واحدة</span></span></p></div>
+    </div>
+    <nav class="ph-tabs" aria-label="Prompt Batch"><a href="../../prompt-batch/index.html#top"><span class="en">Overview</span><span class="ar">نظرة عامة</span></a><a href="../../prompt-batch/index.html#pricing"><span class="en">Pricing</span><span class="ar">الأسعار</span></a><a href="../../prompt-batch/index.html#guides"><span class="en">Guides</span><span class="ar">الشروحات</span></a><a href="../../prompt-batch/index.html#how"><span class="en">How it works</span><span class="ar">طريقة العمل</span></a><a href="../../prompt-batch/index.html#features"><span class="en">Features</span><span class="ar">المزايا</span></a><a href="../../prompt-batch/index.html#faq"><span class="en">FAQ</span><span class="ar">الأسئلة</span></a><a href="../../prompt-batch/index.html#support"><span class="en">Support</span><span class="ar">الدعم</span></a><a href="../../prompt-batch/index.html#legal"><span class="en">Privacy and terms</span><span class="ar">الخصوصية والشروط</span></a></nav>
+  </div>
+</section>
+<!-- /layout:phead -->
+
+<header class="hero legal-hero">
+  <div class="aurora a"></div>
+  <div class="wrap">
+    <span class="crumbs rv"><a href="../index.html">Prompt Batch</a><span aria-hidden="true">/</span><span><span class="en">Guides</span><span class="ar">الشروحات</span></span></span>
+    <h1 class="rv" data-split><span class="en">Veo made no sound: <span class="serif">audio generation failed.</span></span><span class="ar">لم يصنع Veo الصوت: <span class="serif">رسالة «Audio generation failed».</span></span></h1>
+    <p class="updated rv"><span class="en">What the message means and what to do · 4-minute read · Updated November 22, 2026</span><span class="ar">ماذا تعني الرسالة وماذا تفعل · قراءة في 4 دقائق · آخر تحديث: 22 نوفمبر 2026</span></p>
+  </div>
+</header>
+
+<main class="wrap legal guide">
+  <nav class="toc en" aria-label="Sections">
+    <a href="#short">In short</a>
+    <a href="#message">The message</a>
+    <a href="#now">What to do</a>
+    <a href="#pb">What Prompt Batch does</a>
+    <a href="#faq">Questions</a>
+  </nav>
+  <nav class="toc ar" aria-label="الأقسام">
+    <a href="#short-ar">باختصار</a>
+    <a href="#message-ar">الرسالة</a>
+    <a href="#now-ar">ماذا تفعل</a>
+    <a href="#pb-ar">ما تفعله Prompt Batch</a>
+    <a href="#faq-ar">أسئلة</a>
+  </nav>
+
+  <article class="en" lang="en" dir="ltr">
+    <section id="short">
+      <div class="box">
+        <p><strong>In short:</strong> when Google Flow shows <em>Audio generation failed</em>, Veo could not make the sound for that video, so the video is not delivered and Flow says you will be refunded. Try the same prompt again, reword it a little (especially the part about sound or speech), or turn on silent videos in Flow's settings if you don't need sound.</p>
+      </div>
+    </section>
+
+    <section id="message">
+      <h2>The message</h2>
+      <p>The failed video's card in your Flow project says something like this:</p>
+      <div class="box"><p dir="ltr"><em>Audio generation failed … You can update your settings to return silent videos. You will be refunded.</em></p></div>
+      <ul>
+        <li><strong>It is about sound only.</strong> Veo makes videos with sound; here the sound part failed, and Flow does not return the video.</li>
+        <li><strong>Your credits come back.</strong> The message itself says you will be refunded for that video.</li>
+        <li><strong>Google does not say why.</strong> It can happen to any video prompt, and the same prompt often works on the next try.</li>
+      </ul>
+    </section>
+
+    <section id="now">
+      <h2>What to do</h2>
+      <ol>
+        <li><strong>Try again once.</strong> Send the same prompt again. It often works the second time.</li>
+        <li><strong>Reword the prompt.</strong> If it fails again, change the prompt a little, especially any part that asks for speech, music or a specific sound.</li>
+        <li><strong>Turn on silent videos</strong> in Flow's settings if the video does not need sound. Flow then returns the video without sound instead of failing.</li>
+        <li><strong>Don't retry in a loop.</strong> Many failed tries close together can lead to Flow's "too quickly" message. See <a href="google-flow-requesting-generations-too-quickly">Flow says "requesting generations too quickly"</a>.</li>
+      </ol>
+    </section>
+
+    <section id="pb">
+      <h2>What Prompt Batch does for you</h2>
+      <ul>
+        <li>When a video fails with this message, it waits the normal time between prompts and tries that row once more.</li>
+        <li>If it fails again, it marks the row as failed with a clear note and moves to the next row. One failed video never stops the rest of your file.</li>
+        <li>It never changes your Flow settings for you. Turning on silent videos is your choice.</li>
+        <li>When the run ends, press <strong>Start</strong> again: only the rows that are missing are made.</li>
+      </ul>
+      <p>New to running many videos? Read <a href="make-many-veo-videos-google-flow">make many Veo videos in Google Flow</a>.</p>
+    </section>
+
+    <section id="faq">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details><summary>Do I lose my credits when audio generation fails?</summary><p>Flow's message says you will be refunded for the failed video. You can check your credits in Flow after a run.</p></details>
+        <details><summary>Why does audio generation fail?</summary><p>Google does not explain it. It seems to happen now and then on any prompt, and trying again or rewording the prompt usually helps.</p></details>
+        <details><summary>Can I get the video without sound?</summary><p>Yes. Turn on silent videos in Flow's settings and make the video again. Flow then returns it without sound.</p></details>
+        <details><summary>Is Prompt Batch made by Google?</summary><p>No. It is an independent tool by Mansify, not made, endorsed or supported by Google.</p></details>
+      </div>
+    </section>
+  </article>
+
+  <article class="ar" lang="ar" dir="rtl">
+    <section id="short-ar">
+      <div class="box">
+        <p><strong>باختصار:</strong> عندما يعرض Google Flow رسالة <span dir="ltr">«Audio generation failed»</span>، فهذا يعني أن Veo لم يستطع صنع صوت هذا الفيديو، فلم يُسلَّم الفيديو، ويقول Flow إنه سيعيد إليك الرصيد. جرّب الأمر نفسه مرة أخرى، أو غيّر صياغته قليلًا (خاصة الجزء الخاص بالصوت أو الكلام)، أو فعّل الفيديو الصامت من إعدادات Flow إذا لم تكن تحتاج إلى صوت.</p>
+      </div>
+    </section>
+
+    <section id="message-ar">
+      <h2>الرسالة</h2>
+      <p>تظهر على بطاقة الفيديو الفاشل في مشروعك على Flow رسالة مثل هذه:</p>
+      <div class="box"><p dir="ltr"><em>Audio generation failed … You can update your settings to return silent videos. You will be refunded.</em></p></div>
+      <ul>
+        <li><strong>المشكلة في الصوت فقط.</strong> يصنع Veo الفيديو مع الصوت، وهنا فشل جزء الصوت، فلا يعيد Flow الفيديو.</li>
+        <li><strong>يعود إليك رصيدك.</strong> تقول الرسالة نفسها إن قيمة هذا الفيديو ستُعاد إليك.</li>
+        <li><strong>لا تذكر Google السبب.</strong> قد يحدث ذلك مع أي أمر فيديو، وكثيرًا ما ينجح الأمر نفسه في المحاولة التالية.</li>
+      </ul>
+    </section>
+
+    <section id="now-ar">
+      <h2>ماذا تفعل</h2>
+      <ol>
+        <li><strong>جرّب مرة أخرى.</strong> أرسل الأمر نفسه من جديد، فكثيرًا ما ينجح في المرة الثانية.</li>
+        <li><strong>غيّر صياغة الأمر.</strong> إذا فشل مرة أخرى، فعدّل الأمر قليلًا، خاصة أي جزء يطلب كلامًا أو موسيقى أو صوتًا معيّنًا.</li>
+        <li><strong>فعّل الفيديو الصامت</strong> من إعدادات Flow إذا كان الفيديو لا يحتاج إلى صوت. فيعيد Flow الفيديو بلا صوت بدل أن يفشل.</li>
+        <li><strong>لا تكرر المحاولة مرارًا.</strong> المحاولات الفاشلة الكثيرة المتقاربة قد تؤدي إلى رسالة «too quickly» في Flow. اقرأ <a href="google-flow-requesting-generations-too-quickly">رسالة «<bdi dir="ltr">requesting generations too quickly</bdi>» في Flow</a>.</li>
+      </ol>
+    </section>
+
+    <section id="pb-ar">
+      <h2>ما تفعله Prompt Batch لك</h2>
+      <ul>
+        <li>عندما يفشل فيديو بهذه الرسالة، تنتظر المدة المعتادة بين الأوامر، ثم تجرّب هذا الصف مرة أخرى.</li>
+        <li>إذا فشل مرة ثانية، تعلّم الصف بأنه فشل مع ملاحظة واضحة، وتنتقل إلى الصف التالي. ففشل فيديو واحد لا يوقف بقية ملفك.</li>
+        <li>لا تغيّر إعدادات Flow بنفسها أبدًا، فتفعيل الفيديو الصامت قرارك أنت.</li>
+        <li>عندما ينتهي التشغيل، اضغط <strong>«ابدأ»</strong> مرة أخرى، فلا تُصنع إلا الصفوف الناقصة.</li>
+      </ul>
+      <p>هل تشغّل فيديوهات كثيرة لأول مرة؟ اقرأ <a href="make-many-veo-videos-google-flow">اصنع فيديوهات Veo كثيرة في Google Flow</a>.</p>
+    </section>
+
+    <section id="faq-ar">
+      <h2>أسئلة</h2>
+      <div class="faq">
+        <details><summary>هل أخسر رصيدي عندما يفشل إنشاء الصوت؟</summary><p>تقول رسالة Flow إن قيمة الفيديو الفاشل ستُعاد إليك. ويمكنك التأكد من رصيدك في Flow بعد التشغيل.</p></details>
+        <details><summary>لماذا يفشل إنشاء الصوت؟</summary><p>لا تشرح Google السبب. ويبدو أنه يحدث من وقت لآخر مع أي أمر، وغالبًا ما تساعد إعادة المحاولة أو تغيير صياغة الأمر.</p></details>
+        <details><summary>هل يمكنني الحصول على الفيديو بلا صوت؟</summary><p>نعم. فعّل الفيديو الصامت من إعدادات Flow، ثم اصنع الفيديو مرة أخرى، فيعيده Flow بلا صوت.</p></details>
+        <details><summary>هل Prompt Batch من صنع Google؟</summary><p>لا. هي أداة مستقلة من Mansify، وليست من صنع Google ولا بتأييدها أو دعمها.</p></details>
+      </div>
+    </section>
+  </article>
+</main>
+
+<section class="block wrap guide-cta">
+  <div class="cta rv">
+    <a class="btn accent" href="https://chromewebstore.google.com/detail/mgangjbcmdppnmlmaielildhagdlegob?utm_source=mansify.app&amp;utm_medium=website"><span class="en">Add to Chrome, free</span><span class="ar">أضِفها إلى Chrome مجانًا</span><svg class="arr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <a class="btn line" href="make-many-veo-videos-google-flow"><span class="en">Guide: many Veo videos</span><span class="ar">شرح: فيديوهات Veo كثيرة</span></a>
+  </div>
+</section>
+
+<section class="finale" id="contact">
+  <div class="aurora a"></div>
+  <div class="wrap">
+    <p class="slogan rv" data-split><span class="en">Questions? <span class="serif">Just ask.</span></span><span class="ar">لديك سؤال؟ <span class="serif">راسلنا.</span></span></p>
+    <div class="contact rv">
+      <a class="mail spot-card" href="mailto:support@mansify.app?subject=Prompt%20Batch">
+        <span><small><span class="en">Help with Prompt Batch</span><span class="ar">المساعدة في Prompt Batch</span></small><strong>support@mansify.app</strong></span>
+        <span class="circ"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+      <a class="mail spot-card" href="../index.html">
+        <span><small><span class="en">The extension</span><span class="ar">الإضافة</span></small><strong>Prompt Batch</strong></span>
+        <span class="circ"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+    </div>
+  </div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wm-outline" x="-5%" y="-10%" width="110%" height="120%"><feMorphology in="SourceGraphic" operator="dilate" radius="1.3" result="d"/><feComposite in="d" in2="SourceGraphic" operator="out"/></filter></svg>
+  <div class="wordmark" aria-hidden="true">mansify</div>
+  <!-- layout:footer -->
+  <footer class="site-foot">
+    <div class="wrap fgrid">
+      <div class="fbrand">
+        <a class="logo" href="../../index.html" aria-label="Mansify home"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M8.5 22V11l7.5 8 7.5-8v11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.2"/></svg>Mansify</a>
+        <p><span class="en">An independent software studio.</span><span class="ar">استوديو برمجيات مستقل.</span></p>
+      </div>
+      <div class="fcol"><h4>Mansify</h4><a href="../../index.html#products"><span class="en">Products</span><span class="ar">المنتجات</span></a><a href="../../index.html#approach"><span class="en">Approach</span><span class="ar">طريقتنا</span></a><a href="mailto:contact@mansify.app"><span class="en">Contact</span><span class="ar">تواصل</span></a></div>
+      <div class="fcol"><h4><span class="en">Legal</span><span class="ar">قانوني</span></h4><a href="../../privacy/index.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a><a href="../../terms/index.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></div>
+    </div>
+    <div class="wrap fbase"><span dir="ltr">© 2026 Mansify</span></div>
+  </footer>
+  <!-- /layout:footer -->
+</section>
+
+<script src="../../assets/site.js"></script>
+</body>
+</html>

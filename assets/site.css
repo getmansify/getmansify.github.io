@@ -797,6 +797,8 @@ html[dir="rtl"] .sf input[type="email"]:placeholder-shown { text-align: right; }
 .guides-list a.step p { flex: 1; }
 .guides-list .more { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; color: var(--link); font-weight: 600; font-size: 15px; }
 html[dir="rtl"] .guides-list .more .arr { transform: scaleX(-1); }
+.guides-more { margin-top: 22px; color: var(--muted, inherit); font-size: 15px; }
+.guides-more a { color: var(--link); font-weight: 600; }
 .guides-list .step.soon { opacity: .6; }
 .guides-list .step.soon:hover { transform: none; border-color: var(--line); }
 .guides-list .gpic { display: block; margin: -12px -12px 20px; border-radius: 14px; overflow: hidden; aspect-ratio: 16 / 10; background: var(--surface); border: 1px solid var(--line); }
